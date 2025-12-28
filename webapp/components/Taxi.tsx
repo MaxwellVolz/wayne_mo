@@ -1,27 +1,34 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
+import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import type { Taxi as TaxiType } from '@/types/game'
 import { updateTaxi, samplePath } from '@/lib/movement'
+import { getTimeScale } from '@/lib/gameState'
 
 interface TaxiProps {
   taxi: TaxiType
-  deltaTime: number
 }
 
 /**
  * Taxi component - renders a single taxi and handles its movement
+ * Uses useFrame for smooth 60fps animation
  */
-export default function Taxi({ taxi, deltaTime }: TaxiProps) {
+export default function Taxi({ taxi }: TaxiProps) {
   const meshRef = useRef<THREE.Mesh>(null)
   const previousPosition = useRef<THREE.Vector3>(new THREE.Vector3())
 
-  useEffect(() => {
+  // Use Three.js render loop for smooth animation
+  useFrame((state, delta) => {
     if (!meshRef.current || !taxi.path) return
 
+    // Apply time scale for slow-motion
+    const timeScale = getTimeScale()
+    const scaledDelta = delta * timeScale
+
     // Update taxi position along path
-    updateTaxi(taxi, deltaTime)
+    updateTaxi(taxi, scaledDelta)
 
     // Sample new position from path
     const position = samplePath(taxi.path, taxi.t)
@@ -40,7 +47,7 @@ export default function Taxi({ taxi, deltaTime }: TaxiProps) {
     }
 
     previousPosition.current.copy(position)
-  }, [taxi, deltaTime])
+  })
 
   // Color based on state
   const getColor = () => {

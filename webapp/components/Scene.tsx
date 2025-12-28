@@ -13,7 +13,7 @@ import { useGameLoop } from '@/hooks/useGameLoop'
  * Sets up camera, lighting, and controls
  */
 export default function Scene() {
-  const { taxis, deltaTime } = useGameLoop()
+  const { taxisRef } = useGameLoop()
 
   return (
     <Canvas
@@ -22,6 +22,7 @@ export default function Scene() {
         fov: 50,
       }}
       shadows={false}
+      frameloop="always"
     >
       {/* Lighting */}
       <ambientLight intensity={0.6} />
@@ -52,8 +53,8 @@ export default function Scene() {
       <RoadVisualizer />
 
       {/* Taxis */}
-      {taxis.map((taxi) => (
-        <Taxi key={taxi.id} taxi={taxi} deltaTime={deltaTime} />
+      {taxisRef.current.map((taxi) => (
+        <Taxi key={taxi.id} taxi={taxi} />
       ))}
 
       {/* Grid helper for debugging */}
