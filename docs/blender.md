@@ -402,51 +402,25 @@ npx gltfjsx@6.5.3 public/models/taxi.glb   --output components/Taxi.tsx   --type
 - `--types`: Generate TypeScript types for the model
 - `--keepgroups`: Preserve Blender collections as groups
 
-### Post-processing (Required)
+### Post-processing (Automatic)
 
-After generation, you **must** update the generated files:
+The `npm run buildcity` and `npm run buildtaxi` commands **automatically fix all type errors** for you.
 
-**1. Fix Import Paths:**
+If you need to manually fix a generated file:
+
 ```bash
-sed -i "s|'/city_01.glb'|'/models/city_01.glb'|g" components/CityModelGenerated.tsx
-sed -i "s|'/taxi.glb'|'/models/taxi.glb'|g" components/Taxi.tsx
+node scripts/fix-gltf-types.js components/YourModel.tsx
 ```
 
-**2. Fix Type Errors:**
+**What gets fixed automatically:**
+- ✅ Removes `animations: GLTFAction[]` (invalid type)
+- ✅ Replaces `JSX.IntrinsicElements['group']` with `React.ComponentProps<'group'>`
+- ✅ Fixes type assertion: `as GLTFResult` → `as unknown as GLTFResult`
+- ✅ Adds `import React from 'react'` if needed
 
-The generator may add invalid types. Update these manually:
+**Path fixing:** gltfjsx generates correct paths (`/models/city_01.glb`) automatically when run with the correct input path.
 
-**Remove GLTFAction (if present):**
-```typescript
-// REMOVE this line if it exists:
-animations: GLTFAction[]
-
-// Type should end like this:
-type GLTFResult = GLTF & {
-  nodes: { ... }
-  materials: { ... }
-}  // No animations property
-```
-
-**Fix JSX namespace:**
-```typescript
-// CHANGE:
-export function Model(props: JSX.IntrinsicElements['group']) {
-
-// TO:
-export function Model(props: React.ComponentProps<'group'>) {
-```
-
-**Fix type assertion:**
-```typescript
-// CHANGE:
-const { nodes, materials } = useGLTF('/models/city_01.glb') as GLTFResult
-
-// TO:
-const { nodes, materials } = useGLTF('/models/city_01.glb') as unknown as GLTFResult
-```
-
-**3. Preserve Textures When Adding Logic:**
+### Preserving Textures When Adding Logic
 
 ⚠️ **IMPORTANT:** When adding custom behavior (like movement), preserve the original materials to keep textures:
 

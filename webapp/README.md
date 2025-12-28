@@ -5,11 +5,12 @@ The game client built with Next.js, React, and Three.js.
 ## Tech Stack
 
 - **Next.js 15** - React framework with App Router
-- **React 18** - UI library
-- **Three.js** - 3D rendering engine
+- **React 19** - UI library
+- **Three.js 0.180** - 3D rendering engine
 - **@react-three/fiber** - React renderer for Three.js
 - **@react-three/drei** - Useful helpers for react-three-fiber
-- **TypeScript** - Type safety
+- **TypeScript 5** - Type safety
+- **Blender** - 3D modeling and path node authoring
 
 ## Getting Started
 
@@ -64,13 +65,31 @@ webapp/
 
 ## Architecture Overview
 
+### Blender Integration
+
+The game uses **Blender as the primary level design tool**:
+
+- City models created in Blender and exported as GLB
+- Path nodes are small mesh markers in Blender (named `PathNode_*`)
+- Node types defined by naming: `PathNode_Intersection_Pickup_001`
+- Node connections defined via custom properties: `next_nodes`
+- Runtime extraction converts Blender nodes to game paths
+- See `/docs/blender.md` for complete workflow guide
+
+**Key Files:**
+- `lib/extractPathNodes.ts` - Extracts nodes from GLB models
+- `components/CityModel.tsx` - Loads city and extracts path nodes
+- `data/roads.ts` - Road network updated from extracted nodes
+
 ### Movement System
 
 The game uses a **deterministic path-following system**, not physics simulation:
 
-- Taxis follow predefined `RoadPath` objects
+- Taxis follow `RoadPath` objects extracted from Blender path nodes
 - Movement is controlled by a normalized `t` parameter (0-1) along the path
 - Position is calculated via linear interpolation between path points
+- Rotation automatically faces movement direction
+- Animation via Three.js `useFrame` hook at 60fps
 - See `lib/movement.ts` for implementation
 
 ### State Management
@@ -151,11 +170,54 @@ updateTaxi(taxi, deltaTime)
 const position = samplePath(taxi.path, taxi.t)
 ```
 
+## Working with Blender Models
+
+### Exporting from Blender
+
+1. Model your city in Blender
+2. Add small mesh markers for path nodes (scale 0.01)
+3. Name them: `PathNode_001`, `PathNode_Intersection_002`, etc.
+4. Add custom property `next_nodes`: `[ "PathNode_002", "PathNode_003" ]`
+5. Export as GLB to `webapp/public/models/`
+
+### Generating TypeScript Components
+
+After exporting GLB files from Blender:
+
+```bash
+# From webapp directory
+npm run buildcity    # Generate city model + auto-fix types
+npm run buildtaxi    # Generate taxi model + auto-fix types
+npm run buildmodels  # Generate all models at once
+```
+
+**These commands automatically:**
+1. Run gltfjsx to generate TypeScript components
+2. Fix TypeScript errors (GLTFAction, JSX types, assertions)
+3. Add necessary imports
+
+No manual post-processing needed!
+
+### Path Node Types
+
+- `PathNode_001` → Regular path point
+- `PathNode_Intersection_001` → Where paths branch
+- `PathNode_Pickup_Downtown_001` → Pickup location
+- `PathNode_Dropoff_Airport_001` → Dropoff location
+- `PathNode_RedLight_001` → Traffic light
+- `PathNode_Service_001` → Service station
+- `PathNode_Intersection_RedLight_001` → Multiple types
+
+See `/docs/blender.md` for detailed documentation.
+
 ## Next Steps
 
-1. Implement Three.js scene with basic 8x8 city grid
-2. Create simple road graph with test paths
-3. Add taxi visualization with state indicators
-4. Implement STOP/GO UI button
-5. Add interaction zone detection
-6. Implement slow-motion focus mechanic
+1. ✅ Three.js scene with Blender city model
+2. ✅ Road graph extracted from Blender path nodes
+3. ✅ Taxi visualization with emissive state indicators
+4. ⏳ Implement STOP/GO UI button
+5. ⏳ Add interaction zone detection based on node types
+6. ⏳ Implement slow-motion focus mechanic
+7. ⏳ Job system and economy
+8. ⏳ Second taxi unlock
+9. ⏳ Automation upgrade

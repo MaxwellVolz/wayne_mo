@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "city": "npx gltfjsx@6.5.3 public/models/city_01.glb --output components/CityModelGenerated.tsx --types --keepgroups --keepnames --meta",
+    "buildcity": "npx gltfjsx@6.5.3 public/models/city_01.glb --output components/CityModelGenerated.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js components/CityModelGenerated.tsx",
+    "buildtaxi": "npx gltfjsx@6.5.3 public/models/taxi.glb --output components/TaxiModelGenerated.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js components/TaxiModelGenerated.tsx",
+    "buildmodels": "npm run buildcity && npm run buildtaxi",
+    "city": "npm run buildcity",
+    "deploy": "npm run build && mkdir -p ~/_git/intervolzdotcom/public/crazytaxi && cp -r out/* ~/_git/intervolzdotcom/public/crazytaxi/ && echo 'Deployed to intervolz.com/crazytaxi'",
     "lint": "next lint",
     "type-check": "tsc --noEmit"
   },

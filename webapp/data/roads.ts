@@ -126,10 +126,10 @@ export function updateRoadNetwork(extractedNodes: RoadNode[]) {
     node.next.forEach(nextNodeId => {
       // Create unique path ID for this connection
       const pathId = `${node.id}_to_${nextNodeId}`
-      const reversePath = `${nextNodeId}_to_${node.id}`
 
-      // Skip if we already created this path (avoid duplicates)
-      if (pathsAdded.has(pathId) || pathsAdded.has(reversePath)) {
+      // Skip if we already created THIS EXACT path (not the reverse)
+      // We want directed paths, so A→B and B→A are different
+      if (pathsAdded.has(pathId)) {
         return
       }
 
@@ -162,6 +162,17 @@ export function updateRoadNetwork(extractedNodes: RoadNode[]) {
 
   console.log(`✅ Road network updated: ${extractedNodes.length} nodes, ${generatedPaths.length} paths`)
 
+  // Log the full network graph for debugging
+  console.log('📊 Network Graph:')
+  extractedNodes.forEach(node => {
+    console.log(`  ${node.id} → [${node.next.join(', ')}]`)
+  })
+
+  console.log('🛣️ Generated Paths:')
+  generatedPaths.forEach(path => {
+    console.log(`  ${path.id} (${path.length.toFixed(2)} units)`)
+  })
+
   return activeRoadNetwork
 }
 
@@ -173,15 +184,37 @@ export function getRoadNetwork() {
 }
 
 /**
- * Get next path in sequence (for looping)
+ * Get next path based on node connections
+ * Path IDs are formatted as: "NodeA_to_NodeB"
+ * This finds all paths starting from NodeB and picks one
  */
 export function getNextPath(currentPathId: string): RoadPath | null {
   const paths = activeRoadNetwork.paths
-  const currentIndex = paths.findIndex((p) => p.id === currentPathId)
 
-  if (currentIndex === -1) return null
+  // Extract the destination node from current path
+  // Format: "PathNode_01_to_PathNode_02" -> destination is "PathNode_02"
+  const parts = currentPathId.split('_to_')
+  if (parts.length !== 2) {
+    console.warn(`⚠️ Invalid path ID format: ${currentPathId}`)
+    return null
+  }
 
-  // Loop back to start
-  const nextIndex = (currentIndex + 1) % paths.length
-  return paths[nextIndex]
+  const destinationNodeId = parts[1]
+
+  // Find all paths that start from this destination node
+  const possiblePaths = paths.filter(p => p.id.startsWith(`${destinationNodeId}_to_`))
+
+  if (possiblePaths.length === 0) {
+    console.warn(`⚠️ No next path found from node: ${destinationNodeId}`)
+    return null
+  }
+
+  // If multiple paths, pick randomly (for intersections)
+  // Otherwise return the only path
+  if (possiblePaths.length === 1) {
+    return possiblePaths[0]
+  } else {
+    const randomIndex = Math.floor(Math.random() * possiblePaths.length)
+    return possiblePaths[randomIndex]
+  }
 }

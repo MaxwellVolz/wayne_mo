@@ -64,12 +64,17 @@ export function extractPathNodesFromGLTF(gltf: GLTF): RoadNode[] {
           if (typeof nextNodesData === 'string') {
             // Parse JSON string like '[ "PathNode_02", "PathNode_04" ]'
             nextNodes = JSON.parse(nextNodesData)
+            console.log(`  📍 ${object.name} → next_nodes parsed:`, nextNodes)
           } else if (Array.isArray(nextNodesData)) {
             nextNodes = nextNodesData
+            console.log(`  📍 ${object.name} → next_nodes array:`, nextNodes)
           }
         } catch (e) {
-          console.warn(`⚠️ Failed to parse next_nodes for ${object.name}:`, e)
+          console.error(`❌ Failed to parse next_nodes for ${object.name}:`, e)
+          console.error(`   Raw value:`, object.userData.next_nodes)
         }
+      } else {
+        console.log(`  ⚠️ ${object.name} has NO next_nodes property`)
       }
 
       nodes.push({

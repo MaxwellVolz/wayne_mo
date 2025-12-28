@@ -6,10 +6,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a Crazy Taxi-inspired AI management automation game where the player commands a fleet of autonomous taxis in a downtown cartoon city. The focus is on observation, timing, and automation rather than direct control.
 
-**Tech Stack:**
-- Three.js (3D rendering)
-- Next.js (web framework)
-- Stack is not yet fully determined
+## Tech Stack
+
+- **Next.js 15** - React framework with App Router
+- **React 19** - UI library
+- **Three.js 0.180** - 3D rendering engine
+- **@react-three/fiber** - React renderer for Three.js
+- **@react-three/drei** - React Three.js helpers
+- **TypeScript 5** - Type safety
+- **Blender** - 3D modeling and path node authoring
 
 ## Critical Design Constraints
 
@@ -39,6 +44,24 @@ The project operates under a strict 10-feature scope before launch. **Any featur
 When implementing features, verify they align with this scope. Reject scope creep.
 
 ## Core Architecture
+
+### Blender-Driven Development Workflow
+
+The game uses **Blender as the primary level design tool**:
+- City geometry, buildings, and roads are modeled in Blender
+- Path nodes are placed as small mesh markers in Blender scenes
+- Node types are defined via naming conventions (e.g., `PathNode_Pickup_Downtown_001`)
+- Node connections are defined via custom properties (`next_nodes`)
+- Models are exported as GLB files to `webapp/public/models/`
+- Path nodes are extracted at runtime and converted to game paths
+
+**Benefits:**
+- Visual level design instead of coding coordinates
+- Quick iteration (update Blender → re-export → instant reload)
+- Node metadata (zone names, payout multipliers) stored in Blender custom properties
+- Single source of truth for both visuals and game logic
+
+See `/docs/blender.md` for complete integration guide.
 
 ### Movement System: Rails-Based, Not AI
 
@@ -85,29 +108,61 @@ interface Taxi {
 - Use normalized `t` parameter (0-1) along path
 - Update via: `taxi.t += (delta * taxi.speed) / taxi.path.length`
 - Position via linear interpolation between path points
+- Rotation automatically faces movement direction
+- Uses Three.js `useFrame` hook for 60fps animation
 
-### Interaction Zones
+**Current Implementation:**
+- File: `webapp/lib/movement.ts` - Core movement functions
+- File: `webapp/components/Taxi.tsx` - Taxi component with animation
+- File: `webapp/hooks/useGameLoop.ts` - Game state management
+- Uses real Blender models (`taxi.glb`) with texture preservation
 
-Pickup and dropoff zones are distance-based windows on paths:
+### Node Type System
+
+Path nodes extracted from Blender have types that define their behavior:
 
 ```typescript
-interface InteractionZone {
-  pathId: string
-  startT: number
-  endT: number
-  type: 'pickup' | 'dropoff'
+type NodeType =
+  | 'path'          // Regular waypoint
+  | 'intersection'  // Where paths branch
+  | 'pickup'        // Passenger pickup location
+  | 'dropoff'       // Passenger dropoff location
+  | 'red_light'     // Traffic light
+  | 'service'       // Service station
+
+interface RoadNode {
+  id: string
+  position: THREE.Vector3
+  next: string[]       // Connected node IDs from Blender
+  types: NodeType[]    // Multiple types possible
+  metadata?: {         // From Blender custom properties
+    zoneName?: string
+    payoutMultiplier?: number
+    redLightDuration?: number
+    // ... other type-specific data
+  }
 }
 ```
 
-Trigger slow-motion when `taxi.t` enters zone range.
+**Naming Convention in Blender:**
+- `PathNode_001` → Regular path
+- `PathNode_Intersection_Main` → Intersection
+- `PathNode_Pickup_Downtown_001` → Pickup zone
+- `PathNode_Intersection_RedLight_001` → Both types
+
+### Interaction Zones (Not Yet Implemented)
+
+Pickup and dropoff zones will be defined by node types and positions.
+Trigger slow-motion when taxi approaches nodes with `pickup` or `dropoff` types.
 
 ### Time Flow
 
-- Single global `timeScale` variable
+- Single global `timeScale` variable (implemented in `lib/gameState.ts`)
 - Normal speed: `timeScale = 1`
 - Focus mode: `timeScale = 0.25`
 - When multiple taxis trigger focus: most recent event wins, no stacking
 - Time never fully pauses
+- **Status:** System implemented but not yet triggered by gameplay events
 
 ### Player Interaction Model
 
@@ -159,3 +214,34 @@ When implementing features:
 4. Maintain visual clarity and readability
 5. Ensure failures are recoverable time penalties, not resource losses
 6. Default to simpler solutions that preserve the core game loop
+7. **Design levels in Blender, not in code** - Use visual tools for visual problems
+
+## Current Implementation Status
+
+**Phase 1: Foundation ✅ COMPLETE**
+- Three.js scene with camera and lighting
+- 8x8 city grid (now using Blender model)
+- Road network with path data structures
+- Taxi visualization with state-based emissive colors
+- Deterministic movement system
+
+**Blender Integration ✅ COMPLETE**
+- Full workflow documentation (`docs/blender.md`)
+- Path node extraction from GLB models
+- Node type system with metadata support
+- Texture-preserving model imports
+- Auto-generated TypeScript components via gltfjsx
+
+**Infrastructure Ready:**
+- Time scale system (for slow-motion focus)
+- Save/load system scaffolding
+- Game state management
+- Type definitions for all game entities
+
+**Next Phase: Interaction Mechanics**
+- STOP/GO UI button
+- Interaction zone detection
+- Timing windows with visual feedback
+- Failure loop mechanic
+
+See `/PROGRESS.md` and `/plan.md` for detailed roadmap.

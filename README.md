@@ -12,6 +12,19 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to see the game.
 
+### Working with Blender Models
+
+After exporting models from Blender to `webapp/public/models/`:
+
+```bash
+cd webapp
+npm run buildcity    # Generate city model component
+npm run buildtaxi    # Generate taxi model component
+npm run buildmodels  # Generate all models at once
+```
+
+These commands automatically fix TypeScript errors in generated files.
+
 ## Project Structure
 
 ```
@@ -59,11 +72,13 @@ This project operates under a **strict 10-feature maximum** before launch. Any f
 
 ## Tech Stack
 
-- **Next.js 15** - React framework
-- **React 18** - UI library
-- **Three.js** - 3D rendering
+- **Next.js 15** - React framework with App Router
+- **React 19** - UI library
+- **Three.js 0.180** - 3D rendering engine
 - **@react-three/fiber** - React renderer for Three.js
-- **TypeScript** - Type safety
+- **@react-three/drei** - React Three.js helpers
+- **TypeScript 5** - Type safety
+- **Blender** - 3D modeling and path node authoring
 
 ## Core Design Principles
 
@@ -74,11 +89,21 @@ This project operates under a **strict 10-feature maximum** before launch. Any f
 
 ## Game Architecture Highlights
 
+### Blender-Driven Workflow
+- City geometry and path nodes designed in **Blender**
+- Path nodes are small mesh markers with typed names
+- Node types: `path`, `intersection`, `pickup`, `dropoff`, `red_light`, `service`
+- Connections defined via Blender custom properties
+- Models exported as GLB and loaded at runtime
+- See `/docs/blender.md` for complete workflow
+
 ### Movement System
 - **Deterministic path-following**, not AI or physics
-- Taxis move along predefined `RoadPath` objects
+- Taxis move along `RoadPath` objects extracted from Blender
 - Position via normalized `t` parameter (0-1) along path
 - Linear interpolation between path points
+- Smooth rotation to face movement direction
+- 60fps animation via Three.js `useFrame` hook
 
 ### State Machine
 ```

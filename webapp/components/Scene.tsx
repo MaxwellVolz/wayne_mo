@@ -39,11 +39,8 @@ export default function Scene() {
         maxPolarAngle={Math.PI / 2.2}
         minDistance={3}
         maxDistance={30}
-        target={[-1.5, 0, 1.5]}
+        target={[0.5, 0, -0.5]}
       />
-
-      {/* Old procedural city (disabled - using Blender model instead) */}
-      {/* <City /> */}
 
       {/* Blender city model (buildings and path nodes) */}
       <CityModel />

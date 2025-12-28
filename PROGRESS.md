@@ -64,13 +64,98 @@ Open http://localhost:3000 - you should see:
 
 ---
 
+## Blender Integration ✅ COMPLETE
+
+**Completed:** 2025-12-28
+
+### What was built:
+
+1. **Path Node Extraction System**
+   - Utility to extract path nodes from Blender GLB models
+   - Parses node types from object names (pickup, dropoff, intersection, red_light, service)
+   - Reads custom properties for node connections and metadata
+   - Auto-connects sequential nodes if no connections defined
+   - File: `webapp/lib/extractPathNodes.ts`
+
+2. **Node Type System**
+   - Multiple node types: path, intersection, pickup, dropoff, red_light, service
+   - Nodes can have multiple types (e.g., intersection + red_light)
+   - Metadata support (zone names, payout multipliers, light durations)
+   - Type-safe TypeScript definitions
+   - File: `webapp/types/game.ts`
+
+3. **Blender Workflow Documentation**
+   - Complete guide for setting up Blender scenes
+   - Naming conventions for node types
+   - Custom properties for node connections
+   - Export settings and troubleshooting
+   - Texture preservation when adding game logic
+   - File: `docs/blender.md`
+
+4. **City Model Integration**
+   - Loads Blender city model (city_01.glb)
+   - Extracts path nodes at runtime
+   - Updates road network dynamically
+   - Hides path node markers in game
+   - Notifies taxis of network updates
+   - File: `webapp/components/CityModel.tsx`
+
+5. **Taxi Model with Texture Preservation**
+   - Loads Blender taxi model (taxi.glb)
+   - Preserves original materials and textures
+   - Adds emissive colors for state indication (stopped=red, service=orange)
+   - Smooth movement and rotation
+   - File: `webapp/components/Taxi.tsx`
+
+6. **Road Network System**
+   - Dynamic network updates from extracted nodes
+   - Path generation between connected nodes
+   - Test data with typed nodes (intersection, pickup, dropoff, red_light)
+   - File: `webapp/data/roads.ts`
+
+### How to test:
+
+```bash
+cd webapp
+npm run dev
+```
+
+Open http://localhost:3000 - you should see:
+- Blender city model with buildings
+- Path nodes extracted from model (check console)
+- Taxi following paths defined in Blender
+- Green lines showing road network
+- Camera controls
+
+Check browser console for:
+```
+🏙️ City model loaded
+✅ Extracted N path nodes:
+  - PathNode_001: types: ['path'], next: ['PathNode_002']
+  ...
+🛣️ Updating road network with N extracted nodes
+✅ Road network updated: N nodes, M paths
+```
+
+### Technical notes:
+
+- Path nodes can be small mesh markers or Empty objects in Blender
+- Mesh markers (spheres scaled to 0.01) are more reliable than Empties
+- Node types parsed from names: `PathNode_Intersection_Pickup_Downtown_001`
+- Connections defined via `next_nodes` custom property: `[ "PathNode_02", "PathNode_03" ]`
+- gltfjsx generates TypeScript components from GLB files
+- Custom properties from Blender become `userData` in Three.js
+
+---
+
 ## Next: Phase 2 - Interaction Mechanics (STOP/GO)
 
 ### Upcoming tasks:
 
-1. Create interaction zones for pickup/dropoff
+1. Create interaction zones based on node types (pickup/dropoff)
 2. Add STOP/GO UI button
 3. Implement timing windows with visual feedback
-4. Add failure loop mechanic
+4. Trigger slow-motion focus when approaching interaction zones
+5. Add failure loop mechanic
 
 See `plan.md` for full roadmap.

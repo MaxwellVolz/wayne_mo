@@ -45,13 +45,15 @@ export function samplePath(path: RoadPath, t: number): THREE.Vector3 {
 function onPathEnd(taxi: Taxi): void {
   if (!taxi.path) return
 
-  const nextPath = getNextPath(taxi.path.id)
+  const currentPathId = taxi.path.id
+  const nextPath = getNextPath(currentPathId)
 
   if (nextPath) {
+    console.log(`🚕 Path transition: ${currentPathId} → ${nextPath.id}`)
     taxi.path = nextPath
     taxi.t = 0
   } else {
-    console.warn(`No next path found for ${taxi.path.id}`)
+    console.warn(`⚠️ No next path found for ${currentPathId}`)
   }
 }
 

@@ -30,9 +30,17 @@ export function useGameLoop() {
 
       // Update taxi to use first path from new network
       if (network.paths.length > 0 && taxisRef.current[0]) {
-        taxisRef.current[0].path = network.paths[0]
+        // Find a path that starts from an intersection for more variety
+        const intersectionPaths = network.paths.filter((p: any) =>
+          p.id.includes('Intersection')
+        )
+        const startPath = intersectionPaths.length > 0 ? intersectionPaths[0] : network.paths[0]
+
+        taxisRef.current[0].path = startPath
         taxisRef.current[0].t = 0
-        console.log(`✅ Taxi updated to path: ${network.paths[0].id}`)
+        console.log(`✅ Taxi updated to starting path: ${startPath.id}`)
+        console.log(`   Available paths: ${network.paths.length}`)
+        console.log(`   Intersection paths: ${intersectionPaths.length}`)
       }
     }) as EventListener
 
