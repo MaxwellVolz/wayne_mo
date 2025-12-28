@@ -1,13 +1,46 @@
 import * as THREE from 'three'
 import type { GLTF } from 'three-stdlib'
-import type { RoadNode } from '@/types/game'
+import type { RoadNode, NodeType } from '@/types/game'
+
+/**
+ * Parses node types from Blender object name
+ *
+ * Naming conventions:
+ * - PathNode_001 → types: ['path']
+ * - PathNode_Intersection_001 → types: ['intersection']
+ * - PathNode_Pickup_Downtown_001 → types: ['pickup']
+ * - PathNode_Dropoff_Airport_001 → types: ['dropoff']
+ * - PathNode_RedLight_001 → types: ['red_light']
+ * - PathNode_Service_001 → types: ['service']
+ * - PathNode_Intersection_RedLight_001 → types: ['intersection', 'red_light']
+ *
+ * @param name - Blender object name
+ * @returns Array of node types
+ */
+function parseNodeTypes(name: string): NodeType[] {
+  const types: NodeType[] = []
+  const nameLower = name.toLowerCase()
+
+  // Check for each type keyword in the name
+  if (nameLower.includes('intersection')) types.push('intersection')
+  if (nameLower.includes('pickup')) types.push('pickup')
+  if (nameLower.includes('dropoff')) types.push('dropoff')
+  if (nameLower.includes('redlight') || nameLower.includes('red_light')) types.push('red_light')
+  if (nameLower.includes('service')) types.push('service')
+
+  // If no specific type found, it's a regular path node
+  if (types.length === 0) types.push('path')
+
+  return types
+}
 
 /**
  * Extracts path nodes from a loaded GLTF model
  * Looks for Empty objects whose names start with "PathNode_"
+ * Parses node types from the object name
  *
  * @param gltf - Loaded GLTF model from useGLTF
- * @returns Array of RoadNode objects with positions
+ * @returns Array of RoadNode objects with positions and types
  */
 export function extractPathNodesFromGLTF(gltf: GLTF): RoadNode[] {
   const nodes: RoadNode[] = []
@@ -15,6 +48,8 @@ export function extractPathNodesFromGLTF(gltf: GLTF): RoadNode[] {
   gltf.scene.traverse((object) => {
     // Find all objects whose names start with "PathNode_"
     if (object.name.startsWith('PathNode_')) {
+      const types = parseNodeTypes(object.name)
+
       nodes.push({
         id: object.name,
         position: new THREE.Vector3(
@@ -22,7 +57,9 @@ export function extractPathNodesFromGLTF(gltf: GLTF): RoadNode[] {
           object.position.y,
           object.position.z
         ),
-        next: [] // Will be populated based on node order or custom properties
+        next: [], // Will be populated based on node order or custom properties
+        types,
+        metadata: object.userData // Blender custom properties become userData
       })
     }
   })
@@ -30,9 +67,13 @@ export function extractPathNodesFromGLTF(gltf: GLTF): RoadNode[] {
   // Sort by name to maintain sequential order (PathNode_001, PathNode_002, etc.)
   nodes.sort((a, b) => a.id.localeCompare(b.id))
 
-  // Automatically connect sequential nodes
-  for (let i = 0; i < nodes.length - 1; i++) {
-    nodes[i].next.push(nodes[i + 1].id)
+  // Automatically connect sequential nodes (only regular path nodes)
+  const pathNodes = nodes.filter(n => n.types.includes('path') || n.types.includes('intersection'))
+  for (let i = 0; i < pathNodes.length - 1; i++) {
+    const currentNode = nodes.find(n => n.id === pathNodes[i].id)
+    if (currentNode) {
+      currentNode.next.push(pathNodes[i + 1].id)
+    }
   }
 
   return nodes
@@ -50,6 +91,8 @@ export function extractPathNodesWithConnections(gltf: GLTF): RoadNode[] {
 
   gltf.scene.traverse((object) => {
     if (object.name.startsWith('PathNode_')) {
+      const types = parseNodeTypes(object.name)
+
       // Extract custom property for connections
       const nextNodes = object.userData.next_nodes
         ? (object.userData.next_nodes as string).split(',').map(s => s.trim())
@@ -58,7 +101,9 @@ export function extractPathNodesWithConnections(gltf: GLTF): RoadNode[] {
       nodes.push({
         id: object.name,
         position: new THREE.Vector3().copy(object.position),
-        next: nextNodes
+        next: nextNodes,
+        types,
+        metadata: object.userData
       })
     }
   })
@@ -67,29 +112,23 @@ export function extractPathNodesWithConnections(gltf: GLTF): RoadNode[] {
 }
 
 /**
- * Extracts interaction zones (pickup/dropoff) from the model
- * Looks for Empty objects starting with "PickupZone_" or "DropoffZone_"
+ * Helper to get nodes by type
  *
- * @param gltf - Loaded GLTF model from useGLTF
- * @returns Object containing arrays of pickup and dropoff zone positions
+ * @param nodes - Array of RoadNode objects
+ * @param type - NodeType to filter by
+ * @returns Filtered array of nodes matching the type
  */
-export function extractInteractionZones(gltf: GLTF) {
-  const pickupZones: Array<{ id: string; position: THREE.Vector3 }> = []
-  const dropoffZones: Array<{ id: string; position: THREE.Vector3 }> = []
+export function getNodesByType(nodes: RoadNode[], type: NodeType): RoadNode[] {
+  return nodes.filter(node => node.types.includes(type))
+}
 
-  gltf.scene.traverse((object) => {
-    if (object.name.startsWith('PickupZone_')) {
-      pickupZones.push({
-        id: object.name,
-        position: new THREE.Vector3().copy(object.position)
-      })
-    } else if (object.name.startsWith('DropoffZone_')) {
-      dropoffZones.push({
-        id: object.name,
-        position: new THREE.Vector3().copy(object.position)
-      })
-    }
-  })
-
-  return { pickupZones, dropoffZones }
+/**
+ * Helper to check if a node has a specific type
+ *
+ * @param node - RoadNode to check
+ * @param type - NodeType to check for
+ * @returns True if node has the specified type
+ */
+export function nodeHasType(node: RoadNode, type: NodeType): boolean {
+  return node.types.includes(type)
 }

@@ -67,21 +67,38 @@ const nodes: RoadNode[] = [
     id: 'node-1',
     position: new THREE.Vector3(-15, 0.2, -15),
     next: ['node-2'],
+    types: ['intersection'],
   },
   {
     id: 'node-2',
     position: new THREE.Vector3(-15, 0.2, 15),
     next: ['node-3'],
+    types: ['intersection', 'pickup'],
+    metadata: {
+      zoneName: 'North Terminal',
+      payoutMultiplier: 1.2,
+    },
   },
   {
     id: 'node-3',
     position: new THREE.Vector3(15, 0.2, 15),
     next: ['node-4'],
+    types: ['intersection', 'red_light'],
+    metadata: {
+      redLightDuration: 3,
+      greenLightDuration: 5,
+      currentState: 'green',
+    },
   },
   {
     id: 'node-4',
     position: new THREE.Vector3(15, 0.2, -15),
     next: ['node-1'],
+    types: ['intersection', 'dropoff'],
+    metadata: {
+      zoneName: 'Downtown',
+      payoutMultiplier: 1.0,
+    },
   },
 ]
 
