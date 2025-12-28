@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "city": "npx gltfjsx@6.5.3 public/models/city_01.glb --output components/CityModelGenerated.tsx --types --keepgroups --keepnames --meta",
     "lint": "next lint",
     "type-check": "tsc --noEmit"
   },

@@ -2,7 +2,6 @@
 
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
-import City from './City'
 import CityModel from './CityModel'
 import Taxi from './Taxi'
 import RoadVisualizer from './RoadVisualizer'
@@ -18,7 +17,7 @@ export default function Scene() {
   return (
     <Canvas
       camera={{
-        position: [20, 25, 20],
+        position: [8, 10, 8],
         fov: 50,
       }}
       shadows={false}
@@ -27,7 +26,7 @@ export default function Scene() {
       {/* Lighting */}
       <ambientLight intensity={0.6} />
       <directionalLight
-        position={[10, 20, 10]}
+        position={[5, 10, 5]}
         intensity={0.8}
         castShadow={false}
       />
@@ -38,13 +37,13 @@ export default function Scene() {
         enableZoom={true}
         enableRotate={true}
         maxPolarAngle={Math.PI / 2.2}
-        minDistance={10}
-        maxDistance={60}
-        target={[0, 0, 0]}
+        minDistance={3}
+        maxDistance={30}
+        target={[-1.5, 0, 1.5]}
       />
 
-      {/* City grid and roads */}
-      <City />
+      {/* Old procedural city (disabled - using Blender model instead) */}
+      {/* <City /> */}
 
       {/* Blender city model (buildings and path nodes) */}
       <CityModel />
@@ -58,7 +57,7 @@ export default function Scene() {
       ))}
 
       {/* Grid helper for debugging */}
-      <gridHelper args={[80, 16, '#444', '#222']} />
+      <gridHelper args={[20, 20, '#444', '#222']} />
     </Canvas>
   )
 }

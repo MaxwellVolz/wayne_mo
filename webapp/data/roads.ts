@@ -3,10 +3,11 @@ import type { RoadPath, RoadNode } from '@/types/game'
 import { calculatePathLength } from '@/lib/movement'
 
 /**
- * Test road network for MVP
- * Simple loop around the city with 4 paths
+ * Road network that can be dynamically updated from Blender model
+ * Starts with test data but can be replaced with extracted nodes
  */
 
+// Test road network (will be replaced by extracted nodes from Blender)
 // Create a simple rectangular loop path
 const loopPath1Points = [
   new THREE.Vector3(-15, 0.2, -15),
@@ -102,16 +103,80 @@ const nodes: RoadNode[] = [
   },
 ]
 
-export const testRoadNetwork = {
+// Active road network (starts with test data, gets replaced by extracted nodes)
+let activeRoadNetwork = {
   paths: [path1, path2, path3, path4],
   nodes,
+}
+
+export const testRoadNetwork = activeRoadNetwork
+
+/**
+ * Updates the active road network with nodes extracted from Blender model
+ * Generates paths by connecting nodes based on their next[] connections
+ */
+export function updateRoadNetwork(extractedNodes: RoadNode[]) {
+  console.log(`🛣️ Updating road network with ${extractedNodes.length} extracted nodes`)
+
+  // Generate paths between connected nodes
+  const generatedPaths: RoadPath[] = []
+  const pathsAdded = new Set<string>()
+
+  extractedNodes.forEach(node => {
+    node.next.forEach(nextNodeId => {
+      // Create unique path ID for this connection
+      const pathId = `${node.id}_to_${nextNodeId}`
+      const reversePath = `${nextNodeId}_to_${node.id}`
+
+      // Skip if we already created this path (avoid duplicates)
+      if (pathsAdded.has(pathId) || pathsAdded.has(reversePath)) {
+        return
+      }
+
+      // Find the next node
+      const nextNode = extractedNodes.find(n => n.id === nextNodeId)
+      if (!nextNode) {
+        console.warn(`⚠️ Node ${nextNodeId} referenced by ${node.id} not found`)
+        return
+      }
+
+      // Create path with just start and end points (straight line)
+      const pathPoints = [node.position.clone(), nextNode.position.clone()]
+
+      generatedPaths.push({
+        id: pathId,
+        points: pathPoints,
+        length: calculatePathLength(pathPoints)
+      })
+
+      pathsAdded.add(pathId)
+      console.log(`  ✅ Created path: ${pathId}`)
+    })
+  })
+
+  // Update active network
+  activeRoadNetwork = {
+    nodes: extractedNodes,
+    paths: generatedPaths
+  }
+
+  console.log(`✅ Road network updated: ${extractedNodes.length} nodes, ${generatedPaths.length} paths`)
+
+  return activeRoadNetwork
+}
+
+/**
+ * Get the active road network
+ */
+export function getRoadNetwork() {
+  return activeRoadNetwork
 }
 
 /**
  * Get next path in sequence (for looping)
  */
 export function getNextPath(currentPathId: string): RoadPath | null {
-  const paths = testRoadNetwork.paths
+  const paths = activeRoadNetwork.paths
   const currentIndex = paths.findIndex((p) => p.id === currentPathId)
 
   if (currentIndex === -1) return null

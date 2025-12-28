@@ -36,7 +36,7 @@ function parseNodeTypes(name: string): NodeType[] {
 
 /**
  * Extracts path nodes from a loaded GLTF model
- * Looks for Empty objects whose names start with "PathNode_"
+ * Looks for objects (meshes or empties) whose names start with "PathNode_"
  * Parses node types from the object name
  *
  * @param gltf - Loaded GLTF model from useGLTF
@@ -47,17 +47,35 @@ export function extractPathNodesFromGLTF(gltf: GLTF): RoadNode[] {
 
   gltf.scene.traverse((object) => {
     // Find all objects whose names start with "PathNode_"
+    // Can be Empty objects, groups, or small mesh markers
     if (object.name.startsWith('PathNode_')) {
       const types = parseNodeTypes(object.name)
 
+      // Get world position (in case object is parented/transformed)
+      const worldPosition = new THREE.Vector3()
+      object.getWorldPosition(worldPosition)
+
+      // Parse next_nodes from userData if available
+      let nextNodes: string[] = []
+      if (object.userData && object.userData.next_nodes) {
+        try {
+          // Handle both JSON string and array
+          const nextNodesData = object.userData.next_nodes
+          if (typeof nextNodesData === 'string') {
+            // Parse JSON string like '[ "PathNode_02", "PathNode_04" ]'
+            nextNodes = JSON.parse(nextNodesData)
+          } else if (Array.isArray(nextNodesData)) {
+            nextNodes = nextNodesData
+          }
+        } catch (e) {
+          console.warn(`⚠️ Failed to parse next_nodes for ${object.name}:`, e)
+        }
+      }
+
       nodes.push({
         id: object.name,
-        position: new THREE.Vector3(
-          object.position.x,
-          object.position.y,
-          object.position.z
-        ),
-        next: [], // Will be populated based on node order or custom properties
+        position: worldPosition,
+        next: nextNodes,
         types,
         metadata: object.userData // Blender custom properties become userData
       })
@@ -67,12 +85,23 @@ export function extractPathNodesFromGLTF(gltf: GLTF): RoadNode[] {
   // Sort by name to maintain sequential order (PathNode_001, PathNode_002, etc.)
   nodes.sort((a, b) => a.id.localeCompare(b.id))
 
-  // Automatically connect sequential nodes (only regular path nodes)
-  const pathNodes = nodes.filter(n => n.types.includes('path') || n.types.includes('intersection'))
-  for (let i = 0; i < pathNodes.length - 1; i++) {
-    const currentNode = nodes.find(n => n.id === pathNodes[i].id)
-    if (currentNode) {
-      currentNode.next.push(pathNodes[i + 1].id)
+  // If no next connections defined, auto-connect sequential nodes
+  const nodesWithoutConnections = nodes.filter(n => n.next.length === 0)
+  if (nodesWithoutConnections.length === nodes.length) {
+    console.log('📍 No next_nodes defined in Blender, auto-connecting sequential nodes...')
+    const pathNodes = nodes.filter(n => n.types.includes('path') || n.types.includes('intersection'))
+    for (let i = 0; i < pathNodes.length - 1; i++) {
+      const currentNode = nodes.find(n => n.id === pathNodes[i].id)
+      if (currentNode) {
+        currentNode.next.push(pathNodes[i + 1].id)
+      }
+    }
+    // Connect last to first to complete the loop
+    if (pathNodes.length > 0) {
+      const lastNode = nodes.find(n => n.id === pathNodes[pathNodes.length - 1].id)
+      if (lastNode) {
+        lastNode.next.push(pathNodes[0].id)
+      }
     }
   }
 

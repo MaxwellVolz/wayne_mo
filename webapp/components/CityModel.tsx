@@ -1,54 +1,79 @@
 'use client'
 
-// import { useGLTF } from '@react-three/drei'
-// import { useEffect } from 'react'
-// import * as THREE from 'three'
+import * as THREE from 'three'
+import { useGLTF } from '@react-three/drei'
+import { useEffect } from 'react'
+import { Model as CityModelGenerated } from './CityModelGenerated'
+import { extractPathNodesFromGLTF } from '@/lib/extractPathNodes'
+import { updateRoadNetwork } from '@/data/roads'
 
 /**
  * City Model component
  * Loads Blender model and extracts path nodes for taxi navigation
- *
- * Setup Instructions:
- * 1. Create path nodes in Blender as Empty objects (named "PathNode_001", "PathNode_002", etc.)
- * 2. Export as .glb to /public/models/city.glb
- * 3. Uncomment the code below
- * 4. Extract path nodes and integrate with road network system
- *
- * See docs/blender.md for complete integration guide
  */
 export default function CityModel() {
-  // Uncomment when you have a model to load:
-  /*
-  const { scene } = useGLTF('/models/city.glb')
+  const gltf = useGLTF('/models/city_01.glb')
 
   useEffect(() => {
-    const pathNodes: Array<{ id: string; position: THREE.Vector3 }> = []
+    console.log('🏙️ City model loaded')
+    console.log('GLTF scene:', gltf.scene)
 
-    // Extract all Empty objects starting with "PathNode_"
-    scene.traverse((object) => {
+    // Debug: List all objects in the scene
+    const allObjects: Array<{ name: string; type: string; position: THREE.Vector3 }> = []
+    gltf.scene.traverse((object) => {
+      allObjects.push({
+        name: object.name,
+        type: object.type,
+        position: object.position
+      })
+
+      // Hide mesh-based path node markers (make them invisible in game)
       if (object.name.startsWith('PathNode_')) {
-        pathNodes.push({
-          id: object.name,
-          position: object.position.clone()
-        })
+        object.visible = false
+        console.log(`👻 Hiding path node marker: ${object.name}`)
       }
     })
+    console.log('All objects in scene:', allObjects)
 
-    // Sort by name to maintain sequential order
-    pathNodes.sort((a, b) => a.id.localeCompare(b.id))
+    // Extract path nodes
+    const pathNodes = extractPathNodesFromGLTF(gltf)
 
-    console.log(`Extracted ${pathNodes.length} path nodes:`, pathNodes)
+    if (pathNodes.length > 0) {
+      console.log(`✅ Extracted ${pathNodes.length} path nodes:`, pathNodes)
 
-    // TODO: Update road network with extracted nodes
-    // updateRoadNetwork(pathNodes)
-  }, [scene])
+      // Log each node with details
+      pathNodes.forEach(node => {
+        console.log(`  - ${node.id}:`, {
+          position: node.position,
+          types: node.types,
+          next: node.next,
+          metadata: node.metadata
+        })
+      })
 
-  return <primitive object={scene} />
-  */
+      // Update global road network with extracted nodes
+      const updatedNetwork = updateRoadNetwork(pathNodes)
 
-  // Placeholder until model is ready
-  return null
+      // Update taxi to use first path from extracted network
+      if (typeof window !== 'undefined') {
+        // Trigger taxi path update via window event
+        window.dispatchEvent(new CustomEvent('roadNetworkUpdated', {
+          detail: { network: updatedNetwork }
+        }))
+      }
+    } else {
+      console.warn('⚠️ No path nodes found!')
+      console.log('💡 Troubleshooting:')
+      console.log('   1. In Blender, use small mesh objects (spheres) instead of Empty objects')
+      console.log('   2. Name them starting with "PathNode_" (e.g., PathNode_001)')
+      console.log('   3. Export with GLTF settings: Include > Custom Properties enabled')
+      console.log('   4. See docs/blender.md for detailed instructions')
+    }
+  }, [gltf])
+
+  // Render the generated city model
+  return <CityModelGenerated />
 }
 
-// Preload model (uncomment when ready):
-// useGLTF.preload('/models/city.glb')
+// Preload model
+useGLTF.preload('/models/city_01.glb')
