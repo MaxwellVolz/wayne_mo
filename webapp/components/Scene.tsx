@@ -6,6 +6,8 @@ import CityModel from './CityModel'
 import Taxi from './Taxi'
 import RoadVisualizer from './RoadVisualizer'
 import { IntersectionManager } from './IntersectionManager'
+import { DeliveryManager } from './DeliveryManager'
+import { DeliverySystem } from './DeliverySystem'
 import { useGameLoop } from '@/hooks/useGameLoop'
 
 /**
@@ -13,7 +15,7 @@ import { useGameLoop } from '@/hooks/useGameLoop'
  * Sets up camera, lighting, and controls
  */
 export default function Scene() {
-  const { taxisRef } = useGameLoop()
+  const { taxisRef, deliveriesRef, pickupNodesRef, deliveryTimerRef } = useGameLoop()
 
   return (
     <Canvas
@@ -49,8 +51,23 @@ export default function Scene() {
       {/* Road network visualization */}
       <RoadVisualizer />
 
-      {/* Intersection control tiles - simple spheres for now */}
+      {/* Intersection control tiles */}
       <IntersectionManager />
+
+      {/* Delivery system logic (spawn timer & collision detection) */}
+      <DeliverySystem
+        deliveriesRef={deliveriesRef}
+        deliveryTimerRef={deliveryTimerRef}
+        pickupNodesRef={pickupNodesRef}
+        taxisRef={taxisRef}
+      />
+
+      {/* Delivery visual indicators (pickup/dropoff/package) */}
+      <DeliveryManager
+        deliveriesRef={deliveriesRef}
+        pickupNodesRef={pickupNodesRef}
+        taxisRef={taxisRef}
+      />
 
       {/* Taxis */}
       {taxisRef.current.map((taxi) => (

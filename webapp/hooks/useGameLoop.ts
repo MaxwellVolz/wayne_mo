@@ -1,12 +1,14 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
-import type { Taxi } from '@/types/game'
+import type { Taxi, DeliveryEvent, RoadNode } from '@/types/game'
 import { getRoadNetwork } from '@/data/roads'
+import { spawnDeliveryEvent, checkDeliveryCollisions } from '@/lib/deliverySystem'
+import { useFrame } from '@react-three/fiber'
 
 /**
  * Main game state hook
- * Manages taxi state using refs to avoid React re-renders
+ * Manages taxi and delivery state using refs to avoid React re-renders
  * Animation is handled by useFrame in individual components
  */
 export function useGameLoop() {
@@ -22,8 +24,17 @@ export function useGameLoop() {
       // Topological navigation state (initialized, will be set by first intersection)
       currentIntersectionId: undefined,
       incomingDir: 0, // Default to North, will be updated at first intersection
+      // Delivery state
+      hasPackage: false,
+      currentDeliveryId: undefined,
+      money: 0,
     },
   ])
+
+  // Delivery system state
+  const deliveriesRef = useRef<DeliveryEvent[]>([])
+  const deliveryTimerRef = useRef<number>(10000) // 10 seconds until first delivery
+  const pickupNodesRef = useRef<RoadNode[]>([])
 
   // Listen for road network updates from CityModel
   useEffect(() => {
@@ -45,6 +56,15 @@ export function useGameLoop() {
         console.log(`   Available paths: ${network.paths.length}`)
         console.log(`   Intersection paths: ${intersectionPaths.length}`)
       }
+
+      // Extract pickup nodes from network
+      if (network.nodes) {
+        const pickups = network.nodes.filter((n: RoadNode) =>
+          n.types.includes('pickup')
+        )
+        pickupNodesRef.current = pickups
+        console.log(`📍 Found ${pickups.length} pickup nodes`)
+      }
     }) as EventListener
 
     window.addEventListener('roadNetworkUpdated', handleNetworkUpdate)
@@ -56,5 +76,8 @@ export function useGameLoop() {
 
   return {
     taxisRef,
+    deliveriesRef,
+    pickupNodesRef,
+    deliveryTimerRef,
   }
 }

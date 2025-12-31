@@ -8,6 +8,9 @@ export function createInitialGameState(): GameState {
   return {
     taxis: [],
     intersections: new Map(),
+    activeDeliveries: [],
+    deliverySpawnTimer: 10000, // 10 seconds until first delivery
+    deliverySpawnInterval: 10000, // Spawn delivery every 10 seconds
     timeScale: 1,
     money: 0,
     automationUnlocked: false,

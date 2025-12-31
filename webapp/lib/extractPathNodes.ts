@@ -47,10 +47,12 @@ export function extractPathNodesFromGLTF(gltf: GLTF): RoadNode[] {
 
   gltf.scene.traverse((object) => {
     // Find all objects that are path nodes:
-    // 1. Name starts with "PathNode_" OR
+    // 1. Name starts with "PathNode_", "INT_", "Pickup_", or "Dropoff_" OR
     // 2. Has topological neighbor properties (north/east/south/west or neighbors)
     const isPathNode = object.name.startsWith('PathNode_') ||
                        object.name.startsWith('INT_') ||
+                       object.name.startsWith('Pickup_') ||
+                       object.name.startsWith('Dropoff_') ||
                        (object.userData && (
                          object.userData.north ||
                          object.userData.east ||

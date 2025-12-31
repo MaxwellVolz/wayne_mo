@@ -98,6 +98,10 @@ export interface Taxi {
   // Topological navigation state
   currentIntersectionId?: string // Current or last intersection node ID
   incomingDir?: Dir // Direction taxi entered current intersection (0-3)
+  // Delivery state
+  hasPackage: boolean // Is taxi carrying a package?
+  currentDeliveryId?: string // ID of active delivery event
+  money: number // Total money earned
 }
 
 export interface InteractionZone {
@@ -113,9 +117,28 @@ export interface Gate {
   isOpen: boolean
 }
 
+/**
+ * Delivery event represents an active pickup/dropoff task
+ */
+export interface DeliveryEvent {
+  id: string
+  pickupNodeId: string // Node where package spawns
+  dropoffNodeId: string // Node where package must be delivered
+  status: 'waiting_pickup' | 'in_transit' | 'completed'
+  claimedByTaxiId?: string // Taxi that picked up the package
+  spawnTime: number // Timestamp when event was created
+  pickupTime?: number // Timestamp when package was picked up
+  deliveryTime?: number // Timestamp when package was delivered
+  payout: number // Money awarded on completion
+  color: string // Unique color for this delivery (shared by pickup and dropoff)
+}
+
 export interface GameState {
   taxis: Taxi[]
   intersections: Map<string, IntersectionState> // Player-controlled intersection routing
+  activeDeliveries: DeliveryEvent[] // Active delivery events
+  deliverySpawnTimer: number // Time until next delivery spawns (ms)
+  deliverySpawnInterval: number // How often deliveries spawn (ms)
   timeScale: number
   money: number
   automationUnlocked: boolean
