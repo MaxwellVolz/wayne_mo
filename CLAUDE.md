@@ -302,12 +302,13 @@ When implementing features:
 - **Intersection node setup guide**
 
 **Intersection Control System (IMPLEMENTED):**
-- ✅ Path direction detection using vector math
-- ✅ Intersection state management
-- ✅ Visual indicators (+ and curved arrows)
-- ✅ Click-to-toggle interaction
-- ✅ Taxi routing based on intersection modes
-- ✅ Global state synchronization
+- ✅ Topological slot-based routing (4-direction model: N/E/S/W)
+- ✅ Explicit priority-based fallback tables
+- ✅ 3-tier routing: dead ends, corners, intersections
+- ✅ Dynamic incoming direction calculation from paths
+- ✅ Visual indicators: + for pass-through, mirrored rotation arrows for turns
+- ✅ Click-to-toggle interaction (3 modes)
+- ✅ No U-turns at corners
 - ✅ Multi-taxi support
 - ✅ Stable performance (60fps with 10+ intersections)
 
@@ -315,38 +316,42 @@ When implementing features:
 ```
 webapp/
 ├── lib/
-│   ├── intersectionGeometry.ts      ✅ Direction detection
+│   ├── intersectionTopology.ts      ✅ Priority-based routing with explicit tables
+│   ├── intersectionGeometry.ts      ✅ Legacy vector-based detection
 │   ├── intersectionState.ts         ✅ Global state
-│   └── movement.ts                  ✅ Updated for intersections
+│   └── movement.ts                  ✅ Updated for topological routing
 ├── components/
-│   ├── IntersectionTile.tsx         ✅ Visual indicators
+│   ├── IntersectionTile.tsx         ✅ Visual indicators (+, ↶, ↷)
 │   ├── IntersectionManager.tsx      ✅ Renders all tiles
-│   └── Taxi.tsx                     ✅ Uses intersection routing
+│   └── Taxi.tsx                     ✅ Uses topological routing
 ├── hooks/
 │   └── useIntersectionManager.ts    ✅ State management
 └── data/
-    └── roads.ts                     ✅ Updated routing logic
+    └── roads.ts                     ✅ Dual-mode routing (topological + legacy)
 ```
 
 **📋 NEXT PHASE: Delivery System**
-- Delivery spawn at pickup nodes
-- Auto-claiming by first taxi to arrive
-- Money/payout system
-- Delivery completion and visual feedback
+**See `/docs/DELIVERY_SYSTEM_PLAN.md` for complete implementation plan**
+
+Core features to implement:
+1. Pickup and dropoff node extraction from Blender (`Pickup_*`, `Dropoff_*`)
+2. Timer-based delivery event spawning
+3. Visual indicators for active pickups/dropoffs
+4. Collision detection for package pickup/delivery
+5. Package indicator above taxi during transit
+6. Money/payout system
 
 **📋 FUTURE PHASES:**
-- Collision detection (taxis reverse on collision)
-- Multi-taxi spawning and scaling
-- Local save system (intersection states + money)
-- UI polish and sound effects
+- Taxi collision detection (reverse on collision)
+- Multi-taxi spawning and management
+- Local save system (money, intersection states)
+- UI: money display, delivery counter
+- Sound effects and particle effects
+- Delivery time limits / urgency system
 
 **Documentation:**
-- `/docs/INTERSECTION_SYSTEM_SUMMARY.md` - Complete implementation details
-- `/docs/INTERSECTION_PLAN.md` - Original implementation plan
-- `/docs/PHASE1_COMPLETE.md` - Core routing logic
-- `/docs/PHASE2_COMPLETE.md` - Visual indicators
-- `/docs/TESTING_GUIDE.md` - How to test the system
-- `/docs/blender.md` - Intersection setup in Blender
-- `/docs/game_concept.md` - Original game design
+- `/docs/DELIVERY_SYSTEM_PLAN.md` - Next implementation phase
+- `/docs/blender.md` - Blender integration guide (intersection setup)
+- `/docs/game_concept.md` - Original game design document
 
-**System Status:** PRODUCTION READY for gameplay testing and delivery system implementation.
+**System Status:** Routing system COMPLETE. Ready to implement delivery system.

@@ -133,6 +133,10 @@ type GLTFResult = GLTF & {
     ['road-straight088']: THREE.Mesh
     ['road-straight089']: THREE.Mesh
     ['road-end010']: THREE.Mesh
+    ['road-straight090']: THREE.Mesh
+    ['road-straight091']: THREE.Mesh
+    ['road-straight092']: THREE.Mesh
+    ['road-straight093']: THREE.Mesh
     ['building-a001']: THREE.Mesh
     ['building-d001']: THREE.Mesh
     ['building-n001']: THREE.Mesh
@@ -338,24 +342,34 @@ export function Model(props: React.ComponentProps<'group'>) {
             ],
           },
         }}>
-        <group name="INT_NW" position={[-3.5, 0, -4.5]} userData={{ name: 'INT_NW', north: '', south: 'INT_W', east: 'INT_top_middle', west: 'PathNode_Corner_01' }} />
+        <group name="INT_NW" position={[-3.5, 0, -4.5]} userData={{ name: 'INT_NW', north: 'PathNode_DE_01', south: 'INT_W', east: 'INT_top_middle', west: 'PathNode_Corner_01' }} />
         <group name="PathNode_Corner_01" position={[-7.5, 0, -4.5]} userData={{ name: 'PathNode_Corner_01', north: '', south: 'INT_left', east: 'INT_NW', west: '' }} />
-        <group name="INT_left" position={[-7.5, 0, 3.5]} userData={{ name: 'INT_left', north: 'PathNode_Corner_01', south: 'INT_bottom_left', east: 'INT_SW', west: '' }} />
-        <group name="INT_bottom_left" position={[-7.5, 0, 7.5]} userData={{ name: 'INT_bottom_left', north: 'INT_left', south: '', east: 'INT_SSW', west: '' }} />
+        <group name="INT_left" position={[-7.5, 0, 3.5]} userData={{ name: 'INT_left', north: 'PathNode_Corner_01', south: 'INT_bottom_left', east: 'INT_SW', west: 'PathNode_DE_west_01' }} />
+        <group name="INT_bottom_left" position={[-7.5, 0, 7.5]} userData={{ name: 'INT_bottom_left', north: 'INT_left', south: 'PathNode_DE_south_00', east: 'INT_SSW', west: 'PathNode_DE_west_02' }} />
         <group name="INT_SW" position={[-3.5, 0, 3.5]} userData={{ name: 'INT_SW', north: 'INT_W', south: 'INT_SSW', east: 'INT_Central', west: 'INT_left' }} />
         <group name="INT_W" position={[-3.5, 0, -0.5]} userData={{ name: 'INT_W', north: 'INT_NW', south: 'INT_SW', east: 'INT_NorthCentral', west: '' }} />
         <group name="INT_Central" position={[0.5, 0, 3.5]} userData={{ name: 'INT_Central', north: 'INT_NorthCentral', south: 'INT_SSE', east: 'INT_SE', west: 'INT_SW' }} />
         <group name="INT_NorthCentral" position={[0.5, 0, -0.5]} userData={{ name: 'INT_NorthCentral', north: 'INT_top_middle', south: 'INT_Central', east: 'INT_E', west: 'INT_W' }} />
-        <group name="INT_SSW" position={[-3.5, 0, 7.5]} userData={{ name: 'INT_SSW', north: 'INT_SW', south: '', east: 'INT_SSE', west: 'INT_bottom_left' }} />
-        <group name="INT_SSE" position={[0.5, 0, 7.5]} userData={{ name: 'INT_SSE', north: 'INT_Central', south: '', east: 'INT_bottom_right', west: 'INT_SSW' }} />
-        <group name="INT_top_middle" position={[0.5, 0, -4.5]} userData={{ name: 'INT_top_middle', north: '', south: 'INT_NorthCentral', east: 'INT_NNE', west: 'INT_NW' }} />
-        <group name="INT_bottom_right" position={[4.5, 0, 7.5]} userData={{ name: 'INT_bottom_right', north: 'INT_SE', south: '', east: 'PathNode_bottom_right', west: 'INT_SSE' }} />
+        <group name="INT_SSW" position={[-3.5, 0, 7.5]} userData={{ name: 'INT_SSW', north: 'INT_SW', south: 'PathNode_DE_south_01', east: 'INT_SSE', west: 'INT_bottom_left' }} />
+        <group name="INT_SSE" position={[0.5, 0, 7.5]} userData={{ name: 'INT_SSE', north: 'INT_Central', south: 'PathNode_DE_south_02', east: 'INT_bottom_right', west: 'INT_SSW' }} />
+        <group name="INT_top_middle" position={[0.5, 0, -4.5]} userData={{ name: 'INT_top_middle', north: 'PathNode_DE_02', south: 'INT_NorthCentral', east: 'INT_NNE', west: 'INT_NW' }} />
+        <group name="INT_bottom_right" position={[4.5, 0, 7.5]} userData={{ name: 'INT_bottom_right', north: 'INT_SE', south: 'PathNode_DE_south_03', east: 'PathNode_bottom_right', west: 'INT_SSE' }} />
         <group name="INT_SE" position={[4.5, 0, 3.5]} userData={{ name: 'INT_SE', north: 'INT_E', south: 'INT_bottom_right', east: '', west: 'INT_Central' }} />
         <group name="INT_E" position={[4.5, 0, -0.5]} userData={{ name: 'INT_E', north: 'INT_NNE', south: 'INT_SE', east: 'INT_EE', west: 'INT_NorthCentral' }} />
-        <group name="INT_NNE" position={[4.5, 0, -4.5]} userData={{ name: 'INT_NNE', north: '', south: 'INT_E', east: 'PathNode_top_right', west: 'INT_top_middle' }} />
-        <group name="PathNode_top_right" position={[7.5, 0, -4.5]} userData={{ name: 'PathNode_top_right', north: '', south: 'INT_EE', east: 'PathNode_top_right', west: 'INT_NNE' }} />
-        <group name="INT_EE" position={[7.5, 0, -0.5]} userData={{ name: 'INT_EE', north: 'PathNode_top_right', south: 'PathNode_bottom_right', east: '', west: 'INT_E' }} />
+        <group name="INT_NNE" position={[4.5, 0, -4.5]} userData={{ name: 'INT_NNE', north: 'PathNode_DE_03', south: 'INT_E', east: 'PathNode_top_right', west: 'INT_top_middle' }} />
+        <group name="PathNode_top_right" position={[7.5, 0, -4.5]} userData={{ name: 'PathNode_top_right', north: '', south: 'INT_EE', east: '', west: 'INT_NNE' }} />
+        <group name="INT_EE" position={[7.5, 0, -0.5]} userData={{ name: 'INT_EE', north: 'PathNode_top_right', south: 'PathNode_bottom_right', east: 'PathNode_DE_east', west: 'INT_E' }} />
         <group name="PathNode_bottom_right" position={[7.5, 0, 7.5]} userData={{ name: 'PathNode_bottom_right', north: 'INT_EE', south: '', east: '', west: 'INT_bottom_right' }} />
+        <group name="PathNode_DE_01" position={[-3.5, 0, -6.5]} userData={{ name: 'PathNode_DE_01', north: '', south: 'INT_NW', east: '', west: '' }} />
+        <group name="PathNode_DE_02" position={[0.5, 0, -6.5]} userData={{ name: 'PathNode_DE_02', north: '', south: 'INT_top_middle', east: '', west: '' }} />
+        <group name="PathNode_DE_03" position={[4.5, 0, -6.5]} userData={{ name: 'PathNode_DE_03', north: '', south: 'INT_NNE', east: '', west: '' }} />
+        <group name="PathNode_DE_east" position={[10.5, 0, -0.5]} userData={{ name: 'PathNode_DE_east', north: '', south: 'INT_NNE', east: '', west: 'INT_EE' }} />
+        <group name="PathNode_DE_south_03" position={[4.5, 0, 9.5]} userData={{ name: 'PathNode_DE_south_03', north: 'INT_bottom_right', south: '', east: '', west: '' }} />
+        <group name="PathNode_DE_south_02" position={[0.5, 0, 10.5]} userData={{ name: 'PathNode_DE_south_02', north: 'INT_SSE', south: '', east: '', west: '' }} />
+        <group name="PathNode_DE_south_01" position={[-3.5, 0, 9.5]} userData={{ name: 'PathNode_DE_south_01', north: 'INT_SSW', south: '', east: '', west: '' }} />
+        <group name="PathNode_DE_south_00" position={[-7.5, 0, 10.5]} userData={{ name: 'PathNode_DE_south_00', north: 'INT_bottom_left', south: '', east: '', west: '' }} />
+        <group name="PathNode_DE_west_02" position={[-11.5, 0, 7.5]} userData={{ name: 'PathNode_DE_west_02', north: 'INT_bottom_left', south: '', east: '', west: '' }} />
+        <group name="PathNode_DE_west_01" position={[-9.5, 0, 3.5]} userData={{ name: 'PathNode_DE_west_01', north: 'INT_left', south: '', east: '', west: '' }} />
         <mesh name="road-crossing" geometry={nodes['road-crossing'].geometry} material={materials['colormap.003']} position={[-1.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossing' }} />
         <mesh name="road-straight" geometry={nodes['road-straight'].geometry} material={materials['colormap.002']} position={[-0.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight' }} />
         <mesh name="road-straight002" geometry={nodes['road-straight002'].geometry} material={materials['colormap.002']} position={[-2.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.002' }} />
@@ -378,7 +392,7 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="road-straight017" geometry={nodes['road-straight017'].geometry} material={materials['colormap.002']} position={[-3.5, 0, -2.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.017' }} />
         <mesh name="road-straight018" geometry={nodes['road-straight018'].geometry} material={materials['colormap.002']} position={[-3.5, 0, -1.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.018' }} />
         <mesh name="road-crossroad001" geometry={nodes['road-crossroad001'].geometry} material={materials['colormap.017']} position={[0.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad.001' }} />
-        <mesh name="road-end001" geometry={nodes['road-end001'].geometry} material={materials['colormap.016']} position={[0.5, 0, 8.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-end.001' }} />
+        <mesh name="road-end001" geometry={nodes['road-end001'].geometry} material={materials['colormap.016']} position={[0.5, 0, 10.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-end.001' }} />
         <mesh name="road-crossroad002" geometry={nodes['road-crossroad002'].geometry} material={materials['colormap.017']} position={[0.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad.002' }} />
         <mesh name="road-crossing002" geometry={nodes['road-crossing002'].geometry} material={materials['colormap.003']} position={[2.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossing.002' }} />
         <mesh name="road-straight021" geometry={nodes['road-straight021'].geometry} material={materials['colormap.002']} position={[3.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.021' }} />
@@ -412,7 +426,7 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="road-straight020" geometry={nodes['road-straight020'].geometry} material={materials['colormap.002']} position={[-3.5, 0, 4.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.020' }} />
         <mesh name="road-straight043" geometry={nodes['road-straight043'].geometry} material={materials['colormap.002']} position={[-3.5, 0, 5.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.043' }} />
         <mesh name="road-straight044" geometry={nodes['road-straight044'].geometry} material={materials['colormap.002']} position={[-3.5, 0, 6.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.044' }} />
-        <mesh name="road-end004" geometry={nodes['road-end004'].geometry} material={materials['colormap.016']} position={[-3.5, 0, 8.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-end.004' }} />
+        <mesh name="road-end004" geometry={nodes['road-end004'].geometry} material={materials['colormap.016']} position={[-3.5, 0, 9.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-end.004' }} />
         <mesh name="road-crossroad006" geometry={nodes['road-crossroad006'].geometry} material={materials['colormap.017']} position={[-3.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad.006' }} />
         <mesh name="road-straight046" geometry={nodes['road-straight046'].geometry} material={materials['colormap.002']} position={[-8.5, 0, 3.5]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'road-straight.046' }} />
         <mesh name="road-straight047" geometry={nodes['road-straight047'].geometry} material={materials['colormap.002']} position={[-4.5, 0, 3.5]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'road-straight.047' }} />
@@ -421,7 +435,7 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="road-straight045" geometry={nodes['road-straight045'].geometry} material={materials['colormap.002']} position={[4.5, 0, 4.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.045' }} />
         <mesh name="road-straight048" geometry={nodes['road-straight048'].geometry} material={materials['colormap.002']} position={[4.5, 0, 5.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.048' }} />
         <mesh name="road-straight049" geometry={nodes['road-straight049'].geometry} material={materials['colormap.002']} position={[4.5, 0, 6.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.049' }} />
-        <mesh name="road-end006" geometry={nodes['road-end006'].geometry} material={materials['colormap.016']} position={[4.5, 0, 8.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-end.006' }} />
+        <mesh name="road-end006" geometry={nodes['road-end006'].geometry} material={materials['colormap.016']} position={[4.5, 0, 9.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-end.006' }} />
         <mesh name="road-straight050" geometry={nodes['road-straight050'].geometry} material={materials['colormap.002']} position={[5.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.050' }} />
         <mesh name="road-crossroad009" geometry={nodes['road-crossroad009'].geometry} material={materials['colormap.017']} position={[4.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad.009' }} />
         <mesh name="road-straight051" geometry={nodes['road-straight051'].geometry} material={materials['colormap.002']} position={[6.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.051' }} />
@@ -479,6 +493,10 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="road-straight088" geometry={nodes['road-straight088'].geometry} material={materials['colormap.002']} position={[8.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.088' }} />
         <mesh name="road-straight089" geometry={nodes['road-straight089'].geometry} material={materials['colormap.002']} position={[9.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.089' }} />
         <mesh name="road-end010" geometry={nodes['road-end010'].geometry} material={materials['colormap.016']} position={[10.5, 0, -0.5]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'road-end.010' }} />
+        <mesh name="road-straight090" geometry={nodes['road-straight090'].geometry} material={materials['colormap.002']} position={[4.5, 0, 8.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.090' }} />
+        <mesh name="road-straight091" geometry={nodes['road-straight091'].geometry} material={materials['colormap.002']} position={[0.5, 0, 8.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.091' }} />
+        <mesh name="road-straight092" geometry={nodes['road-straight092'].geometry} material={materials['colormap.002']} position={[0.5, 0, 9.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.092' }} />
+        <mesh name="road-straight093" geometry={nodes['road-straight093'].geometry} material={materials['colormap.002']} position={[-3.5, 0, 8.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.093' }} />
         <mesh name="building-a001" geometry={nodes['building-a001'].geometry} material={materials['colormap.005']} position={[2.025, 0, 1.95]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'building-a.001' }} />
         <mesh name="building-d001" geometry={nodes['building-d001'].geometry} material={materials['colormap.006']} position={[2.025, 0, 0.45]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'building-d.001' }} />
         <mesh name="building-n001" geometry={nodes['building-n001'].geometry} material={materials['colormap.007']} position={[3.775, 0, 0.2]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-n.001' }} />
