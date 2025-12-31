@@ -204,15 +204,24 @@ export function checkDeliveryCollisions(
     const p2 = points[Math.min(segmentIndex + 1, points.length - 1)]
     const taxiPosition = new THREE.Vector3().lerpVectors(p1, p2, localT)
 
-    // Check for pickup collision (if taxi doesn't have package)
+    // Check for pickup collision (ONLY if taxi doesn't have package - one at a time!)
     if (!taxi.hasPackage) {
       const pickup = findActivePickupNear(taxiPosition, activeDeliveries, pickupNodes)
       if (pickup) {
         handlePickup(taxi, pickup.event)
       }
     }
-    // Check for dropoff collision (if taxi has package)
-    else if (taxi.currentDeliveryId) {
+    // If taxi already has package, ignore other pickups
+    else {
+      // Check if we're near a pickup (to log that we're ignoring it)
+      const nearbyPickup = findActivePickupNear(taxiPosition, activeDeliveries, pickupNodes)
+      if (nearbyPickup && Math.random() < 0.1) { // Log 10% of the time to avoid spam
+        console.log(`🚫 ${taxi.id} ignoring pickup ${nearbyPickup.event.id} (already carrying ${taxi.currentDeliveryId})`)
+      }
+    }
+
+    // Check for dropoff collision (ONLY if taxi has package)
+    if (taxi.currentDeliveryId) {
       const dropoff = findActiveDropoffNear(
         taxiPosition,
         taxi.currentDeliveryId,
