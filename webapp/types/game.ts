@@ -98,10 +98,14 @@ export interface Taxi {
   // Topological navigation state
   currentIntersectionId?: string // Current or last intersection node ID
   incomingDir?: Dir // Direction taxi entered current intersection (0-3)
+  previousNodeId?: string // Node ID the taxi came from (for collision reversals)
   // Delivery state
   hasPackage: boolean // Is taxi carrying a package?
   currentDeliveryId?: string // ID of active delivery event
   money: number // Total money earned
+  // Collision handling
+  isReversing: boolean // Currently reversing back along current path due to collision
+  collisionCooldown: number // Time in ms before can collide again
 }
 
 export interface InteractionZone {

@@ -2,21 +2,35 @@
 
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
+import type { MutableRefObject } from 'react'
+import type { Taxi as TaxiType, DeliveryEvent, RoadNode, CombatTextEvent } from '@/types/game'
 import CityModel from './CityModel'
-import Taxi from './Taxi'
 import RoadVisualizer from './RoadVisualizer'
 import { IntersectionManager } from './IntersectionManager'
 import { DeliveryManager } from './DeliveryManager'
 import { DeliverySystem } from './DeliverySystem'
-import { ScoreDisplay } from './ScoreDisplay'
-import { useGameLoop } from '@/hooks/useGameLoop'
+import { CollisionSystem } from './CollisionSystem'
+import { TaxiManager } from './TaxiManager'
+
+interface SceneProps {
+  taxisRef: MutableRefObject<TaxiType[]>
+  deliveriesRef: MutableRefObject<DeliveryEvent[]>
+  pickupNodesRef: MutableRefObject<RoadNode[]>
+  deliveryTimerRef: MutableRefObject<number>
+  combatTextRef: MutableRefObject<CombatTextEvent[]>
+}
 
 /**
  * Main Three.js scene container
  * Sets up camera, lighting, and controls
  */
-export default function Scene() {
-  const { taxisRef, deliveriesRef, pickupNodesRef, deliveryTimerRef, combatTextRef } = useGameLoop()
+export default function Scene({
+  taxisRef,
+  deliveriesRef,
+  pickupNodesRef,
+  deliveryTimerRef,
+  combatTextRef
+}: SceneProps) {
 
   return (
     <Canvas
@@ -55,6 +69,9 @@ export default function Scene() {
       {/* Intersection control tiles */}
       <IntersectionManager />
 
+      {/* Collision detection system */}
+      <CollisionSystem taxisRef={taxisRef} />
+
       {/* Delivery system logic (spawn timer & collision detection) */}
       <DeliverySystem
         deliveriesRef={deliveriesRef}
@@ -72,13 +89,8 @@ export default function Scene() {
         combatTextRef={combatTextRef}
       />
 
-      {/* Score display (bottom right) */}
-      <ScoreDisplay taxisRef={taxisRef} />
-
       {/* Taxis */}
-      {taxisRef.current.map((taxi) => (
-        <Taxi key={taxi.id} taxi={taxi} />
-      ))}
+      <TaxiManager taxisRef={taxisRef} />
 
       {/* Grid helper for debugging */}
       <gridHelper args={[20, 20, '#444', '#222']} />

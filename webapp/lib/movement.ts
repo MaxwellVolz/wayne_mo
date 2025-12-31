@@ -17,11 +17,29 @@ export function updateTaxi(
 ): void {
   if (taxi.state === 'stopped' || !taxi.path) return
 
-  taxi.t += (delta * taxi.speed) / taxi.path.length
+  const movement = (delta * taxi.speed) / taxi.path.length
 
-  if (taxi.t >= 1) {
-    taxi.t = 1
-    onPathEnd(taxi, intersections)
+  if (taxi.isReversing) {
+    // Move backwards along current path
+    taxi.t -= movement
+
+    // Reached start of path - back at previous node
+    if (taxi.t <= 0) {
+      taxi.t = 0
+      taxi.isReversing = false
+      console.log(`✅ ${taxi.id} finished reversing, back at start of path`)
+
+      // We're at the START of current path - route from here
+      onReversalComplete(taxi, intersections)
+    }
+  } else {
+    // Normal forward movement
+    taxi.t += movement
+
+    if (taxi.t >= 1) {
+      taxi.t = 1
+      onPathEnd(taxi, intersections)
+    }
   }
 }
 
@@ -58,6 +76,13 @@ function onPathEnd(taxi: Taxi, intersections?: Map<string, IntersectionState>): 
 
   const currentPathId = taxi.path.id
 
+  // Extract destination node from current path (format: "NodeA_to_NodeB")
+  const parts = currentPathId.split('_to_')
+  if (parts.length === 2) {
+    // Track the node we came from for collision recovery
+    taxi.previousNodeId = parts[0]
+  }
+
   // Pass taxi object to getNextPath for topological routing
   const nextPath = getNextPath(currentPathId, intersections, taxi)
 
@@ -67,7 +92,47 @@ function onPathEnd(taxi: Taxi, intersections?: Map<string, IntersectionState>): 
     taxi.t = 0
   } else {
     console.warn(`⚠️ No next path found for ${currentPathId}`)
-    // Could implement reversal logic here in the future
+  }
+}
+
+/**
+ * Called when taxi finishes reversing and is back at start of path
+ * Routes from the SOURCE node instead of destination
+ *
+ * @param taxi - The taxi that finished reversing
+ * @param intersections - Optional intersection states for routing decisions
+ */
+function onReversalComplete(taxi: Taxi, intersections?: Map<string, IntersectionState>): void {
+  if (!taxi.path) return
+
+  const currentPathId = taxi.path.id
+
+  // Extract source node from current path (format: "NodeA_to_NodeB")
+  // At t=0, we're at NodeA (the start)
+  const parts = currentPathId.split('_to_')
+  if (parts.length !== 2) {
+    console.warn(`⚠️ Invalid path ID format: ${currentPathId}`)
+    return
+  }
+
+  const sourceNodeId = parts[0] // We're at the START node now
+  const destinationNodeId = parts[1]
+
+  // We need to find a path FROM sourceNodeId (not destinationNodeId!)
+  // Create a synthetic "previous path" ID that ends at sourceNodeId
+  const syntheticPathId = `${destinationNodeId}_to_${sourceNodeId}`
+
+  console.log(`🔄 ${taxi.id} at ${sourceNodeId}, routing from here (was reversing on ${currentPathId})`)
+
+  // Pass taxi object to getNextPath - it will route FROM sourceNodeId
+  const nextPath = getNextPath(syntheticPathId, intersections, taxi)
+
+  if (nextPath) {
+    console.log(`🚕 Post-reversal transition: ${sourceNodeId} → ${nextPath.id}`)
+    taxi.path = nextPath
+    taxi.t = 0
+  } else {
+    console.warn(`⚠️ No next path found from ${sourceNodeId} after reversal`)
   }
 }
 

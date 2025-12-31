@@ -7,7 +7,7 @@ import type { DeliveryEvent, RoadNode, Taxi, CombatTextEvent } from '@/types/gam
 import { PickupIndicator } from './PickupIndicator'
 import { DropoffIndicator } from './DropoffIndicator'
 import { PackageIndicator } from './PackageIndicator'
-import { CombatText } from './CombatText'
+// import { CombatText } from './CombatText'
 
 interface DeliveryManagerProps {
   deliveriesRef: MutableRefObject<DeliveryEvent[]>

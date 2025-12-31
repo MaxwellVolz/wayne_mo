@@ -24,10 +24,14 @@ export function useGameLoop() {
       // Topological navigation state (initialized, will be set by first intersection)
       currentIntersectionId: undefined,
       incomingDir: 0, // Default to North, will be updated at first intersection
+      previousNodeId: undefined,
       // Delivery state
       hasPackage: false,
       currentDeliveryId: undefined,
       money: 0,
+      // Collision handling
+      isReversing: false,
+      collisionCooldown: 0,
     },
   ])
 

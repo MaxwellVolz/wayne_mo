@@ -1,6 +1,8 @@
 'use client'
 
 import dynamic from 'next/dynamic'
+import { useGameLoop } from '@/hooks/useGameLoop'
+import { GameHUD } from './GameHUD'
 
 // Load Scene only on client side (Three.js doesn't work with SSR)
 const Scene = dynamic(() => import('./Scene'), {
@@ -25,14 +27,23 @@ const Scene = dynamic(() => import('./Scene'), {
  * Houses the Three.js canvas and UI overlay
  */
 export default function Game() {
+  // Game state management
+  const { taxisRef, deliveriesRef, pickupNodesRef, deliveryTimerRef, combatTextRef } = useGameLoop()
+
   return (
     <div className="game-container">
       {/* Three.js scene */}
-      <Scene />
+      <Scene
+        taxisRef={taxisRef}
+        deliveriesRef={deliveriesRef}
+        pickupNodesRef={pickupNodesRef}
+        deliveryTimerRef={deliveryTimerRef}
+        combatTextRef={combatTextRef}
+      />
 
       {/* UI overlay */}
       <div className="ui-overlay">
-        {/* STOP/GO button will be added here in Phase 2 */}
+        <GameHUD taxisRef={taxisRef} />
       </div>
 
       <style jsx>{`
