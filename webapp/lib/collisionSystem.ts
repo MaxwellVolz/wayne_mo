@@ -1,4 +1,3 @@
-import * as THREE from 'three'
 import type { Taxi } from '@/types/game'
 import { samplePath } from './movement'
 

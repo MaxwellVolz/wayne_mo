@@ -1,10 +1,9 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
-import type { Taxi, DeliveryEvent, RoadNode, CombatTextEvent } from '@/types/game'
+import type { Taxi, DeliveryEvent, RoadNode } from '@/types/game'
 import { getRoadNetwork } from '@/data/roads'
-import { spawnDeliveryEvent, checkDeliveryCollisions } from '@/lib/deliverySystem'
-import { useFrame } from '@react-three/fiber'
+import { spawnDeliveryEvent } from '@/lib/deliverySystem'
 
 /**
  * Main game state hook
@@ -39,7 +38,6 @@ export function useGameLoop() {
   const deliveriesRef = useRef<DeliveryEvent[]>([])
   const deliveryTimerRef = useRef<number>(10000) // 10 seconds until next delivery
   const pickupNodesRef = useRef<RoadNode[]>([])
-  const combatTextRef = useRef<CombatTextEvent[]>([])
   const initialSpawnDoneRef = useRef<boolean>(false)
 
   // Listen for road network updates from CityModel
@@ -97,6 +95,6 @@ export function useGameLoop() {
     deliveriesRef,
     pickupNodesRef,
     deliveryTimerRef,
-    combatTextRef,
+    initialSpawnDoneRef,
   }
 }

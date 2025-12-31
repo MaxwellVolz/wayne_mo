@@ -3,17 +3,15 @@
 import { useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import type { MutableRefObject } from 'react'
-import type { DeliveryEvent, RoadNode, Taxi, CombatTextEvent } from '@/types/game'
+import type { DeliveryEvent, RoadNode, Taxi } from '@/types/game'
 import { PickupIndicator } from './PickupIndicator'
 import { DropoffIndicator } from './DropoffIndicator'
 import { PackageIndicator } from './PackageIndicator'
-// import { CombatText } from './CombatText'
 
 interface DeliveryManagerProps {
   deliveriesRef: MutableRefObject<DeliveryEvent[]>
   pickupNodesRef: MutableRefObject<RoadNode[]>
   taxisRef: MutableRefObject<Taxi[]>
-  combatTextRef: MutableRefObject<CombatTextEvent[]>
 }
 
 /**
@@ -23,8 +21,7 @@ interface DeliveryManagerProps {
 export function DeliveryManager({
   deliveriesRef,
   pickupNodesRef,
-  taxisRef,
-  combatTextRef
+  taxisRef
 }: DeliveryManagerProps) {
   // Force re-render every frame to show updated delivery state
   const [, setTick] = useState(0)
@@ -36,7 +33,6 @@ export function DeliveryManager({
   const activeDeliveries = deliveriesRef.current
   const pickupNodes = pickupNodesRef.current
   const taxis = taxisRef.current
-  const combatTexts = combatTextRef.current
 
   // Debug logging (only log occasionally to avoid spam)
   if (Math.random() < 0.01) { // ~1% of frames
@@ -107,28 +103,6 @@ export function DeliveryManager({
             />
           )
         })}
-
-      {/* Render combat text - DISABLED due to WebGL context loss */}
-      {/* {combatTexts.map(combat => {
-        const handleComplete = () => {
-          try {
-            // Remove this combat text when animation completes
-            const filtered = combatTextRef.current.filter(c => c.id !== combat.id)
-            combatTextRef.current = filtered
-          } catch (e) {
-            console.error('Error removing combat text:', e)
-          }
-        }
-
-        return (
-          <CombatText
-            key={combat.id}
-            position={combat.position}
-            text={combat.text}
-            onComplete={handleComplete}
-          />
-        )
-      })} */}
     </group>
   )
 }

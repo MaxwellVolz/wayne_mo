@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import type { DeliveryEvent, RoadNode, Taxi, CombatTextEvent } from '@/types/game'
+import type { DeliveryEvent, RoadNode, Taxi } from '@/types/game'
 
 /**
  * Collision threshold for pickup/dropoff detection (in units)
@@ -196,15 +196,14 @@ export function handleDropoff(taxi: Taxi, event: DeliveryEvent): number {
  * @param taxis - Array of taxis to check
  * @param activeDeliveries - Array of active delivery events
  * @param pickupNodes - Array of pickup nodes
- * @returns Object with completed delivery IDs and combat text events
+ * @returns Array of completed delivery IDs
  */
 export function checkDeliveryCollisions(
   taxis: Taxi[],
   activeDeliveries: DeliveryEvent[],
   pickupNodes: RoadNode[]
-): { completedIds: string[]; combatTextEvents: CombatTextEvent[] } {
+): string[] {
   const completedIds: string[] = []
-  const combatTextEvents: CombatTextEvent[] = []
 
   for (const taxi of taxis) {
     if (!taxi.path) continue
@@ -247,19 +246,11 @@ export function checkDeliveryCollisions(
         pickupNodes
       )
       if (dropoff) {
-        const payout = handleDropoff(taxi, dropoff.event)
+        handleDropoff(taxi, dropoff.event)
         completedIds.push(dropoff.event.id)
-
-        // Create combat text event
-        combatTextEvents.push({
-          id: `combat-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-          position: taxiPosition.clone(),
-          text: `+$${payout}`,
-          spawnTime: Date.now()
-        })
       }
     }
   }
 
-  return { completedIds, combatTextEvents }
+  return completedIds
 }

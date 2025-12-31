@@ -2,7 +2,7 @@
 
 import { useFrame } from '@react-three/fiber'
 import type { MutableRefObject } from 'react'
-import type { DeliveryEvent, RoadNode, Taxi, CombatTextEvent } from '@/types/game'
+import type { DeliveryEvent, RoadNode, Taxi } from '@/types/game'
 import { spawnDeliveryEvent, checkDeliveryCollisions } from '@/lib/deliverySystem'
 
 interface DeliverySystemProps {
@@ -10,7 +10,6 @@ interface DeliverySystemProps {
   deliveryTimerRef: MutableRefObject<number>
   pickupNodesRef: MutableRefObject<RoadNode[]>
   taxisRef: MutableRefObject<Taxi[]>
-  combatTextRef: MutableRefObject<CombatTextEvent[]>
 }
 
 const SPAWN_INTERVAL = 10000 // 10 seconds in milliseconds
@@ -23,8 +22,7 @@ export function DeliverySystem({
   deliveriesRef,
   deliveryTimerRef,
   pickupNodesRef,
-  taxisRef,
-  combatTextRef
+  taxisRef
 }: DeliverySystemProps) {
   useFrame((_, delta) => {
     const deltaMs = delta * 1000 // Convert to milliseconds
@@ -51,16 +49,11 @@ export function DeliverySystem({
     }
 
     // Check for pickup/dropoff collisions
-    const { completedIds, combatTextEvents } = checkDeliveryCollisions(
+    const completedIds = checkDeliveryCollisions(
       taxisRef.current,
       deliveriesRef.current,
       pickupNodesRef.current
     )
-
-    // Add new combat text events
-    if (combatTextEvents.length > 0) {
-      combatTextRef.current.push(...combatTextEvents)
-    }
 
     // Remove completed deliveries
     if (completedIds.length > 0) {

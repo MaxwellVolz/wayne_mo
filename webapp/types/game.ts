@@ -137,16 +137,6 @@ export interface DeliveryEvent {
   color: string // Unique color for this delivery (shared by pickup and dropoff)
 }
 
-/**
- * Combat text that appears above taxi when earning money
- */
-export interface CombatTextEvent {
-  id: string
-  position: THREE.Vector3
-  text: string
-  spawnTime: number
-}
-
 export interface GameState {
   taxis: Taxi[]
   intersections: Map<string, IntersectionState> // Player-controlled intersection routing

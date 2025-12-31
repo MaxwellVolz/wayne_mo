@@ -3,7 +3,7 @@
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import type { MutableRefObject } from 'react'
-import type { Taxi as TaxiType, DeliveryEvent, RoadNode, CombatTextEvent } from '@/types/game'
+import type { Taxi as TaxiType, DeliveryEvent, RoadNode } from '@/types/game'
 import CityModel from './CityModel'
 import RoadVisualizer from './RoadVisualizer'
 import { IntersectionManager } from './IntersectionManager'
@@ -17,7 +17,6 @@ interface SceneProps {
   deliveriesRef: MutableRefObject<DeliveryEvent[]>
   pickupNodesRef: MutableRefObject<RoadNode[]>
   deliveryTimerRef: MutableRefObject<number>
-  combatTextRef: MutableRefObject<CombatTextEvent[]>
 }
 
 /**
@@ -28,8 +27,7 @@ export default function Scene({
   taxisRef,
   deliveriesRef,
   pickupNodesRef,
-  deliveryTimerRef,
-  combatTextRef
+  deliveryTimerRef
 }: SceneProps) {
 
   return (
@@ -78,15 +76,13 @@ export default function Scene({
         deliveryTimerRef={deliveryTimerRef}
         pickupNodesRef={pickupNodesRef}
         taxisRef={taxisRef}
-        combatTextRef={combatTextRef}
       />
 
-      {/* Delivery visual indicators (pickup/dropoff/package/combat text) */}
+      {/* Delivery visual indicators (pickup/dropoff/package) */}
       <DeliveryManager
         deliveriesRef={deliveriesRef}
         pickupNodesRef={pickupNodesRef}
         taxisRef={taxisRef}
-        combatTextRef={combatTextRef}
       />
 
       {/* Taxis */}
