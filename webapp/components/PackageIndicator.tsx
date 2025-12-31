@@ -6,12 +6,14 @@ import * as THREE from 'three'
 
 interface PackageIndicatorProps {
   taxiPosition: THREE.Vector3
+  color: string
 }
 
 /**
- * Yellow package indicator that follows taxi when carrying a delivery
+ * Colored package indicator that follows taxi when carrying a delivery
+ * Color matches the delivery's pickup/dropoff color
  */
-export function PackageIndicator({ taxiPosition }: PackageIndicatorProps) {
+export function PackageIndicator({ taxiPosition, color }: PackageIndicatorProps) {
   const meshRef = useRef<THREE.Mesh>(null)
   const timeRef = useRef(0)
 
@@ -36,8 +38,8 @@ export function PackageIndicator({ taxiPosition }: PackageIndicatorProps) {
     <mesh ref={meshRef}>
       <boxGeometry args={[0.3, 0.3, 0.3]} />
       <meshStandardMaterial
-        color="#ffff00"
-        emissive="#ffff00"
+        color={color}
+        emissive={color}
         emissiveIntensity={0.6}
       />
     </mesh>

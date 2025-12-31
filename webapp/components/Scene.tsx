@@ -8,6 +8,7 @@ import RoadVisualizer from './RoadVisualizer'
 import { IntersectionManager } from './IntersectionManager'
 import { DeliveryManager } from './DeliveryManager'
 import { DeliverySystem } from './DeliverySystem'
+import { ScoreDisplay } from './ScoreDisplay'
 import { useGameLoop } from '@/hooks/useGameLoop'
 
 /**
@@ -15,7 +16,7 @@ import { useGameLoop } from '@/hooks/useGameLoop'
  * Sets up camera, lighting, and controls
  */
 export default function Scene() {
-  const { taxisRef, deliveriesRef, pickupNodesRef, deliveryTimerRef } = useGameLoop()
+  const { taxisRef, deliveriesRef, pickupNodesRef, deliveryTimerRef, combatTextRef } = useGameLoop()
 
   return (
     <Canvas
@@ -60,14 +61,19 @@ export default function Scene() {
         deliveryTimerRef={deliveryTimerRef}
         pickupNodesRef={pickupNodesRef}
         taxisRef={taxisRef}
+        combatTextRef={combatTextRef}
       />
 
-      {/* Delivery visual indicators (pickup/dropoff/package) */}
+      {/* Delivery visual indicators (pickup/dropoff/package/combat text) */}
       <DeliveryManager
         deliveriesRef={deliveriesRef}
         pickupNodesRef={pickupNodesRef}
         taxisRef={taxisRef}
+        combatTextRef={combatTextRef}
       />
+
+      {/* Score display (bottom right) */}
+      <ScoreDisplay taxisRef={taxisRef} />
 
       {/* Taxis */}
       {taxisRef.current.map((taxi) => (

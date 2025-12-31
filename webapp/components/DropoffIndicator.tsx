@@ -35,7 +35,7 @@ export function DropoffIndicator({ position, color }: DropoffIndicatorProps) {
       ref={meshRef}
       position={[position.x, position.y + 1.0, position.z]}
     >
-      <boxGeometry args={[0.5, 0.5, 0.5]} />
+      <sphereGeometry args={[0.3, 16, 16]} />
       <meshStandardMaterial
         color={color}
         emissive={color}

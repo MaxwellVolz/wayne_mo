@@ -2,7 +2,7 @@
 
 import { useFrame } from '@react-three/fiber'
 import type { MutableRefObject } from 'react'
-import type { DeliveryEvent, RoadNode, Taxi } from '@/types/game'
+import type { DeliveryEvent, RoadNode, Taxi, CombatTextEvent } from '@/types/game'
 import { spawnDeliveryEvent, checkDeliveryCollisions } from '@/lib/deliverySystem'
 
 interface DeliverySystemProps {
@@ -10,6 +10,7 @@ interface DeliverySystemProps {
   deliveryTimerRef: MutableRefObject<number>
   pickupNodesRef: MutableRefObject<RoadNode[]>
   taxisRef: MutableRefObject<Taxi[]>
+  combatTextRef: MutableRefObject<CombatTextEvent[]>
 }
 
 const SPAWN_INTERVAL = 10000 // 10 seconds in milliseconds
@@ -22,7 +23,8 @@ export function DeliverySystem({
   deliveriesRef,
   deliveryTimerRef,
   pickupNodesRef,
-  taxisRef
+  taxisRef,
+  combatTextRef
 }: DeliverySystemProps) {
   useFrame((_, delta) => {
     const deltaMs = delta * 1000 // Convert to milliseconds
@@ -35,10 +37,10 @@ export function DeliverySystem({
       console.log(`⏰ Delivery spawn timer expired! Pickup nodes available: ${pickupNodesRef.current.length}`)
 
       if (pickupNodesRef.current.length >= 2) {
-        const newDelivery = spawnDeliveryEvent(pickupNodesRef.current)
+        const newDelivery = spawnDeliveryEvent(pickupNodesRef.current, deliveriesRef.current)
         if (newDelivery) {
           deliveriesRef.current.push(newDelivery)
-          console.log(`📦 Spawned delivery ${newDelivery.id}: ${newDelivery.pickupNodeId} → ${newDelivery.dropoffNodeId}`)
+          console.log(`📦 Spawned delivery ${newDelivery.id}: ${newDelivery.pickupNodeId} → ${newDelivery.dropoffNodeId} [${newDelivery.color}]`)
           console.log(`   Total active deliveries: ${deliveriesRef.current.length}`)
         }
       } else {
@@ -49,11 +51,16 @@ export function DeliverySystem({
     }
 
     // Check for pickup/dropoff collisions
-    const completedIds = checkDeliveryCollisions(
+    const { completedIds, combatTextEvents } = checkDeliveryCollisions(
       taxisRef.current,
       deliveriesRef.current,
       pickupNodesRef.current
     )
+
+    // Add new combat text events
+    if (combatTextEvents.length > 0) {
+      combatTextRef.current.push(...combatTextEvents)
+    }
 
     // Remove completed deliveries
     if (completedIds.length > 0) {

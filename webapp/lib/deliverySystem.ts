@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import type { DeliveryEvent, RoadNode, Taxi } from '@/types/game'
+import type { DeliveryEvent, RoadNode, Taxi, CombatTextEvent } from '@/types/game'
 
 /**
  * Collision threshold for pickup/dropoff detection (in units)
@@ -17,7 +17,7 @@ const BASE_PAYOUT = 100
 const PAYOUT_PER_DISTANCE = 10
 
 /**
- * Color palette for delivery events
+ * Color palette for delivery events (16 distinct colors)
  */
 const DELIVERY_COLORS = [
   '#00ff00', // Green
@@ -28,15 +28,27 @@ const DELIVERY_COLORS = [
   '#00ffff', // Cyan
   '#ff0088', // Pink
   '#88ff00', // Lime
+  '#ff0000', // Red
+  '#8800ff', // Purple
+  '#00ff88', // Teal
+  '#ff8888', // Light Red
+  '#88ff88', // Light Green
+  '#8888ff', // Light Blue
+  '#ffff88', // Light Yellow
+  '#ff88ff', // Light Magenta
 ]
 
 /**
  * Spawns a new delivery event with random pickup and dropoff nodes
  *
  * @param pickupNodes - Array of nodes that can be pickup points
+ * @param activeDeliveries - Currently active deliveries (to avoid color conflicts)
  * @returns New delivery event
  */
-export function spawnDeliveryEvent(pickupNodes: RoadNode[]): DeliveryEvent | null {
+export function spawnDeliveryEvent(
+  pickupNodes: RoadNode[],
+  activeDeliveries: DeliveryEvent[] = []
+): DeliveryEvent | null {
   if (pickupNodes.length < 2) {
     console.warn('⚠️ Not enough pickup nodes to spawn delivery')
     return null
@@ -62,8 +74,13 @@ export function spawnDeliveryEvent(pickupNodes: RoadNode[]): DeliveryEvent | nul
     ((pickupMultiplier + dropoffMultiplier) / 2)
   )
 
-  // Select random color from palette
-  const color = DELIVERY_COLORS[Math.floor(Math.random() * DELIVERY_COLORS.length)]
+  // Select color that's not already in use by active deliveries
+  const usedColors = new Set(activeDeliveries.map(d => d.color))
+  const availableColors = DELIVERY_COLORS.filter(c => !usedColors.has(c))
+
+  // If all colors are in use, just pick a random one (unlikely with 16 colors)
+  const colorPool = availableColors.length > 0 ? availableColors : DELIVERY_COLORS
+  const color = colorPool[Math.floor(Math.random() * colorPool.length)]
 
   const event: DeliveryEvent = {
     id: `delivery-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
@@ -179,14 +196,15 @@ export function handleDropoff(taxi: Taxi, event: DeliveryEvent): number {
  * @param taxis - Array of taxis to check
  * @param activeDeliveries - Array of active delivery events
  * @param pickupNodes - Array of pickup nodes
- * @returns Array of completed delivery IDs to remove
+ * @returns Object with completed delivery IDs and combat text events
  */
 export function checkDeliveryCollisions(
   taxis: Taxi[],
   activeDeliveries: DeliveryEvent[],
   pickupNodes: RoadNode[]
-): string[] {
+): { completedIds: string[]; combatTextEvents: CombatTextEvent[] } {
   const completedIds: string[] = []
+  const combatTextEvents: CombatTextEvent[] = []
 
   for (const taxi of taxis) {
     if (!taxi.path) continue
@@ -229,11 +247,19 @@ export function checkDeliveryCollisions(
         pickupNodes
       )
       if (dropoff) {
-        handleDropoff(taxi, dropoff.event)
+        const payout = handleDropoff(taxi, dropoff.event)
         completedIds.push(dropoff.event.id)
+
+        // Create combat text event
+        combatTextEvents.push({
+          id: `combat-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+          position: taxiPosition.clone(),
+          text: `+$${payout}`,
+          spawnTime: Date.now()
+        })
       }
     }
   }
 
-  return completedIds
+  return { completedIds, combatTextEvents }
 }
