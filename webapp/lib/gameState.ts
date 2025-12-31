@@ -7,6 +7,7 @@ import type { GameState, Taxi } from '@/types/game'
 export function createInitialGameState(): GameState {
   return {
     taxis: [],
+    intersections: new Map(),
     timeScale: 1,
     money: 0,
     automationUnlocked: false,

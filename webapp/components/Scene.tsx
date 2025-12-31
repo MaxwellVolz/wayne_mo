@@ -5,6 +5,7 @@ import { OrbitControls } from '@react-three/drei'
 import CityModel from './CityModel'
 import Taxi from './Taxi'
 import RoadVisualizer from './RoadVisualizer'
+import { IntersectionManager } from './IntersectionManager'
 import { useGameLoop } from '@/hooks/useGameLoop'
 
 /**
@@ -47,6 +48,9 @@ export default function Scene() {
 
       {/* Road network visualization */}
       <RoadVisualizer />
+
+      {/* Intersection control tiles - simple spheres for now */}
+      <IntersectionManager />
 
       {/* Taxis */}
       {taxisRef.current.map((taxi) => (

@@ -19,6 +19,9 @@ export function useGameLoop() {
       t: 0,
       speed: 1.5, // Units per second (slower for better visibility)
       isFocused: false,
+      // Topological navigation state (initialized, will be set by first intersection)
+      currentIntersectionId: undefined,
+      incomingDir: 0, // Default to North, will be updated at first intersection
     },
   ])
 

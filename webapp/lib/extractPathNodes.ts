@@ -46,41 +46,125 @@ export function extractPathNodesFromGLTF(gltf: GLTF): RoadNode[] {
   const nodes: RoadNode[] = []
 
   gltf.scene.traverse((object) => {
-    // Find all objects whose names start with "PathNode_"
-    // Can be Empty objects, groups, or small mesh markers
-    if (object.name.startsWith('PathNode_')) {
-      const types = parseNodeTypes(object.name)
+    // Find all objects that are path nodes:
+    // 1. Name starts with "PathNode_" OR
+    // 2. Has topological neighbor properties (north/east/south/west or neighbors)
+    const isPathNode = object.name.startsWith('PathNode_') ||
+                       object.name.startsWith('INT_') ||
+                       (object.userData && (
+                         object.userData.north ||
+                         object.userData.east ||
+                         object.userData.south ||
+                         object.userData.west ||
+                         object.userData.neighbors ||
+                         object.userData.next_nodes
+                       ))
 
+    if (isPathNode) {
       // Get world position (in case object is parented/transformed)
       const worldPosition = new THREE.Vector3()
       object.getWorldPosition(worldPosition)
 
-      // Parse next_nodes from userData if available
-      let nextNodes: string[] = []
-      if (object.userData && object.userData.next_nodes) {
+      // Parse neighbors (topological) or next_nodes (legacy) from userData
+      let nextNodes: string[] | undefined = undefined
+      let neighbors: (string | null)[] | undefined = undefined
+
+      // Try parsing neighbors - support multiple formats
+      // FORMAT 1 (RECOMMENDED): Separate properties (north, east, south, west)
+      if (object.userData && (object.userData.north || object.userData.east || object.userData.south || object.userData.west)) {
+        const north = object.userData.north ? String(object.userData.north).trim() : null
+        const east = object.userData.east ? String(object.userData.east).trim() : null
+        const south = object.userData.south ? String(object.userData.south).trim() : null
+        const west = object.userData.west ? String(object.userData.west).trim() : null
+
+        neighbors = [
+          north || null,
+          east || null,
+          south || null,
+          west || null
+        ]
+
+        console.log(`  📍 ${object.name} [TOPO-SPLIT] → N:${north || '-'}, E:${east || '-'}, S:${south || '-'}, W:${west || '-'}`)
+      }
+      // FORMAT 2 (LEGACY): Single neighbors property
+      else if (object.userData && object.userData.neighbors) {
+        try {
+          const neighborsData = object.userData.neighbors
+          if (typeof neighborsData === 'string') {
+            let rawNeighbors: string
+
+            // Check if it's a JSON array format: '["NodeA","NodeB",,"NodeC"]'
+            if (neighborsData.trim().startsWith('[') && neighborsData.trim().endsWith(']')) {
+              // Strip brackets and parse as comma-separated
+              rawNeighbors = neighborsData.trim().slice(1, -1) // Remove [ and ]
+              rawNeighbors = rawNeighbors.replace(/"/g, '').replace(/'/g, '')
+              console.log(`  📍 ${object.name} [JSON format] → parsing: "${rawNeighbors}"`)
+            } else {
+              // Already comma-separated format: "NodeA,NodeB,,NodeC"
+              rawNeighbors = neighborsData
+            }
+
+            // Parse comma-separated string: "NodeA,NodeB,,NodeD" → [NodeA, NodeB, null, NodeD]
+            neighbors = rawNeighbors.split(',').map(s => {
+              const trimmed = s.trim()
+              return trimmed === '' ? null : trimmed
+            })
+
+            // Ensure exactly 4 slots
+            if (neighbors.length !== 4) {
+              console.warn(`⚠️ ${object.name} neighbors should have 4 slots, got ${neighbors.length}`)
+              neighbors = [...neighbors, null, null, null, null].slice(0, 4)
+            }
+
+            console.log(`  📍 ${object.name} [TOPO-STRING] → neighbors:`, neighbors)
+          }
+        } catch (e) {
+          console.error(`❌ Failed to parse neighbors for ${object.name}:`, e)
+          console.error(`   Raw value:`, object.userData.neighbors)
+        }
+      }
+
+      // Fall back to next_nodes (legacy model) if neighbors not available
+      if (!neighbors && object.userData && object.userData.next_nodes) {
         try {
           // Handle both JSON string and array
           const nextNodesData = object.userData.next_nodes
           if (typeof nextNodesData === 'string') {
             // Parse JSON string like '[ "PathNode_02", "PathNode_04" ]'
             nextNodes = JSON.parse(nextNodesData)
-            console.log(`  📍 ${object.name} → next_nodes parsed:`, nextNodes)
+            console.log(`  📍 ${object.name} [LEGACY] → next_nodes parsed:`, nextNodes)
           } else if (Array.isArray(nextNodesData)) {
             nextNodes = nextNodesData
-            console.log(`  📍 ${object.name} → next_nodes array:`, nextNodes)
+            console.log(`  📍 ${object.name} [LEGACY] → next_nodes array:`, nextNodes)
           }
         } catch (e) {
           console.error(`❌ Failed to parse next_nodes for ${object.name}:`, e)
           console.error(`   Raw value:`, object.userData.next_nodes)
         }
-      } else {
-        console.log(`  ⚠️ ${object.name} has NO next_nodes property`)
+      }
+
+      if (!neighbors && !nextNodes) {
+        console.log(`  ⚠️ ${object.name} has NO neighbors or next_nodes property`)
+      }
+
+      // Determine node types
+      const types = parseNodeTypes(object.name)
+
+      // Auto-detect intersection: ONLY if name starts with "INT_" or contains "Intersection"
+      const isIntersectionNamed = object.name.startsWith('INT_') || object.name.toLowerCase().includes('intersection')
+      if (isIntersectionNamed && neighbors) {
+        const connectionCount = neighbors.filter(n => n !== null).length
+        if (connectionCount >= 2 && !types.includes('intersection')) {
+          types.push('intersection')
+          console.log(`  🚦 ${object.name} detected as intersection (${connectionCount} neighbors)`)
+        }
       }
 
       nodes.push({
         id: object.name,
         position: worldPosition,
         next: nextNodes,
+        neighbors: neighbors,
         types,
         metadata: object.userData // Blender custom properties become userData
       })
@@ -90,21 +174,28 @@ export function extractPathNodesFromGLTF(gltf: GLTF): RoadNode[] {
   // Sort by name to maintain sequential order (PathNode_001, PathNode_002, etc.)
   nodes.sort((a, b) => a.id.localeCompare(b.id))
 
-  // If no next connections defined, auto-connect sequential nodes
-  const nodesWithoutConnections = nodes.filter(n => n.next.length === 0)
+  // If no connections defined (neither neighbors nor next), auto-connect sequential nodes
+  // Only applies to legacy nodes - topological nodes MUST have neighbors defined
+  const nodesWithoutConnections = nodes.filter(n =>
+    !n.neighbors && (!n.next || n.next.length === 0)
+  )
+
   if (nodesWithoutConnections.length === nodes.length) {
-    console.log('📍 No next_nodes defined in Blender, auto-connecting sequential nodes...')
+    console.log('📍 No connections defined in Blender, auto-connecting sequential nodes (legacy mode)...')
     const pathNodes = nodes.filter(n => n.types.includes('path') || n.types.includes('intersection'))
     for (let i = 0; i < pathNodes.length - 1; i++) {
       const currentNode = nodes.find(n => n.id === pathNodes[i].id)
-      if (currentNode) {
+      if (currentNode && !currentNode.neighbors) {
+        // Only auto-connect if using legacy next[] format
+        if (!currentNode.next) currentNode.next = []
         currentNode.next.push(pathNodes[i + 1].id)
       }
     }
     // Connect last to first to complete the loop
     if (pathNodes.length > 0) {
       const lastNode = nodes.find(n => n.id === pathNodes[pathNodes.length - 1].id)
-      if (lastNode) {
+      if (lastNode && !lastNode.neighbors) {
+        if (!lastNode.next) lastNode.next = []
         lastNode.next.push(pathNodes[0].id)
       }
     }

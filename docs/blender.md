@@ -70,14 +70,51 @@ Path nodes can represent multiple types of locations. The node type is determine
 
 ### Node Type Reference
 
-| Node Type        | Keyword                   | Purpose                     | Example Name                   |
-| ---------------- | ------------------------- | --------------------------- | ------------------------------ |
-| **Path**         | (default)                 | Regular waypoint            | `PathNode_001`                 |
-| **Intersection** | `Intersection`            | Where paths branch/connect  | `PathNode_Intersection_001`    |
-| **Pickup**       | `Pickup`                  | Passenger pickup location   | `PathNode_Pickup_Downtown_001` |
-| **Dropoff**      | `Dropoff`                 | Passenger dropoff location  | `PathNode_Dropoff_Airport_001` |
-| **Red Light**    | `RedLight` or `Red_Light` | Traffic light/stop point    | `PathNode_RedLight_001`        |
-| **Service**      | `Service`                 | Service station for repairs | `PathNode_Service_Main_001`    |
+| Node Type        | Keyword                   | Purpose                       | Example Name                   |
+| ---------------- | ------------------------- | ----------------------------- | ------------------------------ |
+| **Path**         | (default)                 | Regular waypoint              | `PathNode_001`                 |
+| **Intersection** | `Intersection`            | **Player-controlled routing** | `PathNode_Intersection_001`    |
+| **Pickup**       | `Pickup`                  | Passenger pickup location     | `PathNode_Pickup_Downtown_001` |
+| **Dropoff**      | `Dropoff`                 | Passenger dropoff location    | `PathNode_Dropoff_Airport_001` |
+| **Red Light**    | `RedLight` or `Red_Light` | Traffic light/stop point      | `PathNode_RedLight_001`        |
+| **Service**      | `Service`                 | Service station for repairs   | `PathNode_Service_Main_001`    |
+
+### ⚠️ CRITICAL: Intersection Nodes
+
+**Intersections are the core game mechanic** - this is what the player controls!
+
+**Requirements for Intersection Nodes:**
+1. **Must have name keyword:** `Intersection` in the node name
+2. **Must have 2+ connected neighbors:** At least 2 non-empty values in `neighbors` property
+3. **Should have 3+ directions:** For maximum player control options
+
+**How Intersections Work:**
+- Player clicks intersection in-game to toggle routing mode:
+  - **Green + (Pass Through)** - Taxis go straight
+  - **Blue ↶ (Turn Left)** - Taxis turn left
+  - **Orange ↷ (Turn Right)** - Taxis turn right
+- ALL taxis follow the same rule at each intersection
+- Turn direction is **relative to approach** - algebraic routing, no vector math
+- Handles multi-directional traffic correctly
+
+**Example Setup in Blender:**
+```
+INT_Main
+├── Position: (0, 0, 0)
+└── Custom Properties:
+    └── neighbors = "INT_North,INT_East,INT_South,INT_West"
+
+This creates a 4-way intersection where:
+- Taxi approaching from any direction can go straight, turn left, or turn right
+- Turn direction is relative to the taxi's approach direction
+- Player controls the routing rule, taxis follow it automatically
+```
+
+**Best Practices:**
+- **Name clearly:** `PathNode_Intersection_Downtown_Main`
+- **3+ exits preferred:** Gives player more control
+- **Space them out:** Don't place intersections too close together
+- **Test in-game:** Click the intersection to verify all 3 modes work
 
 ### Combining Multiple Types
 
@@ -104,12 +141,15 @@ PathNode_Main_005
 ```
 → Creates sequential waypoints along roads
 
-**Intersections:**
+**Intersections (Player-Controlled):**
 ```
 PathNode_Intersection_North_001
 PathNode_Intersection_South_002
+PathNode_Intersection_Downtown_Main
 ```
-→ Where multiple paths meet; taxis choose next direction
+→ **IMPORTANT:** Player controls routing at these nodes
+→ Must have 2+ neighbors in `neighbors` property
+→ Displays visual indicator in-game (Green +, Blue ↶, Orange ↷)
 
 **Pickup/Dropoff Zones:**
 ```
@@ -137,21 +177,27 @@ PathNode_Intersection_Service_Garage_001
 
 **Positioning:**
 - Place nodes at **ground level** (y=0 or road surface)
-- **Intersections** at road junctions
+- **Intersections** at road junctions (🎮 **GAME MECHANIC** - these are clickable by player!)
+  - Place where 3+ roads meet for maximum player control
+  - Space intersections 20+ units apart for visibility
+  - Consider creating a "main intersection" for central control
 - **Pickups/Dropoffs** along road edges (not in middle of path)
 - **Red Lights** before intersections
-- Space evenly (every 5-10 units for smooth movement)
+- Space regular nodes evenly (every 5-10 units for smooth movement)
 
 **Organization:**
 - Use **Collections** to organize by type:
   ```
   Collection: PathNodes_Regular
-  Collection: PathNodes_Intersections
+  Collection: PathNodes_Intersections  ⭐ IMPORTANT - These become player controls!
   Collection: PathNodes_Pickups
   Collection: PathNodes_Service
   ```
 - Number sequentially for automatic connection: `001`, `002`, `003`
 - Use descriptive names: `Downtown`, `Airport`, `Terminal`
+- **Intersection naming:** Use location-based names for player clarity
+  - Good: `PathNode_Intersection_Downtown_Main`
+  - Bad: `PathNode_Intersection_001` (not descriptive)
 
 ### 3. Adding Custom Properties (REQUIRED for Path Connections)
 
@@ -164,95 +210,243 @@ You **must** add Custom Properties to define how nodes connect to each other.
 4. Click the **+** button to add a new property
 5. Set the property name and value
 
-## Connecting Nodes with next_nodes
+---
 
-**The `next_nodes` property is REQUIRED** to define which nodes a taxi can travel to next.
+## Connecting Intersections with `neighbors` (RECOMMENDED)
 
-### Format
+**⭐ NEW TOPOLOGICAL MODEL** - Use this for all intersections going forward.
+
+### Why Use `neighbors` Instead of `next_nodes`?
+
+The topological model is superior for intersections because:
+- ✅ Handles multi-directional traffic correctly
+- ✅ Turn direction is relative to approach (matches real-world intuition)
+- ✅ No vector math guessing - pure algebraic routing
+- ✅ Camera-independent and fully debuggable
+- ✅ Works for 2-way, 3-way, and 4-way intersections uniformly
+
+### Format (RECOMMENDED: Separate Properties)
+
+Use **4 separate custom properties** - much clearer and less error-prone!
 
 ```
-Property Name: next_nodes
+Property Name: north     Property Type: String    Value: "NodeID" (or leave empty)
+Property Name: east      Property Type: String    Value: "NodeID" (or leave empty)
+Property Name: south     Property Type: String    Value: "NodeID" (or leave empty)
+Property Name: west      Property Type: String    Value: "NodeID" (or leave empty)
+```
+
+**Benefits:**
+- ✅ Crystal clear - no confusion about order
+- ✅ Easy to edit - just type node name or leave blank
+- ✅ No formatting errors - no commas, brackets, or quotes to mess up
+- ✅ Visual - you can see which directions are connected at a glance
+
+**Example in Blender:**
+```
+Intersection: INT_Center
+Custom Properties:
+  north = "INT_North"
+  east  = "INT_East"
+  south = "INT_South"
+  west  = "INT_West"
+```
+
+**For T-Intersections (missing connections):**
+```
+Intersection: INT_T_Junction
+Custom Properties:
+  north = "INT_North"
+  east  = (leave empty - no property needed)
+  south = "INT_South"
+  west  = "INT_West"
+```
+
+### Alternative Format (Legacy)
+
+You can also use a single `neighbors` property (not recommended):
+
+```
+Property Name: neighbors
 Property Type: String
-Value Format: [ "NodeName1", "NodeName2", ... ]
+Value Format: "North,East,South,West"
 ```
 
-⚠️ **Important:** The value must be a **JSON array string** with square brackets and double quotes.
+Example: `neighbors = "INT_N,INT_E,,INT_W"` (empty between commas = no connection)
 
-### Examples by Node Type
+### Quick Reference Cheat Sheet
 
-**Regular Path Node (Single Exit):**
 ```
-Node: PathNode_01
-next_nodes: [ "PathNode_02" ]
-```
-→ Taxi goes straight to PathNode_02
+4-way intersection:  "INT_N,INT_E,INT_S,INT_W"
+T-junction (no E):   "INT_N,,INT_S,INT_W"
+T-junction (no W):   "INT_N,INT_E,INT_S,"
+L-corner (E+S):      ",INT_E,INT_S,"
+2-way (N+S only):    "INT_N,,INT_S,"
+Dead end (N only):   "INT_N,,,"
 
-**Intersection (Multiple Exits):**
+Empty slots = empty string between commas
+Always 4 values total (3 commas)
 ```
-Node: PathNode_Intersection_Main
-next_nodes: [ "PathNode_North_01", "PathNode_South_01", "PathNode_East_01" ]
+
+### Step-by-Step Guide: Creating a Topological Intersection
+
+**Example: 4-Way Intersection**
+
+**1. Create the Central Intersection Node**
 ```
-→ Taxi can choose any of 3 directions
-
-**Pickup/Dropoff (Continue on Path):**
+Name: INT_Center
+Position: (0, 0, 0)
 ```
-Node: PathNode_Pickup_Terminal
-next_nodes: [ "PathNode_03" ]
+
+**2. Create the 4 Surrounding Intersection Nodes**
 ```
-→ After pickup, taxi continues to PathNode_03
-
-**Loop Endpoint (Return to Start):**
+Name: INT_North     Position: (0, 0, 10)
+Name: INT_East      Position: (10, 0, 0)
+Name: INT_South     Position: (0, 0, -10)
+Name: INT_West      Position: (-10, 0, 0)
 ```
-Node: PathNode_04
-next_nodes: [ "PathNode_01" ]
-```
-→ Creates a circular loop
 
-**Dead End / Service Station:**
-```
-Node: PathNode_Service_Garage
-next_nodes: [ "PathNode_Intersection_Main" ]
-```
-→ Returns to main road after service
-
-### Step-by-Step Guide
-
-**1. Create Node in Blender**
-- Add mesh marker (small sphere, scale 0.01)
-- Name it: `PathNode_01`
-- Position it on the road
-
-**2. Add next_nodes Property**
-- Select PathNode_01
-- Object Properties → Custom Properties → **+**
-- Name: `next_nodes`
-- Type: **String**
-- Value: `[ "PathNode_02" ]`
-
-**3. Create Connected Node**
-- Add another mesh marker
-- Name it: `PathNode_02`
-- Add its next_nodes: `[ "PathNode_03" ]`
-
-**4. Form Complete Path**
-- Continue creating nodes
-- Last node connects back to first for a loop:
+**3. Add Direction Properties to INT_Center**
+- Select `INT_Center`
+- Object Properties → Custom Properties → **+** (add 4 times)
+- Add these properties:
   ```
-  PathNode_04:  next_nodes = [ "PathNode_01" ]
+  north = "INT_North"
+  east  = "INT_East"
+  south = "INT_South"
+  west  = "INT_West"
   ```
 
-### Advanced: Weighted Branching (Optional)
+**4. Add Direction Properties to Each Surrounding Node**
 
-For intersections where some paths should be more likely:
+For `INT_North` (only connects back South to center):
+- Select `INT_North`
+- Add property: `south = "INT_Center"`
+- (Don't add north, east, or west - they don't exist)
+
+For `INT_East` (only connects back West to center):
+- Select `INT_East`
+- Add property: `west = "INT_Center"`
+
+For `INT_South` (only connects back North to center):
+- Select `INT_South`
+- Add property: `north = "INT_Center"`
+
+For `INT_West` (only connects back East to center):
+- Select `INT_West`
+- Add property: `east = "INT_Center"`
+
+### Common Intersection Patterns
+
+**4-Way Intersection:**
+```
+Node: INT_Main
+Properties:
+  north = "INT_North"
+  east  = "INT_East"
+  south = "INT_South"
+  west  = "INT_West"
+```
+
+**T-Intersection (No Eastern Exit):**
+```
+Node: INT_T_Junction
+Properties:
+  north = "INT_North"
+  south = "INT_South"
+  west  = "INT_West"
+  (no east property)
+```
+
+**L-Intersection (Corner):**
+```
+Node: INT_Corner
+Properties:
+  east  = "INT_East"
+  south = "INT_South"
+  (no north or west properties)
+```
+
+**2-Way (North-South Only):**
+```
+Node: INT_Straight
+Properties:
+  north = "INT_North"
+  south = "INT_South"
+  (no east or west properties)
+```
+
+### Establishing Your Direction Convention
+
+**IMPORTANT:** Choose a consistent mapping for your entire level!
+
+**Recommended Convention (Blender Top View):**
+- Slot 0 (North) = +Z direction in Blender
+- Slot 1 (East)  = +X direction in Blender
+- Slot 2 (South) = -Z direction in Blender
+- Slot 3 (West)  = -X direction in Blender
+
+**Workflow Tip:**
+1. View your intersection from top view in Blender (`Numpad 7`)
+2. Identify which adjacent intersections are in which compass direction
+3. Fill in `neighbors` based on your convention
+4. Document your convention in a comment or text file
+
+**Example Workflow:**
+```
+You're setting up INT_Downtown_Main at position (50, 0, 30)
+
+Looking at top view:
+- To the North (+Z): INT_Uptown at (50, 0, 40)
+- To the East  (+X): INT_Harbor at (60, 0, 30)
+- To the South (-Z): INT_Station at (50, 0, 20)
+- To the West  (-X): (no road)
+
+neighbors property: "INT_Uptown,INT_Harbor,INT_Station,"
+                     [North]   [East]     [South]    [West=empty]
+```
+
+### How Runtime Routing Works
+
+When a taxi approaches an intersection:
+
+1. **Taxi supplies:** Incoming direction slot (0-3)
+2. **Player sets:** Turn rule (Straight / Left / Right)
+3. **System resolves:** Outgoing direction slot
+
+**Turn Resolution (Algebraic):**
+```
+Straight: outgoing = incoming
+Left:     outgoing = (incoming + 3) % 4  // counterclockwise
+Right:    outgoing = (incoming + 1) % 4  // clockwise
+```
+
+**Example:**
+```
+Taxi arrives at INT_Center from slot 2 (South, coming from INT_South)
+Player has set: "Turn Right"
+Outgoing slot: (2 + 1) % 4 = 3 (West)
+Next intersection: INT_West
+```
+
+### Visual Reference
 
 ```
-Node: PathNode_Intersection_Downtown
-next_nodes: [ "PathNode_Highway", "PathNode_Local" ]
-branchProbabilities: { "PathNode_Highway": 0.7, "PathNode_Local": 0.3 }
-```
-→ 70% chance to highway, 30% to local road
+         INT_North (slot 0)
+               |
+               ↓
+INT_West ← INT_Center → INT_East
+(slot 3)       ↑        (slot 1)
+               |
+          INT_South (slot 2)
 
-### Other Useful Custom Properties
+neighbors = "INT_North,INT_East,INT_South,INT_West"
+             [0]       [1]      [2]       [3]
+```
+
+---
+
+## Additional Custom Properties (Optional)
 
 **Red Light Nodes:**
 ```
@@ -273,36 +467,55 @@ repairRate: 20.0           (health/second)
 serviceCost: 50.0          (money cost)
 ```
 
-### Complete Example
+### Complete Examples
 
-**Intersection with Traffic Light:**
+**Example 1: Topological 4-Way Intersection (RECOMMENDED)**
 
 1. Create mesh marker
-2. Name: `PathNode_Intersection_RedLight_Main_01`
+2. Name: `INT_Downtown_Main`
 3. Add custom properties:
    ```
-   next_nodes: [ "PathNode_North_02", "PathNode_East_02" ]
+   neighbors: INT_Uptown,INT_Harbor,INT_Station,INT_Park
+   ```
+
+This creates a 4-way intersection where:
+- Taxis can approach from any of 4 directions
+- Player controls turn behavior (straight/left/right)
+- Turn direction is relative to approach angle
+- Algebraic routing - no vector math
+
+**Example 2: Topological T-Intersection with Red Light**
+
+1. Create mesh marker
+2. Name: `INT_RedLight_Junction`
+3. Add custom properties:
+   ```
+   neighbors: INT_North,,INT_South,INT_West
    redLightDuration: 4.0
    greenLightDuration: 6.0
    currentState: "green"
    ```
 
-This creates an intersection where:
-- Taxis can go North OR East
-- There's a traffic light (4s red, 6s green)
-- Currently shows green
+This creates a T-intersection where:
+- North, South, and West exits (no East road)
+- Traffic light controls flow (4s red, 6s green)
+- Player can still toggle routing modes
 
 ### Testing Your Connections
 
 After exporting, check the browser console for:
+
 ```
 ✅ Extracted N path nodes:
-  - PathNode_01: next: ["PathNode_02"]
-  - PathNode_02: next: ["PathNode_03"]
-  - PathNode_Intersection_Main: next: ["PathNode_North", "PathNode_South"]
+  - INT_Center [TOPO] → N:INT_North, E:INT_East, S:INT_South, W:INT_West
+  - INT_North [TOPO] → N:-, E:-, S:INT_Center, W:-
+  - INT_T_Junction [TOPO] → N:INT_A, E:-, S:INT_B, W:INT_C
 ```
 
-If you see `next: []` for a node, you forgot to add the `next_nodes` property!
+**Warning Signs:**
+- Missing `[TOPO]` marker → You forgot to add the `neighbors` custom property!
+- `[TOPO]` with only 1 neighbor → Intersections need 2+ connections
+- Node IDs don't match → Check spelling in `neighbors` property
 
 ### 4. Scene Organization
 
@@ -509,30 +722,31 @@ export function extractPathNodesFromGLTF(gltf: GLTF): RoadNode[] {
 }
 ```
 
-### Method 3: Using Custom Properties (Advanced)
+### Method 3: Using Custom Properties (Recommended)
 
-In Blender, you can add **Custom Properties** to Empties to define connections:
+In Blender, add **Custom Properties** to define intersection connections:
 
 **In Blender:**
-1. Select PathNode Empty
+1. Select Intersection node
 2. Object Properties → Custom Properties → Add
-3. Add property: `next_nodes` = `"PathNode_002,PathNode_003"`
+3. Add property: `neighbors` = `"INT_North,INT_East,,INT_West"` (4 slots, empty for missing connections)
 
 **In Code:**
 ```typescript
-export function extractPathNodesWithConnections(gltf: GLTF): RoadNode[] {
+export function extractPathNodesFromGLTF(gltf: GLTF): RoadNode[] {
   const nodes: RoadNode[] = []
 
   gltf.scene.traverse((object) => {
-    if (object.name.startsWith('PathNode_')) {
-      const nextNodes = object.userData.next_nodes
-        ? object.userData.next_nodes.split(',')
-        : []
+    if (object.name.startsWith('PathNode_') || object.name.startsWith('INT_')) {
+      const neighbors = object.userData.neighbors
+        ? object.userData.neighbors.split(',').map(s => s.trim() || null)
+        : undefined
 
       nodes.push({
         id: object.name,
-        position: new THREE.Vector3().copy(object.position),
-        next: nextNodes
+        position: object.getWorldPosition(new THREE.Vector3()),
+        neighbors,
+        types: parseNodeTypes(object.name)
       })
     }
   })
@@ -786,25 +1000,25 @@ if (nodeHasType(currentNode, 'pickup')) {
 
 **In Blender:**
 ```
-PathNode_Intersection_Pickup_Terminal_001
+INT_Pickup_Terminal_Main
 ├── Position: (10, 0, 15)
 └── Custom Properties:
     ├── zoneName = "Main Terminal"
     ├── payoutMultiplier = 1.8
-    └── next_nodes = "PathNode_002,PathNode_005"
+    └── neighbors = "INT_North,,INT_Parking,INT_Downtown"
 ```
 
 **Extracted in Code:**
 ```typescript
 {
-  id: "PathNode_Intersection_Pickup_Terminal_001",
+  id: "INT_Pickup_Terminal_Main",
   position: Vector3(10, 0, 15),
   types: ['intersection', 'pickup'],
-  next: ['PathNode_002', 'PathNode_005'],
+  neighbors: ['INT_North', null, 'INT_Parking', 'INT_Downtown'],
   metadata: {
     zoneName: "Main Terminal",
     payoutMultiplier: 1.8,
-    next_nodes: "PathNode_002,PathNode_005"
+    neighbors: "INT_North,,INT_Parking,INT_Downtown"
   }
 }
 ```
@@ -812,12 +1026,15 @@ PathNode_Intersection_Pickup_Terminal_001
 ## Next Steps
 
 1. Model your city in Blender
-2. Add PathNode Empty objects using the naming conventions
-3. Add custom properties for metadata (optional)
-4. Export as `.glb` to `/public/models/city.glb`
-5. Generate TypeScript component with `gltfjsx`
-6. Extract nodes with `extractPathNodesFromGLTF()`
-7. Implement game logic based on node types
+2. Add intersection nodes using the naming convention (`INT_NodeName` or `PathNode_Intersection_Name`)
+3. Add `neighbors` custom property to define topological connections
+   - Format: `"North,East,South,West"` (4 comma-separated values)
+   - Empty slots use empty string (e.g., `"INT_N,,INT_S,"` for T-junction)
+4. Add optional custom properties for metadata (zone names, payout multipliers, etc.)
+5. Export as `.glb` to `/public/models/city.glb`
+6. Generate TypeScript component with `gltfjsx`
+7. Extract nodes with `extractPathNodesFromGLTF()`
+8. Test in-game - check browser console for `[TOPO]` markers
 
 ---
 
@@ -826,4 +1043,5 @@ PathNode_Intersection_Pickup_Terminal_001
 - `/webapp/data/roads.ts` - Road network data
 - `/webapp/lib/extractPathNodes.ts` - Node extraction utilities
 - `/webapp/lib/movement.ts` - Movement system
-- `/webapp/types/game.ts` - Type definitions (NodeType, NodeMetadata)
+- `/webapp/lib/intersectionTopology.ts` - **NEW:** Topological routing logic
+- `/webapp/types/game.ts` - Type definitions (NodeType, NodeMetadata, Dir)

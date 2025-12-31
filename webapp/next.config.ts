@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
 
   // Static export configuration for deployment
   output: 'export',
-  basePath: '/crazytaxi',
+  // basePath: '/crazytaxi',
 
   // Required for static export with images
   images: {

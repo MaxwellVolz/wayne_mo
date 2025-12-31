@@ -12,6 +12,7 @@ import { GLTF } from 'three-stdlib'
 import type { Taxi as TaxiType } from '@/types/game'
 import { updateTaxi, samplePath } from '@/lib/movement'
 import { getTimeScale } from '@/lib/gameState'
+import { getIntersections } from '@/lib/intersectionState'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -52,8 +53,9 @@ export default function Taxi({ taxi }: TaxiProps) {
     const timeScale = getTimeScale()
     const scaledDelta = delta * timeScale
 
-    // Update taxi position along path
-    updateTaxi(taxi, scaledDelta)
+    // Update taxi position along path (with intersection routing)
+    const intersections = getIntersections()
+    updateTaxi(taxi, scaledDelta, intersections)
 
     // Sample new position from path
     const position = samplePath(taxi.path, taxi.t)

@@ -3,6 +3,13 @@ import * as THREE from 'three'
 export type NodeId = string
 
 /**
+ * Topological direction slots for intersection neighbors
+ * 0 = North, 1 = East, 2 = South, 3 = West
+ * These are topological (consistent per intersection), not world directions
+ */
+export type Dir = 0 | 1 | 2 | 3
+
+/**
  * Path node types define the role/behavior of a node in the road network
  */
 export type NodeType =
@@ -16,11 +23,15 @@ export type NodeType =
 /**
  * Road node with type information and optional metadata
  * Nodes can have multiple types (e.g., an intersection with a red light)
+ *
+ * For intersection nodes, use 'neighbors' instead of 'next'
+ * For regular path nodes, use 'next'
  */
 export interface RoadNode {
   id: NodeId
   position: THREE.Vector3
-  next: NodeId[] // Connected node IDs
+  next?: NodeId[] // Connected node IDs (for non-intersection nodes)
+  neighbors?: (NodeId | null)[] // 4-slot array [N, E, S, W] (for intersection nodes)
   types: NodeType[] // Node can have multiple types
   metadata?: NodeMetadata // Optional type-specific data
 }
@@ -46,6 +57,23 @@ export interface NodeMetadata {
   branchProbabilities?: Record<NodeId, number> // Weighted path selection
 }
 
+/**
+ * Intersection routing modes - player controls how taxis navigate
+ * - pass_through: Continue straight (default)
+ * - turn_left: Take leftmost available path
+ * - turn_right: Take rightmost available path
+ */
+export type IntersectionMode = 'pass_through' | 'turn_left' | 'turn_right'
+
+/**
+ * Intersection state stores the player's routing decision
+ */
+export interface IntersectionState {
+  nodeId: string // e.g., "PathNode_Intersection_Main_01"
+  mode: IntersectionMode // Current routing rule
+  availablePaths: string[] // All possible next paths from this node
+}
+
 export interface RoadPath {
   id: string
   points: THREE.Vector3[]
@@ -67,6 +95,9 @@ export interface Taxi {
   t: number // normalized 0-1 along current path
   speed: number
   isFocused: boolean
+  // Topological navigation state
+  currentIntersectionId?: string // Current or last intersection node ID
+  incomingDir?: Dir // Direction taxi entered current intersection (0-3)
 }
 
 export interface InteractionZone {
@@ -84,6 +115,7 @@ export interface Gate {
 
 export interface GameState {
   taxis: Taxi[]
+  intersections: Map<string, IntersectionState> // Player-controlled intersection routing
   timeScale: number
   money: number
   automationUnlocked: boolean

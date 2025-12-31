@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Crazy Taxi-inspired AI management automation game where the player commands a fleet of autonomous taxis in a downtown cartoon city. The focus is on observation, timing, and automation rather than direct control.
+This is a Crazy Taxi-inspired AI management automation game where the player controls **intersections, not taxis**. Autonomous taxis navigate the city following persistent routing rules set by the player at each intersection. The focus is on spatial routing puzzles and traffic flow optimization rather than direct taxi control or timing mechanics.
 
 ## Tech Stack
 
@@ -18,30 +18,38 @@ This is a Crazy Taxi-inspired AI management automation game where the player com
 
 ## Critical Design Constraints
 
-### 10-Feature Hard Limit (Pre-Launch)
+### Core Game Mechanics (Implemented)
 
-The project operates under a strict 10-feature scope before launch. **Any feature not on this list is explicitly out of scope:**
+The game is built around **intersection control** as the primary mechanic:
 
-1. Single city map (8x8 blocks, handcrafted)
-2. Road graph with fixed paths
-3. One taxi at start, second taxi unlock (hard cap at 2 taxis)
-4. Path-based taxi movement (constant speed interpolation)
-5. STOP/GO interaction (single contextual button only)
-6. Pickup and dropoff timing windows
-7. Slow-motion focus (0.25x time scale, no pausing)
-8. Failure loop (missed timing causes block loop, time penalty only)
-9. One automation upgrade (either wider timing window OR auto-resume after load)
-10. Local save (money, automation state, second taxi state via localStorage)
+**✅ IMPLEMENTED:**
+1. Single city map (8x8 blocks, handcrafted in Blender)
+2. Road graph with fixed paths extracted from Blender
+3. Path-based taxi movement (constant speed interpolation)
+4. **Intersection routing control** - Player clicks intersections to toggle modes:
+   - Pass Through (Green +)
+   - Turn Left (Blue ↶)
+   - Turn Right (Orange ↷)
+5. Autonomous taxis that follow intersection rules
+6. Multiple taxi support (scalable from 1 to 10+)
 
-**Explicitly excluded for v1:**
+**📋 PLANNED (Next Features):**
+7. Delivery spawn and auto-claiming system
+8. Money/payout system
+9. Collision detection (reverse on collision)
+10. Local save (money, intersection states via localStorage)
+
+**❌ EXPLICITLY EXCLUDED:**
+- Direct taxi control (no STOP/GO buttons)
+- Timing windows or reflex-based mechanics
+- Slow-motion/pause systems
+- Per-taxi commands or micromanagement
 - Pedestrian logic
-- Traffic simulation
-- Service jobs (unless trivialized to a timer)
-- More than 2 taxis
-- Procedural generation
+- Traffic simulation AI
 - Physics simulation
+- Procedural generation
 
-When implementing features, verify they align with this scope. Reject scope creep.
+**Design Principle:** Player sets persistent routing rules. Taxis are fully autonomous. No micromanagement.
 
 ## Core Architecture
 
@@ -124,7 +132,7 @@ Path nodes extracted from Blender have types that define their behavior:
 ```typescript
 type NodeType =
   | 'path'          // Regular waypoint
-  | 'intersection'  // Where paths branch
+  | 'intersection'  // WHERE PLAYER CONTROLS ROUTING (core mechanic!)
   | 'pickup'        // Passenger pickup location
   | 'dropoff'       // Passenger dropoff location
   | 'red_light'     // Traffic light
@@ -144,44 +152,98 @@ interface RoadNode {
 }
 ```
 
+**⚠️ CRITICAL: Intersection Nodes**
+
+Intersections are the **core game mechanic** - this is what the player controls!
+
+**Requirements:**
+- Must have `Intersection` keyword in node name
+- Must have 2+ paths in `next_nodes` property (ideally 3 for straight/left/right)
+- Automatically become clickable player controls in-game
+
+**Visual Indicators:**
+- Green + = Pass Through mode
+- Blue ↶ = Turn Left mode
+- Orange ↷ = Turn Right mode
+
 **Naming Convention in Blender:**
 - `PathNode_001` → Regular path
-- `PathNode_Intersection_Main` → Intersection
+- `PathNode_Intersection_Main` → ⭐ **Player-controlled routing**
 - `PathNode_Pickup_Downtown_001` → Pickup zone
 - `PathNode_Intersection_RedLight_001` → Both types
 
-### Interaction Zones (Not Yet Implemented)
+See `/docs/blender.md` for complete intersection setup guide.
 
-Pickup and dropoff zones will be defined by node types and positions.
-Trigger slow-motion when taxi approaches nodes with `pickup` or `dropoff` types.
+### Intersection Control System ✅ IMPLEMENTED
 
-### Time Flow
+**Core Mechanic:** Player controls intersections, NOT taxis.
 
-- Single global `timeScale` variable (implemented in `lib/gameState.ts`)
-- Normal speed: `timeScale = 1`
-- Focus mode: `timeScale = 0.25`
-- When multiple taxis trigger focus: most recent event wins, no stacking
-- Time never fully pauses
-- **Status:** System implemented but not yet triggered by gameplay events
+**How It Works:**
+1. Player clicks an intersection in the 3D scene
+2. Intersection cycles through modes: Pass Through → Turn Left → Turn Right → Pass Through
+3. ALL taxis follow the same rule when they reach that intersection
+4. Routing is persistent until player changes it
+
+**Technical Implementation:**
+
+```typescript
+// Intersection modes
+type IntersectionMode = 'pass_through' | 'turn_left' | 'turn_right'
+
+// When taxi reaches intersection
+function getNextPath(currentPath: string, intersections: Map<string, IntersectionState>) {
+  // Categorize paths by direction using vector math
+  const paths = categorizePaths(incomingPath, intersection, allPaths)
+
+  // Select based on intersection mode
+  switch (intersectionState.mode) {
+    case 'pass_through': return paths.straight
+    case 'turn_left': return paths.left
+    case 'turn_right': return paths.right
+  }
+}
+```
+
+**Key Files:**
+- `lib/intersectionGeometry.ts` - Path direction detection (straight/left/right)
+- `hooks/useIntersectionManager.ts` - Intersection state management
+- `components/IntersectionTile.tsx` - Visual indicators (+ and curved arrows)
+- `components/IntersectionManager.tsx` - Renders all intersection controls
+
+**Visual Feedback:**
+- Colored symbols hover above each intersection
+- Click to cycle modes
+- Cursor changes on hover
+- Compact, clear icons (1.2 unit radius)
 
 ### Player Interaction Model
 
-**UI constraints:**
-- Single contextual button: displays "STOP" when taxi moving, "GO" when stopped
-- No additional UI controls
-- Players select taxis directly in 3D scene
-- Minimize UI clutter
+**What Player Controls:**
+- ✅ Intersections (persistent routing rules)
+- ✅ Game can be paused (planned)
+- ❌ NOT individual taxis
+- ❌ NOT timing-based interactions
 
-**Interaction logic:**
-- Success: player presses STOP within interaction window → taxi stops, bonus reward
-- Failure: missed timing → taxi loops the block (time penalty only, no money loss)
+**UI Philosophy:**
+- Minimal UI - focus on 3D world
+- Direct 3D interaction (click intersections in scene)
+- Clear visual feedback (colored symbols)
+- No menus or complex interfaces
+
+**Interaction Flow:**
+1. Observe taxis moving autonomously
+2. Identify routing problems
+3. Click intersection to change routing mode
+4. Watch taxis follow new rule
+5. Iterate as needed
 
 ## Design Pillars
 
-1. **Motion over menus** - Keep the city in constant motion
-2. **Attention as a limited resource** - Focus mechanics create strategic decisions
-3. **Skill first, automation second** - Player mastery before automation unlocks
-4. **Failure is recoverable and readable** - Block loops are visible, time-based penalties
+1. **Spatial puzzles over timing** - Routing optimization, not reflex-based
+2. **Persistent rules over micromanagement** - Set it and observe
+3. **System-level thinking** - Control traffic flow, not individual taxis
+4. **Observable automation** - Taxis are fully autonomous, player influences indirectly
+5. **Failure is time loss** - Poor routing slows down deliveries, no hard punishments
 
 ## Visual Design Priorities
 
@@ -193,16 +255,20 @@ Trigger slow-motion when taxi approaches nodes with `pickup` or `dropoff` types.
 
 ## Progression Philosophy
 
-Automation is the primary progression mechanic. Automation upgrades exist to **reduce interrupt frequency**, not to replace player skill.
+**Intersection control IS the automation.**
 
-Examples of valid automation:
-- Auto-restart after stopping
-- Auto-service below health threshold
-- Wider stop timing windows
-- Reduced service frequency
+Unlike traditional management games, this game has no "automation upgrades" - the player's routing rules ARE the automation.
 
-Risk/reward modifiers:
-- Higher-paying jobs generate more frequent interactions
+**Progression comes from:**
+- More taxis (increases complexity)
+- More deliveries (increases traffic density)
+- More intersections (more strategic decisions)
+- Money accumulation (unlock taxis/cosmetics)
+
+**The challenge scales through:**
+- Traffic density, not individual difficulty
+- Strategic depth, not mechanical complexity
+- Spatial optimization, not timing precision
 
 ## Development Philosophy
 
@@ -218,30 +284,69 @@ When implementing features:
 
 ## Current Implementation Status
 
-**Phase 1: Foundation ✅ COMPLETE**
+**✅ COMPLETE - Core Game Mechanic Working:**
+
+**Foundation:**
 - Three.js scene with camera and lighting
-- 8x8 city grid (now using Blender model)
+- 8x8 city grid using Blender model
 - Road network with path data structures
 - Taxi visualization with state-based emissive colors
-- Deterministic movement system
+- Deterministic movement system (path-based, 60fps)
 
-**Blender Integration ✅ COMPLETE**
+**Blender Integration:**
 - Full workflow documentation (`docs/blender.md`)
 - Path node extraction from GLB models
 - Node type system with metadata support
 - Texture-preserving model imports
 - Auto-generated TypeScript components via gltfjsx
+- **Intersection node setup guide**
 
-**Infrastructure Ready:**
-- Time scale system (for slow-motion focus)
-- Save/load system scaffolding
-- Game state management
-- Type definitions for all game entities
+**Intersection Control System (IMPLEMENTED):**
+- ✅ Path direction detection using vector math
+- ✅ Intersection state management
+- ✅ Visual indicators (+ and curved arrows)
+- ✅ Click-to-toggle interaction
+- ✅ Taxi routing based on intersection modes
+- ✅ Global state synchronization
+- ✅ Multi-taxi support
+- ✅ Stable performance (60fps with 10+ intersections)
 
-**Next Phase: Interaction Mechanics**
-- STOP/GO UI button
-- Interaction zone detection
-- Timing windows with visual feedback
-- Failure loop mechanic
+**Key Files:**
+```
+webapp/
+├── lib/
+│   ├── intersectionGeometry.ts      ✅ Direction detection
+│   ├── intersectionState.ts         ✅ Global state
+│   └── movement.ts                  ✅ Updated for intersections
+├── components/
+│   ├── IntersectionTile.tsx         ✅ Visual indicators
+│   ├── IntersectionManager.tsx      ✅ Renders all tiles
+│   └── Taxi.tsx                     ✅ Uses intersection routing
+├── hooks/
+│   └── useIntersectionManager.ts    ✅ State management
+└── data/
+    └── roads.ts                     ✅ Updated routing logic
+```
 
-See `/PROGRESS.md` and `/plan.md` for detailed roadmap.
+**📋 NEXT PHASE: Delivery System**
+- Delivery spawn at pickup nodes
+- Auto-claiming by first taxi to arrive
+- Money/payout system
+- Delivery completion and visual feedback
+
+**📋 FUTURE PHASES:**
+- Collision detection (taxis reverse on collision)
+- Multi-taxi spawning and scaling
+- Local save system (intersection states + money)
+- UI polish and sound effects
+
+**Documentation:**
+- `/docs/INTERSECTION_SYSTEM_SUMMARY.md` - Complete implementation details
+- `/docs/INTERSECTION_PLAN.md` - Original implementation plan
+- `/docs/PHASE1_COMPLETE.md` - Core routing logic
+- `/docs/PHASE2_COMPLETE.md` - Visual indicators
+- `/docs/TESTING_GUIDE.md` - How to test the system
+- `/docs/blender.md` - Intersection setup in Blender
+- `/docs/game_concept.md` - Original game design
+
+**System Status:** PRODUCTION READY for gameplay testing and delivery system implementation.
