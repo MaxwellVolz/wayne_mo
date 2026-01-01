@@ -54,7 +54,12 @@ export function TutorialSlider() {
               alt={`Tutorial step ${currentSlide + 1}`}
               width={600}
               height={400}
-              style={{ objectFit: 'contain' }}
+              style={{
+                objectFit: 'contain',
+                width: '100%',
+                height: 'auto',
+                maxHeight: '100%'
+              }}
               priority
             />
           </div>
@@ -133,9 +138,11 @@ export function TutorialSlider() {
           padding: 1rem;
           margin-bottom: 1rem;
           min-height: 400px;
+          max-height: 500px;
           display: flex;
           align-items: center;
           justify-content: center;
+          overflow: hidden;
         }
 
         .slide-text {
@@ -178,7 +185,8 @@ export function TutorialSlider() {
 
         @media (max-width: 768px) {
           .tutorial-slider {
-            max-width: 90%;
+            max-width: 95%;
+            margin: 1rem auto;
           }
 
           .slider-content {
@@ -194,19 +202,26 @@ export function TutorialSlider() {
           }
 
           .slide-image {
-            min-height: 250px;
+            min-height: 200px;
+            max-height: 300px;
             padding: 0.5rem;
           }
 
           .slide-text {
-            font-size: 0.95rem;
-            padding: 0 1rem;
+            font-size: 0.9rem;
+            padding: 0 0.5rem;
+            line-height: 1.4;
+          }
+
+          .dots {
+            margin-top: 1rem;
           }
         }
 
         @media (max-width: 480px) {
           .tutorial-slider {
-            max-width: 95%;
+            max-width: 100%;
+            margin: 0.5rem auto;
           }
 
           .slider-content {
@@ -215,30 +230,56 @@ export function TutorialSlider() {
 
           .arrow {
             font-size: 1.5rem;
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             line-height: 0;
             padding-bottom: 2px;
+            border: 1.5px solid rgba(255, 255, 255, 0.5);
           }
 
           .slide-image {
-            min-height: 200px;
+            min-height: 150px;
+            max-height: 200px;
             padding: 0.25rem;
+            border-radius: 6px;
           }
 
           .slide-text {
-            font-size: 0.85rem;
-            padding: 0 0.5rem;
+            font-size: 0.75rem;
+            padding: 0 0.25rem;
+            line-height: 1.3;
           }
 
           .dots {
-            gap: 0.5rem;
-            margin-top: 1rem;
+            gap: 0.4rem;
+            margin-top: 0.75rem;
           }
 
           .dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
+            border: 1.5px solid rgba(255, 255, 255, 0.5);
+          }
+
+          .dot.active {
+            transform: scale(1.2);
+          }
+        }
+
+        @media (max-width: 360px) {
+          .arrow {
+            font-size: 1.25rem;
+            width: 32px;
+            height: 32px;
+          }
+
+          .slide-image {
+            min-height: 120px;
+            max-height: 160px;
+          }
+
+          .slide-text {
+            font-size: 0.7rem;
           }
         }
       `}</style>

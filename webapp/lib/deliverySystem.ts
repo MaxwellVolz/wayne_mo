@@ -4,12 +4,12 @@ import type { DeliveryEvent, RoadNode, Taxi } from '@/types/game'
 /**
  * Collision threshold for pickup detection (in units)
  */
-const PICKUP_COLLISION_THRESHOLD = 2.0
+const PICKUP_COLLISION_THRESHOLD = 1.1
 
 /**
  * Collision threshold for dropoff detection (in units)
  */
-const DROPOFF_COLLISION_THRESHOLD = 1.0
+const DROPOFF_COLLISION_THRESHOLD = 1.1
 
 /**
  * Base payout for deliveries

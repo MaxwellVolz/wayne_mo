@@ -49,7 +49,9 @@ export default function IntroScene({ onPlay }: IntroSceneProps) {
           justify-content: flex-start;
           z-index: 1000;
           overflow-y: auto;
+          overflow-x: hidden;
           padding: 2rem 1rem;
+          -webkit-overflow-scrolling: touch;
         }
 
         .intro-content {
@@ -57,12 +59,14 @@ export default function IntroScene({ onPlay }: IntroSceneProps) {
           color: white;
           animation: fadeIn 1s ease-in;
           margin-bottom: 2rem;
+          width: 100%;
+          max-width: 1200px;
         }
 
         .tutorial-section {
           width: 100%;
           max-width: 800px;
-          margin-top: 2rem;
+          margin: 2rem auto 0;
           animation: fadeIn 1.5s ease-in;
         }
 
@@ -146,26 +150,34 @@ export default function IntroScene({ onPlay }: IntroSceneProps) {
           .game-title {
             font-size: 2.5rem;
             letter-spacing: 0.1em;
+            -webkit-text-stroke: 1.5px #ff6b00;
           }
 
           .game-subtitle {
             font-size: 0.9rem;
             letter-spacing: 0.2em;
-            margin: 0.5rem 0 2rem;
+            margin: 0.5rem 0 1.5rem;
           }
 
           .play-button {
             padding: 1rem 2rem;
             font-size: 1.5rem;
             letter-spacing: 0.1em;
+            width: auto;
+            min-width: 200px;
           }
 
           .tutorial-title {
             font-size: 1.5rem;
+            -webkit-text-stroke: 0.5px #ff6b00;
+          }
+
+          .tutorial-section {
+            margin-top: 1.5rem;
           }
 
           .intro-hints {
-            margin-top: 2rem;
+            margin-top: 1.5rem;
           }
 
           .intro-hints p {
@@ -174,26 +186,79 @@ export default function IntroScene({ onPlay }: IntroSceneProps) {
         }
 
         @media (max-width: 480px) {
+          .intro-scene {
+            padding: 0.5rem 0.25rem;
+          }
+
           .game-title {
-            font-size: 2rem;
+            font-size: 1.75rem;
+            letter-spacing: 0.05em;
+            -webkit-text-stroke: 1px #ff6b00;
+            margin-bottom: 0.5rem;
           }
 
           .game-subtitle {
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            margin: 0.25rem 0 1rem;
           }
 
           .play-button {
             padding: 0.75rem 1.5rem;
-            font-size: 1.25rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            border: 3px solid #ff6b00;
+            min-width: 160px;
           }
 
           .tutorial-title {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            -webkit-text-stroke: 0.5px #ff6b00;
           }
 
           .tutorial-section {
-            max-width: 95%;
+            max-width: 100%;
+            margin-top: 1rem;
+            padding: 0 0.25rem;
+          }
+
+          .intro-hints {
+            margin-top: 1rem;
+          }
+
+          .intro-hints p {
+            font-size: 0.8rem;
+            margin: 0.25rem 0;
+          }
+        }
+
+        @media (max-width: 360px) {
+          .intro-scene {
+            padding: 0.25rem 0.125rem;
+          }
+
+          .game-title {
+            font-size: 1.5rem;
+            letter-spacing: 0.03em;
+            -webkit-text-stroke: 0.75px #ff6b00;
+          }
+
+          .game-subtitle {
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+          }
+
+          .play-button {
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
+            letter-spacing: 0.03em;
+            border: 2px solid #ff6b00;
+            min-width: 140px;
+          }
+
+          .tutorial-title {
+            font-size: 1rem;
           }
         }
       `}</style>
