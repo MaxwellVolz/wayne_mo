@@ -11,12 +11,16 @@ import { DeliveryManager } from './DeliveryManager'
 import { DeliverySystem } from './DeliverySystem'
 import { CollisionSystem } from './CollisionSystem'
 import { TaxiManager } from './TaxiManager'
+import { CameraController } from './CameraController'
 
 interface SceneProps {
   taxisRef: MutableRefObject<TaxiType[]>
   deliveriesRef: MutableRefObject<DeliveryEvent[]>
   pickupNodesRef: MutableRefObject<RoadNode[]>
   deliveryTimerRef: MutableRefObject<number>
+  isPaused: boolean
+  debugMode: boolean
+  isRushHour: boolean
 }
 
 /**
@@ -27,7 +31,10 @@ export default function Scene({
   taxisRef,
   deliveriesRef,
   pickupNodesRef,
-  deliveryTimerRef
+  deliveryTimerRef,
+  isPaused,
+  debugMode,
+  isRushHour
 }: SceneProps) {
 
   return (
@@ -49,7 +56,7 @@ export default function Scene({
 
       {/* Camera controls - orbit around city */}
       <OrbitControls
-        enablePan={true}
+        enablePan={false}
         enableZoom={true}
         enableRotate={true}
         maxPolarAngle={Math.PI / 2.2}
@@ -58,17 +65,20 @@ export default function Scene({
         target={[0.5, 0, -0.5]}
       />
 
+      {/* WASD camera panning */}
+      <CameraController />
+
       {/* Blender city model (buildings and path nodes) */}
       <CityModel />
 
       {/* Road network visualization */}
-      <RoadVisualizer />
+      <RoadVisualizer debugMode={debugMode} />
 
       {/* Intersection control tiles */}
       <IntersectionManager />
 
       {/* Collision detection system */}
-      <CollisionSystem taxisRef={taxisRef} />
+      <CollisionSystem taxisRef={taxisRef} isPaused={isPaused} />
 
       {/* Delivery system logic (spawn timer & collision detection) */}
       <DeliverySystem
@@ -76,6 +86,8 @@ export default function Scene({
         deliveryTimerRef={deliveryTimerRef}
         pickupNodesRef={pickupNodesRef}
         taxisRef={taxisRef}
+        isPaused={isPaused}
+        isRushHour={isRushHour}
       />
 
       {/* Delivery visual indicators (pickup/dropoff/package) */}
@@ -86,7 +98,7 @@ export default function Scene({
       />
 
       {/* Taxis */}
-      <TaxiManager taxisRef={taxisRef} />
+      <TaxiManager taxisRef={taxisRef} isPaused={isPaused} />
 
       {/* Grid helper for debugging */}
       <gridHelper args={[20, 20, '#444', '#222']} />

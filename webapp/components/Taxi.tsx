@@ -19,7 +19,7 @@ type GLTFResult = GLTF & {
     taxi: THREE.Mesh
   }
   materials: {
-    colormap: THREE.MeshStandardMaterial
+    ['colormap.013']: THREE.MeshStandardMaterial
   }
 }
 
@@ -29,7 +29,7 @@ export function Model(props: React.ComponentProps<'group'>) {
   return (
     <group {...props} dispose={null}>
       <group name="Scene">
-        <mesh name="taxi" geometry={nodes.taxi.geometry} material={materials.colormap} rotation={[Math.PI / 2, 0, 0]} scale={0.198} userData={{ name: 'taxi' }} />
+        <mesh name="taxi" geometry={nodes.taxi.geometry} material={materials['colormap.013']} rotation={[Math.PI / 2, 0, 0]} scale={0.297} userData={{ name: 'taxi' }} />
       </group>
     </group>
   )
@@ -38,9 +38,10 @@ export function Model(props: React.ComponentProps<'group'>) {
 // Game taxi with movement logic (default export)
 interface TaxiProps {
   taxi: TaxiType
+  isPaused: boolean
 }
 
-export default function Taxi({ taxi }: TaxiProps) {
+export default function Taxi({ taxi, isPaused }: TaxiProps) {
   const groupRef = useRef<THREE.Group>(null)
   const previousPosition = useRef<THREE.Vector3>(new THREE.Vector3())
   const { nodes, materials } = useGLTF('/models/taxi.glb') as unknown as GLTFResult
@@ -48,6 +49,9 @@ export default function Taxi({ taxi }: TaxiProps) {
   // Use Three.js render loop for smooth animation
   useFrame((state, delta) => {
     if (!groupRef.current || !taxi.path) return
+
+    // Don't update movement when paused
+    if (isPaused) return
 
     // Apply time scale for slow-motion
     const timeScale = getTimeScale()
@@ -94,14 +98,14 @@ export default function Taxi({ taxi }: TaxiProps) {
     <group ref={groupRef}>
       <mesh
         geometry={nodes.taxi.geometry}
-        material={materials.colormap}
+        material={materials['colormap.013']}
         rotation={[Math.PI / 2, 0, 0]}
-        scale={0.198}
+        scale={0.297}
         castShadow
       >
         {/* Clone material and add emissive for state indication */}
         <meshStandardMaterial
-          {...materials.colormap}
+          {...materials['colormap.013']}
           emissive={getEmissiveColor()}
           emissiveIntensity={0.5}
         />

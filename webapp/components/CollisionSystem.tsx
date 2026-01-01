@@ -7,14 +7,18 @@ import { checkTaxiCollisions } from '@/lib/collisionSystem'
 
 interface CollisionSystemProps {
   taxisRef: MutableRefObject<Taxi[]>
+  isPaused: boolean
 }
 
 /**
  * Manages taxi collision detection and handling
  * Runs every frame using useFrame
  */
-export function CollisionSystem({ taxisRef }: CollisionSystemProps) {
+export function CollisionSystem({ taxisRef, isPaused }: CollisionSystemProps) {
   useFrame((_, delta) => {
+    // Don't process collisions when paused
+    if (isPaused) return
+
     const deltaMs = delta * 1000 // Convert to milliseconds
 
     // Check for collisions between all taxis

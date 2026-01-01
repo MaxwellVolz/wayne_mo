@@ -1,5 +1,7 @@
 'use client'
 
+import { TutorialSlider } from './TutorialSlider'
+
 interface IntroSceneProps {
   onPlay: () => void
 }
@@ -14,6 +16,12 @@ export default function IntroScene({ onPlay }: IntroSceneProps) {
       <div className="intro-content">
         <h1 className="game-title">Wayne Mo</h1>
         <p className="game-subtitle">AI MANAGEMENT AUTOMATION</p>
+
+        {/* How to Play Section */}
+        <div className="tutorial-section">
+          <h2 className="tutorial-title">How to Play</h2>
+          <TutorialSlider />
+        </div>
 
         <button
           className="play-button"
@@ -36,15 +44,36 @@ export default function IntroScene({ onPlay }: IntroSceneProps) {
           height: 100vh;
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           display: flex;
+          flex-direction: column;
           align-items: center;
-          justify-content: center;
+          justify-content: flex-start;
           z-index: 1000;
+          overflow-y: auto;
+          padding: 2rem 1rem;
         }
 
         .intro-content {
           text-align: center;
           color: white;
           animation: fadeIn 1s ease-in;
+          margin-bottom: 2rem;
+        }
+
+        .tutorial-section {
+          width: 100%;
+          max-width: 800px;
+          margin-top: 2rem;
+          animation: fadeIn 1.5s ease-in;
+        }
+
+        .tutorial-title {
+          color: #ffff00;
+          font-size: 2rem;
+          font-weight: 900;
+          text-align: center;
+          margin-bottom: 1rem;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+          -webkit-text-stroke: 1px #ff6b00;
         }
 
         .game-title {
@@ -110,13 +139,61 @@ export default function IntroScene({ onPlay }: IntroSceneProps) {
         }
 
         @media (max-width: 768px) {
+          .intro-scene {
+            padding: 1rem 0.5rem;
+          }
+
           .game-title {
             font-size: 2.5rem;
+            letter-spacing: 0.1em;
+          }
+
+          .game-subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            margin: 0.5rem 0 2rem;
           }
 
           .play-button {
-            padding: 1rem 2.5rem;
+            padding: 1rem 2rem;
             font-size: 1.5rem;
+            letter-spacing: 0.1em;
+          }
+
+          .tutorial-title {
+            font-size: 1.5rem;
+          }
+
+          .intro-hints {
+            margin-top: 2rem;
+          }
+
+          .intro-hints p {
+            font-size: 0.9rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .game-title {
+            font-size: 2rem;
+          }
+
+          .game-subtitle {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+          }
+
+          .play-button {
+            padding: 0.75rem 1.5rem;
+            font-size: 1.25rem;
+          }
+
+          .tutorial-title {
+            font-size: 1.25rem;
+          }
+
+          .tutorial-section {
+            max-width: 95%;
           }
         }
       `}</style>

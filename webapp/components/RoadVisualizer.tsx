@@ -4,17 +4,21 @@ import { Line } from '@react-three/drei'
 import { getRoadNetwork } from '@/data/roads'
 import { nodeHasType } from '@/lib/extractPathNodes'
 
+interface RoadVisualizerProps {
+  debugMode: boolean
+}
+
 /**
  * Visualizes road paths with debug lines
  * Shows the path network that taxis follow
  */
-export default function RoadVisualizer() {
+export default function RoadVisualizer({ debugMode }: RoadVisualizerProps) {
   const network = getRoadNetwork()
 
   return (
     <group>
-      {/* Show paths as lines */}
-      {network.paths.map((path) => {
+      {/* Show paths as lines (only in debug mode) */}
+      {debugMode && network.paths.map((path) => {
         const points = path.points.map((p) => [p.x, p.y, p.z] as [number, number, number])
 
         return (
@@ -28,8 +32,8 @@ export default function RoadVisualizer() {
         )
       })}
 
-      {/* Show nodes as small spheres with colors based on type */}
-      {network.nodes.map((node) => {
+      {/* Show nodes as small spheres with colors based on type (only in debug mode) */}
+      {debugMode && network.nodes.map((node) => {
         // Color based on node type
         let color = '#888888' // default gray
         if (nodeHasType(node, 'pickup')) color = '#00ff00' // green

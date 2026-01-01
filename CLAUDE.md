@@ -15,6 +15,7 @@ This is a Crazy Taxi-inspired AI management automation game where the player con
 - **@react-three/drei** - React Three.js helpers
 - **TypeScript 5** - Type safety
 - **Blender** - 3D modeling and path node authoring
+- **Lucide React** - Professional icon library for UI
 
 ## Critical Design Constraints
 
@@ -27,22 +28,29 @@ The game is built around **intersection control** as the primary mechanic:
 2. Road graph with fixed paths extracted from Blender
 3. Path-based taxi movement (constant speed interpolation)
 4. **Intersection routing control** - Player clicks intersections to toggle modes:
-   - Pass Through (Green +)
-   - Turn Left (Blue ↶)
-   - Turn Right (Orange ↷)
+   - Pass Through (Green Move icon)
+   - Turn Left (Yellow RefreshCcw - spinning counter-clockwise)
+   - Turn Right (Blue RefreshCw - spinning clockwise)
 5. Autonomous taxis that follow intersection rules
 6. Multiple taxi support (scalable from 1 to 10+)
+7. **Delivery spawn and auto-claiming system** - Timer-based spawning with collision detection
+8. **Money/payout system** - Distance-based payouts, taxi spawning costs
+9. **Collision detection** - Taxis reverse on collision with cooldown
+10. **Pause system** - Space bar to pause ($10 cost), allows camera movement and intersection changes
+11. **Rush Hour mechanic** - At 30 seconds remaining, delivery spawn rate doubles (10s → 5s)
+12. **Game timer** - 120 second timed sessions with Game Over screen
+13. **Delivery visuals** - Pickup indicators, dropoff indicators, curved arc delivery paths
+14. **Smart spawning** - Prevents overlapping pickups/dropoffs on same nodes
 
 **📋 PLANNED (Next Features):**
-7. Delivery spawn and auto-claiming system
-8. Money/payout system
-9. Collision detection (reverse on collision)
-10. Local save (money, intersection states via localStorage)
+- Local save (money, intersection states via localStorage)
+- Tutorial improvements
+- Sound effects and particle effects
+- Additional visual polish
 
 **❌ EXPLICITLY EXCLUDED:**
 - Direct taxi control (no STOP/GO buttons)
 - Timing windows or reflex-based mechanics
-- Slow-motion/pause systems
 - Per-taxi commands or micromanagement
 - Pedestrian logic
 - Traffic simulation AI
@@ -207,20 +215,23 @@ function getNextPath(currentPath: string, intersections: Map<string, Intersectio
 **Key Files:**
 - `lib/intersectionGeometry.ts` - Path direction detection (straight/left/right)
 - `hooks/useIntersectionManager.ts` - Intersection state management
-- `components/IntersectionTile.tsx` - Visual indicators (+ and curved arrows)
+- `components/IntersectionTile.tsx` - Visual indicators using Lucide React icons
 - `components/IntersectionManager.tsx` - Renders all intersection controls
 
 **Visual Feedback:**
-- Colored symbols hover above each intersection
-- Click to cycle modes
+- Professional icons from Lucide React library (Move, RefreshCcw, RefreshCw)
+- 124px icons with glowing drop shadows
+- Rotation animations (4s per revolution) for turn modes
+- Click to cycle modes (Pass Through → Turn Left → Turn Right)
 - Cursor changes on hover
-- Compact, clear icons (1.2 unit radius)
+- Semi-transparent colored base circles
 
 ### Player Interaction Model
 
 **What Player Controls:**
 - ✅ Intersections (persistent routing rules)
-- ✅ Game can be paused (planned)
+- ✅ Game pause (Space bar - costs $10, allows camera movement)
+- ✅ Taxi spawning (buy new taxis, cost increases: $300, $400, $500...)
 - ❌ NOT individual taxis
 - ❌ NOT timing-based interactions
 
@@ -306,11 +317,35 @@ When implementing features:
 - ✅ Explicit priority-based fallback tables
 - ✅ 3-tier routing: dead ends, corners, intersections
 - ✅ Dynamic incoming direction calculation from paths
-- ✅ Visual indicators: + for pass-through, mirrored rotation arrows for turns
+- ✅ Visual indicators using Lucide React icons (Move, RefreshCcw, RefreshCw)
+- ✅ Animated spinning icons for turn modes (4s rotation)
 - ✅ Click-to-toggle interaction (3 modes)
 - ✅ No U-turns at corners
 - ✅ Multi-taxi support
 - ✅ Stable performance (60fps with 10+ intersections)
+
+**Delivery System (IMPLEMENTED):**
+- ✅ Timer-based delivery spawning (10s intervals, 5s during Rush Hour)
+- ✅ Pickup and dropoff collision detection
+- ✅ Visual indicators: pulsing pickup cubes, dropoff spheres
+- ✅ Curved arc delivery path visualization (15 sphere particles)
+- ✅ Distance-based payout calculation
+- ✅ Zone-based payout multipliers
+- ✅ 16-color palette to distinguish deliveries
+- ✅ Smart spawning prevents overlapping deliveries on same nodes
+- ✅ Package indicators above taxis during transit
+- ✅ Separate collision thresholds (pickup: 2.0, dropoff: 1.0)
+
+**Game Systems (IMPLEMENTED):**
+- ✅ 120-second timed game sessions
+- ✅ Rush Hour at 30s remaining (2x spawn frequency + dramatic banner)
+- ✅ Pause system (Space bar, $10 cost, camera/intersection control still works)
+- ✅ Debug mode toggle (H key) - shows road network nodes and paths
+- ✅ Taxi collision detection with reverse behavior and cooldown
+- ✅ Money system with initial $100 starting balance
+- ✅ Taxi spawning with incremental cost ($300, $400, $500...)
+- ✅ Game Over screen with final score and restart
+- ✅ Mobile-responsive UI with breakpoints
 
 **Key Files:**
 ```
@@ -319,39 +354,42 @@ webapp/
 │   ├── intersectionTopology.ts      ✅ Priority-based routing with explicit tables
 │   ├── intersectionGeometry.ts      ✅ Legacy vector-based detection
 │   ├── intersectionState.ts         ✅ Global state
-│   └── movement.ts                  ✅ Updated for topological routing
+│   ├── movement.ts                  ✅ Topological routing + intersection integration
+│   ├── deliverySystem.ts            ✅ Delivery spawning, collision, smart node allocation
+│   └── gameState.ts                 ✅ Time scale management
 ├── components/
-│   ├── IntersectionTile.tsx         ✅ Visual indicators (+, ↶, ↷)
+│   ├── IntersectionTile.tsx         ✅ Lucide icons (Move, RefreshCcw, RefreshCw)
 │   ├── IntersectionManager.tsx      ✅ Renders all tiles
-│   └── Taxi.tsx                     ✅ Uses topological routing
+│   ├── Taxi.tsx                     ✅ Topological routing + state-based emissive
+│   ├── DeliverySystem.tsx           ✅ Spawn timer + Rush Hour support
+│   ├── DeliveryManager.tsx          ✅ Visual indicators orchestration
+│   ├── DeliveryPath.tsx             ✅ Curved particle arc visualization
+│   ├── PickupIndicator.tsx          ✅ Pulsing cube indicators
+│   ├── DropoffIndicator.tsx         ✅ Dropoff sphere indicators
+│   ├── PackageIndicator.tsx         ✅ Above-taxi package display
+│   ├── CollisionSystem.tsx          ✅ Taxi collision detection
+│   ├── GameHUD.tsx                  ✅ Timer, money, pause, Rush Hour banner
+│   ├── GameOverModal.tsx            ✅ End screen with restart
+│   └── Game.tsx                     ✅ Main game orchestration
 ├── hooks/
-│   └── useIntersectionManager.ts    ✅ State management
+│   ├── useIntersectionManager.ts    ✅ State management
+│   └── useGameLoop.ts               ✅ Taxi/delivery ref management
 └── data/
     └── roads.ts                     ✅ Dual-mode routing (topological + legacy)
 ```
 
-**📋 NEXT PHASE: Delivery System**
-**See `/docs/DELIVERY_SYSTEM_PLAN.md` for complete implementation plan**
-
-Core features to implement:
-1. Pickup and dropoff node extraction from Blender (`Pickup_*`, `Dropoff_*`)
-2. Timer-based delivery event spawning
-3. Visual indicators for active pickups/dropoffs
-4. Collision detection for package pickup/delivery
-5. Package indicator above taxi during transit
-6. Money/payout system
-
 **📋 FUTURE PHASES:**
-- Taxi collision detection (reverse on collision)
-- Multi-taxi spawning and management
-- Local save system (money, intersection states)
-- UI: money display, delivery counter
-- Sound effects and particle effects
-- Delivery time limits / urgency system
+- Local save system (money, intersection states via localStorage)
+- Tutorial system improvements
+- Sound effects and music
+- Particle effects for pickups/dropoffs
+- Additional visual polish
+- Performance optimizations for 20+ taxis
 
 **Documentation:**
-- `/docs/DELIVERY_SYSTEM_PLAN.md` - Next implementation phase
 - `/docs/blender.md` - Blender integration guide (intersection setup)
 - `/docs/game_concept.md` - Original game design document
+- `/docs/INTERSECTION_SYSTEM_SUMMARY.md` - Complete routing implementation
+- `/docs/TESTING_GUIDE.md` - How to test intersection system
 
-**System Status:** Routing system COMPLETE. Ready to implement delivery system.
+**System Status:** 🎮 PLAYABLE GAME - Core gameplay loop complete with delivery system, Rush Hour, and polish.

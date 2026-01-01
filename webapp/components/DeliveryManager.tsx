@@ -7,6 +7,7 @@ import type { DeliveryEvent, RoadNode, Taxi } from '@/types/game'
 import { PickupIndicator } from './PickupIndicator'
 import { DropoffIndicator } from './DropoffIndicator'
 import { PackageIndicator } from './PackageIndicator'
+import { DeliveryPath } from './DeliveryPath'
 
 interface DeliveryManagerProps {
   deliveriesRef: MutableRefObject<DeliveryEvent[]>
@@ -59,7 +60,26 @@ export function DeliveryManager({
           )
         })}
 
-      {/* Render dropoff indicators for in-transit deliveries */}
+      {/* Render curved path lines for waiting deliveries */}
+      {activeDeliveries
+        .filter(d => d.status === 'waiting_pickup')
+        .map(delivery => {
+          const pickupNode = pickupNodes.find(n => n.id === delivery.pickupNodeId)
+          const dropoffNode = pickupNodes.find(n => n.id === delivery.dropoffNodeId)
+          if (!pickupNode || !dropoffNode) return null
+
+          return (
+            <DeliveryPath
+              key={`path-${delivery.id}`}
+              pickupPosition={pickupNode.position}
+              dropoffPosition={dropoffNode.position}
+              color={delivery.color}
+              opacity={0.5}
+            />
+          )
+        })}
+
+      {/* Render dropoff indicators for in-transit deliveries (100% opacity) */}
       {activeDeliveries
         .filter(d => d.status === 'in_transit')
         .map(delivery => {
@@ -71,6 +91,7 @@ export function DeliveryManager({
               key={`dropoff-${delivery.id}`}
               position={node.position}
               color={delivery.color}
+              opacity={1.0}
             />
           )
         })}

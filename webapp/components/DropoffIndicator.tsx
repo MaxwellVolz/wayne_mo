@@ -7,12 +7,13 @@ import * as THREE from 'three'
 interface DropoffIndicatorProps {
   position: THREE.Vector3
   color: string
+  opacity?: number
 }
 
 /**
  * Pulsing indicator for active dropoff locations
  */
-export function DropoffIndicator({ position, color }: DropoffIndicatorProps) {
+export function DropoffIndicator({ position, color, opacity = 0.9 }: DropoffIndicatorProps) {
   const meshRef = useRef<THREE.Mesh>(null)
   const timeRef = useRef(0)
 
@@ -41,7 +42,7 @@ export function DropoffIndicator({ position, color }: DropoffIndicatorProps) {
         emissive={color}
         emissiveIntensity={0.8}
         transparent
-        opacity={0.9}
+        opacity={opacity}
       />
     </mesh>
   )

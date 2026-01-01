@@ -2,9 +2,14 @@ import * as THREE from 'three'
 import type { DeliveryEvent, RoadNode, Taxi } from '@/types/game'
 
 /**
- * Collision threshold for pickup/dropoff detection (in units)
+ * Collision threshold for pickup detection (in units)
  */
-const COLLISION_THRESHOLD = 2.0
+const PICKUP_COLLISION_THRESHOLD = 2.0
+
+/**
+ * Collision threshold for dropoff detection (in units)
+ */
+const DROPOFF_COLLISION_THRESHOLD = 1.0
 
 /**
  * Base payout for deliveries
@@ -54,13 +59,32 @@ export function spawnDeliveryEvent(
     return null
   }
 
-  // Select random pickup node
-  const pickupNode = pickupNodes[Math.floor(Math.random() * pickupNodes.length)]
+  // Get all nodes currently in use by active deliveries
+  const usedNodeIds = new Set<string>()
+  activeDeliveries.forEach(delivery => {
+    if (delivery.status === 'waiting_pickup') {
+      usedNodeIds.add(delivery.pickupNodeId)
+    }
+    if (delivery.status === 'in_transit') {
+      usedNodeIds.add(delivery.dropoffNodeId)
+    }
+  })
+
+  // Filter out nodes that are already in use
+  const availableNodes = pickupNodes.filter(node => !usedNodeIds.has(node.id))
+
+  if (availableNodes.length < 2) {
+    console.warn('⚠️ Not enough available pickup nodes (all nodes in use)')
+    return null
+  }
+
+  // Select random pickup node from available nodes
+  const pickupNode = availableNodes[Math.floor(Math.random() * availableNodes.length)]
 
   // Select random dropoff node (different from pickup)
   let dropoffNode: RoadNode
   do {
-    dropoffNode = pickupNodes[Math.floor(Math.random() * pickupNodes.length)]
+    dropoffNode = availableNodes[Math.floor(Math.random() * availableNodes.length)]
   } while (dropoffNode.id === pickupNode.id)
 
   // Calculate distance for payout
@@ -117,7 +141,7 @@ export function findActivePickupNear(
     if (!pickupNode) continue
 
     const distance = position.distanceTo(pickupNode.position)
-    if (distance < COLLISION_THRESHOLD) {
+    if (distance < PICKUP_COLLISION_THRESHOLD) {
       return { event: delivery, node: pickupNode }
     }
   }
@@ -147,7 +171,7 @@ export function findActiveDropoffNear(
   if (!dropoffNode) return null
 
   const distance = position.distanceTo(dropoffNode.position)
-  if (distance < COLLISION_THRESHOLD) {
+  if (distance < DROPOFF_COLLISION_THRESHOLD) {
     return { event: delivery, node: dropoffNode }
   }
 

@@ -10,9 +10,12 @@ interface DeliverySystemProps {
   deliveryTimerRef: MutableRefObject<number>
   pickupNodesRef: MutableRefObject<RoadNode[]>
   taxisRef: MutableRefObject<Taxi[]>
+  isPaused: boolean
+  isRushHour: boolean
 }
 
 const SPAWN_INTERVAL = 10000 // 10 seconds in milliseconds
+const RUSH_HOUR_SPAWN_INTERVAL = 5000 // 5 seconds during rush hour (2x faster)
 
 /**
  * Manages delivery spawn timer and collision detection
@@ -22,9 +25,14 @@ export function DeliverySystem({
   deliveriesRef,
   deliveryTimerRef,
   pickupNodesRef,
-  taxisRef
+  taxisRef,
+  isPaused,
+  isRushHour
 }: DeliverySystemProps) {
   useFrame((_, delta) => {
+    // Don't process deliveries when paused
+    if (isPaused) return
+
     const deltaMs = delta * 1000 // Convert to milliseconds
 
     // Update spawn timer
@@ -32,7 +40,8 @@ export function DeliverySystem({
 
     // Spawn new delivery if timer expired
     if (deliveryTimerRef.current <= 0) {
-      console.log(`⏰ Delivery spawn timer expired! Pickup nodes available: ${pickupNodesRef.current.length}`)
+      const currentInterval = isRushHour ? RUSH_HOUR_SPAWN_INTERVAL : SPAWN_INTERVAL
+      console.log(`⏰ Delivery spawn timer expired! Pickup nodes available: ${pickupNodesRef.current.length} ${isRushHour ? '🚦 RUSH HOUR' : ''}`)
 
       if (pickupNodesRef.current.length >= 2) {
         const newDelivery = spawnDeliveryEvent(pickupNodesRef.current, deliveriesRef.current)
@@ -45,7 +54,7 @@ export function DeliverySystem({
         console.warn(`⚠️ Not enough pickup nodes (need 2, have ${pickupNodesRef.current.length})`)
       }
 
-      deliveryTimerRef.current = SPAWN_INTERVAL
+      deliveryTimerRef.current = currentInterval
     }
 
     // Check for pickup/dropoff collisions

@@ -27,7 +27,7 @@ export function useGameLoop() {
       // Delivery state
       hasPackage: false,
       currentDeliveryId: undefined,
-      money: 0,
+      money: 100, // Start with $100
       // Collision handling
       isReversing: false,
       collisionCooldown: 0,

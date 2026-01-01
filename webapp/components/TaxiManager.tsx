@@ -8,13 +8,14 @@ import Taxi from './Taxi'
 
 interface TaxiManagerProps {
   taxisRef: MutableRefObject<TaxiType[]>
+  isPaused: boolean
 }
 
 /**
  * Manages rendering of all taxis
  * Uses useState + useFrame to re-render when taxis are added/removed
  */
-export function TaxiManager({ taxisRef }: TaxiManagerProps) {
+export function TaxiManager({ taxisRef, isPaused }: TaxiManagerProps) {
   // Force re-render every frame to show new taxis
   const [, setTick] = useState(0)
 
@@ -27,7 +28,7 @@ export function TaxiManager({ taxisRef }: TaxiManagerProps) {
   return (
     <group>
       {taxis.map((taxi) => (
-        <Taxi key={taxi.id} taxi={taxi} />
+        <Taxi key={taxi.id} taxi={taxi} isPaused={isPaused} />
       ))}
     </group>
   )

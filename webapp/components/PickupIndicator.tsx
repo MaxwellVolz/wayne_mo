@@ -27,13 +27,13 @@ export function PickupIndicator({ position, color }: PickupIndicatorProps) {
 
     // Bob up and down
     const bob = Math.sin(timeRef.current * 2) * 0.2
-    meshRef.current.position.y = position.y + 1.0 + bob
+    meshRef.current.position.y = position.y + 0.4 + bob
   })
 
   return (
     <mesh
       ref={meshRef}
-      position={[position.x, position.y + 1.0, position.z]}
+      position={[position.x, position.y + 0.4, position.z]}
     >
       <boxGeometry args={[0.5, 0.5, 0.5]} />
       <meshStandardMaterial
