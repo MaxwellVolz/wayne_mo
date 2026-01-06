@@ -38,6 +38,7 @@ export function DeliveryPath({
     const midX = (pickupPosition.x + dropoffPosition.x) / 2
     const midZ = (pickupPosition.z + dropoffPosition.z) / 2
     const distance = pickupPosition.distanceTo(dropoffPosition)
+    console.log(distance);
     const arcHeight = Math.min(distance * 0.5, 4)
 
     const midPoint = new THREE.Vector3(
@@ -47,8 +48,11 @@ export function DeliveryPath({
     )
 
     // Sample points along quadratic bezier curve
-    const numSpheres = 8
-    const visibleSpheres = 7
+    // const numSpheres = 8
+    const numSpheres = Math.floor(distance * 2)
+
+
+    const visibleSpheres = numSpheres - 1
     const points: { position: THREE.Vector3; opacity: number, size: number }[] = []
 
     for (let i = 0; i < numSpheres; i++) {

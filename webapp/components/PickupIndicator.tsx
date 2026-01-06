@@ -67,7 +67,7 @@ export function PickupIndicator({ position, color, deliveryId }: PickupIndicator
       <mesh
         position={[0, .2, 0]}
       >
-        <sphereGeometry args={[0.6, 16, 16]} />
+        <sphereGeometry args={[0.4, 16, 16]} />
         <meshStandardMaterial
           color={color}
           emissive={color}

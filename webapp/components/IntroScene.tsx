@@ -24,7 +24,7 @@ export default function IntroScene({ onPlay, onTutorial }: IntroSceneProps) {
     <div className={styles.introScene}>
       <div className={styles.introContent}>
         <h1 className={styles.gameTitle}>Wayne Mo</h1>
-        <p className={styles.gameSubtitle}>&quot;AI&quot; Taxi Game</p>
+        <p className={styles.gameSubtitle}>One Man. An Entire &quot;AI&quot; Taxi Fleet</p>
 
         <button
           className={styles.tutorialButton}

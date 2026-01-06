@@ -7,6 +7,7 @@ import { GameHUD } from './GameHUD'
 import { GameOverModal } from './GameOverModal'
 import { TaxiControls } from './TaxiControls'
 import { getRoadNetwork } from '@/data/roads'
+import type { Taxi } from '@/types/game'
 
 // Load Scene only on client side (Three.js doesn't work with SSR)
 const Scene = dynamic(() => import('./Scene'), {
@@ -26,6 +27,9 @@ const Scene = dynamic(() => import('./Scene'), {
   ),
 })
 
+const INITIAL_TAXI_COST = 300
+const TAXI_COST_INCREMENT = 100
+
 /**
  * Main game component
  * Houses the Three.js canvas and UI overlay
@@ -34,10 +38,12 @@ export default function Game() {
   const [gameOver, setGameOver] = useState(false)
   const [finalScore, setFinalScore] = useState(0)
   const [gameKey, setGameKey] = useState(0) // Used to force remount on restart
-  const [isPaused, setIsPaused] = useState(false)
+  const [isPaused, setIsPaused] = useState(true) // Start paused
   const [debugMode, setDebugMode] = useState(false)
   const [isRushHour, setIsRushHour] = useState(false)
-  const [selectedTaxiId, setSelectedTaxiId] = useState<string | null>(null)
+  const [selectedTaxiId, setSelectedTaxiId] = useState<string | null>('taxi-1') // Start following first taxi
+  const [nextTaxiCost, setNextTaxiCost] = useState(INITIAL_TAXI_COST)
+  const [totalMoney, setTotalMoney] = useState(0)
 
   // Game state management
   const { taxisRef, deliveriesRef, pickupNodesRef, deliveryTimerRef, initialSpawnDoneRef } = useGameLoop()
@@ -82,6 +88,9 @@ export default function Game() {
     setGameOver(false)
     setFinalScore(0)
     setIsRushHour(false)
+    setIsPaused(true) // Start paused after restart
+    setSelectedTaxiId('taxi-1') // Follow first taxi after restart
+    setNextTaxiCost(INITIAL_TAXI_COST) // Reset taxi cost
     setGameKey(prev => prev + 1) // Force remount to reset all state
   }
 
@@ -122,7 +131,59 @@ export default function Game() {
     setSelectedTaxiId(null)
   }, [])
 
-  // Debug mode toggle with 'D' key and pause with Space
+  const handleSpawnTaxi = useCallback(() => {
+    // Check if player can afford it
+    if (totalMoney < nextTaxiCost) {
+      console.log(`❌ Not enough money! Need $${nextTaxiCost}, have $${totalMoney}`)
+      return
+    }
+
+    const network = getRoadNetwork()
+    if (network.paths.length === 0) {
+      console.warn('⚠️ No paths available to spawn taxi')
+      return
+    }
+
+    // Find a path that starts FROM INT_bottom_left (exact spawn position)
+    const spawnPaths = network.paths.filter((p) =>
+      p.id.startsWith('INT_bottom_left_to_')
+    )
+    const startPath = spawnPaths.length > 0 ? spawnPaths[0] : network.paths[0]
+
+    const newTaxi: Taxi = {
+      id: `taxi-${taxisRef.current.length + 1}`,
+      state: 'driving_to_pickup',
+      path: startPath,
+      t: 0,
+      speed: 1.5,
+      isFocused: false,
+      currentIntersectionId: undefined,
+      incomingDir: 0,
+      previousNodeId: undefined,
+      hasPackage: false,
+      currentDeliveryId: undefined,
+      money: -nextTaxiCost, // Deduct cost from this taxi's money
+      isReversing: false,
+      collisionCooldown: 0,
+    }
+
+    taxisRef.current.push(newTaxi)
+    console.log(`🚕 Spawned ${newTaxi.id} on path ${startPath.id} for $${nextTaxiCost}`)
+
+    // Increase cost for next taxi
+    setNextTaxiCost(prev => prev + TAXI_COST_INCREMENT)
+  }, [totalMoney, nextTaxiCost, taxisRef])
+
+  // Update total money periodically
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const total = taxisRef.current.reduce((sum, taxi) => sum + taxi.money, 0)
+      setTotalMoney(total)
+    }, 100)
+    return () => clearInterval(interval)
+  }, [taxisRef])
+
+  // Keyboard controls: Debug mode (H), Pause (Space), Camera switching (1-9)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key.toLowerCase() === 'h') {
@@ -130,12 +191,27 @@ export default function Game() {
       } else if (e.key === ' ' && !gameOver) {
         e.preventDefault() // Prevent page scroll
         handleTogglePause()
+      } else if (e.key >= '1' && e.key <= '9' && !gameOver) {
+        e.preventDefault()
+        const keyNum = parseInt(e.key)
+
+        if (keyNum === 1) {
+          // '1' key = world/overview camera
+          setSelectedTaxiId(null)
+        } else {
+          // '2' and up = taxi cameras
+          const taxiIndex = keyNum - 2
+          if (taxiIndex < taxisRef.current.length) {
+            const taxiId = taxisRef.current[taxiIndex].id
+            setSelectedTaxiId(taxiId)
+          }
+        }
       }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [gameOver, handleTogglePause])
+  }, [gameOver, handleTogglePause, taxisRef])
 
   return (
     <div className="game-container" key={gameKey}>
@@ -165,6 +241,9 @@ export default function Game() {
           onTaxiSelect={handleTaxiSelect}
           onResetCamera={handleResetCamera}
           selectedTaxiId={selectedTaxiId}
+          onSpawnTaxi={handleSpawnTaxi}
+          nextTaxiCost={nextTaxiCost}
+          canAffordTaxi={totalMoney >= nextTaxiCost}
         />
         {debugMode && (
           <div className="debug-indicator">DEBUG MODE (Press D to toggle)</div>

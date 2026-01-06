@@ -3,7 +3,6 @@
 import { useState, useEffect, type MutableRefObject } from 'react'
 import { Play, Pause } from 'lucide-react'
 import type { Taxi } from '@/types/game'
-import { getRoadNetwork } from '@/data/roads'
 import buttonStyles from '@/styles/components/buttons.module.css'
 import displayStyles from '@/styles/components/displays.module.css'
 import positionStyles from '@/styles/utilities/positioning.module.css'
@@ -17,17 +16,14 @@ interface GameHUDProps {
   onRushHourChange?: (isRushHour: boolean) => void
 }
 
-const INITIAL_TAXI_COST = 300
-const TAXI_COST_INCREMENT = 100
 const GAME_DURATION = 120 // seconds
 
 /**
  * Game HUD overlay - renders outside the Three.js Canvas
- * Shows total money and provides controls for spawning taxis
+ * Shows timer, money display, pause button, and rush hour banner
  */
 export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushHourChange }: GameHUDProps) {
   const [totalMoney, setTotalMoney] = useState(0)
-  const [nextTaxiCost, setNextTaxiCost] = useState(INITIAL_TAXI_COST)
   const [timeRemaining, setTimeRemaining] = useState(GAME_DURATION)
   const [elapsedTime, setElapsedTime] = useState(0)
   const [lastUpdateTime, setLastUpdateTime] = useState(Date.now())
@@ -77,65 +73,10 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
     return () => clearInterval(interval)
   }, [taxisRef, onGameOver, isPaused, elapsedTime, lastUpdateTime, isRushHour, onRushHourChange])
 
-  const handleSpawnTaxi = () => {
-    // Check if player can afford it
-    if (totalMoney < nextTaxiCost) {
-      console.log(`❌ Not enough money! Need $${nextTaxiCost}, have $${totalMoney}`)
-      return
-    }
-
-    const network = getRoadNetwork()
-    if (network.paths.length === 0) {
-      console.warn('⚠️ No paths available to spawn taxi')
-      return
-    }
-
-    // Find a path that starts FROM INT_bottom_left (exact spawn position)
-    const spawnPaths = network.paths.filter((p) =>
-      p.id.startsWith('INT_bottom_left_to_')
-    )
-    const startPath = spawnPaths.length > 0 ? spawnPaths[0] : network.paths[0]
-
-    const newTaxi: Taxi = {
-      id: `taxi-${taxisRef.current.length + 1}`,
-      state: 'driving_to_pickup',
-      path: startPath,
-      t: 0,
-      speed: 1.5,
-      isFocused: false,
-      currentIntersectionId: undefined,
-      incomingDir: 0,
-      previousNodeId: undefined,
-      hasPackage: false,
-      currentDeliveryId: undefined,
-      money: -nextTaxiCost, // Deduct cost from this taxi's money
-      isReversing: false,
-      collisionCooldown: 0,
-    }
-
-    taxisRef.current.push(newTaxi)
-    console.log(`🚕 Spawned ${newTaxi.id} on path ${startPath.id} for $${nextTaxiCost}`)
-
-    // Increase cost for next taxi
-    setNextTaxiCost(nextTaxiCost + TAXI_COST_INCREMENT)
-  }
-
-  const canAffordTaxi = totalMoney >= nextTaxiCost
   const secondsRemaining = Math.floor(timeRemaining)
 
   return (
     <>
-      {/* Top left - spawn button */}
-      <div className={positionStyles.topLeft}>
-        <button
-          className={buttonStyles.primary}
-          onClick={handleSpawnTaxi}
-          disabled={!canAffordTaxi}
-        >
-          + Taxi (${nextTaxiCost})
-        </button>
-      </div>
-
       {/* Top center - timer */}
       <div className={displayStyles.timerDisplay}>
         {secondsRemaining}

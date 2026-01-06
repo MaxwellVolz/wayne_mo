@@ -78,8 +78,8 @@
   margin: var(--space-xs) 0;
 }
 
-/* Taxi number badge */
-.taxiNumber {
+/* Keyboard hint badge (shows key number) */
+.keyHint {
   position: absolute;
   bottom: 2px;
   right: var(--space-xs);
@@ -98,6 +98,63 @@
   height: var(--icon-md);
 }
 
+/* Spawn taxi button */
+.spawnButton {
+  position: relative;
+  width: var(--button-height-md);
+  height: var(--button-height-md);
+  background: var(--color-success);
+  border: var(--border-thin) solid var(--color-success-darker);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.3);
+}
+
+.spawnButton:hover {
+  background: var(--color-success-dark);
+  transform: scale(var(--scale-large-hover));
+  box-shadow: 0 0 12px rgba(0, 255, 0, 0.5);
+}
+
+.spawnButton:active {
+  transform: scale(var(--scale-active));
+}
+
+.spawnButtonDisabled {
+  position: relative;
+  width: var(--button-height-md);
+  height: var(--button-height-md);
+  background: rgba(100, 100, 100, 0.5);
+  border: var(--border-thin) solid var(--color-gray-dark);
+  border-radius: var(--radius-md);
+  cursor: not-allowed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  opacity: 0.5;
+}
+
+/* Price badge on spawn button */
+.price {
+  position: absolute;
+  bottom: 2px;
+  right: var(--space-xs);
+  font-size: 12px;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--color-primary);
+  padding: 2px 3px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  line-height: 1;
+}
+
 /* ==================== RESPONSIVE ==================== */
 
 @media (max-width: 768px) {
@@ -110,7 +167,9 @@
   .taxiIcon,
   .taxiIconActive,
   .globeIcon,
-  .globeIconActive {
+  .globeIconActive,
+  .spawnButton,
+  .spawnButtonDisabled {
     width: var(--button-height-sm);
     height: var(--button-height-sm);
   }
@@ -120,7 +179,8 @@
     height: var(--icon-sm);
   }
 
-  .taxiNumber {
+  .keyHint,
+  .price {
     font-size: 8px;
     padding: 1px 3px;
   }

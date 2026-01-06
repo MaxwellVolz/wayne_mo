@@ -24,7 +24,7 @@
   -webkit-overflow-scrolling: touch;
 }
 
-/* Checkerboard pattern overlay */
+/* Checkered flag pattern */
 .introScene::before {
   content: '';
   position: absolute;
@@ -37,13 +37,15 @@
     linear-gradient(-45deg, var(--color-black) 25%, transparent 25%),
     linear-gradient(45deg, transparent 75%, var(--color-black) 75%),
     linear-gradient(-45deg, transparent 75%, var(--color-black) 75%);
-  background-size: 80px 80px;
-  background-position: 0 0, 0 40px, 40px -40px, -40px 0px;
+  background-size: 20vw 20vw;
+  background-position: 0 0, 0 10vw, 10vw -10vw, -10vw 0;
   background-color: var(--color-primary);
   opacity: 0.15;
+  filter: blur(0.5px);
   pointer-events: none;
   z-index: 0;
 }
+
 
 .introContent {
   text-align: center;
