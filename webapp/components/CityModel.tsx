@@ -3,7 +3,7 @@
 import * as THREE from 'three'
 import { useGLTF } from '@react-three/drei'
 import { useEffect } from 'react'
-import { Model as CityModelGenerated } from './CityModelGenerated'
+import { Model as CityModelGenerated } from '@/generated_components/CityModelGenerated'
 import { extractPathNodesFromGLTF } from '@/lib/extractPathNodes'
 import { updateRoadNetwork } from '@/data/roads'
 
