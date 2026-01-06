@@ -59,9 +59,9 @@ export default function Game() {
     // Reset all game state
     const network = getRoadNetwork()
 
-    // Find a path that starts FROM INT_bottom_left (exact spawn position)
+    // Find a path that starts FROM StarterNode (exact spawn position)
     const spawnPaths = network.paths.filter((p) =>
-      p.id.startsWith('INT_bottom_left_to_')
+      p.id.startsWith('StarterNode_to_')
     )
     const startPath = spawnPaths.length > 0 ? spawnPaths[0] : network.paths[0]
 
@@ -144,9 +144,9 @@ export default function Game() {
       return
     }
 
-    // Find a path that starts FROM INT_bottom_left (exact spawn position)
+    // Find a path that starts FROM StarterNode (exact spawn position)
     const spawnPaths = network.paths.filter((p) =>
-      p.id.startsWith('INT_bottom_left_to_')
+      p.id.startsWith('StarterNode_to_')
     )
     const startPath = spawnPaths.length > 0 ? spawnPaths[0] : network.paths[0]
 

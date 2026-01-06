@@ -48,9 +48,9 @@ export function useGameLoop() {
 
       // Update taxi to use first path from new network
       if (network.paths.length > 0 && taxisRef.current[0]) {
-        // Find a path that starts FROM INT_bottom_left (exact spawn position)
+        // Find a path that starts FROM StarterNode (exact spawn position)
         const spawnPaths = network.paths.filter((p: any) =>
-          p.id.startsWith('INT_bottom_left_to_')
+          p.id.startsWith('StarterNode_to_')
         )
         const startPath = spawnPaths.length > 0 ? spawnPaths[0] : network.paths[0]
 
@@ -58,7 +58,7 @@ export function useGameLoop() {
         taxisRef.current[0].t = 0
         console.log(`✅ Taxi spawned at starting path: ${startPath.id}`)
         console.log(`   Available paths: ${network.paths.length}`)
-        console.log(`   Spawn paths from INT_bottom_left: ${spawnPaths.length}`)
+        console.log(`   Spawn paths from StarterNode: ${spawnPaths.length}`)
       }
 
       // Extract pickup nodes from network

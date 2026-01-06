@@ -323,7 +323,7 @@ export function Model(props: React.ComponentProps<'group'>) {
             ],
           },
         }}>
-        <group name="INT_NE" position={[4.5, 0, -4.5]} userData={{ name: 'INT_NE', north: 'INT_NNE', south: 'INT_S', east: '', west: 'INT_N' }} />
+        <group name="INT_NE" position={[4.5, 0, -4.5]} userData={{ name: 'INT_NE', north: 'INT_NNE', south: 'INT_S', east: 'PathNode_top_right', west: 'INT_N' }} />
         <group name="INT_NW" position={[-3.5, 0, -4.5]} userData={{ name: 'INT_NW', north: 'INT_NNW', south: 'INT_WW', east: 'INT_N', west: 'INT_NWW' }} />
         <group name="INT_N" position={[0.5, 0, -4.5]} userData={{ name: 'INT_N', north: 'INT_NN', south: 'INT_W', east: 'INT_NE', west: 'INT_NW' }} />
         <group name="INT_WW" position={[-3.5, 0, -0.5]} userData={{ name: 'INT_WW', north: 'INT_NW', south: 'INT_SSW', east: 'INT_W', west: '' }} />
@@ -333,13 +333,13 @@ export function Model(props: React.ComponentProps<'group'>) {
         <group name="INT_SSE" position={[7.5, 0, 1.5]} userData={{ name: 'INT_SSE', north: 'INT_SE', south: '', east: '', west: '' }} />
         <group name="INT_SW" position={[0.5, 0, 2.5]} userData={{ name: 'INT_SW', north: 'INT_W', south: '', east: '', west: '' }} />
         <group name="INT_SS" position={[4.5, 0, 1.5]} userData={{ name: 'INT_SS', north: 'INT_S', south: '', east: '', west: '' }} />
-        <group name="PathNode_topright" position={[7.5, 0, -4.5]} userData={{ name: 'PathNode_topright' }} />
         <group name="INT_SSW" position={[-3.5, 0, 1.5]} userData={{ name: 'INT_SSW', north: 'INT_WW', south: '', east: '', west: '' }} />
         <group name="INT_NWW" position={[-5.5, 0, -4.5]} userData={{ name: 'INT_NWW', north: '', south: '', east: 'INT_NW', west: '' }} />
         <group name="INT_E" position={[10.5, 0, -0.5]} userData={{ name: 'INT_E', north: '', south: '', east: '', west: 'INT_SE' }} />
-        <group name="INT_SE" position={[7.5, 0, -0.5]} userData={{ name: 'INT_SE', north: 'INT_NEE', south: 'INT_SSE', east: 'INT_E', west: 'INT_S' }} />
+        <group name="INT_SE" position={[7.5, 0, -0.5]} userData={{ name: 'INT_SE', north: 'PathNode_top_right', south: 'INT_SSE', east: 'INT_E', west: 'INT_S' }} />
         <group name="INT_S" position={[4.5, 0, -0.5]} userData={{ name: 'INT_S', north: 'INT_NE', south: 'INT_SS', east: 'INT_SE', west: 'INT_W' }} />
         <group name="INT_W" position={[0.5, 0, -0.5]} userData={{ name: 'INT_W', north: 'INT_N', south: 'INT_SW', east: 'INT_S', west: 'INT_WW' }} />
+        <group name="PathNode_top_right" position={[7.5, 0, -4.5]} userData={{ name: 'PathNode_top_right', north: '', south: 'INT_SE', east: '', west: 'INT_NE' }} />
         <group name="Pickup_House_01" position={[4.5, 0, -2.5]} userData={{ name: 'Pickup_House_01' }} />
         <group name="Pickup_House_01009" position={[3.5, 0, -4.5]} userData={{ name: 'Pickup_House_01.009' }} />
         <group name="Pickup_House_01020" position={[0.5, 0, 1.5]} userData={{ name: 'Pickup_House_01.020' }} />

@@ -65,9 +65,12 @@ export function PickupIndicator({ position, color, deliveryId }: PickupIndicator
 
       {/* Colored glow sphere around the present */}
       <mesh
-        position={[0, .2, 0]}
+        position={[0, 0, 0]}
+        rotation={[Math.PI / 2, 0, 0]}
+
       >
-        <sphereGeometry args={[0.4, 16, 16]} />
+        <torusGeometry args={[0.4, 0.06, 8, 32]}
+        />
         <meshStandardMaterial
           color={color}
           emissive={color}
