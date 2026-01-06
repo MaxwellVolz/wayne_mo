@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useCallback, useEffect } from 'react'
-import { X, Play, Pause } from 'lucide-react'
+import { Play, Pause } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import { useTutorialGameLoop } from '@/hooks/useTutorialGameLoop'
 import { TaxiControls } from './TaxiControls'
@@ -13,13 +13,12 @@ const TutorialGameScene = dynamic(() => import('./TutorialGameScene'), {
 
 interface TutorialSceneProps {
   onComplete: () => void
-  onClose: () => void
 }
 
 /**
  * Tutorial level teaching how to make a car turn at an intersection
  */
-export default function TutorialScene({ onComplete, onClose }: TutorialSceneProps) {
+export default function TutorialScene({ onComplete }: TutorialSceneProps) {
   const [step, setStep] = useState(0)
   const [selectedTaxiId, setSelectedTaxiId] = useState<string | null>('tutorial-taxi-1') // Start in chase cam mode
   const [isPaused, setIsPaused] = useState(false)
@@ -61,10 +60,6 @@ export default function TutorialScene({ onComplete, onClose }: TutorialSceneProp
 
   const handleStartGame = () => {
     onComplete()
-  }
-
-  const handleClose = () => {
-    setShowModal(false)
   }
 
   const handleShowModal = () => {

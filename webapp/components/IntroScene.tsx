@@ -60,16 +60,18 @@ export default function IntroScene({ onPlay, onTutorial }: IntroSceneProps) {
           left: 0;
           width: 100vw;
           height: 100vh;
+          height: 100dvh; /* Use dynamic viewport height for mobile */
           background:
             linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: space-between;
+          justify-content: center;
+          gap: 2rem;
           z-index: 1000;
           overflow-y: auto;
           overflow-x: hidden;
-          padding: 3rem 1rem 2rem;
+          padding: 2rem 1rem;
           -webkit-overflow-scrolling: touch;
         }
 
@@ -102,10 +104,10 @@ export default function IntroScene({ onPlay, onTutorial }: IntroSceneProps) {
           display: flex;
           flex-direction: column;
           align-items: center;
-          flex: 1;
           justify-content: center;
           position: relative;
           z-index: 1;
+          flex-shrink: 0;
         }
 
         .button-container {
@@ -115,9 +117,10 @@ export default function IntroScene({ onPlay, onTutorial }: IntroSceneProps) {
           align-items: center;
           width: 100%;
           max-width: 600px;
-          padding: 0 2rem 2rem;
+          padding: 0 2rem;
           position: relative;
           z-index: 1;
+          flex-shrink: 0;
         }
 
         .game-title {
@@ -280,13 +283,14 @@ export default function IntroScene({ onPlay, onTutorial }: IntroSceneProps) {
 
         @media (max-width: 768px) {
           .intro-scene {
-            padding: 0 0 1.5rem;
-            justify-content: flex-start;
+            padding: 1.5rem 0;
+            justify-content: center;
+            gap: 1.5rem;
           }
 
           .intro-content {
-            justify-content: flex-start;
-            padding-top: 2rem;
+            justify-content: center;
+            padding-top: 0;
           }
 
           .game-title {
@@ -331,7 +335,7 @@ export default function IntroScene({ onPlay, onTutorial }: IntroSceneProps) {
 
           .button-container {
             gap: 1.25rem;
-            padding: 0 1.5rem 1.5rem;
+            padding: 0 1.5rem;
             max-width: 500px;
           }
 
@@ -358,11 +362,12 @@ export default function IntroScene({ onPlay, onTutorial }: IntroSceneProps) {
 
         @media (max-width: 480px) {
           .intro-scene {
-            padding: 0 0 1rem;
+            padding: 1rem 0;
+            gap: 1rem;
           }
 
           .intro-content {
-            padding-top: 1.5rem;
+            padding-top: 0;
           }
 
           .game-title {
@@ -407,7 +412,7 @@ export default function IntroScene({ onPlay, onTutorial }: IntroSceneProps) {
 
           .button-container {
             gap: 1rem;
-            padding: 0 1rem 1rem;
+            padding: 0 1rem;
             max-width: 400px;
           }
 
@@ -432,11 +437,12 @@ export default function IntroScene({ onPlay, onTutorial }: IntroSceneProps) {
 
         @media (max-width: 360px) {
           .intro-scene {
-            padding: 0 0 0.75rem;
+            padding: 0.75rem 0;
+            gap: 0.75rem;
           }
 
           .intro-content {
-            padding-top: 1rem;
+            padding-top: 0;
           }
 
           .game-title {
@@ -480,7 +486,7 @@ export default function IntroScene({ onPlay, onTutorial }: IntroSceneProps) {
 
           .button-container {
             gap: 0.85rem;
-            padding: 0 0.75rem 0.75rem;
+            padding: 0 0.75rem;
             max-width: 350px;
           }
 
