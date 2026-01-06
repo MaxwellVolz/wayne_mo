@@ -175,62 +175,6 @@ export default function Game() {
       {gameOver && (
         <GameOverModal score={finalScore} onRestart={handleRestart} />
       )}
-
-      <style jsx>{`
-        .game-container {
-          position: relative;
-          width: 100vw;
-          height: 100vh;
-          overflow: hidden;
-        }
-
-        .ui-overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          pointer-events: none;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-          align-items: center;
-          padding: 2rem;
-        }
-
-        .debug-indicator {
-          position: fixed;
-          top: 70px;
-          right: 20px;
-          background: rgba(255, 0, 0, 0.8);
-          color: white;
-          padding: 8px 16px;
-          border-radius: 4px;
-          font-family: monospace;
-          font-size: 14px;
-          font-weight: bold;
-          pointer-events: auto;
-          z-index: 100;
-        }
-
-        @media (max-width: 768px) {
-          .debug-indicator {
-            top: 60px;
-            right: 10px;
-            font-size: 12px;
-            padding: 6px 12px;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .debug-indicator {
-            top: 55px;
-            right: 10px;
-            font-size: 10px;
-            padding: 4px 8px;
-          }
-        }
-      `}</style>
     </div>
   )
 }

@@ -100,16 +100,6 @@ export function IntersectionTile({
               }}
             />
           </div>
-          <style>{`
-            @keyframes spinLeft {
-              from { transform: rotate(0deg); }
-              to { transform: rotate(-360deg); }
-            }
-            @keyframes spinRight {
-              from { transform: rotate(0deg); }
-              to { transform: rotate(360deg); }
-            }
-          `}</style>
         </Html>
       </group>
     </group>

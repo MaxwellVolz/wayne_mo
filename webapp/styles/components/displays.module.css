@@ -1,0 +1,176 @@
+/**
+ * Shared Display Styles
+ * HUD displays for money, timers, scores
+ */
+
+/* ==================== MONEY DISPLAY ==================== */
+/* Yellow money counter in top-right */
+.moneyDisplay {
+  position: fixed;
+  top: var(--hud-spacing-desktop);
+  right: var(--hud-spacing-desktop);
+  font-size: var(--text-3xl);
+  font-weight: bold;
+  color: var(--color-primary);
+  text-shadow: var(--shadow-text-md);
+  font-family: var(--font-mono);
+  pointer-events: none;
+  z-index: var(--z-hud);
+}
+
+/* ==================== TIMER DISPLAY ==================== */
+/* Centered timer display */
+.timerDisplay {
+  position: fixed;
+  top: var(--hud-spacing-desktop);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--text-3xl);
+  font-weight: bold;
+  color: var(--color-white);
+  text-shadow: var(--shadow-text-md);
+  font-family: var(--font-mono);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-sm);
+  min-width: 80px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: var(--z-hud);
+}
+
+/* ==================== HIGH SCORE BOX ==================== */
+/* High score display on intro/game over screens */
+.scoreBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  margin: var(--space-3xl) 0;
+  padding: 2.5rem 4rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: var(--border-thick) solid var(--color-primary);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--glow-box-yellow), inset 0 0 20px rgba(0, 0, 0, 0.4);
+  backdrop-filter: var(--backdrop-blur);
+  position: relative;
+  overflow: hidden;
+  width: 90%;
+  max-width: 600px;
+}
+
+.scoreBox::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    repeating-linear-gradient(0deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 0, 0.05) 10px,
+      rgba(255, 255, 0, 0.05) 20px),
+    repeating-linear-gradient(90deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 0, 0.05) 10px,
+      rgba(255, 255, 0, 0.05) 20px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.scoreLabel {
+  font-size: var(--text-base);
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+}
+
+.scoreValue {
+  font-size: var(--text-6xl);
+  font-weight: 900;
+  color: var(--color-success);
+  text-shadow: var(--glow-green-strong), var(--shadow-text-md);
+  font-family: var(--font-mono);
+  position: relative;
+  z-index: 1;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 768px) {
+
+  .moneyDisplay,
+  .timerDisplay {
+    top: var(--hud-spacing-mobile);
+    font-size: var(--text-2xl);
+  }
+
+  .moneyDisplay {
+    right: var(--hud-spacing-mobile);
+  }
+
+  .timerDisplay {
+    padding: var(--space-xs) var(--space-md);
+    min-width: 60px;
+  }
+
+  .scoreBox {
+    margin: var(--space-2xl) 0;
+    padding: 1.5rem 2.5rem;
+    border: var(--border-medium) solid var(--color-primary);
+  }
+
+  .scoreLabel {
+    font-size: 0.9rem;
+  }
+
+  .scoreValue {
+    font-size: var(--text-4xl);
+  }
+}
+
+@media (max-width: 480px) {
+
+  .moneyDisplay,
+  .timerDisplay {
+    font-size: var(--text-xl);
+  }
+
+  .scoreBox {
+    margin: 1.25rem 0;
+    padding: 1.25rem 2rem;
+    border: var(--border-medium) solid var(--color-primary);
+    border-radius: var(--radius-lg);
+  }
+
+  .scoreLabel {
+    font-size: 0.8rem;
+  }
+
+  .scoreValue {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 360px) {
+  .scoreBox {
+    margin: 1rem 0;
+    padding: 1rem 1.5rem;
+    border: var(--border-thin) solid var(--color-primary);
+    border-radius: var(--radius-md);
+  }
+
+  .scoreLabel {
+    font-size: 0.7rem;
+  }
+
+  .scoreValue {
+    font-size: 1.75rem;
+  }
+}

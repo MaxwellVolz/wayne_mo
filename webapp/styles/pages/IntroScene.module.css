@@ -1,0 +1,440 @@
+/**
+ * IntroScene Styles
+ * Main menu/intro screen
+ */
+
+.introScene {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  /* Use dynamic viewport height for mobile */
+  /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  z-index: var(--z-modal-backdrop);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1rem 1rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Checkerboard pattern overlay */
+.introScene::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(45deg, var(--color-black) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--color-black) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--color-black) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--color-black) 75%);
+  background-size: 80px 80px;
+  background-position: 0 0, 0 40px, 40px -40px, -40px 0px;
+  background-color: var(--color-primary);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.introContent {
+  text-align: center;
+  color: var(--color-white);
+  animation: fadeIn var(--duration-slow) var(--ease-in);
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.gameTitle {
+  font-family: var(--font-racing-sans-one), 'Arial Black', sans-serif;
+  font-size: 10rem;
+
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  margin: 0;
+  text-shadow: var(--shadow-text-lg);
+  color: var(--color-primary);
+  -webkit-text-stroke: 2px var(--color-secondary);
+}
+
+.gameSubtitle {
+  font-size: var(--text-lg);
+  letter-spacing: 0.3em;
+  margin: 1rem 0 1rem;
+  opacity: 0.9;
+}
+
+.highScoreDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  margin: 2rem 0;
+  padding: 2.5rem 4rem;
+  border: var(--border-extra-thick) solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 0 30px rgba(255, 255, 0, 0.3),
+    inset 0 0 20px rgba(0, 0, 0, 0.4);
+  /* backdrop-filter: blur(10px); */
+  position: relative;
+  overflow: hidden;
+  width: 90%;
+  max-width: 600px;
+}
+
+/* Grid pattern overlay on high score */
+.highScoreDisplay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    repeating-linear-gradient(0deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 0, 0.05) 10px,
+      rgba(255, 255, 0, 0.05) 20px),
+    repeating-linear-gradient(90deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 0, 0.05) 10px,
+      rgba(255, 255, 0, 0.05) 20px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.highScoreLabel {
+  font-size: var(--text-3xl);
+  letter-spacing: 0.5em;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+}
+
+.highScoreValue {
+  font-size: var(--text-8xl);
+  letter-spacing: 0.5em;
+  font-weight: 900;
+  color: var(--color-primary);
+  text-shadow: var(--glow-yellow-strong);
+  font-family: var(--font-mono);
+  position: relative;
+  z-index: 1;
+}
+
+.playButton {
+  background: var(--color-primary);
+  color: var(--color-black);
+  border: var(--border-extra-thick) solid var(--color-secondary);
+  padding: 1.5rem 4rem;
+  font-size: var(--text-3xl);
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-sm);
+  width: 100%;
+}
+
+.playButton:hover {
+  transform: translateY(-4px) scale(var(--scale-large-hover));
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  background: #fff200;
+}
+
+.playButton:active {
+  transform: translateY(-2px) scale(var(--scale-active));
+}
+
+.tutorialButton {
+  background: transparent;
+  color: var(--color-white);
+  border: var(--border-medium) solid var(--color-primary);
+  padding: 1rem 3rem;
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-sm);
+  margin-top: 2rem;
+}
+
+.tutorialButton:hover {
+  transform: translateY(-4px) scale(var(--scale-large-hover));
+  box-shadow: 0 8px 20px rgba(255, 255, 0, 0.3);
+  background: rgba(255, 255, 0, 0.1);
+}
+
+.tutorialButton:active {
+  transform: translateY(-2px) scale(var(--scale-active));
+}
+
+.introHints {
+  margin-top: 2rem;
+  opacity: 0.7;
+}
+
+.introHints p {
+  margin: 0.5rem 0;
+  font-size: var(--text-lg);
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+/* Breakpoint: 768px (tablet) */
+@media (max-width: 768px) {
+  .introScene {
+    padding: 1.5rem 0;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .introContent {
+    justify-content: center;
+    padding-top: 0;
+  }
+
+  .gameTitle {
+    font-family: var(--font-racing-sans-one), 'Arial Black', sans-serif;
+    font-size: 4rem;
+    letter-spacing: 0.15em;
+    -webkit-text-stroke: 1.5px var(--color-secondary);
+    margin-bottom: 0.5rem;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .gameSubtitle {
+    font-size: var(--text-base);
+    letter-spacing: 0.25em;
+    margin: 0.75rem 0 1.5rem;
+    width: 100%;
+  }
+
+  .highScoreDisplay {
+    margin: 1.5rem 0;
+    padding: 1.5rem 2.5rem;
+    border: var(--border-medium) solid var(--color-primary);
+    border-radius: var(--radius-md);
+    width: 85%;
+    padding: 2rem 3rem;
+  }
+
+  .highScoreLabel {
+    font-size: 0.9rem;
+  }
+
+  .highScoreValue {
+    font-size: 2.5rem;
+  }
+
+  .playButton {
+    padding: 1.25rem 3rem;
+    font-size: 1.75rem;
+    letter-spacing: 0.15em;
+    width: 100%;
+    border: var(--border-medium) solid var(--color-secondary);
+  }
+
+  .buttonContainer {
+    gap: 1.25rem;
+    padding: 0 1.5rem;
+    max-width: 500px;
+  }
+
+  .tutorialButton {
+    padding: 0.9rem 2rem;
+    font-size: var(--text-lg);
+    letter-spacing: 0.12em;
+    margin-top: 1.5rem;
+  }
+
+  .introHints {
+    margin-top: 2rem;
+  }
+
+  .introHints p {
+    font-size: var(--text-base);
+  }
+}
+
+/* Breakpoint: 480px (mobile) */
+@media (max-width: 480px) {
+  .introScene {
+    padding: 1rem 0;
+    gap: 1rem;
+  }
+
+  .introContent {
+    padding-top: 0;
+  }
+
+  .gameTitle {
+    font-family: var(--font-racing-sans-one), 'Arial Black', sans-serif;
+    font-size: 3rem;
+    letter-spacing: 0.1em;
+    -webkit-text-stroke: 1.25px var(--color-secondary);
+    margin-bottom: 0.5rem;
+    width: 100%;
+    padding: 0 0.75rem;
+  }
+
+  .gameSubtitle {
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    margin: 0.5rem 0 1.25rem;
+    width: 100%;
+  }
+
+  .highScoreDisplay {
+    margin: 1.25rem 0;
+    padding: 1.25rem 2rem;
+    border: var(--border-medium) solid var(--color-primary);
+    border-radius: var(--radius-sm);
+    width: 90%;
+  }
+
+  .highScoreLabel {
+    font-size: 0.8rem;
+  }
+
+  .highScoreValue {
+    font-size: 2rem;
+  }
+
+  .playButton {
+    padding: 1rem 2.5rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    border: var(--border-medium) solid var(--color-secondary);
+    width: 100%;
+  }
+
+  .buttonContainer {
+    gap: 1rem;
+    padding: 0 1rem;
+    max-width: 400px;
+  }
+
+  .tutorialButton {
+    padding: 0.8rem 1.75rem;
+    font-size: 1.1rem;
+    margin-top: 1.25rem;
+  }
+
+  .introHints {
+    margin-top: 1.5rem;
+  }
+
+  .introHints p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Breakpoint: 360px (small mobile) */
+@media (max-width: 360px) {
+  .introScene {
+    padding: 0.75rem 0;
+    gap: 0.75rem;
+  }
+
+  .introContent {
+    padding-top: 0;
+  }
+
+  .gameTitle {
+    font-family: var(--font-racing-sans-one), 'Arial Black', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 0.08em;
+    -webkit-text-stroke: 1px var(--color-secondary);
+    width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .gameSubtitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    margin: 0.5rem 0 1rem;
+    width: 100%;
+  }
+
+  .highScoreDisplay {
+    margin: 1rem 0;
+    padding: 1rem 1.5rem;
+    border: var(--border-thin) solid var(--color-primary);
+    border-radius: var(--radius-xs);
+    width: 92%;
+  }
+
+  .highScoreLabel {
+    font-size: 0.7rem;
+  }
+
+  .highScoreValue {
+    font-size: 1.75rem;
+  }
+
+  .playButton {
+    padding: 0.9rem 2rem;
+    font-size: 1.3rem;
+    letter-spacing: 0.08em;
+    border: var(--border-medium) solid var(--color-secondary);
+    width: 100%;
+  }
+
+  .buttonContainer {
+    gap: 0.85rem;
+    padding: 0 0.75rem;
+    max-width: 350px;
+  }
+
+  .tutorialButton {
+    padding: 0.7rem 1.5rem;
+    font-size: var(--text-base);
+    margin-top: 1rem;
+  }
+
+  .introHints {
+    margin-top: 1.25rem;
+  }
+
+  .introHints p {
+    font-size: 0.85rem;
+  }
+}

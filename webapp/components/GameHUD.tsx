@@ -4,6 +4,10 @@ import { useState, useEffect, type MutableRefObject } from 'react'
 import { Play, Pause } from 'lucide-react'
 import type { Taxi } from '@/types/game'
 import { getRoadNetwork } from '@/data/roads'
+import buttonStyles from '@/styles/components/buttons.module.css'
+import displayStyles from '@/styles/components/displays.module.css'
+import positionStyles from '@/styles/utilities/positioning.module.css'
+import styles from '@/styles/pages/GameHUD.module.css'
 
 interface GameHUDProps {
   taxisRef: MutableRefObject<Taxi[]>
@@ -122,9 +126,9 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
   return (
     <>
       {/* Top left - spawn button */}
-      <div className="top-bar">
+      <div className={positionStyles.topLeft}>
         <button
-          className="spawn-button"
+          className={buttonStyles.primary}
           onClick={handleSpawnTaxi}
           disabled={!canAffordTaxi}
         >
@@ -133,243 +137,32 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
       </div>
 
       {/* Top center - timer */}
-      <div className="timer-display">
+      <div className={displayStyles.timerDisplay}>
         {secondsRemaining}
       </div>
 
       {/* Top right - total money */}
-      <div className="money-display">
+      <div className={displayStyles.moneyDisplay}>
         ${totalMoney}
       </div>
 
       {/* Bottom right - pause button */}
-      <div className="pause-container">
+      <div className={positionStyles.bottomRight}>
         <button
-          className="pause-button"
+          className={buttonStyles.icon}
           onClick={onTogglePause}
           title={isPaused ? 'Resume Game ($0)' : 'Pause Game ($10)'}
         >
-          {isPaused ? <Play className="icon" size={24} /> : <Pause className="icon" size={24} />}
+          {isPaused ? <Play size={24} /> : <Pause size={24} />}
         </button>
       </div>
 
       {/* RUSH HOUR banner */}
       {showRushHourBanner && (
-        <div className="rush-hour-banner">
-          <div className="rush-hour-text">RUSH HOUR</div>
+        <div className={styles.rushHourBanner}>
+          <div className={styles.rushHourText}>RUSH HOUR</div>
         </div>
       )}
-
-      <style jsx>{`
-        .top-bar {
-          position: fixed;
-          top: 20px;
-          left: 20px;
-          pointer-events: auto;
-          z-index: 100;
-        }
-
-        .spawn-button {
-          font-size: 18px;
-          font-weight: bold;
-          padding: 8px 16px;
-          background: #00ff00;
-          color: #000000;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          font-family: monospace;
-          transition: all 0.2s;
-        }
-
-        .spawn-button:hover {
-          background: #00dd00;
-          transform: scale(1.05);
-        }
-
-        .spawn-button:active {
-          transform: scale(0.95);
-        }
-
-        .spawn-button:disabled {
-          background: #666666;
-          color: #999999;
-          cursor: not-allowed;
-          transform: none;
-        }
-
-        .spawn-button:disabled:hover {
-          background: #666666;
-          transform: none;
-        }
-
-        .timer-display {
-          position: fixed;
-          top: 20px;
-          left: 50%;
-          transform: translateX(-50%);
-          font-size: 32px;
-          font-weight: bold;
-          color: #ffffff;
-          text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-          font-family: monospace;
-          padding: 8px 16px;
-          border-radius: 4px;
-          min-width: 80px;
-          text-align: center;
-          background: rgba(0, 0, 0, 0.5);
-          pointer-events: none;
-          z-index: 100;
-        }
-
-        .pause-container {
-          position: fixed;
-          bottom: 20px;
-          right: 20px;
-          pointer-events: auto;
-          z-index: 100;
-        }
-
-        .pause-button {
-          width: 50px;
-          height: 50px;
-          background: rgba(255, 255, 255, 0.9);
-          color: #000000;
-          border: 2px solid #333;
-          border-radius: 8px;
-          cursor: pointer;
-          transition: all 0.2s;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 0;
-        }
-
-        .pause-button:hover {
-          background: #ffffff;
-          transform: scale(1.1);
-          border-color: #ff8800;
-        }
-
-        .pause-button:active {
-          transform: scale(0.95);
-        }
-
-        .icon {
-          width: 24px;
-          height: 24px;
-        }
-
-        .money-display {
-          position: fixed;
-          top: 20px;
-          right: 20px;
-          font-size: 32px;
-          font-weight: bold;
-          color: #ffff00;
-          text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-          font-family: monospace;
-          pointer-events: none;
-          z-index: 100;
-        }
-
-        .rush-hour-banner {
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          background: linear-gradient(135deg, #ff0000, #ff8800, #ff0000);
-          padding: 40px 80px;
-          border-radius: 20px;
-          border: 6px solid #ffff00;
-          box-shadow: 0 0 40px rgba(255, 0, 0, 0.8), inset 0 0 20px rgba(255, 255, 0, 0.5);
-          pointer-events: none;
-          z-index: 200;
-          animation: rushHourPulse 0.5s ease-in-out infinite alternate, rushHourZoom 0.3s ease-out;
-        }
-
-        .rush-hour-text {
-          font-size: 80px;
-          font-weight: bold;
-          color: #ffffff;
-          text-shadow:
-            4px 4px 8px rgba(0,0,0,0.9),
-            0 0 20px #ffff00,
-            0 0 40px #ff8800;
-          font-family: 'Impact', monospace;
-          letter-spacing: 8px;
-        }
-
-        @keyframes rushHourPulse {
-          from {
-            transform: translate(-50%, -50%) scale(1);
-          }
-          to {
-            transform: translate(-50%, -50%) scale(1.05);
-          }
-        }
-
-        @keyframes rushHourZoom {
-          from {
-            transform: translate(-50%, -50%) scale(0.5);
-            opacity: 0;
-          }
-          to {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-          }
-        }
-
-        @media (max-width: 768px) {
-          .top-bar {
-            top: 10px;
-            left: 10px;
-          }
-
-          .spawn-button {
-            font-size: 14px;
-            padding: 6px 12px;
-          }
-
-          .timer-display {
-            top: 10px;
-            font-size: 24px;
-            padding: 6px 12px;
-            min-width: 60px;
-          }
-
-          .money-display {
-            top: 10px;
-            right: 10px;
-            font-size: 24px;
-          }
-
-          .pause-container {
-            bottom: 10px;
-            right: 10px;
-          }
-
-          .pause-button {
-            width: 40px;
-            height: 40px;
-          }
-
-          .icon {
-            width: 20px;
-            height: 20px;
-          }
-
-          .rush-hour-banner {
-            padding: 20px 40px;
-            border: 4px solid #ffff00;
-          }
-
-          .rush-hour-text {
-            font-size: 48px;
-            letter-spacing: 4px;
-          }
-        }
-      `}</style>
     </>
   )
 }

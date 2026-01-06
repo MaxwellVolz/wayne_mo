@@ -1,0 +1,173 @@
+/**
+ * GameOverModal Styles
+ * Game over screen with score display
+ */
+
+/* Modal content */
+.modalContent {
+  background: var(--color-bg-dark);
+  border: var(--border-thick) solid var(--color-success);
+  border-radius: var(--radius-md);
+  padding: var(--space-5xl) var(--space-6xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3xl);
+  box-shadow: var(--glow-box-green);
+  position: relative;
+  z-index: var(--z-modal-content);
+}
+
+/* High score glow effect */
+.modalContentHighScore {
+  /* stylelint-disable-next-line property-no-unknown -- composes is valid CSS Modules syntax */
+  composes: modalContent;
+  border-color: var(--color-primary);
+  animation: glowBorder var(--duration-spin-fast) var(--ease-in-out) infinite;
+}
+
+/* Title */
+.title {
+  font-size: var(--text-5xl);
+  font-weight: bold;
+  color: var(--color-success);
+  margin: 0;
+  font-family: var(--font-mono);
+  text-shadow: var(--glow-green);
+}
+
+/* Score section */
+.scoreSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.scoreLabel {
+  font-size: var(--text-2xl);
+  color: var(--color-white);
+  font-family: var(--font-mono);
+}
+
+.scoreValue {
+  font-size: var(--text-7xl);
+  font-weight: bold;
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  text-shadow: var(--glow-yellow);
+}
+
+/* New record badge */
+.newRecord {
+  font-size: var(--text-xl);
+  font-weight: bold;
+  color: var(--color-success);
+  margin-top: var(--space-sm);
+  animation: recordPulse var(--duration-pulse) var(--ease-in-out) infinite;
+}
+
+/* High score display */
+.highScoreSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-lg);
+}
+
+.highScoreLabel {
+  font-size: var(--text-lg);
+  color: var(--color-gray-light);
+  font-family: var(--font-mono);
+}
+
+.highScoreValue {
+  font-size: var(--text-3xl);
+  font-weight: bold;
+  color: var(--color-success);
+  font-family: var(--font-mono);
+}
+
+/* Restart button - extends primary button */
+.restartButton {
+  font-size: var(--text-2xl);
+  font-weight: bold;
+  padding: var(--space-lg) var(--space-5xl);
+  background: var(--color-success);
+  color: var(--color-black);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  transition: all var(--duration-fast);
+}
+
+.restartButton:hover {
+  background: var(--color-success-dark);
+  transform: scale(var(--scale-hover));
+}
+
+.restartButton:active {
+  transform: scale(var(--scale-active));
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 768px) {
+  .modalContent,
+  .modalContentHighScore {
+    padding: var(--space-4xl) var(--space-5xl);
+    gap: var(--space-2xl);
+  }
+
+  .title {
+    font-size: var(--text-4xl);
+  }
+
+  .scoreLabel {
+    font-size: var(--text-xl);
+  }
+
+  .scoreValue {
+    font-size: var(--text-6xl);
+  }
+
+  .newRecord {
+    font-size: var(--text-lg);
+  }
+
+  .highScoreLabel {
+    font-size: var(--text-base);
+  }
+
+  .highScoreValue {
+    font-size: var(--text-2xl);
+  }
+
+  .restartButton {
+    font-size: var(--text-xl);
+    padding: var(--space-md) var(--space-4xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .modalContent,
+  .modalContentHighScore {
+    padding: var(--space-3xl) var(--space-4xl);
+    gap: var(--space-xl);
+  }
+
+  .title {
+    font-size: var(--text-3xl);
+  }
+
+  .scoreValue {
+    font-size: var(--text-5xl);
+  }
+
+  .restartButton {
+    font-size: var(--text-lg);
+    padding: var(--space-md) var(--space-3xl);
+  }
+}

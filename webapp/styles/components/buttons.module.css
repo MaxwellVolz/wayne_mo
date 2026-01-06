@@ -1,0 +1,185 @@
+/**
+ * Shared Button Styles
+ * Reusable button variants for Wayne Mo game
+ */
+
+/* ==================== PRIMARY BUTTON ==================== */
+/* Green action buttons (Spawn Taxi, primary actions) */
+.primary {
+  background: var(--color-success);
+  color: var(--color-black);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: var(--button-padding-md);
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  transition: all var(--duration-fast);
+}
+
+.primary:hover {
+  background: var(--color-success-dark);
+  transform: scale(var(--scale-hover));
+}
+
+.primary:active {
+  transform: scale(var(--scale-active));
+}
+
+.primary:disabled {
+  background: var(--color-gray);
+  color: var(--color-gray-light);
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ==================== SECONDARY BUTTON ==================== */
+/* Outline buttons (Tutorial, Show Tutorial) */
+.secondary {
+  background: transparent;
+  color: var(--color-white);
+  border: var(--border-medium) solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: 1rem 3rem;
+  font-size: var(--text-xl);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all var(--duration-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.secondary:hover {
+  transform: translateY(-4px) scale(var(--scale-hover));
+  box-shadow: 0 8px 20px rgba(255, 255, 0, 0.3);
+  background: rgba(255, 255, 0, 0.1);
+}
+
+.secondary:active {
+  transform: translateY(-2px) scale(var(--scale-active));
+}
+
+/* ==================== HERO BUTTON ==================== */
+/* Large PLAY button on intro screen */
+.hero {
+  background: var(--color-primary);
+  color: var(--color-black);
+  border: var(--border-thick) solid var(--color-secondary);
+  padding: 1.5rem 4rem;
+  font-size: var(--text-3xl);
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: all var(--duration-normal);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-md);
+  width: 100%;
+}
+
+.hero:hover {
+  transform: translateY(-4px) scale(var(--scale-hover));
+  box-shadow: var(--shadow-lg);
+  background: var(--color-primary-dark);
+}
+
+.hero:active {
+  transform: translateY(-2px) scale(var(--scale-active));
+}
+
+/* ==================== ICON BUTTON ==================== */
+/* Square icon buttons (Pause, Camera controls) */
+.icon {
+  width: var(--button-height-md);
+  height: var(--button-height-md);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-black);
+  border: var(--border-thin) solid var(--color-gray-dark);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.icon:hover {
+  background: var(--color-white);
+  transform: scale(var(--scale-large-hover));
+  border-color: var(--color-danger-light);
+}
+
+.icon:active {
+  transform: scale(var(--scale-active));
+}
+
+/* Active state for icon buttons (e.g., paused state) */
+.iconActive {
+  /* stylelint-disable-next-line property-no-unknown -- composes is valid CSS Modules syntax */
+  composes: icon;
+  background: var(--color-success);
+  border-color: var(--color-success-darker);
+  box-shadow: var(--glow-box-green);
+  color: var(--color-black);
+}
+
+.iconActive:hover {
+  background: var(--color-success-dark);
+  border-color: var(--color-success-darker);
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 1.25rem 3rem;
+    font-size: var(--text-2xl);
+    letter-spacing: 0.15em;
+    border: var(--border-medium) solid var(--color-secondary);
+  }
+
+  .secondary {
+    padding: 0.9rem 2rem;
+    font-size: var(--text-lg);
+    letter-spacing: 0.12em;
+  }
+
+  .icon,
+  .iconActive {
+    width: var(--button-height-sm);
+    height: var(--button-height-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 1rem 2.5rem;
+    font-size: var(--text-xl);
+    letter-spacing: 0.1em;
+  }
+
+  .secondary {
+    padding: 0.8rem 1.75rem;
+    font-size: var(--text-lg);
+  }
+
+  .primary {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero {
+    padding: 0.9rem 2rem;
+    font-size: var(--text-lg);
+    letter-spacing: 0.08em;
+  }
+
+  .secondary {
+    padding: 0.7rem 1.5rem;
+    font-size: var(--text-base);
+  }
+}

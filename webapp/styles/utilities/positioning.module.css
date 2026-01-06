@@ -1,0 +1,138 @@
+/**
+ * Positioning Utilities
+ * Reusable fixed position patterns for HUD elements
+ */
+
+/* ==================== FIXED CORNERS ==================== */
+
+.topLeft {
+  position: fixed;
+  top: var(--hud-spacing-desktop);
+  left: var(--hud-spacing-desktop);
+  pointer-events: auto;
+  z-index: var(--z-hud);
+}
+
+.topRight {
+  position: fixed;
+  top: var(--hud-spacing-desktop);
+  right: var(--hud-spacing-desktop);
+  pointer-events: auto;
+  z-index: var(--z-hud);
+}
+
+.bottomLeft {
+  position: fixed;
+  bottom: var(--hud-spacing-desktop);
+  left: var(--hud-spacing-desktop);
+  pointer-events: auto;
+  z-index: var(--z-hud);
+}
+
+.bottomRight {
+  position: fixed;
+  bottom: var(--hud-spacing-desktop);
+  right: var(--hud-spacing-desktop);
+  pointer-events: auto;
+  z-index: var(--z-hud);
+}
+
+/* ==================== CENTERED POSITIONS ==================== */
+
+.topCenter {
+  position: fixed;
+  top: var(--hud-spacing-desktop);
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: auto;
+  z-index: var(--z-hud);
+}
+
+.bottomCenter {
+  position: fixed;
+  bottom: var(--hud-spacing-desktop);
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: auto;
+  z-index: var(--z-hud);
+}
+
+.centerScreen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: var(--z-modal-content);
+  pointer-events: auto;
+}
+
+/* ==================== OVERLAYS ==================== */
+
+/* Fullscreen overlay container (for HUD elements) */
+.fullscreenOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: var(--z-hud);
+}
+
+/* Modal backdrop overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal-backdrop);
+  pointer-events: auto;
+}
+
+/* Fullscreen scene container */
+.fullscreenScene {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh; /* Use dynamic viewport height for mobile */
+  z-index: var(--z-modal-backdrop);
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 768px) {
+  .topLeft {
+    top: var(--hud-spacing-mobile);
+    left: var(--hud-spacing-mobile);
+  }
+
+  .topRight {
+    top: var(--hud-spacing-mobile);
+    right: var(--hud-spacing-mobile);
+  }
+
+  .bottomLeft {
+    bottom: var(--hud-spacing-mobile);
+    left: var(--hud-spacing-mobile);
+  }
+
+  .bottomRight {
+    bottom: var(--hud-spacing-mobile);
+    right: var(--hud-spacing-mobile);
+  }
+
+  .topCenter {
+    top: var(--hud-spacing-mobile);
+  }
+
+  .bottomCenter {
+    bottom: var(--hud-spacing-mobile);
+  }
+}

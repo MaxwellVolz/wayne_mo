@@ -8,6 +8,7 @@ interface DeliveryPathProps {
   dropoffPosition: THREE.Vector3
   color: string
   opacity?: number
+  size?: number
 }
 
 /**
@@ -17,18 +18,19 @@ export function DeliveryPath({
   pickupPosition,
   dropoffPosition,
   color,
-  opacity = 0.5
+  opacity = 0.5,
+  size = 0.15
 }: DeliveryPathProps) {
   // Calculate points along the curve
   const spherePoints = useMemo(() => {
     const start = new THREE.Vector3(
       pickupPosition.x,
-      pickupPosition.y + 0.4,
+      pickupPosition.y + 0.6,
       pickupPosition.z
     )
     const end = new THREE.Vector3(
       dropoffPosition.x,
-      dropoffPosition.y + 0.4,
+      dropoffPosition.y + 0.6,
       dropoffPosition.z
     )
 
@@ -36,7 +38,7 @@ export function DeliveryPath({
     const midX = (pickupPosition.x + dropoffPosition.x) / 2
     const midZ = (pickupPosition.z + dropoffPosition.z) / 2
     const distance = pickupPosition.distanceTo(dropoffPosition)
-    const arcHeight = Math.min(distance * 0.3, 3)
+    const arcHeight = Math.min(distance * 0.5, 4)
 
     const midPoint = new THREE.Vector3(
       midX,
@@ -45,8 +47,9 @@ export function DeliveryPath({
     )
 
     // Sample points along quadratic bezier curve
-    const numSpheres = 15
-    const points: { position: THREE.Vector3; opacity: number }[] = []
+    const numSpheres = 8
+    const visibleSpheres = 7
+    const points: { position: THREE.Vector3; opacity: number, size: number }[] = []
 
     for (let i = 0; i < numSpheres; i++) {
       const t = i / (numSpheres - 1)
@@ -58,19 +61,19 @@ export function DeliveryPath({
       point.z = Math.pow(1 - t, 2) * start.z + 2 * (1 - t) * t * midPoint.z + Math.pow(t, 2) * end.z
 
       // Opacity decreases from start to end with harder falloff
-      const sphereOpacity = opacity * Math.pow(1 - t, 1.1) // Exponential falloff
-
-      points.push({ position: point, opacity: sphereOpacity })
+      const sphereOpacity = opacity * Math.pow(1 - t, .8) // Exponential falloff
+      const sphereSize = 0.05 + (0.4 - 0.1) * Math.pow(1 - t, 0.75)
+      points.push({ position: point, opacity: sphereOpacity, size: sphereSize })
     }
 
-    return points
+    return points.slice(1, visibleSpheres)
   }, [pickupPosition, dropoffPosition, opacity])
 
   return (
     <group>
       {spherePoints.map((point, index) => (
         <mesh key={index} position={point.position}>
-          <sphereGeometry args={[0.15, 8, 8]} />
+          <sphereGeometry args={[point.size, 8, 8]} />
           <meshStandardMaterial
             color={color}
             emissive={color}

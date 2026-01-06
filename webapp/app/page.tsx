@@ -41,7 +41,6 @@ export default function Home() {
     return (
       <TutorialScene
         onComplete={() => setGameMode('game')}
-        onClose={() => setGameMode('intro')}
       />
     )
   }

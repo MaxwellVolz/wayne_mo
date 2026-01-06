@@ -1,0 +1,106 @@
+/**
+ * TutorialScene Styles
+ * Tutorial mode with instruction panel
+ */
+
+.tutorialContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--color-black);
+}
+
+.tutorialOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: var(--z-hud);
+}
+
+/* Instruction panel at bottom */
+.instructionPanel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  border-top: var(--border-medium) solid var(--color-primary);
+  padding: var(--space-3xl);
+  width: 100%;
+  pointer-events: auto;
+  box-shadow: 0 -8px 32px rgba(255, 255, 0, 0.3);
+  z-index: 50;
+  min-height: 180px;
+}
+
+.stepTitle {
+  color: var(--color-primary);
+  font-size: var(--text-xl);
+  font-weight: 900;
+  margin: 0 0 0.75rem 0;
+  text-align: center;
+  text-shadow: var(--shadow-text-sm);
+}
+
+.stepDescription {
+  color: var(--color-white);
+  font-size: var(--text-base);
+  margin: 0 0 1.5rem 0;
+  padding: 0 var(--space-3xl);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: var(--space-lg);
+  justify-content: center;
+  margin-bottom: var(--space-lg);
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 768px) {
+  .instructionPanel {
+    padding: 1.5rem var(--space-lg);
+  }
+
+  .stepTitle {
+    font-size: 1.25rem;
+  }
+
+  .stepDescription {
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .buttonGroup button {
+    padding: 0.75rem 1.5rem;
+    font-size: var(--text-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .instructionPanel {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .stepTitle {
+    font-size: 1.1rem;
+  }
+
+  .stepDescription {
+    font-size: 0.85rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .buttonGroup button {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.9rem;
+  }
+}

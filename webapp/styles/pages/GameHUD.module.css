@@ -1,0 +1,51 @@
+/**
+ * GameHUD Styles
+ * Component-specific styles (Rush Hour banner)
+ * Most styles reused from shared modules
+ */
+
+/* ==================== RUSH HOUR BANNER ==================== */
+
+.rushHourBanner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, var(--color-danger), var(--color-danger-light), var(--color-danger));
+  padding: var(--space-4xl) var(--space-7xl);
+  border-radius: var(--radius-2xl);
+  border: var(--border-extra-thick) solid var(--color-primary);
+  box-shadow:
+    0 0 40px rgba(255, 0, 0, 0.8),
+    inset 0 0 20px rgba(255, 255, 0, 0.5);
+  pointer-events: none;
+  z-index: var(--z-overlay);
+  animation: rushHourPulse var(--duration-slow) var(--ease-in-out) infinite alternate,
+             rushHourZoom var(--duration-normal) var(--ease-out);
+}
+
+.rushHourText {
+  font-size: var(--text-8xl);
+  font-weight: bold;
+  color: var(--color-white);
+  text-shadow:
+    var(--shadow-text-lg),
+    0 0 20px var(--color-primary),
+    0 0 40px var(--color-danger-light);
+  font-family: 'Impact', var(--font-mono);
+  letter-spacing: 8px;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 768px) {
+  .rushHourBanner {
+    padding: var(--space-xl) var(--space-4xl);
+    border: var(--border-thick) solid var(--color-primary);
+  }
+
+  .rushHourText {
+    font-size: var(--text-5xl);
+    letter-spacing: 4px;
+  }
+}

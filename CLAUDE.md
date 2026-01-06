@@ -8,7 +8,7 @@ This is a Crazy Taxi-inspired AI management automation game where the player con
 
 ## Tech Stack
 
-- **Next.js 15** - React framework with App Router
+- **Next.js 15** - React framework with App Router (configured for static export)
 - **React 19** - UI library
 - **Three.js 0.180** - 3D rendering engine
 - **@react-three/fiber** - React renderer for Three.js
@@ -16,6 +16,123 @@ This is a Crazy Taxi-inspired AI management automation game where the player con
 - **TypeScript 5** - Type safety
 - **Blender** - 3D modeling and path node authoring
 - **Lucide React** - Professional icon library for UI
+
+### Deployment Configuration
+
+The project is configured for **static export** deployment:
+- `next.config.ts` has `output: 'export'` enabled
+- Images use `unoptimized: true` for static hosting
+- No server-side rendering dependencies
+- Can be deployed to GitHub Pages, Netlify, Vercel, or any static host
+- High scores stored in browser localStorage (client-side only)
+
+## CSS Architecture
+
+The project uses a **token-based CSS Modules architecture** for maintainable, reusable styles.
+
+### Design System Structure
+
+```
+webapp/styles/
+├── tokens.css                    # Design tokens (CSS Custom Properties)
+├── animations.css                # Shared @keyframes
+├── globals.css                   # Global styles with token imports
+├── components/                   # Reusable component styles
+│   ├── buttons.module.css       # Button variants (primary, secondary, hero, icon, iconActive)
+│   ├── displays.module.css      # HUD displays (money, timer, score)
+│   └── effects.module.css       # Visual effects (fireworks, particles)
+├── utilities/                    # Utility classes
+│   └── positioning.module.css   # Fixed positioning patterns (topLeft, bottomRight, modalOverlay)
+└── pages/                        # Page-specific component styles
+    ├── IntroScene.module.css
+    ├── TutorialSlider.module.css
+    ├── TutorialScene.module.css
+    ├── TaxiControls.module.css
+    ├── GameHUD.module.css
+    └── GameOverModal.module.css
+```
+
+### Design Tokens (tokens.css)
+
+All design values are centralized as CSS Custom Properties:
+
+**Colors (Arcade/Retro Theme):**
+- `--color-primary: #ffff00` (Yellow)
+- `--color-secondary: #ff6b00` (Orange)
+- `--color-success: #00ff00` (Green)
+- `--color-info: #0088ff` (Blue)
+- `--color-danger: #ff0000` (Red)
+
+**Spacing Scale:**
+- `--space-xs` through `--space-7xl` (4px → 80px)
+- `--hud-spacing-desktop`, `--hud-spacing-mobile`
+
+**Z-Index Layers:**
+- `--z-base: 0`
+- `--z-hud: 100`
+- `--z-overlay: 200`
+- `--z-modal-backdrop: 1000`
+- `--z-modal-content: 1001`
+
+**Typography:**
+- Font families, sizes (`--text-xs` through `--text-9xl`)
+- Shadows (`--shadow-text-md`, `--glow-green-strong`)
+
+**Motion:**
+- Durations (`--duration-fast`, `--duration-normal`, `--duration-slow`)
+- Easing functions (`--ease-out`, `--ease-in-out`)
+
+### Component Styling Pattern
+
+```tsx
+// Import shared modules + component-specific styles
+import buttonStyles from '@/styles/components/buttons.module.css'
+import displayStyles from '@/styles/components/displays.module.css'
+import positionStyles from '@/styles/utilities/positioning.module.css'
+import styles from '@/styles/pages/ComponentName.module.css'
+
+export function Component() {
+  return (
+    <div className={styles.container}>
+      <div className={positionStyles.topRight}>
+        <div className={displayStyles.moneyDisplay}>$100</div>
+      </div>
+      <button className={buttonStyles.primary}>Action</button>
+    </div>
+  )
+}
+```
+
+### Key Principles
+
+1. **Token-based design** - All design values in `tokens.css`
+2. **CSS Modules** - Component-scoped styles with type-safe imports
+3. **Composition** - Use `composes:` keyword for style inheritance
+4. **BEM-inspired camelCase** - Class naming: `.elementName`, `.elementNameActive`
+5. **Shared patterns** - Buttons, displays, positioning extracted to reusable modules
+6. **Responsive** - Standard breakpoints (768px, 480px, 360px)
+7. **Dynamic inline styles** - Only for runtime-computed values (firework positions, Three.js portals)
+
+### Special Cases
+
+**Three.js Html Components (IntersectionTile):**
+- Animations must be global (defined in `animations.css`)
+- Html portals render outside CSS cascade
+- Reference animations by name in inline styles
+
+**Dynamic Styles:**
+- Firework particle positions (random at runtime)
+- Colors from delivery system
+- Animation delays for visual variety
+
+### Migration Benefits
+
+- ~60% reduction in CSS code (1,500 lines → ~600 lines)
+- Single source of truth for design tokens
+- Reusable component patterns eliminate duplication
+- Type-safe imports prevent typos
+- Better Next.js optimization and tree-shaking
+- Easier theming and design system updates
 
 ## Critical Design Constraints
 
@@ -41,12 +158,16 @@ The game is built around **intersection control** as the primary mechanic:
 12. **Game timer** - 120 second timed sessions with Game Over screen
 13. **Delivery visuals** - Pickup indicators, dropoff indicators, curved arc delivery paths
 14. **Smart spawning** - Prevents overlapping pickups/dropoffs on same nodes
+15. **Intro/Menu System** - Title screen with high score display, play and tutorial buttons
+16. **Tutorial System** - Interactive 3-step tutorial with image slides and in-game guidance
+17. **High Score System** - Persistent localStorage-based high score tracking
+18. **Mobile Responsiveness** - Comprehensive mobile support with breakpoints (768px, 480px, 360px)
+19. **Static Export** - Next.js configured for static deployment
 
 **📋 PLANNED (Next Features):**
-- Local save (money, intersection states via localStorage)
-- Tutorial improvements
-- Sound effects and particle effects
+- Sound effects and music
 - Additional visual polish
+- Performance optimizations for 5+ taxis
 
 **❌ EXPLICITLY EXCLUDED:**
 - Direct taxi control (no STOP/GO buttons)
@@ -175,8 +296,8 @@ Intersections are the **core game mechanic** - this is what the player controls!
 - Orange ↷ = Turn Right mode
 
 **Naming Convention in Blender:**
-- `PathNode_001` → Regular path
-- `PathNode_Intersection_Main` → ⭐ **Player-controlled routing**
+- `PathNode_001` → Regular path node AKA "forced turns"
+- `INT_*` → ⭐ **Player-controlled routing**
 - `PathNode_Pickup_Downtown_001` → Pickup zone
 - `PathNode_Intersection_RedLight_001` → Both types
 
@@ -247,6 +368,37 @@ function getNextPath(currentPath: string, intersections: Map<string, Intersectio
 3. Click intersection to change routing mode
 4. Watch taxis follow new rule
 5. Iterate as needed
+
+### Game Flow and Modes
+
+The game has three distinct modes managed via state machine:
+
+**1. Intro Scene (Entry Point)**
+- Displays game title and branding
+- Shows current high score (if any)
+- Two buttons: "PLAY" (skip to game) or "HOW TO PLAY" (tutorial)
+- Mobile-responsive design with multiple breakpoints
+
+**2. Tutorial Mode (Optional)**
+- Interactive 3-step walkthrough:
+  - Step 1: Camera controls explanation
+  - Step 2: Intersection routing mechanics
+  - Step 3: Delivery system and objectives
+- Live 3D scene with functional game mechanics
+- "Start Game" button to proceed to main game
+- Can be skipped from intro screen
+
+**3. Main Game Mode**
+- Full 120-second timed gameplay session
+- All core mechanics active
+- Ends with Game Over screen showing final score
+- Automatically saves high score if beaten
+- "Play Again" returns to intro screen
+
+**Technical Implementation:**
+- File: `webapp/app/page.tsx` - Game mode state machine
+- Modes: `'intro' | 'tutorial' | 'game'`
+- Lazy loading for tutorial scene (performance optimization)
 
 ## Design Pillars
 
@@ -337,6 +489,9 @@ When implementing features:
 - ✅ Separate collision thresholds (pickup: 2.0, dropoff: 1.0)
 
 **Game Systems (IMPLEMENTED):**
+- ✅ **Intro/Menu System** - Polished title screen with game branding
+- ✅ **Tutorial System** - 3-step interactive tutorial with image slides
+- ✅ **High Score System** - localStorage persistence, displayed on intro screen
 - ✅ 120-second timed game sessions
 - ✅ Rush Hour at 30s remaining (2x spawn frequency + dramatic banner)
 - ✅ Pause system (Space bar, $10 cost, camera/intersection control still works)
@@ -344,20 +499,28 @@ When implementing features:
 - ✅ Taxi collision detection with reverse behavior and cooldown
 - ✅ Money system with initial $100 starting balance
 - ✅ Taxi spawning with incremental cost ($300, $400, $500...)
-- ✅ Game Over screen with final score and restart
-- ✅ Mobile-responsive UI with breakpoints
+- ✅ Game Over screen with final score, high score detection, and restart
+- ✅ Mobile-responsive UI with breakpoints (768px, 480px, 360px)
+- ✅ Static export configuration for deployment
 
 **Key Files:**
 ```
 webapp/
+├── app/
+│   └── page.tsx                     ✅ Game mode management (intro/tutorial/game)
 ├── lib/
 │   ├── intersectionTopology.ts      ✅ Priority-based routing with explicit tables
 │   ├── intersectionGeometry.ts      ✅ Legacy vector-based detection
 │   ├── intersectionState.ts         ✅ Global state
 │   ├── movement.ts                  ✅ Topological routing + intersection integration
 │   ├── deliverySystem.ts            ✅ Delivery spawning, collision, smart node allocation
-│   └── gameState.ts                 ✅ Time scale management
+│   ├── gameState.ts                 ✅ Time scale management
+│   └── highScore.ts                 ✅ localStorage-based high score persistence
 ├── components/
+│   ├── IntroScene.tsx               ✅ Title screen with high score display
+│   ├── TutorialScene.tsx            ✅ Interactive tutorial game scene
+│   ├── TutorialSlider.tsx           ✅ Image-based tutorial slider
+│   ├── TutorialGameScene.tsx        ✅ 3D scene for tutorial mode
 │   ├── IntersectionTile.tsx         ✅ Lucide icons (Move, RefreshCcw, RefreshCw)
 │   ├── IntersectionManager.tsx      ✅ Renders all tiles
 │   ├── Taxi.tsx                     ✅ Topological routing + state-based emissive
@@ -369,22 +532,27 @@ webapp/
 │   ├── PackageIndicator.tsx         ✅ Above-taxi package display
 │   ├── CollisionSystem.tsx          ✅ Taxi collision detection
 │   ├── GameHUD.tsx                  ✅ Timer, money, pause, Rush Hour banner
-│   ├── GameOverModal.tsx            ✅ End screen with restart
+│   ├── GameOverModal.tsx            ✅ End screen with high score detection + restart
 │   └── Game.tsx                     ✅ Main game orchestration
 ├── hooks/
 │   ├── useIntersectionManager.ts    ✅ State management
-│   └── useGameLoop.ts               ✅ Taxi/delivery ref management
-└── data/
-    └── roads.ts                     ✅ Dual-mode routing (topological + legacy)
+│   ├── useGameLoop.ts               ✅ Taxi/delivery ref management
+│   └── useTutorialGameLoop.ts       ✅ Tutorial-specific game loop
+├── data/
+│   └── roads.ts                     ✅ Dual-mode routing (topological + legacy)
+└── public/
+    ├── tutorial_01.png              ✅ Tutorial slide images
+    ├── tutorial_02.png
+    └── tutorial_03.png
 ```
 
 **📋 FUTURE PHASES:**
-- Local save system (money, intersection states via localStorage)
-- Tutorial system improvements
+- Local save for game state (intersection states, persistent progress beyond high score)
 - Sound effects and music
 - Particle effects for pickups/dropoffs
-- Additional visual polish
+- Additional visual polish and animations
 - Performance optimizations for 20+ taxis
+- Additional tutorial content/refinements
 
 **Documentation:**
 - `/docs/blender.md` - Blender integration guide (intersection setup)
@@ -392,4 +560,4 @@ webapp/
 - `/docs/INTERSECTION_SYSTEM_SUMMARY.md` - Complete routing implementation
 - `/docs/TESTING_GUIDE.md` - How to test intersection system
 
-**System Status:** 🎮 PLAYABLE GAME - Core gameplay loop complete with delivery system, Rush Hour, and polish.
+**System Status:** 🎮 COMPLETE GAME - Full game loop with intro, tutorial, gameplay, and high score system. Mobile-responsive and ready for deployment.

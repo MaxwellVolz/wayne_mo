@@ -51,16 +51,12 @@ wayne_mo/
 
 This project operates under a **strict 10-feature maximum** before launch. Any feature not on this list is explicitly out of scope:
 
-1. **Single city map** - One handcrafted 8x8 block layout
+1. **Single city map** - One handcrafted block layout
 2. **Road graph with fixed paths** - Predefined paths, no free movement
-3. **One taxi at start, second taxi unlock** - Hard cap at 2 taxis
+3. **One taxi at start, second taxi unlock** - Soft cap at 3 taxis
 4. **Path-based taxi movement** - Constant speed interpolation, no physics
-5. **STOP/GO interaction** - Single contextual button only
+5. **PAUSE/PLAY interactions** - Single contextual button only
 6. **Pickup and dropoff timing windows** - Two interaction points per job
-7. **Slow-motion focus** - 0.25x time scale during interactions
-8. **Failure loop** - Missed timing causes block loop (time penalty only)
-9. **One automation upgrade** - Choose: wider timing window OR auto-resume after load
-10. **Local save** - Money, automation state, second taxi unlock
 
 **Explicitly excluded:**
 - Pedestrian logic
@@ -92,7 +88,7 @@ This project operates under a **strict 10-feature maximum** before launch. Any f
 ### Blender-Driven Workflow
 - City geometry and path nodes designed in **Blender**
 - Path nodes are small mesh markers with typed names
-- Node types: `path`, `intersection`, `pickup`, `dropoff`, `red_light`, `service`
+- Node types: `PathNode_*`, `INT_*`, `PathNode_PickUp`, `dropoff`, `red_light`, `service`
 - Connections defined via Blender custom properties
 - Models exported as GLB and loaded at runtime
 - See `/docs/blender.md` for complete workflow
@@ -100,31 +96,10 @@ This project operates under a **strict 10-feature maximum** before launch. Any f
 ### Movement System
 - **Deterministic path-following**, not AI or physics
 - Taxis move along `RoadPath` objects extracted from Blender
-- Position via normalized `t` parameter (0-1) along path
 - Linear interpolation between path points
 - Smooth rotation to face movement direction
 - 60fps animation via Three.js `useFrame` hook
 
-### State Machine
-```
-idle → driving_to_pickup → stopped → driving_to_dropoff → stopped → idle
-                    ↓
-              needs_service → broken
-```
-
-### Focus Mechanic
-- Normal time: `timeScale = 1.0`
-- Focus mode: `timeScale = 0.25`
-- Triggered when taxi enters interaction window
-- No stacking - last event wins
-
 See **[CLAUDE.md](CLAUDE.md)** for complete architecture details.
 
-## Development
 
-All development happens in the `webapp/` directory. See [webapp/README.md](webapp/README.md) for:
-- Installation instructions
-- Available npm commands
-- Code architecture
-- Development guidelines
-- Movement system testing

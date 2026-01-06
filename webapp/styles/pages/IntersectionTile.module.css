@@ -1,0 +1,16 @@
+/**
+ * IntersectionTile Styles
+ * Minimal module for Three.js Html component
+ * Most styles remain inline due to portal rendering
+ */
+
+/* Html wrapper base */
+.htmlWrapper {
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Icon container (applied via inline style for animations) */
+.iconContainer {
+  display: block;
+}

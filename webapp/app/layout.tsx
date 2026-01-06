@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Racing_Sans_One } from 'next/font/google'
-import './globals.css'
+import '@/styles/globals.css'
 
 const racingSansOne = Racing_Sans_One({
   weight: '400',
