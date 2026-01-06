@@ -39,16 +39,29 @@ export function Model(props: React.ComponentProps<'group'>) {
 interface TaxiProps {
   taxi: TaxiType
   isPaused: boolean
+  deliveryColor?: string
 }
 
-export default function Taxi({ taxi, isPaused }: TaxiProps) {
+export default function Taxi({ taxi, isPaused, deliveryColor }: TaxiProps) {
   const groupRef = useRef<THREE.Group>(null)
+  const meshRef = useRef<THREE.Mesh>(null)
   const previousPosition = useRef<THREE.Vector3>(new THREE.Vector3())
+  const spawnTime = useRef<number>(Date.now())
   const { nodes, materials } = useGLTF('/models/taxi.glb') as unknown as GLTFResult
 
   // Use Three.js render loop for smooth animation
   useFrame((state, delta) => {
     if (!groupRef.current || !taxi.path) return
+
+    // Fade in from 0 to 100% opacity over 0.5 seconds
+    const elapsedTime = (Date.now() - spawnTime.current) / 1000
+    const FADE_DURATION = 0.5
+    const opacity = Math.min(elapsedTime / FADE_DURATION, 1)
+
+    // Update material opacity directly
+    if (meshRef.current && meshRef.current.material instanceof THREE.Material) {
+      (meshRef.current.material as THREE.MeshStandardMaterial).opacity = opacity
+    }
 
     // Don't update movement when paused
     if (isPaused) return
@@ -97,19 +110,44 @@ export default function Taxi({ taxi, isPaused }: TaxiProps) {
   return (
     <group ref={groupRef}>
       <mesh
+        ref={meshRef}
         geometry={nodes.taxi.geometry}
         material={materials['colormap.013']}
         rotation={[Math.PI / 2, 0, 0]}
         scale={0.297}
         castShadow
+        renderOrder={10}
       >
-        {/* Clone material and add emissive for state indication */}
+        {/* Clone material and add emissive for state indication + fade-in */}
         <meshStandardMaterial
           {...materials['colormap.013']}
           emissive={getEmissiveColor()}
           emissiveIntensity={0.5}
+          transparent={true}
+          opacity={0}
         />
       </mesh>
+
+      {/* Colored rectangle underglow when carrying a package */}
+      {taxi.hasPackage && deliveryColor && (
+        <>
+          {/* <mesh position={[0, 0.05, 0]}>
+            <boxGeometry args={[0.5, 0.05, 0.9]} />
+            <meshBasicMaterial
+              color={deliveryColor}
+              transparent
+              opacity={0.8}
+            />
+          </mesh> */}
+          <pointLight
+            position={[0, .3, 0]}
+            color={deliveryColor}
+            intensity={3}
+            distance={1}
+            decay={3}
+          />
+        </>
+      )}
     </group>
   )
 }

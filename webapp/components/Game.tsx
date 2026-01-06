@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import { useGameLoop } from '@/hooks/useGameLoop'
 import { GameHUD } from './GameHUD'
 import { GameOverModal } from './GameOverModal'
+import { TaxiControls } from './TaxiControls'
 import { getRoadNetwork } from '@/data/roads'
 
 // Load Scene only on client side (Three.js doesn't work with SSR)
@@ -36,6 +37,7 @@ export default function Game() {
   const [isPaused, setIsPaused] = useState(false)
   const [debugMode, setDebugMode] = useState(false)
   const [isRushHour, setIsRushHour] = useState(false)
+  const [selectedTaxiId, setSelectedTaxiId] = useState<string | null>(null)
 
   // Game state management
   const { taxisRef, deliveriesRef, pickupNodesRef, deliveryTimerRef, initialSpawnDoneRef } = useGameLoop()
@@ -50,10 +52,17 @@ export default function Game() {
   const handleRestart = () => {
     // Reset all game state
     const network = getRoadNetwork()
+
+    // Find a path that starts FROM INT_bottom_left (exact spawn position)
+    const spawnPaths = network.paths.filter((p) =>
+      p.id.startsWith('INT_bottom_left_to_')
+    )
+    const startPath = spawnPaths.length > 0 ? spawnPaths[0] : network.paths[0]
+
     taxisRef.current = [{
       id: 'taxi-1',
       state: 'driving_to_pickup',
-      path: network.paths[0] || null,
+      path: startPath,
       t: 0,
       speed: 1.5,
       isFocused: false,
@@ -103,6 +112,16 @@ export default function Game() {
     setIsPaused(!isPaused)
   }, [isPaused, taxisRef])
 
+  const handleTaxiSelect = useCallback((taxiId: string) => {
+    // Toggle selection - if already selected, deselect
+    setSelectedTaxiId(prev => prev === taxiId ? null : taxiId)
+  }, [])
+
+  const handleResetCamera = useCallback(() => {
+    // Deselect any followed taxi to return to center view
+    setSelectedTaxiId(null)
+  }, [])
+
   // Debug mode toggle with 'D' key and pause with Space
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -129,6 +148,7 @@ export default function Game() {
         isPaused={isPaused}
         debugMode={debugMode}
         isRushHour={isRushHour}
+        followTaxiId={selectedTaxiId}
       />
 
       {/* UI overlay */}
@@ -139,6 +159,12 @@ export default function Game() {
           isPaused={isPaused}
           onTogglePause={handleTogglePause}
           onRushHourChange={handleRushHourChange}
+        />
+        <TaxiControls
+          taxisRef={taxisRef}
+          onTaxiSelect={handleTaxiSelect}
+          onResetCamera={handleResetCamera}
+          selectedTaxiId={selectedTaxiId}
         />
         {debugMode && (
           <div className="debug-indicator">DEBUG MODE (Press D to toggle)</div>

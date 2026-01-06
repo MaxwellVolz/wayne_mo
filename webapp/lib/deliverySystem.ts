@@ -25,23 +25,20 @@ const PAYOUT_PER_DISTANCE = 10
  * Color palette for delivery events (16 distinct colors)
  */
 const DELIVERY_COLORS = [
-  '#00ff00', // Green
-  '#0088ff', // Blue
-  '#ff00ff', // Magenta
-  '#ffff00', // Yellow
-  '#ff8800', // Orange
-  '#00ffff', // Cyan
-  '#ff0088', // Pink
-  '#88ff00', // Lime
-  '#ff0000', // Red
-  '#8800ff', // Purple
-  '#00ff88', // Teal
-  '#ff8888', // Light Red
-  '#88ff88', // Light Green
-  '#8888ff', // Light Blue
-  '#ffff88', // Light Yellow
-  '#ff88ff', // Light Magenta
+  '#ff1a1a', // Vivid Red
+  '#ff6a00', // Hot Orange
+  '#ffb000', // Deep Yellow
+  '#ff00aa', // Neon Pink
+  '#c400ff', // Electric Purple
+  '#5a00ff', // Royal Violet
+  '#004dff', // Bold Blue
+  '#0019ff', // Deep Blue
+  '#8b0000', // Dark Red
+  '#ff3d00', // Vermilion
+  '#ff0099', // Punch Pink
+  '#9b00ff', // Saturated Purple
 ]
+
 
 /**
  * Spawns a new delivery event with random pickup and dropoff nodes
@@ -82,10 +79,22 @@ export function spawnDeliveryEvent(
   const pickupNode = availableNodes[Math.floor(Math.random() * availableNodes.length)]
 
   // Select random dropoff node (different from pickup)
-  let dropoffNode: RoadNode
-  do {
-    dropoffNode = availableNodes[Math.floor(Math.random() * availableNodes.length)]
-  } while (dropoffNode.id === pickupNode.id)
+  // For dropoff, we can use ANY pickup node (not just available ones)
+  // This gives us more options and prevents infinite loops
+  const dropoffCandidates = pickupNodes.filter(node => node.id !== pickupNode.id)
+
+  if (dropoffCandidates.length === 0) {
+    console.warn('⚠️ No valid dropoff nodes (only one pickup node exists)')
+    return null
+  }
+
+  const dropoffNode = dropoffCandidates[Math.floor(Math.random() * dropoffCandidates.length)]
+
+  // Double-check that pickup and dropoff are different
+  if (pickupNode.id === dropoffNode.id) {
+    console.error('❌ GUARD FAILED: Pickup and dropoff are the same node!')
+    return null
+  }
 
   // Calculate distance for payout
   const distance = pickupNode.position.distanceTo(dropoffNode.position)

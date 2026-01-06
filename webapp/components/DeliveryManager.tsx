@@ -37,7 +37,7 @@ export function DeliveryManager({
 
   // Debug logging (only log occasionally to avoid spam)
   if (Math.random() < 0.01) { // ~1% of frames
-    console.log(`📦 DeliveryManager: ${activeDeliveries.length} active deliveries, ${pickupNodes.length} pickup nodes`)
+    // console.log(`📦 DeliveryManager: ${activeDeliveries.length} active deliveries, ${pickupNodes.length} pickup nodes`)
     // console.log(`   Waiting pickups: ${activeDeliveries.filter(d => d.status === 'waiting_pickup').length}`)
     // console.log(`   In transit: ${activeDeliveries.filter(d => d.status === 'in_transit').length}`)
   }
@@ -56,6 +56,7 @@ export function DeliveryManager({
               key={`pickup-${delivery.id}`}
               position={node.position}
               color={delivery.color}
+              deliveryId={delivery.id}
             />
           )
         })}
@@ -98,7 +99,7 @@ export function DeliveryManager({
 
       {/* Render package indicators for taxis carrying packages */}
       {taxis
-        .filter(taxi => taxi.hasPackage && taxi.path)
+        .filter(taxi => taxi.hasPackage && taxi.path && taxi.currentDeliveryId)
         .map(taxi => {
           // Calculate taxi position from path
           const points = taxi.path!.points
@@ -112,15 +113,19 @@ export function DeliveryManager({
           const p2 = points[Math.min(segmentIndex + 1, points.length - 1)]
           const taxiPosition = p1.clone().lerp(p2, localT)
 
-          // Find the delivery to get its color
+          // Find the delivery to get its color and ID
           const delivery = activeDeliveries.find(d => d.id === taxi.currentDeliveryId)
-          const color = delivery?.color || '#ffff00' // Fallback to yellow
+          if (!delivery) return null
+
+          const color = delivery.color
+          const deliveryId = delivery.id
 
           return (
             <PackageIndicator
               key={`package-${taxi.id}`}
               taxiPosition={taxiPosition}
               color={color}
+              deliveryId={deliveryId}
             />
           )
         })}

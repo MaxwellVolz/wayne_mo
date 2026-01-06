@@ -57,57 +57,61 @@ export function IntersectionTile({
       }}
     >
       {/* Base circle (clickable area) */}
-      <mesh position={[0, -0.1, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <circleGeometry args={[1.1, 32]} />
-        <meshStandardMaterial
+      <mesh position={[0, -0.44, 0]} rotation={[-Math.PI / 2, 0, 0]} renderOrder={-10}>
+        <circleGeometry args={[1, 32]} />
+        <meshBasicMaterial
           color={color}
           transparent
           opacity={0.15}
+          depthTest={false}
+          depthWrite={false}
         />
       </mesh>
 
       {/* Icon overlay using HTML */}
-      <Html
-        center
-        distanceFactor={10}
-        zIndexRange={[100, 0]}
-        style={{
-          pointerEvents: 'none',
-          userSelect: 'none'
-        }}
-      >
-        <div
+      <group position={[0, -0.2, 0]}>
+        <Html
+          center
+          distanceFactor={10}
+          zIndexRange={[100, 0]}
           style={{
-            animation: mode === 'turn_left'
-              ? 'spinLeft 4s linear infinite'
-              : mode === 'turn_right'
-                ? 'spinRight 4s linear infinite'
-                : 'none'
+            pointerEvents: 'none',
+            userSelect: 'none'
           }}
         >
-          <Icon
-            size={100}
-            color={color}
-            fill="none"
-            strokeWidth={2}
-            opacity={0.8}
+          <div
             style={{
-              filter: `drop-shadow(0 0 8px ${color})`,
-              display: 'block'
+              animation: mode === 'turn_left'
+                ? 'spinLeft 6s linear infinite'
+                : mode === 'turn_right'
+                  ? 'spinRight 6s linear infinite'
+                  : 'none'
             }}
-          />
-        </div>
-        <style>{`
-          @keyframes spinLeft {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(-360deg); }
-          }
-          @keyframes spinRight {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-          }
-        `}</style>
-      </Html>
+          >
+            <Icon
+              size={100}
+              color={color}
+              fill="none"
+              strokeWidth={2}
+              opacity={0.8}
+              style={{
+                filter: `drop-shadow(0 0 8px ${color})`,
+                display: 'block'
+              }}
+            />
+          </div>
+          <style>{`
+            @keyframes spinLeft {
+              from { transform: rotate(0deg); }
+              to { transform: rotate(-360deg); }
+            }
+            @keyframes spinRight {
+              from { transform: rotate(0deg); }
+              to { transform: rotate(360deg); }
+            }
+          `}</style>
+        </Html>
+      </group>
     </group>
   )
 }

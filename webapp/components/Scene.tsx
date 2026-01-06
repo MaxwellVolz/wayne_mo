@@ -21,6 +21,7 @@ interface SceneProps {
   isPaused: boolean
   debugMode: boolean
   isRushHour: boolean
+  followTaxiId: string | null
 }
 
 /**
@@ -34,7 +35,8 @@ export default function Scene({
   deliveryTimerRef,
   isPaused,
   debugMode,
-  isRushHour
+  isRushHour,
+  followTaxiId
 }: SceneProps) {
 
   return (
@@ -56,17 +58,18 @@ export default function Scene({
 
       {/* Camera controls - orbit around city */}
       <OrbitControls
-        enablePan={false}
+        enablePan={true}
         enableZoom={true}
         enableRotate={true}
         maxPolarAngle={Math.PI / 2.2}
         minDistance={3}
         maxDistance={30}
-        target={[0.5, 0, -0.5]}
+        panSpeed={0.8}
+        makeDefault
       />
 
-      {/* WASD camera panning */}
-      <CameraController />
+      {/* WASD camera panning and taxi following */}
+      <CameraController taxisRef={taxisRef} followTaxiId={followTaxiId} />
 
       {/* Blender city model (buildings and path nodes) */}
       <CityModel />
@@ -98,7 +101,7 @@ export default function Scene({
       />
 
       {/* Taxis */}
-      <TaxiManager taxisRef={taxisRef} isPaused={isPaused} />
+      <TaxiManager taxisRef={taxisRef} deliveriesRef={deliveriesRef} isPaused={isPaused} />
 
       {/* Grid helper for debugging */}
       <gridHelper args={[20, 20, '#444', '#222']} />

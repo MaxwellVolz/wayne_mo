@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, type MutableRefObject } from 'react'
+import { Play, Pause } from 'lucide-react'
 import type { Taxi } from '@/types/game'
 import { getRoadNetwork } from '@/data/roads'
 
@@ -22,7 +23,6 @@ const GAME_DURATION = 120 // seconds
  */
 export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushHourChange }: GameHUDProps) {
   const [totalMoney, setTotalMoney] = useState(0)
-  const [taxiCount, setTaxiCount] = useState(1)
   const [nextTaxiCost, setNextTaxiCost] = useState(INITIAL_TAXI_COST)
   const [timeRemaining, setTimeRemaining] = useState(GAME_DURATION)
   const [elapsedTime, setElapsedTime] = useState(0)
@@ -35,7 +35,6 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
     const interval = setInterval(() => {
       const total = taxisRef.current.reduce((sum, taxi) => sum + taxi.money, 0)
       setTotalMoney(total)
-      setTaxiCount(taxisRef.current.length)
 
       // Only update timer when not paused
       if (!isPaused) {
@@ -72,7 +71,7 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
     }, 100) // Update 10 times per second
 
     return () => clearInterval(interval)
-  }, [taxisRef, onGameOver, isPaused, elapsedTime, lastUpdateTime])
+  }, [taxisRef, onGameOver, isPaused, elapsedTime, lastUpdateTime, isRushHour, onRushHourChange])
 
   const handleSpawnTaxi = () => {
     // Check if player can afford it
@@ -87,13 +86,11 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
       return
     }
 
-    // Find a path that starts from an intersection for variety
-    const intersectionPaths = network.paths.filter((p) =>
-      p.id.includes('Intersection')
+    // Find a path that starts FROM INT_bottom_left (exact spawn position)
+    const spawnPaths = network.paths.filter((p) =>
+      p.id.startsWith('INT_bottom_left_to_')
     )
-    const startPath = intersectionPaths.length > 0
-      ? intersectionPaths[Math.floor(Math.random() * intersectionPaths.length)]
-      : network.paths[0]
+    const startPath = spawnPaths.length > 0 ? spawnPaths[0] : network.paths[0]
 
     const newTaxi: Taxi = {
       id: `taxi-${taxisRef.current.length + 1}`,
@@ -124,38 +121,36 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
 
   return (
     <>
-      {/* Top bar with taxi count and spawn button */}
+      {/* Top left - spawn button */}
       <div className="top-bar">
-        <div className="taxi-info">
-          Taxis: {taxiCount}
-        </div>
         <button
           className="spawn-button"
           onClick={handleSpawnTaxi}
           disabled={!canAffordTaxi}
         >
-          + Spawn Taxi (${nextTaxiCost})
+          + Taxi (${nextTaxiCost})
         </button>
       </div>
 
-      {/* Top right - pause button */}
-      <div className="pause-container">
-        <button
-          className="pause-button"
-          onClick={onTogglePause}
-        >
-          {isPaused ? '▶' : '❚❚'}
-        </button>
-      </div>
-
-      {/* Bottom left - timer */}
+      {/* Top center - timer */}
       <div className="timer-display">
         {secondsRemaining}
       </div>
 
-      {/* Bottom right - total money */}
+      {/* Top right - total money */}
       <div className="money-display">
         ${totalMoney}
+      </div>
+
+      {/* Bottom right - pause button */}
+      <div className="pause-container">
+        <button
+          className="pause-button"
+          onClick={onTogglePause}
+          title={isPaused ? 'Resume Game ($0)' : 'Pause Game ($10)'}
+        >
+          {isPaused ? <Play className="icon" size={24} /> : <Pause className="icon" size={24} />}
+        </button>
       </div>
 
       {/* RUSH HOUR banner */}
@@ -170,22 +165,8 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
           position: fixed;
           top: 20px;
           left: 20px;
-          display: flex;
-          gap: 16px;
-          align-items: center;
           pointer-events: auto;
           z-index: 100;
-        }
-
-        .taxi-info {
-          font-size: 24px;
-          font-weight: bold;
-          color: #ffffff;
-          text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-          font-family: monospace;
-          background: rgba(0, 0, 0, 0.5);
-          padding: 8px 16px;
-          border-radius: 4px;
         }
 
         .spawn-button {
@@ -222,61 +203,66 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
           transform: none;
         }
 
-        .pause-container {
+        .timer-display {
           position: fixed;
           top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 32px;
+          font-weight: bold;
+          color: #ffffff;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+          font-family: monospace;
+          padding: 8px 16px;
+          border-radius: 4px;
+          min-width: 80px;
+          text-align: center;
+          background: rgba(0, 0, 0, 0.5);
+          pointer-events: none;
+          z-index: 100;
+        }
+
+        .pause-container {
+          position: fixed;
+          bottom: 20px;
           right: 20px;
           pointer-events: auto;
           z-index: 100;
         }
 
         .pause-button {
-          font-size: 24px;
-          font-weight: bold;
-          padding: 10px 16px;
+          width: 50px;
+          height: 50px;
           background: rgba(255, 255, 255, 0.9);
           color: #000000;
-          border: 2px solid #000000;
+          border: 2px solid #333;
           border-radius: 8px;
           cursor: pointer;
-          font-family: monospace;
           transition: all 0.2s;
-          min-width: 60px;
-          height: 50px;
           display: flex;
           align-items: center;
           justify-content: center;
+          padding: 0;
         }
 
         .pause-button:hover {
           background: #ffffff;
-          transform: scale(1.05);
+          transform: scale(1.1);
+          border-color: #ff8800;
         }
 
         .pause-button:active {
           transform: scale(0.95);
         }
 
-        .timer-display {
-          position: fixed;
-          bottom: 20px;
-          left: 20px;
-          font-size: 32px;
-          font-weight: bold;
-          color: #ffffff;
-          text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-          font-family: monospace;
-          pointer-events: none;
-          z-index: 100;
-          padding: 8px 16px;
-          border-radius: 4px;
-          min-width: 80px;
-          text-align: center;
+        .icon {
+          width: 24px;
+          height: 24px;
         }
 
         .money-display {
           position: fixed;
-          bottom: 20px;
+          top: 20px;
           right: 20px;
           font-size: 32px;
           font-weight: bold;
@@ -338,14 +324,6 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
           .top-bar {
             top: 10px;
             left: 10px;
-            gap: 8px;
-            flex-direction: column;
-            align-items: flex-start;
-          }
-
-          .taxi-info {
-            font-size: 18px;
-            padding: 6px 12px;
           }
 
           .spawn-button {
@@ -353,30 +331,32 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
             padding: 6px 12px;
           }
 
-          .pause-container {
-            top: 10px;
-            right: 10px;
-          }
-
-          .pause-button {
-            font-size: 20px;
-            padding: 8px 12px;
-            min-width: 50px;
-            height: 40px;
-          }
-
           .timer-display {
-            bottom: 10px;
-            left: 10px;
+            top: 10px;
             font-size: 24px;
             padding: 6px 12px;
             min-width: 60px;
           }
 
           .money-display {
-            bottom: 10px;
+            top: 10px;
             right: 10px;
             font-size: 24px;
+          }
+
+          .pause-container {
+            bottom: 10px;
+            right: 10px;
+          }
+
+          .pause-button {
+            width: 40px;
+            height: 40px;
+          }
+
+          .icon {
+            width: 20px;
+            height: 20px;
           }
 
           .rush-hour-banner {
