@@ -135,6 +135,8 @@ export interface DeliveryEvent {
   deliveryTime?: number // Timestamp when package was delivered
   payout: number // Money awarded on completion
   color: string // Unique color for this delivery (shared by pickup and dropoff)
+  multiplier: number // Score multiplier (1-4) determines package type
+  distance: number // Distance from pickup to dropoff
 }
 
 export interface GameState {

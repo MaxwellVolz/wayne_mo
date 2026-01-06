@@ -99,12 +99,34 @@ export function spawnDeliveryEvent(
   // Calculate distance for payout
   const distance = pickupNode.position.distanceTo(dropoffNode.position)
 
-  // Calculate payout (base + distance bonus + zone multipliers)
+  // Calculate zone multipliers
   const pickupMultiplier = pickupNode.metadata?.payoutMultiplier || 1.0
   const dropoffMultiplier = dropoffNode.metadata?.payoutMultiplier || 1.0
+  const avgZoneMultiplier = (pickupMultiplier + dropoffMultiplier) / 2
+
+  // Calculate delivery multiplier (1-4) with good distribution
+  // Use distance-based tiers with randomization for variety
+  let deliveryMultiplier: number
+  const random = Math.random()
+
+  if (distance < 8) {
+    // Short distance: 60% tier 1, 30% tier 2, 10% tier 3
+    deliveryMultiplier = random < 0.6 ? 1 : random < 0.9 ? 2 : 3
+  } else if (distance < 16) {
+    // Medium distance: 20% tier 1, 50% tier 2, 25% tier 3, 5% tier 4
+    deliveryMultiplier = random < 0.2 ? 1 : random < 0.7 ? 2 : random < 0.95 ? 3 : 4
+  } else if (distance < 24) {
+    // Long distance: 10% tier 2, 60% tier 3, 30% tier 4
+    deliveryMultiplier = random < 0.1 ? 2 : random < 0.7 ? 3 : 4
+  } else {
+    // Very long distance: 20% tier 3, 80% tier 4
+    deliveryMultiplier = random < 0.2 ? 3 : 4
+  }
+
+  // Calculate payout (base + distance bonus + zone multipliers)
   const payout = Math.floor(
     (BASE_PAYOUT + distance * PAYOUT_PER_DISTANCE) *
-    ((pickupMultiplier + dropoffMultiplier) / 2)
+    avgZoneMultiplier
   )
 
   // Select color that's not already in use by active deliveries
@@ -122,7 +144,9 @@ export function spawnDeliveryEvent(
     status: 'waiting_pickup',
     spawnTime: Date.now(),
     payout,
-    color
+    color,
+    multiplier: deliveryMultiplier,
+    distance
   }
 
   console.log(`📦 Spawned delivery: ${pickupNode.id} → ${dropoffNode.id} ($${payout}) [${color}]`)

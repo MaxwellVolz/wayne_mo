@@ -49,6 +49,14 @@ export default function Taxi({ taxi, isPaused, deliveryColor }: TaxiProps) {
   const spawnTime = useRef<number>(Date.now())
   const { nodes, materials } = useGLTF('/models/taxi.glb') as unknown as GLTFResult
 
+  // Initialize position immediately to avoid flash at origin
+  const initialPosition = React.useMemo(() => {
+    if (taxi.path) {
+      return samplePath(taxi.path, taxi.t)
+    }
+    return new THREE.Vector3(0, -1000, 0) // Hide far below if no path
+  }, []) // Only run once on mount
+
   // Use Three.js render loop for smooth animation
   useFrame((state, delta) => {
     if (!groupRef.current || !taxi.path) return
@@ -108,7 +116,7 @@ export default function Taxi({ taxi, isPaused, deliveryColor }: TaxiProps) {
   }
 
   return (
-    <group ref={groupRef}>
+    <group ref={groupRef} position={initialPosition}>
       <mesh
         ref={meshRef}
         geometry={nodes.taxi.geometry}

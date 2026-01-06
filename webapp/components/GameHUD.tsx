@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, type MutableRefObject } from 'react'
-import { Play, Pause } from 'lucide-react'
+import { Play, Pause, RotateCcw } from 'lucide-react'
 import type { Taxi } from '@/types/game'
 import buttonStyles from '@/styles/components/buttons.module.css'
 import displayStyles from '@/styles/components/displays.module.css'
@@ -14,15 +14,16 @@ interface GameHUDProps {
   isPaused: boolean
   onTogglePause: () => void
   onRushHourChange?: (isRushHour: boolean) => void
+  onReset: () => void
 }
 
 const GAME_DURATION = 120 // seconds
 
 /**
  * Game HUD overlay - renders outside the Three.js Canvas
- * Shows timer, money display, pause button, and rush hour banner
+ * Shows timer, money display, pause button, reset button, and rush hour banner
  */
-export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushHourChange }: GameHUDProps) {
+export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushHourChange, onReset }: GameHUDProps) {
   const [totalMoney, setTotalMoney] = useState(0)
   const [timeRemaining, setTimeRemaining] = useState(GAME_DURATION)
   const [elapsedTime, setElapsedTime] = useState(0)
@@ -77,6 +78,17 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
 
   return (
     <>
+      {/* Top left - reset button */}
+      <div className={positionStyles.topLeft}>
+        <button
+          className={buttonStyles.icon}
+          onClick={onReset}
+          title="Reset Game"
+        >
+          <RotateCcw size={24} />
+        </button>
+      </div>
+
       {/* Top center - timer */}
       <div className={displayStyles.timerDisplay}>
         {secondsRemaining}

@@ -48,37 +48,23 @@ export function DeliveryManager({
       {activeDeliveries
         .filter(d => d.status === 'waiting_pickup')
         .map(delivery => {
-          const node = pickupNodes.find(n => n.id === delivery.pickupNodeId)
-          if (!node) return null
-
-          return (
-            <PickupIndicator
-              key={`pickup-${delivery.id}`}
-              position={node.position}
-              color={delivery.color}
-              deliveryId={delivery.id}
-            />
-          )
-        })}
-
-      {/* Render curved path lines for waiting deliveries */}
-      {activeDeliveries
-        .filter(d => d.status === 'waiting_pickup')
-        .map(delivery => {
           const pickupNode = pickupNodes.find(n => n.id === delivery.pickupNodeId)
           const dropoffNode = pickupNodes.find(n => n.id === delivery.dropoffNodeId)
           if (!pickupNode || !dropoffNode) return null
 
           return (
-            <DeliveryPath
-              key={`path-${delivery.id}`}
-              pickupPosition={pickupNode.position}
+            <PickupIndicator
+              key={`pickup-${delivery.id}`}
+              position={pickupNode.position}
               dropoffPosition={dropoffNode.position}
               color={delivery.color}
-              opacity={0.5}
+              deliveryId={delivery.id}
+              multiplier={delivery.multiplier}
+              distance={delivery.distance}
             />
           )
         })}
+
 
       {/* Render dropoff indicators for in-transit deliveries (100% opacity) */}
       {activeDeliveries
@@ -113,19 +99,17 @@ export function DeliveryManager({
           const p2 = points[Math.min(segmentIndex + 1, points.length - 1)]
           const taxiPosition = p1.clone().lerp(p2, localT)
 
-          // Find the delivery to get its color and ID
+          // Find the delivery to get its color, ID, and multiplier
           const delivery = activeDeliveries.find(d => d.id === taxi.currentDeliveryId)
           if (!delivery) return null
-
-          const color = delivery.color
-          const deliveryId = delivery.id
 
           return (
             <PackageIndicator
               key={`package-${taxi.id}`}
               taxiPosition={taxiPosition}
-              color={color}
-              deliveryId={deliveryId}
+              color={delivery.color}
+              deliveryId={delivery.id}
+              multiplier={delivery.multiplier}
             />
           )
         })}

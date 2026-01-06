@@ -235,6 +235,7 @@ export default function Game() {
           isPaused={isPaused}
           onTogglePause={handleTogglePause}
           onRushHourChange={handleRushHourChange}
+          onReset={handleRestart}
         />
         <TaxiControls
           taxisRef={taxisRef}

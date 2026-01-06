@@ -479,14 +479,18 @@ When implementing features:
 **Delivery System (IMPLEMENTED):**
 - ✅ Timer-based delivery spawning (10s intervals, 5s during Rush Hour)
 - ✅ Pickup and dropoff collision detection
-- ✅ Visual indicators: pulsing pickup cubes, dropoff spheres
+- ✅ **Score multiplier system** (1-4) determines package value and visual type
+- ✅ **Box model indicators** - 4 types: box_small, box_large, box_long, box_wide (mapped to multiplier)
+- ✅ **Distance-based arrow indicators** - arrow.glb (distance > 4) or arrow_chevron.glb (distance ≤ 4)
+- ✅ Arrow materials dynamically colored to match delivery color
+- ✅ Visual indicators: pulsing box models with directional arrows, dropoff spheres
 - ✅ Curved arc delivery path visualization (15 sphere particles)
-- ✅ Distance-based payout calculation
+- ✅ Distance-based payout calculation with multiplier tiers
 - ✅ Zone-based payout multipliers
 - ✅ 16-color palette to distinguish deliveries
 - ✅ Smart spawning prevents overlapping deliveries on same nodes
-- ✅ Package indicators above taxis during transit
-- ✅ Separate collision thresholds (pickup: 2.0, dropoff: 1.0)
+- ✅ Package indicators above taxis during transit (matching box type)
+- ✅ Separate collision thresholds (pickup: 1.1, dropoff: 1.1)
 
 **Game Systems (IMPLEMENTED):**
 - ✅ **Intro/Menu System** - Polished title screen with game branding
@@ -495,8 +499,10 @@ When implementing features:
 - ✅ 120-second timed game sessions
 - ✅ Rush Hour at 30s remaining (2x spawn frequency + dramatic banner)
 - ✅ Pause system (Space bar, $10 cost, camera/intersection control still works)
+- ✅ **Reset button** (top left corner) - instant game restart without returning to menu
 - ✅ Debug mode toggle (H key) - shows road network nodes and paths
 - ✅ Taxi collision detection with reverse behavior and cooldown
+- ✅ Taxi spawn position fix - no flash at origin on scene load
 - ✅ Money system with initial $100 starting balance
 - ✅ Taxi spawning with incremental cost ($300, $400, $500...)
 - ✅ Game Over screen with final score, high score detection, and restart
@@ -519,7 +525,6 @@ webapp/
 ├── components/
 │   ├── IntroScene.tsx               ✅ Title screen with high score display
 │   ├── TutorialScene.tsx            ✅ Interactive tutorial game scene
-│   ├── TutorialSlider.tsx           ✅ Image-based tutorial slider
 │   ├── TutorialGameScene.tsx        ✅ 3D scene for tutorial mode
 │   ├── IntersectionTile.tsx         ✅ Lucide icons (Move, RefreshCcw, RefreshCw)
 │   ├── IntersectionManager.tsx      ✅ Renders all tiles
@@ -527,11 +532,11 @@ webapp/
 │   ├── DeliverySystem.tsx           ✅ Spawn timer + Rush Hour support
 │   ├── DeliveryManager.tsx          ✅ Visual indicators orchestration
 │   ├── DeliveryPath.tsx             ✅ Curved particle arc visualization
-│   ├── PickupIndicator.tsx          ✅ Pulsing cube indicators
+│   ├── PickupIndicator.tsx          ✅ Box models with colored directional arrows (multiplier-based)
 │   ├── DropoffIndicator.tsx         ✅ Dropoff sphere indicators
-│   ├── PackageIndicator.tsx         ✅ Above-taxi package display
+│   ├── PackageIndicator.tsx         ✅ Above-taxi box display (matches pickup box type)
 │   ├── CollisionSystem.tsx          ✅ Taxi collision detection
-│   ├── GameHUD.tsx                  ✅ Timer, money, pause, Rush Hour banner
+│   ├── GameHUD.tsx                  ✅ Timer, money, pause, reset, Rush Hour banner
 │   ├── GameOverModal.tsx            ✅ End screen with high score detection + restart
 │   └── Game.tsx                     ✅ Main game orchestration
 ├── hooks/
@@ -541,6 +546,13 @@ webapp/
 ├── data/
 │   └── roads.ts                     ✅ Dual-mode routing (topological + legacy)
 └── public/
+    ├── models/
+    │   ├── box_small.glb            ✅ Multiplier 1 package
+    │   ├── box_large.glb            ✅ Multiplier 2 package
+    │   ├── box_long.glb             ✅ Multiplier 3 package
+    │   ├── box_wide.glb             ✅ Multiplier 4 package
+    │   ├── arrow.glb                ✅ Long distance indicator (distance > 4)
+    │   └── arrow_chevron.glb        ✅ Short distance indicator (distance ≤ 4)
     ├── tutorial_01.png              ✅ Tutorial slide images
     ├── tutorial_02.png
     └── tutorial_03.png

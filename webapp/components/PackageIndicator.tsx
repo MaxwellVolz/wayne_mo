@@ -9,36 +9,35 @@ interface PackageIndicatorProps {
   taxiPosition: THREE.Vector3
   color: string
   deliveryId: string
+  multiplier: number // 1-4, determines box type
 }
 
-// Available present models (same as PickupIndicator)
-const PRESENT_MODELS = [
-  '/models/present_white_cube.glb',
-  '/models/present_green_round.glb',
-  '/models/present_green_rectangle.glb',
-  '/models/present_green_cube.glb',
-  '/models/present_white_round.glb',
-  '/models/present_white_rectangle.glb',
-]
+// Box models mapped by multiplier (1-4) - same as PickupIndicator
+const BOX_MODELS: Record<number, string> = {
+  1: '/models/box_small.glb',
+  2: '/models/box_large.glb',
+  3: '/models/box_long.glb',
+  4: '/models/box_wide.glb',
+}
 
 /**
- * Present model that follows taxi when carrying a delivery
- * Shows the same present model that was picked up
+ * Box model that follows taxi when carrying a delivery
+ * Shows the same box model that was picked up
  */
-export function PackageIndicator({ taxiPosition, deliveryId }: PackageIndicatorProps) {
+export function PackageIndicator({ taxiPosition, deliveryId, multiplier }: PackageIndicatorProps) {
   const groupRef = useRef<THREE.Group>(null)
   const timeRef = useRef(0)
 
-  // Select the same model as the pickup location (consistent by delivery ID)
-  const modelPath = useMemo(() => {
-    const hash = deliveryId.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0)
-    return PRESENT_MODELS[hash % PRESENT_MODELS.length]
-  }, [deliveryId])
+  // Select box model based on multiplier (clamp to 1-4)
+  const boxModelPath = useMemo(() => {
+    const clampedMultiplier = Math.min(4, Math.max(1, Math.floor(multiplier)))
+    return BOX_MODELS[clampedMultiplier]
+  }, [multiplier])
 
-  const { scene } = useGLTF(modelPath)
+  const { scene } = useGLTF(boxModelPath)
 
   // Clone the model preserving original textures
-  const presentClone = useMemo(() => {
+  const boxClone = useMemo(() => {
     return scene.clone()
   }, [scene])
 
@@ -61,13 +60,13 @@ export function PackageIndicator({ taxiPosition, deliveryId }: PackageIndicatorP
 
   return (
     <group ref={groupRef} scale={0.8}>
-      {/* Original present model with textures */}
-      <primitive object={presentClone} />
+      {/* Box model with textures */}
+      <primitive object={boxClone} />
     </group>
   )
 }
 
-// Preload all present models
-PRESENT_MODELS.forEach((model) => {
+// Preload all box models
+Object.values(BOX_MODELS).forEach((model) => {
   useGLTF.preload(model)
 })
