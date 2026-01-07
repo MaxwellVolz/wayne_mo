@@ -33,16 +33,16 @@ export default function TutorialScene({ onComplete }: TutorialSceneProps) {
 
   const tutorialSteps = [
     {
-      title: "Camera Controls",
-      description: "Bottom left icons set chase or overview.",
+      title: "Controls Cameras Cabs",
+      description: "Bottom left buttons set chase camera, overview, and you can buy another cab if you got the cash...",
     },
     {
       title: "Run the Intersections",
-      description: "Tap intersections to direct traffic!",
+      description: "Tap intersections to direct traffic! Try to avoid collisions.",
     },
     {
-      title: "Deliver Packages",
-      description: "Pick up packages and deliver them to matching color drop-offs.",
+      title: "Deliver Different Packages",
+      description: "Pick up packages and deliver them to matching color drop-offs. Some might be worth more...",
     },
   ]
 

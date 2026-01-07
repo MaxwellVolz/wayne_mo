@@ -93,7 +93,7 @@ export function IntersectionTile({
               color={color}
               fill="none"
               strokeWidth={2}
-              opacity={0.8}
+              opacity={0.6}
               style={{
                 filter: `drop-shadow(0 0 8px ${color})`,
                 display: 'block'
