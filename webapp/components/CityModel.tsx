@@ -6,13 +6,14 @@ import { useEffect } from 'react'
 import { Model as CityModelGenerated } from '@/generated_components/CityModelGenerated'
 import { extractPathNodesFromGLTF } from '@/lib/extractPathNodes'
 import { updateRoadNetwork } from '@/data/roads'
+import { getAssetPath } from '@/lib/assetPath'
 
 /**
  * City Model component
  * Loads Blender model and extracts path nodes for taxi navigation
  */
 export default function CityModel() {
-  const gltf = useGLTF('/models/city_01.glb')
+  const gltf = useGLTF(getAssetPath('models/city_01.glb'))
 
   useEffect(() => {
     console.log('🏙️ City model loaded')
@@ -76,4 +77,4 @@ export default function CityModel() {
 }
 
 // Preload model
-useGLTF.preload('/models/city_01.glb')
+useGLTF.preload(getAssetPath('models/city_01.glb'))

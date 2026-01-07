@@ -45,5 +45,5 @@ export default function Home() {
     )
   }
 
-  return <Game />
+  return <Game onExit={() => setGameMode('intro')} />
 }

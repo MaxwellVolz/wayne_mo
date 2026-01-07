@@ -13,6 +13,7 @@ import type { Taxi as TaxiType } from '@/types/game'
 import { updateTaxi, samplePath } from '@/lib/movement'
 import { getTimeScale } from '@/lib/gameState'
 import { getIntersections } from '@/lib/intersectionState'
+import { getAssetPath } from '@/lib/assetPath'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -25,7 +26,7 @@ type GLTFResult = GLTF & {
 
 // Static model export (for reuse)
 export function Model(props: React.ComponentProps<'group'>) {
-  const { nodes, materials } = useGLTF('/models/taxi.glb') as unknown as GLTFResult
+  const { nodes, materials } = useGLTF(getAssetPath('models/taxi.glb')) as unknown as GLTFResult
   return (
     <group {...props} dispose={null}>
       <group name="Scene">
@@ -47,7 +48,7 @@ export default function Taxi({ taxi, isPaused, deliveryColor }: TaxiProps) {
   const meshRef = useRef<THREE.Mesh>(null)
   const previousPosition = useRef<THREE.Vector3>(new THREE.Vector3())
   const spawnTime = useRef<number>(Date.now())
-  const { nodes, materials } = useGLTF('/models/taxi.glb') as unknown as GLTFResult
+  const { nodes, materials } = useGLTF(getAssetPath('models/taxi.glb')) as unknown as GLTFResult
 
   // Initialize position immediately to avoid flash at origin
   const initialPosition = React.useMemo(() => {
@@ -160,4 +161,4 @@ export default function Taxi({ taxi, isPaused, deliveryColor }: TaxiProps) {
   )
 }
 
-useGLTF.preload('/models/taxi.glb')
+useGLTF.preload(getAssetPath('models/taxi.glb'))

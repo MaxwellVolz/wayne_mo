@@ -30,11 +30,15 @@ const Scene = dynamic(() => import('./Scene'), {
 const INITIAL_TAXI_COST = 300
 const TAXI_COST_INCREMENT = 100
 
+interface GameProps {
+  onExit?: () => void
+}
+
 /**
  * Main game component
  * Houses the Three.js canvas and UI overlay
  */
-export default function Game() {
+export default function Game({ onExit }: GameProps = {}) {
   const [gameOver, setGameOver] = useState(false)
   const [finalScore, setFinalScore] = useState(0)
   const [gameKey, setGameKey] = useState(0) // Used to force remount on restart
@@ -98,6 +102,12 @@ export default function Game() {
     setIsRushHour(rushHour)
     console.log(`🚦 RUSH HOUR ${rushHour ? 'ACTIVATED' : 'ENDED'}`)
   }
+
+  const handleExit = useCallback(() => {
+    if (onExit) {
+      onExit()
+    }
+  }, [onExit])
 
   const handleTogglePause = useCallback(() => {
     // Check if player can afford to pause (cost $10)
@@ -236,6 +246,7 @@ export default function Game() {
           onTogglePause={handleTogglePause}
           onRushHourChange={handleRushHourChange}
           onReset={handleRestart}
+          onExit={handleExit}
         />
         <TaxiControls
           taxisRef={taxisRef}

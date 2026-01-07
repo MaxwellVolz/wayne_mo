@@ -23,7 +23,7 @@ export function useTaxiFollowCamera({
 }: UseTaxiFollowCameraOptions) {
   const { camera } = useThree()
   const targetPositionRef = useRef(new THREE.Vector3())
-  const defaultTarget = useRef(new THREE.Vector3(0.5, 0, -0.5))
+  const defaultTarget = useRef(new THREE.Vector3(-7.5, 0, 9.5))
   const defaultCameraPos = useRef(new THREE.Vector3(8, 10, 8))
   const initializedRef = useRef(false)
   const wasFollowingRef = useRef(false)
@@ -58,6 +58,8 @@ export function useTaxiFollowCamera({
       const p1 = points[Math.min(segmentIndex, points.length - 2)]
       const p2 = points[Math.min(segmentIndex + 1, points.length - 1)]
       const taxiPosition = p1.clone().lerp(p2, localT)
+
+      console.log("taxiPosition",taxiPosition);
 
       // Just transitioned to following - reset transition timer
       if (!wasFollowingRef.current) {

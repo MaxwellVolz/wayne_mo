@@ -12,6 +12,7 @@ import { DeliverySystem } from './DeliverySystem'
 import { DeliveryManager } from './DeliveryManager'
 import { extractPathNodesFromGLTF } from '@/lib/extractPathNodes'
 import { updateRoadNetwork } from '@/data/roads'
+import { getAssetPath } from '@/lib/assetPath'
 
 interface TutorialGameSceneProps {
   taxisRef: MutableRefObject<TaxiType[]>
@@ -102,7 +103,7 @@ export default function TutorialGameScene({
  * Extracts path nodes for taxi navigation
  */
 function TutorialModel() {
-  const gltf = useGLTF('/models/tutorial_01.glb')
+  const gltf = useGLTF(getAssetPath('models/tutorial_01.glb'))
 
   // Extract and register path nodes
   React.useEffect(() => {
@@ -139,4 +140,4 @@ function TutorialModel() {
 }
 
 // Preload tutorial model
-useGLTF.preload('/models/tutorial_01.glb')
+useGLTF.preload(getAssetPath('models/tutorial_01.glb'))

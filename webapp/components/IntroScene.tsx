@@ -14,24 +14,21 @@ interface IntroSceneProps {
  * Displays before the main game starts
  */
 export default function IntroScene({ onPlay, onTutorial }: IntroSceneProps) {
-  const [highScore, setHighScore] = useState(0)
-
-  useEffect(() => {
-    setHighScore(getHighScore())
-  }, [])
+  // Load high score immediately on first render
+  const [highScore] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return getHighScore()
+    }
+    return 0
+  })
 
   return (
     <div className={styles.introScene}>
       <div className={styles.introContent}>
-        <h1 className={styles.gameTitle}>Wayne Mo</h1>
-        <p className={styles.gameSubtitle}>One Man. An Entire &quot;AI&quot; Taxi Fleet</p>
-
-        <button
-          className={styles.tutorialButton}
-          onClick={onTutorial}
-        >
-          HOW TO PLAY
-        </button>
+        <div>
+          <h1 className={styles.gameTitle}>Wayne Mo</h1>
+          <p className={styles.gameSubtitle}>One Man. An Entire &quot;AI&quot; Taxi Fleet</p>
+        </div>
 
         {highScore > 0 && (
           <div className={styles.highScoreDisplay}>
@@ -39,10 +36,6 @@ export default function IntroScene({ onPlay, onTutorial }: IntroSceneProps) {
             <div className={styles.highScoreValue}>${highScore}</div>
           </div>
         )}
-
-        <div className={styles.introHints}>
-          <p>Command your autonomous taxi fleet</p>
-        </div>
       </div>
 
       <div className={styles.buttonContainer}>
@@ -50,7 +43,14 @@ export default function IntroScene({ onPlay, onTutorial }: IntroSceneProps) {
           className={styles.playButton}
           onClick={onPlay}
         >
-          PLAY
+          Play
+        </button>
+
+        <button
+          className={styles.tutorialButton}
+          onClick={onTutorial}
+        >
+          How to Play
         </button>
       </div>
     </div>

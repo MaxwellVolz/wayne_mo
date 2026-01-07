@@ -7,6 +7,7 @@ import * as THREE from 'three'
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
+import { getAssetPath } from '@/lib/assetPath'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -18,7 +19,7 @@ type GLTFResult = GLTF & {
 }
 
 export function Model(props: React.ComponentProps<'group'>) {
-  const { nodes, materials } = useGLTF('/models/box_large.glb') as unknown as GLTFResult
+  const { nodes, materials } = useGLTF(getAssetPath('models/box_large.glb')) as unknown as GLTFResult
   return (
     <group {...props} dispose={null}>
       <group
@@ -38,4 +39,4 @@ export function Model(props: React.ComponentProps<'group'>) {
   )
 }
 
-useGLTF.preload('/models/box_large.glb')
+useGLTF.preload(getAssetPath('models/box_large.glb'))

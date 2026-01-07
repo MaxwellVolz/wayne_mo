@@ -9,7 +9,9 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh; /* Use dynamic viewport height for mobile */
   background: var(--color-black);
+  overflow: hidden;
 }
 
 .tutorialOverlay {
@@ -36,6 +38,10 @@
   box-shadow: 0 -8px 32px rgba(255, 255, 0, 0.3);
   z-index: var(--z-overlay);
   min-height: 180px;
+  max-height: 50vh;
+  max-height: 50dvh; /* Use dynamic viewport height for mobile */
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .stepTitle {
@@ -67,16 +73,25 @@
 
 @media (max-width: 768px) {
   .instructionPanel {
-    padding: 1.5rem var(--space-lg);
+    padding: 1.25rem var(--space-lg);
+    max-height: 60vh;
+    max-height: 60dvh;
   }
 
   .stepTitle {
     font-size: 1.25rem;
+    margin-bottom: 0.5rem;
   }
 
   .stepDescription {
     font-size: 0.9rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
+    padding: 0 var(--space-md);
+  }
+
+  .buttonGroup {
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
   }
 
   .buttonGroup button {
@@ -87,20 +102,56 @@
 
 @media (max-width: 480px) {
   .instructionPanel {
-    padding: 1.25rem 0.75rem;
+    padding: 1rem 0.75rem;
+    max-height: 65vh;
+    max-height: 65dvh;
+    min-height: auto;
   }
 
   .stepTitle {
     font-size: 1.1rem;
+    margin-bottom: 0.4rem;
   }
 
   .stepDescription {
     font-size: 0.85rem;
-    margin-bottom: var(--space-lg);
+    margin-bottom: 0.75rem;
+    padding: 0 var(--space-sm);
+    line-height: 1.4;
+  }
+
+  .buttonGroup {
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    flex-wrap: wrap;
   }
 
   .buttonGroup button {
     padding: 0.65rem 1.25rem;
     font-size: 0.9rem;
+    flex: 1 1 auto;
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 360px) {
+  .instructionPanel {
+    padding: 0.75rem 0.5rem;
+    max-height: 70vh;
+    max-height: 70dvh;
+  }
+
+  .stepTitle {
+    font-size: 1rem;
+  }
+
+  .stepDescription {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .buttonGroup button {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
   }
 }

@@ -7,11 +7,10 @@ import * as THREE from 'three'
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
+import { getAssetPath } from '@/lib/assetPath'
 
 type GLTFResult = GLTF & {
   nodes: {
-    ['delivery-flat']: THREE.Mesh
-    ['debris-spoiler-b']: THREE.Mesh
     ['tree-large']: THREE.Mesh
     ['tree-large001']: THREE.Mesh
     ['tree-small']: THREE.Mesh
@@ -30,6 +29,8 @@ type GLTFResult = GLTF & {
     ['tree-small002']: THREE.Mesh
     ['tree-small004']: THREE.Mesh
     ['tree-small005']: THREE.Mesh
+    ['debris-spoiler-b']: THREE.Mesh
+    ['delivery-flat']: THREE.Mesh
     ['road-end']: THREE.Mesh
     ['road-end001']: THREE.Mesh
     ['road-end002']: THREE.Mesh
@@ -185,7 +186,6 @@ type GLTFResult = GLTF & {
     ['building-type-a006']: THREE.Mesh
     ['building-type-b004']: THREE.Mesh
     ['building-type-c007']: THREE.Mesh
-    ['building-type-b006']: THREE.Mesh
     ['building-type-b009']: THREE.Mesh
     ['building-type-a015']: THREE.Mesh
     ['building-type-b011']: THREE.Mesh
@@ -194,7 +194,6 @@ type GLTFResult = GLTF & {
     ['building-type-a011']: THREE.Mesh
     ['building-type-c011']: THREE.Mesh
     ['building-type-c012']: THREE.Mesh
-    ['building-a002']: THREE.Mesh
     ['building-n004']: THREE.Mesh
     ['building-o004']: THREE.Mesh
     ['building-d001']: THREE.Mesh
@@ -568,13 +567,15 @@ type GLTFResult = GLTF & {
     ['tile-low299']: THREE.Mesh
     ['tile-low334']: THREE.Mesh
     ['tile-low253']: THREE.Mesh
+    ['arrow-basic']: THREE.Mesh
+    arrow: THREE.Mesh
   }
   materials: {
-    ['colormap.057']: THREE.MeshStandardMaterial
-    ['colormap.059']: THREE.MeshStandardMaterial
     ['colormap.029']: THREE.MeshStandardMaterial
     ['colormap.030']: THREE.MeshStandardMaterial
     ['colormap.015']: THREE.MeshStandardMaterial
+    ['colormap.059']: THREE.MeshStandardMaterial
+    ['colormap.057']: THREE.MeshStandardMaterial
     ['colormap.051']: THREE.MeshStandardMaterial
     ['colormap.052']: THREE.MeshStandardMaterial
     ['colormap.053']: THREE.MeshStandardMaterial
@@ -599,7 +600,6 @@ type GLTFResult = GLTF & {
     ['colormap.043']: THREE.MeshStandardMaterial
     ['colormap.026']: THREE.MeshStandardMaterial
     ['colormap.023']: THREE.MeshStandardMaterial
-    ['colormap.005']: THREE.MeshStandardMaterial
     ['colormap.007']: THREE.MeshStandardMaterial
     ['colormap.008']: THREE.MeshStandardMaterial
     ['colormap.006']: THREE.MeshStandardMaterial
@@ -618,11 +618,13 @@ type GLTFResult = GLTF & {
     ['colormap.027']: THREE.MeshStandardMaterial
     ['colormap.039']: THREE.MeshStandardMaterial
     farm: THREE.MeshStandardMaterial
+    ['colormap.056']: THREE.MeshStandardMaterial
+    ['colormap.045']: THREE.MeshStandardMaterial
   }
 }
 
 export function Model(props: React.ComponentProps<'group'>) {
-  const { nodes, materials } = useGLTF('/models/city_01.glb') as unknown as GLTFResult
+  const { nodes, materials } = useGLTF(getAssetPath('models/city_01.glb')) as unknown as GLTFResult
   return (
     <group {...props} dispose={null}>
       <group
@@ -703,8 +705,6 @@ export function Model(props: React.ComponentProps<'group'>) {
         <group name="Pickup_House_01036" position={[-2.5, 0, -4.5]} userData={{ name: 'Pickup_House_01.036' }} />
         <group name="Pickup_House_01037" position={[-0.5, 0, -4.5]} userData={{ name: 'Pickup_House_01.037' }} />
         <group name="Pickup_House_01038" position={[8.5, 0, -0.5]} userData={{ name: 'Pickup_House_01.038' }} />
-        <mesh name="delivery-flat" geometry={nodes['delivery-flat'].geometry} material={materials['colormap.057']} position={[-5.9, 0, 5]} rotation={[Math.PI / 2, 0, 3.015]} scale={0.476} userData={{ name: 'delivery-flat' }} />
-        <mesh name="debris-spoiler-b" geometry={nodes['debris-spoiler-b'].geometry} material={materials['colormap.059']} position={[-5.5, 0.029, 4.5]} rotation={[Math.PI / 2, -0.974, 1.526]} scale={0.642} userData={{ name: 'debris-spoiler-b' }} />
         <mesh name="tree-large" geometry={nodes['tree-large'].geometry} material={materials['colormap.029']} position={[2.8, 0, -1.3]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-large' }} />
         <mesh name="tree-large001" geometry={nodes['tree-large001'].geometry} material={materials['colormap.029']} position={[3, 0, -1.6]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-large.001' }} />
         <mesh name="tree-small" geometry={nodes['tree-small'].geometry} material={materials['colormap.030']} position={[3.2, 0, -1.2]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-small' }} />
@@ -723,6 +723,8 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="tree-small002" geometry={nodes['tree-small002'].geometry} material={materials['colormap.030']} position={[-9.2, 0, 2.3]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-small.002' }} />
         <mesh name="tree-small004" geometry={nodes['tree-small004'].geometry} material={materials['colormap.030']} position={[-9.2, 0, -0.7]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-small.004' }} />
         <mesh name="tree-small005" geometry={nodes['tree-small005'].geometry} material={materials['colormap.030']} position={[-8.6, 0, 2.7]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-small.005' }} />
+        <mesh name="debris-spoiler-b" geometry={nodes['debris-spoiler-b'].geometry} material={materials['colormap.059']} position={[-5.5, 0.029, 4.5]} rotation={[Math.PI / 2, -0.974, 1.526]} scale={0.642} userData={{ name: 'debris-spoiler-b' }} />
+        <mesh name="delivery-flat" geometry={nodes['delivery-flat'].geometry} material={materials['colormap.057']} position={[-5.9, 0, 5]} rotation={[Math.PI / 2, 0, 3.015]} scale={0.476} userData={{ name: 'delivery-flat' }} />
         <mesh name="road-end" geometry={nodes['road-end'].geometry} material={materials['colormap.051']} position={[-11.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-end' }} />
         <mesh name="road-end001" geometry={nodes['road-end001'].geometry} material={materials['colormap.051']} position={[-3.5, 0, 9.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-end.001' }} />
         <mesh name="road-end002" geometry={nodes['road-end002'].geometry} material={materials['colormap.051']} position={[0.5, 0, 10.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-end.002' }} />
@@ -861,7 +863,7 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="police001" geometry={nodes.police001.geometry} material={materials['colormap.050']} position={[-2.4, 0, 2.1]} rotation={[Math.PI / 2, 0, -0.067]} scale={0.5} userData={{ name: 'police.001' }} />
         <mesh name="suv002" geometry={nodes.suv002.geometry} material={materials['colormap.046']} position={[-4.8, 0, 9.9]} rotation={[Math.PI / 2, 0, 2.531]} scale={0.5} userData={{ name: 'suv.002' }} />
         <mesh name="police002" geometry={nodes.police002.geometry} material={materials['colormap.050']} position={[-5.4, 0, 11.1]} rotation={[Math.PI / 2, 0, 2.87]} scale={0.5} userData={{ name: 'police.002' }} />
-        <mesh name="sedan001" geometry={nodes.sedan001.geometry} material={materials['colormap.049']} position={[-9.2, 0, 9.9]} rotation={[Math.PI / 2, 0, -2.579]} scale={0.5} userData={{ name: 'sedan.001' }} />
+        <mesh name="sedan001" geometry={nodes.sedan001.geometry} material={materials['colormap.049']} position={[-11.2, 0, 8.9]} rotation={[Math.PI / 2, 0, -2.885]} scale={0.5} userData={{ name: 'sedan.001' }} />
         <mesh name="building-type-a" geometry={nodes['building-type-a'].geometry} material={materials['colormap.009']} position={[-0.69, 0, -3.23]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-type-a' }} />
         <mesh name="building-type-b" geometry={nodes['building-type-b'].geometry} material={materials['colormap.010']} position={[-2.3, 0, -3]} rotation={[Math.PI / 2, 0, -1.547]} userData={{ name: 'building-type-b' }} />
         <mesh name="building-type-l" geometry={nodes['building-type-l'].geometry} material={materials['colormap.011']} position={[-0.7, 0, -1.7]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-type-l' }} />
@@ -878,7 +880,6 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="building-type-a006" geometry={nodes['building-type-a006'].geometry} material={materials['colormap.043']} position={[-0.69, 0, 10.77]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-type-a.006' }} />
         <mesh name="building-type-b004" geometry={nodes['building-type-b004'].geometry} material={materials['colormap.042']} position={[-1.5, 0, 9.1]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-type-b.004' }} />
         <mesh name="building-type-c007" geometry={nodes['building-type-c007'].geometry} material={materials['colormap.041']} position={[-3.3, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-type-c.007' }} />
-        <mesh name="building-type-b006" geometry={nodes['building-type-b006'].geometry} material={materials['colormap.042']} position={[-11, 0, 9]} rotation={[Math.PI / 2, 0, -Math.PI]} userData={{ name: 'building-type-b.006' }} />
         <mesh name="building-type-b009" geometry={nodes['building-type-b009'].geometry} material={materials['colormap.022']} position={[-5.1, 0.2, -5.7]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-type-b.009' }} />
         <mesh name="building-type-a015" geometry={nodes['building-type-a015'].geometry} material={materials['colormap.024']} position={[-0.69, 0, -6.23]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-type-a.015' }} />
         <mesh name="building-type-b011" geometry={nodes['building-type-b011'].geometry} material={materials['colormap.022']} position={[-2.3, 0, -6]} rotation={[Math.PI / 2, 0, -1.547]} userData={{ name: 'building-type-b.011' }} />
@@ -887,7 +888,6 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="building-type-a011" geometry={nodes['building-type-a011'].geometry} material={materials['colormap.026']} position={[-10.17, 0, -1.157]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'building-type-a.011' }} />
         <mesh name="building-type-c011" geometry={nodes['building-type-c011'].geometry} material={materials['colormap.023']} position={[-8.96, 0, 0.813]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-type-c.011' }} />
         <mesh name="building-type-c012" geometry={nodes['building-type-c012'].geometry} material={materials['colormap.023']} position={[-8.96, 0, -2.187]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'building-type-c.012' }} />
-        <mesh name="building-a002" geometry={nodes['building-a002'].geometry} material={materials['colormap.005']} position={[-7.326, 0, 10.65]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-a.002' }} />
         <mesh name="building-n004" geometry={nodes['building-n004'].geometry} material={materials['colormap.007']} position={[-4.225, 0, 4.2]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-n.004' }} />
         <mesh name="building-o004" geometry={nodes['building-o004'].geometry} material={materials['colormap.008']} position={[-5.075, 0, 6.85]} rotation={[Math.PI / 2, 0, -Math.PI]} userData={{ name: 'building-o.004' }} />
         <mesh name="building-d001" geometry={nodes['building-d001'].geometry} material={materials['colormap.006']} position={[-5.975, 0, 6.45]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'building-d.001' }} />
@@ -1086,20 +1086,20 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="tile-low128" geometry={nodes['tile-low128'].geometry} material={materials['colormap.039']} position={[-6.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.128' }} />
         <mesh name="tile-low129" geometry={nodes['tile-low129'].geometry} material={materials['colormap.039']} position={[-5.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.129' }} />
         <mesh name="tile-low130" geometry={nodes['tile-low130'].geometry} material={materials['colormap.039']} position={[-4.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.130' }} />
-        <mesh name="tile-low131" geometry={nodes['tile-low131'].geometry} material={materials['colormap.025']} position={[-10.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.131' }} />
+        <mesh name="tile-low131" geometry={nodes['tile-low131'].geometry} material={materials['colormap.039']} position={[-10.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.131' }} />
         <mesh name="tile-low132" geometry={nodes['tile-low132'].geometry} material={materials['colormap.039']} position={[-9.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.132' }} />
         <mesh name="tile-low133" geometry={nodes['tile-low133'].geometry} material={materials['colormap.039']} position={[-8.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.133' }} />
-        <mesh name="tile-low134" geometry={nodes['tile-low134'].geometry} material={materials['colormap.025']} position={[-10.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.134' }} />
+        <mesh name="tile-low134" geometry={nodes['tile-low134'].geometry} material={materials['colormap.039']} position={[-10.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.134' }} />
         <mesh name="tile-low135" geometry={nodes['tile-low135'].geometry} material={materials['colormap.039']} position={[-9.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.135' }} />
         <mesh name="tile-low136" geometry={nodes['tile-low136'].geometry} material={materials['colormap.039']} position={[-8.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.136' }} />
-        <mesh name="tile-low137" geometry={nodes['tile-low137'].geometry} material={materials['colormap.025']} position={[-10.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.137' }} />
+        <mesh name="tile-low137" geometry={nodes['tile-low137'].geometry} material={materials['colormap.039']} position={[-10.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.137' }} />
         <mesh name="tile-low138" geometry={nodes['tile-low138'].geometry} material={materials['colormap.039']} position={[-9.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.138' }} />
         <mesh name="tile-low139" geometry={nodes['tile-low139'].geometry} material={materials['colormap.039']} position={[-8.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.139' }} />
         <mesh name="tile-low227" geometry={nodes['tile-low227'].geometry} material={materials['colormap.039']} position={[-3.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.227' }} />
         <mesh name="tile-low231" geometry={nodes['tile-low231'].geometry} material={materials['colormap.039']} position={[-7.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.231' }} />
         <mesh name="tile-low232" geometry={nodes['tile-low232'].geometry} material={materials['colormap.039']} position={[-8.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.232' }} />
         <mesh name="tile-low233" geometry={nodes['tile-low233'].geometry} material={materials['colormap.039']} position={[-6.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.233' }} />
-        <mesh name="tile-low234" geometry={nodes['tile-low234'].geometry} material={materials['colormap.025']} position={[-11.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.234' }} />
+        <mesh name="tile-low234" geometry={nodes['tile-low234'].geometry} material={materials['colormap.039']} position={[-11.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.234' }} />
         <mesh name="tile-low235" geometry={nodes['tile-low235'].geometry} material={materials['colormap.025']} position={[-12.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.235' }} />
         <mesh name="tile-low236" geometry={nodes['tile-low236'].geometry} material={materials['colormap.025']} position={[-12.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.236' }} />
         <mesh name="tile-low245" geometry={nodes['tile-low245'].geometry} material={materials['colormap.025']} position={[-13.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.245' }} />
@@ -1259,11 +1259,13 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="tile-low297" geometry={nodes['tile-low297'].geometry} material={materials['colormap.025']} position={[11.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.297' }} />
         <mesh name="tile-low298" geometry={nodes['tile-low298'].geometry} material={materials['colormap.025']} position={[11.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.298' }} />
         <mesh name="tile-low299" geometry={nodes['tile-low299'].geometry} material={materials['colormap.025']} position={[11.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.299' }} />
-        <mesh name="tile-low334" geometry={nodes['tile-low334'].geometry} material={materials['colormap.025']} position={[-11.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.334' }} />
+        <mesh name="tile-low334" geometry={nodes['tile-low334'].geometry} material={materials['colormap.039']} position={[-11.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.334' }} />
         <mesh name="tile-low253" geometry={nodes['tile-low253'].geometry} material={materials['colormap.025']} position={[8.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.253' }} />
+        <mesh name="arrow-basic" geometry={nodes['arrow-basic'].geometry} material={materials['colormap.056']} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'arrow-basic' }} />
+        <mesh name="arrow" geometry={nodes.arrow.geometry} material={materials['colormap.045']} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'arrow' }} />
       </group>
     </group>
   )
 }
 
-useGLTF.preload('/models/city_01.glb')
+useGLTF.preload(getAssetPath('models/city_01.glb'))

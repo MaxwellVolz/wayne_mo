@@ -57,23 +57,60 @@ function fixGltfTypes(filePath) {
     }
   }
 
-  // 5. Fix model paths - ensure they point to /models/ directory
-  // Match patterns like: useGLTF('/city_01.glb') or useGLTF('/taxi.glb')
-  // But NOT if already correct: useGLTF('/models/...')
-  const pathRegex = /useGLTF\(['"]\/(?!models\/)([^'"]+\.glb)['"]\)/g;
+  // 5. Add getAssetPath import after other imports
+  if (!content.includes("import { getAssetPath }")) {
+    // Find the last import statement
+    const importLines = content.split('\n');
+    let lastImportIndex = -1;
+    for (let i = 0; i < importLines.length; i++) {
+      if (importLines[i].startsWith('import ')) {
+        lastImportIndex = i;
+      }
+    }
+
+    if (lastImportIndex !== -1) {
+      importLines.splice(lastImportIndex + 1, 0, "import { getAssetPath } from '@/lib/assetPath'");
+      content = importLines.join('\n');
+      console.log('  ✅ Added getAssetPath import');
+      changes++;
+    }
+  }
+
+  // 6. Fix model paths - replace hardcoded paths with getAssetPath()
+  // Match: useGLTF('/models/...')
+  // Replace: useGLTF(getAssetPath('models/...'))
+  const pathRegex = /useGLTF\(['"]\/models\/([^'"]+\.glb)['"]\)/g;
   const pathMatches = content.match(pathRegex);
   if (pathMatches) {
-    content = content.replace(pathRegex, "useGLTF('/models/$1')");
-    console.log('  ✅ Fixed model path to use /models/ directory');
+    content = content.replace(pathRegex, "useGLTF(getAssetPath('models/$1'))");
+    console.log('  ✅ Fixed useGLTF paths to use getAssetPath()');
     changes++;
   }
 
-  // Also fix preload paths
-  const preloadRegex = /useGLTF\.preload\(['"]\/(?!models\/)([^'"]+\.glb)['"]\)/g;
+  // Also fix paths that don't have /models/ prefix yet
+  const pathRegex2 = /useGLTF\(['"]\/(?!models\/)([^'"]+\.glb)['"]\)/g;
+  const pathMatches2 = content.match(pathRegex2);
+  if (pathMatches2) {
+    content = content.replace(pathRegex2, "useGLTF(getAssetPath('models/$1'))");
+    console.log('  ✅ Fixed missing /models/ prefix and added getAssetPath()');
+    changes++;
+  }
+
+  // Fix preload paths
+  const preloadRegex = /useGLTF\.preload\(['"]\/models\/([^'"]+\.glb)['"]\)/g;
   const preloadMatches = content.match(preloadRegex);
   if (preloadMatches) {
-    content = content.replace(preloadRegex, "useGLTF.preload('/models/$1')");
-    console.log('  ✅ Fixed preload path to use /models/ directory');
+    content = content.replace(preloadRegex, "useGLTF.preload(getAssetPath('models/$1'))");
+    console.log('  ✅ Fixed preload paths to use getAssetPath()');
+    changes++;
+  }
+
+  // Also fix preload paths without /models/ prefix
+  const preloadRegex2 = /useGLTF\.preload\(['"]\/(?!models\/)([^'"]+\.glb)['"]\)/g;
+  const preloadMatches2 = content.match(preloadRegex2);
+  if (preloadMatches2) {
+    content = content.replace(preloadRegex2, "useGLTF.preload(getAssetPath('models/$1'))");
+    console.log('  ✅ Fixed preload missing /models/ prefix and added getAssetPath()');
     changes++;
   }
 

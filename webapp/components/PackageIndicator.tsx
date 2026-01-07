@@ -4,6 +4,7 @@ import { useRef, useMemo } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
+import { getAssetPath } from '@/lib/assetPath'
 
 interface PackageIndicatorProps {
   taxiPosition: THREE.Vector3
@@ -14,10 +15,10 @@ interface PackageIndicatorProps {
 
 // Box models mapped by multiplier (1-4) - same as PickupIndicator
 const BOX_MODELS: Record<number, string> = {
-  1: '/models/box_small.glb',
-  2: '/models/box_large.glb',
-  3: '/models/box_long.glb',
-  4: '/models/box_wide.glb',
+  1: getAssetPath('models/box_small.glb'),
+  2: getAssetPath('models/box_large.glb'),
+  3: getAssetPath('models/box_long.glb'),
+  4: getAssetPath('models/box_wide.glb'),
 }
 
 /**
