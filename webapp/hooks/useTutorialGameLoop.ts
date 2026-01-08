@@ -26,6 +26,7 @@ export function useTutorialGameLoop() {
       money: 0,
       isReversing: false,
       collisionCooldown: 0,
+      isReady: false, // Don't render until positioned
     },
   ])
 
@@ -46,6 +47,7 @@ export function useTutorialGameLoop() {
         const startPath = network.paths[0]
         taxisRef.current[0].path = startPath
         taxisRef.current[0].t = 0
+        taxisRef.current[0].isReady = true // Mark ready to render
         console.log(`✅ Tutorial taxi on path: ${startPath.id}`)
         console.log(`   Total paths: ${network.paths.length}`)
       }

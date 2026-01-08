@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { CarTaxiFront, Globe, Plus } from 'lucide-react'
 import type { MutableRefObject } from 'react'
 import type { Taxi } from '@/types/game'
@@ -21,9 +22,25 @@ interface TaxiControlsProps {
  */
 export function TaxiControls({ taxisRef, onTaxiSelect, onResetCamera, selectedTaxiId, onSpawnTaxi, nextTaxiCost, canAffordTaxi }: TaxiControlsProps) {
   const taxis = taxisRef.current
+  const [controlsVisible, setControlsVisible] = useState(false)
+
+  // Fade in controls after 3 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setControlsVisible(true)
+    }, 3000)
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
-    <div className={styles.taxiControls}>
+    <div
+      className={styles.taxiControls}
+      style={{
+        opacity: controlsVisible ? 1 : 0,
+        transition: 'opacity 1s ease-in-out',
+        pointerEvents: controlsVisible ? 'auto' : 'none',
+      }}
+    >
       {/* Globe button to reset camera */}
       <button
         className={!selectedTaxiId ? styles.globeIconActive : styles.globeIcon}

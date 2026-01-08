@@ -55,8 +55,6 @@ type GLTFResult = GLTF & {
     kitchenCoffeeMachine_3: THREE.Mesh
     rugRounded_1: THREE.Mesh
     rugRounded_2: THREE.Mesh
-    ['pizza-box']: THREE.Mesh
-    pizza: THREE.Mesh
   }
   materials: {
     metalDark: THREE.MeshStandardMaterial
@@ -99,8 +97,6 @@ type GLTFResult = GLTF & {
     ['carpetWhite.002']: THREE.MeshStandardMaterial
     carpetDarker: THREE.MeshStandardMaterial
     ['carpet.003']: THREE.MeshStandardMaterial
-    ['colormap.058']: THREE.MeshStandardMaterial
-    ['colormap.060']: THREE.MeshStandardMaterial
   }
 }
 
@@ -193,8 +189,6 @@ export function Model(props: React.ComponentProps<'group'>) {
           <mesh name="rugRounded_1" geometry={nodes.rugRounded_1.geometry} material={materials.carpetDarker} />
           <mesh name="rugRounded_2" geometry={nodes.rugRounded_2.geometry} material={materials['carpet.003']} />
         </group>
-        <mesh name="pizza-box" geometry={nodes['pizza-box'].geometry} material={materials['colormap.058']} position={[-7.531, 1.384, 10.618]} rotation={[Math.PI / 2, 0, 1.192]} scale={0.179} userData={{ name: 'pizza-box' }} />
-        <mesh name="pizza" geometry={nodes.pizza.geometry} material={materials['colormap.060']} position={[-7.531, 1.388, 10.62]} rotation={[Math.PI / 2, 0, 1.192]} scale={0.179} userData={{ name: 'pizza' }} />
       </group>
     </group>
   )

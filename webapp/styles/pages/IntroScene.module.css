@@ -30,20 +30,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image:
-    linear-gradient(45deg, var(--color-black) 25%, transparent 25%),
-    linear-gradient(-45deg, var(--color-black) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, var(--color-black) 75%),
-    linear-gradient(-45deg, transparent 75%, var(--color-black) 75%);
-  background-size: 20vw 20vw;
-  background-position: 0 0, 0 10vw, 10vw -10vw, -10vw 0;
-  background-color: var(--color-primary);
-  opacity: 0.15;
-  filter: blur(0.5px);
+  opacity: 0;
   pointer-events: none;
   z-index: 0;
 }
-
 
 .introContent {
   text-align: center;
@@ -83,6 +73,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -103,7 +94,8 @@
 }
 
 .gameSubtitle {
-  font-size: clamp(0.85rem, 2.8vw, 1.5rem);
+  font-size: clamp(2rem, 8vw, 7rem);
+  font-weight: 800;
   letter-spacing: 0.25em;
   margin: 0 0 1rem 0;
   opacity: 0.9;
@@ -118,12 +110,7 @@
   gap: 1rem;
   margin: 0;
   padding: 2.5rem 2rem;
-  border: var(--border-extra-thick) solid var(--color-primary);
-  border-radius: var(--radius-lg);
-  box-shadow:
-    0 0 40px rgba(255, 255, 0, 0.4),
-    inset 0 0 30px rgba(0, 0, 0, 0.5);
-  background: rgba(0, 0, 0, 0.6);
+
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
@@ -132,41 +119,22 @@
 }
 
 /* Grid pattern overlay on high score */
-.highScoreDisplay::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image:
-    repeating-linear-gradient(0deg,
-      transparent,
-      transparent 10px,
-      rgba(255, 255, 0, 0.05) 10px,
-      rgba(255, 255, 0, 0.05) 20px),
-    repeating-linear-gradient(90deg,
-      transparent,
-      transparent 10px,
-      rgba(255, 255, 0, 0.05) 10px,
-      rgba(255, 255, 0, 0.05) 20px);
-  pointer-events: none;
-  z-index: 0;
-}
 
 .highScoreLabel {
-  font-size: clamp(1.1rem, 3vw, 2rem);
+  font-size: clamp(4rem, 8vw, 7rem);
   letter-spacing: 0.3em;
   color: rgba(255, 255, 255, 0.8);
   text-transform: uppercase;
   font-weight: 700;
   position: relative;
+  color: var(--color-secondary);
+
   z-index: 1;
   margin: 0;
 }
 
 .highScoreValue {
-  font-size: clamp(3.5rem, 12vw, 10rem);
+  font-size: clamp(5rem, 20vw, 15rem);
   letter-spacing: 0.05em;
   font-weight: 900;
   color: var(--color-primary);

@@ -3,6 +3,7 @@
  */
 
 const HIGH_SCORE_KEY = 'wayne_mo_high_score'
+const CUMULATIVE_SCORE_KEY = 'wayne_mo_cumulative_score'
 
 /**
  * Get the current high score from localStorage
@@ -39,5 +40,41 @@ export function saveHighScore(score: number): boolean {
   } catch (error) {
     console.error('Failed to save high score:', error)
     return false
+  }
+}
+
+/**
+ * Get the cumulative total score from localStorage
+ */
+export function getCumulativeScore(): number {
+  if (typeof window === 'undefined') return 0
+
+  try {
+    const stored = localStorage.getItem(CUMULATIVE_SCORE_KEY)
+    return stored ? parseInt(stored, 10) : 0
+  } catch (error) {
+    console.error('Failed to read cumulative score:', error)
+    return 0
+  }
+}
+
+/**
+ * Add a score to the cumulative total
+ * Returns the new cumulative total
+ */
+export function addToCumulativeScore(score: number): number {
+  if (typeof window === 'undefined') return 0
+
+  try {
+    const currentCumulative = getCumulativeScore()
+    const newCumulative = currentCumulative + score
+
+    localStorage.setItem(CUMULATIVE_SCORE_KEY, newCumulative.toString())
+    console.log(`💰 Cumulative Score: $${newCumulative} (+$${score})`)
+
+    return newCumulative
+  } catch (error) {
+    console.error('Failed to update cumulative score:', error)
+    return getCumulativeScore()
   }
 }

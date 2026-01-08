@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import type { MutableRefObject } from 'react'
@@ -12,6 +13,8 @@ import { DeliverySystem } from './DeliverySystem'
 import { CollisionSystem } from './CollisionSystem'
 import { TaxiManager } from './TaxiManager'
 import { CameraController } from './CameraController'
+import { Model as TheOGShop } from '@/generated_components/the_og_shop'
+
 
 interface SceneProps {
   taxisRef: MutableRefObject<TaxiType[]>
@@ -27,8 +30,9 @@ interface SceneProps {
 /**
  * Main Three.js scene container
  * Sets up camera, lighting, and controls
+ * Memoized to prevent re-renders when parent state changes
  */
-export default function Scene({
+const Scene = React.memo(function Scene({
   taxisRef,
   deliveriesRef,
   pickupNodesRef,
@@ -83,6 +87,8 @@ export default function Scene({
       {/* Collision detection system */}
       <CollisionSystem taxisRef={taxisRef} isPaused={isPaused} />
 
+      <TheOGShop />
+
       {/* Delivery system logic (spawn timer & collision detection) */}
       <DeliverySystem
         deliveriesRef={deliveriesRef}
@@ -104,7 +110,9 @@ export default function Scene({
       <TaxiManager taxisRef={taxisRef} deliveriesRef={deliveriesRef} isPaused={isPaused} />
 
       {/* Grid helper for debugging */}
-      <gridHelper args={[20, 20, '#444', '#222']} />
+      {/* <gridHelper args={[20, 20, '#444', '#222']} /> */}
     </Canvas>
   )
-}
+})
+
+export default Scene

@@ -2,9 +2,10 @@
 
 import { useRef, useMemo } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 import { getAssetPath } from '@/lib/assetPath'
+import { useGLTF, Clone } from '@react-three/drei'
+
 
 interface PickupIndicatorProps {
   position: THREE.Vector3
@@ -92,12 +93,7 @@ export function PickupIndicator({ position, dropoffPosition, color, deliveryId, 
     targetQuaternion.setFromUnitVectors(arrowDefaultDirection, direction)
 
     // Position the arrow slightly offset from the box
-    const arrowPosition = new THREE.Vector3(
-      0, .8, 0
-      // direction.x * 0.5,
-      // 0,
-      // direction.z * 0.5
-    )
+    const arrowPosition = new THREE.Vector3(0, 1, 0)
 
     return {
       position: arrowPosition,
@@ -123,35 +119,32 @@ export function PickupIndicator({ position, dropoffPosition, color, deliveryId, 
   return (
     <group
       ref={groupRef}
-      position={[position.x, position.y + 0.4, position.z]}
+      position={[position.x, position.y, position.z]}
     >
       {/* Box model based on multiplier */}
       <primitive object={boxClone} />
 
-      {/* Directional arrow pointing to dropoff */}
+      {/* Directional arrows pointing to dropoff */}
       <group
         position={directionIndicator.position}
         quaternion={directionIndicator.quaternion}
         scale={0.7}
       >
-        <primitive object={arrowClone} />
-      </group>
+        {(() => {
+          const arrowCount = 3 // original + 2 more
+          const halfDistance = distance * 0.5
 
-      {/* Colored glow ring around the box */}
-      {/* <mesh
-        position={[0, 0, 0]}
-        rotation={[Math.PI / 2, 0, 0]}
-      >
-        <torusGeometry args={[0.4, 0.03, 8, 32]} />
-        <meshStandardMaterial
-          color={color}
-          emissive={color}
-          emissiveIntensity={1.5}
-          transparent
-          opacity={0.5}
-          depthWrite={false}
-        />
-      </mesh> */}
+          // spacing across first half, but skip the endpoint so arrows don't reach the midpoint
+          const spacing = halfDistance / arrowCount
+
+          return Array.from({ length: arrowCount }).map((_, i) => (
+            // offset along local -X because your arrow's "forward" is -X (matches arrowDefaultDirection)
+            <group key={i} position={[-spacing + (-spacing * i), (.2 * i) - .5, 0]}>
+              <Clone object={arrowClone} />
+            </group>
+          ))
+        })()}
+      </group>
     </group>
   )
 }

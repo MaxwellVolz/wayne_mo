@@ -31,6 +31,8 @@ export function useGameLoop() {
       // Collision handling
       isReversing: false,
       collisionCooldown: 0,
+      // Rendering flag - don't render until positioned at StarterNode
+      isReady: false,
     },
   ])
 
@@ -56,6 +58,7 @@ export function useGameLoop() {
 
         taxisRef.current[0].path = startPath
         taxisRef.current[0].t = 0
+        taxisRef.current[0].isReady = true // Mark as ready to render
         console.log(`✅ Taxi spawned at starting path: ${startPath.id}`)
         console.log(`   Available paths: ${network.paths.length}`)
         console.log(`   Spawn paths from StarterNode: ${spawnPaths.length}`)

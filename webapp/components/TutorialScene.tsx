@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import { Play, Pause } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import { useTutorialGameLoop } from '@/hooks/useTutorialGameLoop'
@@ -33,16 +33,16 @@ export default function TutorialScene({ onComplete }: TutorialSceneProps) {
 
   const tutorialSteps = [
     {
-      title: "Controls Cameras Cabs",
-      description: "Bottom left buttons set chase camera, overview, and you can buy another cab if you got the cash...",
+      title: "Yo, what up. First day?",
+      description: "It's easy. The taxis will stay on the road, you just gotta direct them to the biggest packages.",
     },
     {
-      title: "Run the Intersections",
-      description: "Tap intersections to direct traffic! Try to avoid collisions.",
+      title: "Plus the controls are pretty chill...",
+      description: "Tap an intersection to set the vibe. The next cab that rolls through will know what to do.",
     },
     {
-      title: "Deliver Different Packages",
-      description: "Pick up packages and deliver them to matching color drop-offs. Some might be worth more...",
+      title: "'notha day another dolla aye Benjamin?",
+      description: "Once you got a box that cabs underglow will match the dropoff rings. Keep those lines clean.",
     },
   ]
 

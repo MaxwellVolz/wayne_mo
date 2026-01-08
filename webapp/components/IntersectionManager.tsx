@@ -1,5 +1,6 @@
 'use client'
 
+import { useMemo } from 'react'
 import { IntersectionTile } from './IntersectionTile'
 import { useIntersectionManager } from '@/hooks/useIntersectionManager'
 import { getRoadNetwork } from '@/data/roads'
@@ -11,12 +12,7 @@ import { getRoadNetwork } from '@/data/roads'
  */
 export function IntersectionManager() {
   const { intersections, toggleIntersectionMode } = useIntersectionManager()
-  const network = getRoadNetwork()
-
-  // Debug: log when intersections are ready
-  if (intersections.size > 0) {
-    console.log(`🚦 IntersectionManager: Rendering ${intersections.size} intersection tiles`)
-  }
+  const network = useMemo(() => getRoadNetwork(), [])
 
   return (
     <group name="intersection-manager">

@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { getHighScore, saveHighScore } from '@/lib/highScore'
+import { getHighScore, saveHighScore, getCumulativeScore, addToCumulativeScore } from '@/lib/highScore'
 import positionStyles from '@/styles/utilities/positioning.module.css'
 import effectStyles from '@/styles/components/effects.module.css'
 import styles from '@/styles/pages/GameOverModal.module.css'
@@ -9,14 +9,16 @@ import styles from '@/styles/pages/GameOverModal.module.css'
 interface GameOverModalProps {
   score: number
   onRestart: () => void
+  onExit: () => void
 }
 
 /**
  * Game over modal showing final score
  */
-export function GameOverModal({ score, onRestart }: GameOverModalProps) {
+export function GameOverModal({ score, onRestart, onExit }: GameOverModalProps) {
   const [highScore, setHighScore] = useState(0)
   const [isNewHighScore, setIsNewHighScore] = useState(false)
+  const [cumulativeScore, setCumulativeScore] = useState(0)
 
   useEffect(() => {
     const currentHighScore = getHighScore()
@@ -30,6 +32,10 @@ export function GameOverModal({ score, onRestart }: GameOverModalProps) {
     if (newRecord) {
       setHighScore(score)
     }
+
+    // Update cumulative score
+    const newCumulative = addToCumulativeScore(score)
+    setCumulativeScore(newCumulative)
   }, [score])
 
   return (
@@ -71,9 +77,18 @@ export function GameOverModal({ score, onRestart }: GameOverModalProps) {
             <div className={styles.highScoreLabel}>High Score</div>
             <div className={styles.highScoreValue}>${highScore}</div>
           </div>
-          <button className={styles.restartButton} onClick={onRestart}>
-            Play Again
-          </button>
+          <div className={styles.cumulativeSection}>
+            <div className={styles.cumulativeLabel}>Total Career Earnings</div>
+            <div className={styles.cumulativeValue}>${cumulativeScore}</div>
+          </div>
+          <div className={styles.buttonGroup}>
+            <button className={styles.restartButton} onClick={onRestart}>
+              Play Again
+            </button>
+            <button className={styles.exitButton} onClick={onExit}>
+              Exit
+            </button>
+          </div>
         </div>
       </div>
     </>

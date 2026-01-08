@@ -106,6 +106,8 @@ export interface Taxi {
   // Collision handling
   isReversing: boolean // Currently reversing back along current path due to collision
   collisionCooldown: number // Time in ms before can collide again
+  // Rendering state
+  isReady?: boolean // Flag to prevent rendering until taxi is properly positioned
 }
 
 export interface InteractionZone {

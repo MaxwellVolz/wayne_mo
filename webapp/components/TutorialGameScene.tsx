@@ -93,7 +93,7 @@ export default function TutorialGameScene({
       <TaxiManager taxisRef={taxisRef} deliveriesRef={deliveriesRef} isPaused={isPaused} />
 
       {/* Grid helper */}
-      <gridHelper args={[10, 10, '#444', '#222']} />
+      {/* <gridHelper args={[10, 10, '#444', '#222']} /> */}
     </Canvas>
   )
 }

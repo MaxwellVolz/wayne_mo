@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import dynamic from 'next/dynamic'
 import { useGameLoop } from '@/hooks/useGameLoop'
 import { GameHUD } from './GameHUD'
@@ -84,6 +84,7 @@ export default function Game({ onExit }: GameProps = {}) {
       money: 100, // Start with $100
       isReversing: false,
       collisionCooldown: 0,
+      isReady: true, // Ready to render immediately on restart
     }]
     deliveriesRef.current = []
     deliveryTimerRef.current = 10000
@@ -137,7 +138,7 @@ export default function Game({ onExit }: GameProps = {}) {
   }, [])
 
   const handleResetCamera = useCallback(() => {
-    // Deselect any followed taxi to return to center view
+    // Deselect any followed taxi to return to world overview
     setSelectedTaxiId(null)
   }, [])
 
@@ -175,6 +176,7 @@ export default function Game({ onExit }: GameProps = {}) {
       money: -nextTaxiCost, // Deduct cost from this taxi's money
       isReversing: false,
       collisionCooldown: 0,
+      isReady: true, // Ready to render immediately when spawned
     }
 
     taxisRef.current.push(newTaxi)
@@ -264,7 +266,7 @@ export default function Game({ onExit }: GameProps = {}) {
 
       {/* Game over modal */}
       {gameOver && (
-        <GameOverModal score={finalScore} onRestart={handleRestart} />
+        <GameOverModal score={finalScore} onRestart={handleRestart} onExit={handleExit} />
       )}
     </div>
   )

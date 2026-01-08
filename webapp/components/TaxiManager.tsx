@@ -30,6 +30,11 @@ export function TaxiManager({ taxisRef, deliveriesRef, isPaused }: TaxiManagerPr
   return (
     <group>
       {taxis.map((taxi) => {
+        // Don't render taxi until it's been positioned correctly
+        if (!taxi.isReady) {
+          return null
+        }
+
         // Find the delivery this taxi is carrying
         const delivery = deliveries.find(d => d.id === taxi.currentDeliveryId)
 

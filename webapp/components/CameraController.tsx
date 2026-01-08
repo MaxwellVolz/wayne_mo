@@ -15,10 +15,10 @@ interface CameraControllerProps {
  * Must be placed inside the Canvas
  */
 export function CameraController({ taxisRef, followTaxiId }: CameraControllerProps) {
-  // WASD panning controls
+  // WASD panning controls (always work, even when paused)
   useCameraControls(10)
 
-  // Taxi following camera (OrbitControls will orbit around the moving target)
+  // Taxi following camera (always work, even when paused)
   useTaxiFollowCamera({
     taxisRef,
     followTaxiId,

@@ -89,6 +89,40 @@
   font-family: var(--font-mono);
 }
 
+/* Cumulative score display */
+.cumulativeSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-md);
+  padding-top: var(--space-lg);
+  border-top: 2px solid var(--color-gray-dark);
+}
+
+.cumulativeLabel {
+  font-size: var(--text-base);
+  color: var(--color-gray-light);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cumulativeValue {
+  font-size: var(--text-4xl);
+  font-weight: bold;
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  text-shadow: var(--glow-yellow-soft);
+}
+
+/* Button group */
+.buttonGroup {
+  display: flex;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
 /* Restart button - extends primary button */
 .restartButton {
   font-size: var(--text-2xl);
@@ -109,6 +143,29 @@
 }
 
 .restartButton:active {
+  transform: scale(var(--scale-active));
+}
+
+/* Exit button - secondary style */
+.exitButton {
+  font-size: var(--text-2xl);
+  font-weight: bold;
+  padding: var(--space-lg) var(--space-5xl);
+  background: var(--color-secondary);
+  color: var(--color-black);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  transition: all var(--duration-fast);
+}
+
+.exitButton:hover {
+  background: var(--color-secondary-dark);
+  transform: scale(var(--scale-hover));
+}
+
+.exitButton:active {
   transform: scale(var(--scale-active));
 }
 
@@ -145,7 +202,20 @@
     font-size: var(--text-2xl);
   }
 
-  .restartButton {
+  .cumulativeLabel {
+    font-size: var(--text-sm);
+  }
+
+  .cumulativeValue {
+    font-size: var(--text-3xl);
+  }
+
+  .buttonGroup {
+    gap: var(--space-md);
+  }
+
+  .restartButton,
+  .exitButton {
     font-size: var(--text-xl);
     padding: var(--space-md) var(--space-4xl);
   }
@@ -166,8 +236,24 @@
     font-size: var(--text-5xl);
   }
 
-  .restartButton {
+  .cumulativeLabel {
+    font-size: var(--text-xs);
+  }
+
+  .cumulativeValue {
+    font-size: var(--text-2xl);
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+    gap: var(--space-sm);
+    width: 100%;
+  }
+
+  .restartButton,
+  .exitButton {
     font-size: var(--text-lg);
     padding: var(--space-md) var(--space-3xl);
+    width: 100%;
   }
 }

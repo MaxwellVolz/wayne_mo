@@ -26,7 +26,8 @@
     "gen:the_shop": "npx gltfjsx@6.5.3 public/models/the_shop.glb --output generated_components/the_shop.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/the_shop.tsx",
     "gen:the_og_shop": "npx gltfjsx@6.5.3 public/models/the_og_shop.glb --output generated_components/the_og_shop.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/the_og_shop.tsx",
     "gen:vr_headset": "npx gltfjsx@6.5.3 public/models/vr_headset.glb --output generated_components/vr_headset.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/vr_headset.tsx",
-    "gen:inside_scene": "npm run gen:the_shop && npm run gen:the_og_shop && npm run gen:vr_headset ",
+    "gen:pizza": "npx gltfjsx@6.5.3 public/models/pizza.glb --output generated_components/pizza.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/pizza.tsx",
+    "gen:inside_scene": "npm run gen:the_shop && npm run gen:the_og_shop && npm run gen:vr_headset && npm run gen:pizza ",
     
     "gen:models": "npm run gen:city && npm run gen:taxi && npm run gen:tutorial",
     "gen:all": "npm run gen:models && npm run gen:inside_scene",
