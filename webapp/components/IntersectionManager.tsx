@@ -1,6 +1,5 @@
 'use client'
 
-import { useMemo } from 'react'
 import { IntersectionTile } from './IntersectionTile'
 import { useIntersectionManager } from '@/hooks/useIntersectionManager'
 import { getRoadNetwork } from '@/data/roads'
@@ -12,7 +11,9 @@ import { getRoadNetwork } from '@/data/roads'
  */
 export function IntersectionManager() {
   const { intersections, toggleIntersectionMode } = useIntersectionManager()
-  const network = useMemo(() => getRoadNetwork(), [])
+
+  // Get network fresh each render (it's cached internally anyway)
+  const network = getRoadNetwork()
 
   return (
     <group name="intersection-manager">

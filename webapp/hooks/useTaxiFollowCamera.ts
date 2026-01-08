@@ -13,8 +13,17 @@ interface UseTaxiFollowCameraOptions {
 }
 
 /**
+ * Smooth easing function (ease-in-out cubic)
+ * Provides smooth acceleration and deceleration
+ */
+function easeInOutCubic(t: number): number {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+}
+
+/**
  * Hook for smooth camera following of selected taxi
  * Allows orbiting around the followed taxi using OrbitControls
+ * Uses smooth easing for transitions between chase and Atlas views
  */
 export function useTaxiFollowCamera({
   taxisRef,
@@ -23,23 +32,30 @@ export function useTaxiFollowCamera({
 }: UseTaxiFollowCameraOptions) {
   const { camera } = useThree()
   const targetPositionRef = useRef(new THREE.Vector3())
-  const defaultTarget = useRef(new THREE.Vector3(0.5, 1, -1.5)) // World overview camera target
-  const defaultCameraPos = useRef(new THREE.Vector3(8, 10, 8))
+
+  // Atlas View (overview) - default camera position
+  const atlasTarget = useRef(new THREE.Vector3(0, 1, 5))
+  const atlasCameraPos = useRef(new THREE.Vector3(0, 20, 15))
+
   const initializedRef = useRef(false)
   const wasFollowingRef = useRef(false)
   const transitionTimeRef = useRef(0)
-  const resetTransitionTimeRef = useRef(0)
-  const isResetTransitioningRef = useRef(false)
-  const TRANSITION_DURATION = 1.0 // 1 second transition
+  const isTransitioningRef = useRef(false)
+
+  // Store start positions for smooth lerping
+  const transitionStartCameraPos = useRef(new THREE.Vector3())
+  const transitionStartTarget = useRef(new THREE.Vector3())
+
+  const TRANSITION_DURATION = 1.5 // 1.5 seconds for smooth transition
 
   useFrame(({ controls }, delta) => {
     if (!controls || !('target' in controls)) return
 
     const target = (controls as any).target as THREE.Vector3
 
-    // Initialize target to default on first frame
+    // Initialize target to Atlas View on first frame
     if (!initializedRef.current) {
-      target.copy(defaultTarget.current)
+      target.copy(atlasTarget.current)
       initializedRef.current = true
     }
 
@@ -61,26 +77,48 @@ export function useTaxiFollowCamera({
       const p2 = points[Math.min(segmentIndex + 1, points.length - 1)]
       const taxiPosition = p1.clone().lerp(p2, localT)
 
-      // Just transitioned to following - reset transition timer
+      // Just transitioned to following - start transition from Atlas to Chase
       if (!wasFollowingRef.current) {
         transitionTimeRef.current = 0
+        isTransitioningRef.current = true
         wasFollowingRef.current = true
+
+        // Store current camera and target positions as start of transition
+        transitionStartCameraPos.current.copy(camera.position)
+        transitionStartTarget.current.copy(target)
       }
 
-      // Update transition timer
-      transitionTimeRef.current += delta
-
-      // Calculate desired camera position
+      // Calculate desired chase camera position
       const cameraOffset = new THREE.Vector3(-5, 8, -5)
       const desiredCameraPos = taxiPosition.clone().add(cameraOffset)
 
-      // During transition (first 1 second), lerp camera position
-      if (transitionTimeRef.current < TRANSITION_DURATION) {
-        // Smooth transition to chase position
-        const t = Math.min(transitionTimeRef.current / TRANSITION_DURATION, 1)
-        const transitionSpeed = lerpSpeed * (1 + t * 2) // Speed up over time
-        camera.position.lerp(desiredCameraPos, transitionSpeed * delta)
-        target.lerp(taxiPosition, transitionSpeed * delta)
+      // Update transition timer
+      if (isTransitioningRef.current) {
+        transitionTimeRef.current += delta
+
+        if (transitionTimeRef.current < TRANSITION_DURATION) {
+          // Smooth transition from Atlas View to Chase Camera
+          const rawT = Math.min(transitionTimeRef.current / TRANSITION_DURATION, 1)
+          const easedT = easeInOutCubic(rawT)
+
+          // Lerp camera position using easing
+          camera.position.lerpVectors(
+            transitionStartCameraPos.current,
+            desiredCameraPos,
+            easedT
+          )
+
+          // Lerp target using easing
+          target.lerpVectors(
+            transitionStartTarget.current,
+            taxiPosition,
+            easedT
+          )
+        } else {
+          // Transition complete - just follow target smoothly
+          isTransitioningRef.current = false
+          target.lerp(taxiPosition, lerpSpeed * delta)
+        }
       } else {
         // After transition, only update target (allow free orbit)
         target.lerp(taxiPosition, lerpSpeed * delta)
@@ -89,29 +127,45 @@ export function useTaxiFollowCamera({
       // Store for reference
       targetPositionRef.current.copy(taxiPosition)
     } else {
-      // When not following, transition back to default view
+      // When not following, transition back to Atlas View
       if (wasFollowingRef.current) {
-        // Just stopped following - start reset transition
+        // Just stopped following - start transition from Chase to Atlas
         wasFollowingRef.current = false
         transitionTimeRef.current = 0
-        resetTransitionTimeRef.current = 0
-        isResetTransitioningRef.current = true
+        isTransitioningRef.current = true
+
+        // Store current camera and target positions as start of transition
+        transitionStartCameraPos.current.copy(camera.position)
+        transitionStartTarget.current.copy(target)
       }
 
-      // Handle reset transition
-      if (isResetTransitioningRef.current) {
-        resetTransitionTimeRef.current += delta
+      // Handle transition to Atlas View
+      if (isTransitioningRef.current) {
+        transitionTimeRef.current += delta
 
-        // During reset transition (first 1 second), lerp camera and target
-        if (resetTransitionTimeRef.current < TRANSITION_DURATION) {
-          const t = Math.min(resetTransitionTimeRef.current / TRANSITION_DURATION, 1)
-          const transitionSpeed = lerpSpeed * (1 + t * 2) // Speed up over time
-          camera.position.lerp(defaultCameraPos.current, transitionSpeed * delta)
-          target.lerp(defaultTarget.current, transitionSpeed * delta)
+        if (transitionTimeRef.current < TRANSITION_DURATION) {
+          // Smooth transition from Chase Camera to Atlas View
+          const rawT = Math.min(transitionTimeRef.current / TRANSITION_DURATION, 1)
+          const easedT = easeInOutCubic(rawT)
+
+          // Lerp camera position using easing
+          camera.position.lerpVectors(
+            transitionStartCameraPos.current,
+            atlasCameraPos.current,
+            easedT
+          )
+
+          // Lerp target using easing
+          target.lerpVectors(
+            transitionStartTarget.current,
+            atlasTarget.current,
+            easedT
+          )
         } else {
-          // Transition complete - allow free controls
-          isResetTransitioningRef.current = false
-          target.copy(defaultTarget.current) // Snap to ensure precision
+          // Transition complete - snap to ensure precision
+          isTransitioningRef.current = false
+          camera.position.copy(atlasCameraPos.current)
+          target.copy(atlasTarget.current)
         }
       }
     }

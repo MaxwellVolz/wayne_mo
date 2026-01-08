@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useCallback, useEffect, useRef } from 'react'
-import { Play, Pause } from 'lucide-react'
+import { Play, Pause, Trophy, ArrowLeft } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import { useTutorialGameLoop } from '@/hooks/useTutorialGameLoop'
 import { TaxiControls } from './TaxiControls'
@@ -17,12 +17,13 @@ const TutorialGameScene = dynamic(() => import('./TutorialGameScene'), {
 
 interface TutorialSceneProps {
   onComplete: () => void
+  onGoBack?: () => void
 }
 
 /**
  * Tutorial level teaching how to make a car turn at an intersection
  */
-export default function TutorialScene({ onComplete }: TutorialSceneProps) {
+export default function TutorialScene({ onComplete, onGoBack }: TutorialSceneProps) {
   const [step, setStep] = useState(0)
   const [selectedTaxiId, setSelectedTaxiId] = useState<string | null>('tutorial-taxi-1') // Start in chase cam mode
   const [isPaused, setIsPaused] = useState(false)
@@ -37,12 +38,12 @@ export default function TutorialScene({ onComplete }: TutorialSceneProps) {
       description: "It's easy. The taxis will stay on the road, you just gotta direct them to the biggest packages.",
     },
     {
-      title: "Plus the controls are pretty chill...",
+      title: "Plus the controls are pretty chill.",
       description: "Tap an intersection to set the vibe. The next cab that rolls through will know what to do.",
     },
     {
-      title: "'notha day another dolla aye Benjamin?",
-      description: "Once you got a box that cabs underglow will match the dropoff rings. Keep those lines clean.",
+      title: "Just follow the neon lights.",
+      description: "Once you pickup a box, the cabs underglow will match the dropoff rings. Get it there ASAP.",
     },
   ]
 
@@ -68,6 +69,12 @@ export default function TutorialScene({ onComplete }: TutorialSceneProps) {
 
   const handleShowModal = () => {
     setShowModal(true)
+  }
+
+  const handleGoBack = () => {
+    if (onGoBack) {
+      onGoBack()
+    }
   }
 
   const handleTaxiSelect = useCallback((taxiId: string) => {
@@ -119,15 +126,21 @@ export default function TutorialScene({ onComplete }: TutorialSceneProps) {
         />
 
         {/* Control buttons (top left) */}
-        <div className={positionStyles.topLeft} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <button className={buttonStyles.primary} onClick={handleStartGame}>
-            Start Game
+        <div className={positionStyles.topLeft} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <button
+            className={buttonStyles.icon}
+            onClick={handleStartGame}
+            title="Start Game"
+          >
+            <Trophy size={24} />
           </button>
-          {!showModal && (
-            <button className={buttonStyles.secondary} onClick={handleShowModal}>
-              Show Tutorial
-            </button>
-          )}
+          <button
+            className={buttonStyles.icon}
+            onClick={handleGoBack}
+            title="Go Back to Menu"
+          >
+            <ArrowLeft size={24} />
+          </button>
         </div>
 
         {/* Pause button */}

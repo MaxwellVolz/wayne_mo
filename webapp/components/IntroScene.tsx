@@ -44,7 +44,7 @@ function LookAroundControls({ setIsPointerDown }: {
     const onPointerMove = (e: PointerEvent) => {
       if (!isPointerDown.current) return
 
-      // Update rotation based on mouse movement
+      // Update rotation based on mouse/touch movement
       rotation.current.y -= e.movementX * 0.002
       rotation.current.x -= e.movementY * 0.002
 
@@ -52,16 +52,26 @@ function LookAroundControls({ setIsPointerDown }: {
       rotation.current.x = Math.max(-Math.PI / 3, Math.min(Math.PI / 3, rotation.current.x))
     }
 
+    // Prevent scrolling only during drag (touchmove), not on tap (touchstart)
+    // This allows clicks/taps to work while preventing scroll
+    const onTouchMove = (e: TouchEvent) => {
+      if (isPointerDown.current) {
+        e.preventDefault()
+      }
+    }
+
     element.addEventListener('pointerdown', onPointerDown)
     element.addEventListener('pointerup', onPointerUp)
     element.addEventListener('pointermove', onPointerMove)
+    element.addEventListener('touchmove', onTouchMove, { passive: false })
 
     return () => {
       element.removeEventListener('pointerdown', onPointerDown)
       element.removeEventListener('pointerup', onPointerUp)
       element.removeEventListener('pointermove', onPointerMove)
+      element.removeEventListener('touchmove', onTouchMove)
     }
-  }, [gl])
+  }, [gl, setIsPointerDown])
 
   useFrame(() => {
     // Apply rotation to camera

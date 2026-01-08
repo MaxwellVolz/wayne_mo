@@ -14,56 +14,77 @@ export function useIntersectionManager() {
     new Map()
   )
 
-  // Initialize intersections when road network loads
+  // Initialize intersections when road network loads or updates
   useEffect(() => {
-    const network = getRoadNetwork()
-    const intersectionNodes = getNodesByType(network.nodes, 'intersection')
+    const initializeIntersections = () => {
+      const network = getRoadNetwork()
+      const intersectionNodes = getNodesByType(network.nodes, 'intersection')
 
-    const initialStates = new Map<string, IntersectionState>()
+      const initialStates = new Map<string, IntersectionState>()
 
-    intersectionNodes.forEach(node => {
-      // Find all outgoing paths from this intersection
-      const availablePaths = network.paths
-        .filter(p => p.id.startsWith(`${node.id}_to_`))
-        .map(p => p.id)
+      intersectionNodes.forEach(node => {
+        // Find all outgoing paths from this intersection
+        const availablePaths = network.paths
+          .filter(p => p.id.startsWith(`${node.id}_to_`))
+          .map(p => p.id)
 
-      // Determine if this is a valid intersection
-      let isValidIntersection = false
+        // Determine if this is a valid intersection
+        let isValidIntersection = false
 
-      // Check topological model (neighbors array)
-      if (node.neighbors) {
-        const connectionCount = node.neighbors.filter(n => n !== null).length
-        isValidIntersection = connectionCount >= 2
-        if (isValidIntersection) {
-          console.log(`  📍 ${node.id} [TOPO]: ${connectionCount} neighbors → creating controls`)
+        // Check topological model (neighbors array)
+        if (node.neighbors) {
+          const connectionCount = node.neighbors.filter(n => n !== null).length
+          isValidIntersection = connectionCount >= 2
+          if (isValidIntersection) {
+            console.log(`  📍 ${node.id} [TOPO]: ${connectionCount} neighbors → creating controls`)
+          }
         }
-      }
-      // Check path-based model (legacy)
-      else if (availablePaths.length > 1) {
-        isValidIntersection = true
-        console.log(`  📍 ${node.id} [LEGACY]: ${availablePaths.length} paths → creating controls`)
-      }
+        // Check path-based model (legacy)
+        else if (availablePaths.length > 1) {
+          isValidIntersection = true
+          console.log(`  📍 ${node.id} [LEGACY]: ${availablePaths.length} paths → creating controls`)
+        }
 
-      // Only create state if node has multiple connections (true intersection)
-      if (isValidIntersection) {
-        initialStates.set(node.id, {
-          nodeId: node.id,
-          mode: 'pass_through', // Default mode
-          availablePaths
-        })
-      } else {
-        console.log(`  ⚠️ ${node.id}: Not enough connections for intersection controls`)
+        // Only create state if node has multiple connections (true intersection)
+        if (isValidIntersection) {
+          initialStates.set(node.id, {
+            nodeId: node.id,
+            mode: 'pass_through', // Default mode
+            availablePaths
+          })
+        } else {
+          console.log(`  ⚠️ ${node.id}: Not enough connections for intersection controls`)
+        }
+      })
+
+      setIntersections(initialStates)
+      setGlobalIntersections(initialStates) // Update global state
+      console.log(`🚦 Initialized ${initialStates.size} intersections with controllable routing`)
+
+      // Debug: log each intersection
+      initialStates.forEach((state, nodeId) => {
+        console.log(`  📍 ${nodeId}: ${state.availablePaths.length} exits, mode: ${state.mode}`)
+      })
+    }
+
+    // Initialize on mount
+    initializeIntersections()
+
+    // Re-initialize when road network updates (for tutorial scene)
+    const handleNetworkUpdate = () => {
+      console.log('🔄 Road network updated, re-initializing intersections...')
+      initializeIntersections()
+    }
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('roadNetworkUpdated', handleNetworkUpdate)
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('roadNetworkUpdated', handleNetworkUpdate)
       }
-    })
-
-    setIntersections(initialStates)
-    setGlobalIntersections(initialStates) // Update global state
-    console.log(`🚦 Initialized ${initialStates.size} intersections with controllable routing`)
-
-    // Debug: log each intersection
-    initialStates.forEach((state, nodeId) => {
-      console.log(`  📍 ${nodeId}: ${state.availablePaths.length} exits, mode: ${state.mode}`)
-    })
+    }
   }, [])
 
   /**

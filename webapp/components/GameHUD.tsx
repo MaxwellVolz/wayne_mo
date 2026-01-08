@@ -141,7 +141,7 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
         {/* Bottom right - pause button */}
         <div className={positionStyles.bottomRight}>
           <button
-            className={buttonStyles.icon}
+            className={styles.pauseButton}
             onClick={onTogglePause}
             title={isPaused ? 'Resume Game ($0)' : 'Pause Game ($10)'}
           >

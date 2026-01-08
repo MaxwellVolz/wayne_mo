@@ -21,7 +21,7 @@
   pointer-events: none;
   z-index: var(--z-overlay);
   animation: rushHourPulse var(--duration-slow) var(--ease-in-out) infinite alternate,
-             rushHourZoom var(--duration-normal) var(--ease-out);
+    rushHourZoom var(--duration-normal) var(--ease-out);
 }
 
 .rushHourText {
@@ -34,6 +34,48 @@
     0 0 40px var(--color-danger-light);
   font-family: 'Impact', var(--font-mono);
   letter-spacing: 8px;
+}
+
+
+.pauseButton {
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-black);
+  border: var(--border-thin) solid var(--color-gray-dark);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.pauseButton:hover {
+  background: var(--color-white);
+  transform: scale(var(--scale-large-hover));
+  border-color: var(--color-danger-light);
+}
+
+.pauseButton:active {
+  transform: scale(var(--scale-active));
+}
+
+/* Active state for pauseButton buttons (e.g., paused state) */
+.pauseButtonActive {
+  /* stylelint-disable-next-line property-no-unknown -- composes is valid CSS Modules syntax */
+  composes: pauseButton;
+  background: var(--color-success);
+  border-color: var(--color-success-darker);
+  box-shadow: var(--glow-box-green);
+  color: var(--color-black);
+}
+
+.pauseButtonActive:hover {
+  background: var(--color-success-dark);
+  border-color: var(--color-success-darker);
 }
 
 /* ==================== RESPONSIVE ==================== */

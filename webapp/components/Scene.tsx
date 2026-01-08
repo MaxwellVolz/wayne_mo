@@ -73,7 +73,10 @@ const Scene = React.memo(function Scene({
       />
 
       {/* WASD camera panning and taxi following */}
-      <CameraController taxisRef={taxisRef} followTaxiId={followTaxiId} />
+      <CameraController
+        taxisRef={taxisRef}
+        followTaxiId={followTaxiId}
+      />
 
       {/* Blender city model (buildings and path nodes) */}
       <CityModel />

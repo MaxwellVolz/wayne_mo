@@ -82,16 +82,21 @@ export default function Home() {
 
       {/* Scene rendering */}
       {gameMode === 'intro' && (
-        <IntroScene
-          onPlay={() => transitionToMode('game')}
-          onTutorial={() => transitionToMode('tutorial')}
-        />
+        <div className="scene-container">
+          <IntroScene
+            onPlay={() => transitionToMode('game')}
+            onTutorial={() => transitionToMode('tutorial')}
+          />
+        </div>
       )}
 
       {gameMode === 'tutorial' && (
-        <TutorialScene
-          onComplete={() => transitionToMode('game')}
-        />
+        <div className="scene-container">
+          <TutorialScene
+            onComplete={() => transitionToMode('game')}
+            onGoBack={() => transitionToMode('intro')}
+          />
+        </div>
       )}
 
       {gameMode === 'game' && (
