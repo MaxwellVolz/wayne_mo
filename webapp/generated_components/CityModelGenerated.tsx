@@ -11,6 +11,7 @@ import { getAssetPath } from '@/lib/assetPath'
 
 type GLTFResult = GLTF & {
   nodes: {
+    ['road-intersection-line']: THREE.Mesh
     ['tree-large']: THREE.Mesh
     ['tree-large001']: THREE.Mesh
     ['tree-small']: THREE.Mesh
@@ -82,7 +83,6 @@ type GLTFResult = GLTF & {
     ['road-straight040']: THREE.Mesh
     ['road-straight041']: THREE.Mesh
     ['road-straight042']: THREE.Mesh
-    ['road-straight043']: THREE.Mesh
     ['road-straight044']: THREE.Mesh
     ['road-straight045']: THREE.Mesh
     ['road-straight046']: THREE.Mesh
@@ -146,7 +146,6 @@ type GLTFResult = GLTF & {
     ['road-straight099']: THREE.Mesh
     ['road-crossroad-line']: THREE.Mesh
     ['road-crossroad-line001']: THREE.Mesh
-    ['road-crossroad-line002']: THREE.Mesh
     ['road-crossroad-line003']: THREE.Mesh
     ['road-crossroad-line004']: THREE.Mesh
     ['road-crossroad-line005']: THREE.Mesh
@@ -160,12 +159,12 @@ type GLTFResult = GLTF & {
     ['road-bend-square002']: THREE.Mesh
     ['road-straight100']: THREE.Mesh
     ['road-straight101']: THREE.Mesh
+    ['road-intersection001']: THREE.Mesh
     firetruck: THREE.Mesh
     suv: THREE.Mesh
     suv001: THREE.Mesh
     ['tractor-shovel']: THREE.Mesh
     sedan: THREE.Mesh
-    police: THREE.Mesh
     police001: THREE.Mesh
     suv002: THREE.Mesh
     police002: THREE.Mesh
@@ -650,6 +649,7 @@ type GLTFResult = GLTF & {
     ['tile-low405']: THREE.Mesh
   }
   materials: {
+    ['colormap.061']: THREE.MeshStandardMaterial
     ['colormap.029']: THREE.MeshStandardMaterial
     ['colormap.030']: THREE.MeshStandardMaterial
     ['colormap.015']: THREE.MeshStandardMaterial
@@ -782,6 +782,7 @@ export function Model(props: React.ComponentProps<'group'>) {
         <group name="Pickup_House_01036" position={[-2.5, 0, -4.5]} userData={{ name: 'Pickup_House_01.036' }} />
         <group name="Pickup_House_01037" position={[-0.5, 0, -4.5]} userData={{ name: 'Pickup_House_01.037' }} />
         <group name="Pickup_House_01038" position={[8.5, 0, -0.5]} userData={{ name: 'Pickup_House_01.038' }} />
+        <mesh name="road-intersection-line" geometry={nodes['road-intersection-line'].geometry} material={materials['colormap.061']} position={[-13, 0, 13]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-intersection-line' }} />
         <mesh name="tree-large" geometry={nodes['tree-large'].geometry} material={materials['colormap.029']} position={[2.8, 0, -1.3]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-large' }} />
         <mesh name="tree-large001" geometry={nodes['tree-large001'].geometry} material={materials['colormap.029']} position={[3, 0, -1.6]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-large.001' }} />
         <mesh name="tree-small" geometry={nodes['tree-small'].geometry} material={materials['colormap.030']} position={[3.2, 0, -1.2]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-small' }} />
@@ -853,7 +854,6 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="road-straight040" geometry={nodes['road-straight040'].geometry} material={materials['colormap.052']} position={[-5.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.040' }} />
         <mesh name="road-straight041" geometry={nodes['road-straight041'].geometry} material={materials['colormap.052']} position={[-6.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.041' }} />
         <mesh name="road-straight042" geometry={nodes['road-straight042'].geometry} material={materials['colormap.052']} position={[9.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.042' }} />
-        <mesh name="road-straight043" geometry={nodes['road-straight043'].geometry} material={materials['colormap.052']} position={[8.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.043' }} />
         <mesh name="road-straight044" geometry={nodes['road-straight044'].geometry} material={materials['colormap.052']} position={[-8.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.044' }} />
         <mesh name="road-straight045" geometry={nodes['road-straight045'].geometry} material={materials['colormap.052']} position={[-7.5, 0, -3.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.045' }} />
         <mesh name="road-straight046" geometry={nodes['road-straight046'].geometry} material={materials['colormap.052']} position={[-7.5, 0, -2.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.046' }} />
@@ -917,7 +917,6 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="road-straight099" geometry={nodes['road-straight099'].geometry} material={materials['colormap.052']} position={[4.5, 0, -5.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.099' }} />
         <mesh name="road-crossroad-line" geometry={nodes['road-crossroad-line'].geometry} material={materials['colormap.055']} position={[4.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad-line' }} />
         <mesh name="road-crossroad-line001" geometry={nodes['road-crossroad-line001'].geometry} material={materials['colormap.055']} position={[7.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad-line.001' }} />
-        <mesh name="road-crossroad-line002" geometry={nodes['road-crossroad-line002'].geometry} material={materials['colormap.055']} position={[4.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad-line.002' }} />
         <mesh name="road-crossroad-line003" geometry={nodes['road-crossroad-line003'].geometry} material={materials['colormap.055']} position={[4.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad-line.003' }} />
         <mesh name="road-crossroad-line004" geometry={nodes['road-crossroad-line004'].geometry} material={materials['colormap.055']} position={[-3.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad-line.004' }} />
         <mesh name="road-crossroad-line005" geometry={nodes['road-crossroad-line005'].geometry} material={materials['colormap.055']} position={[-3.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad-line.005' }} />
@@ -931,12 +930,12 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="road-bend-square002" geometry={nodes['road-bend-square002'].geometry} material={materials['colormap.047']} position={[7.5, 0, 7.5]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'road-bend-square.002' }} />
         <mesh name="road-straight100" geometry={nodes['road-straight100'].geometry} material={materials['colormap.052']} position={[-7.5, 0, 8.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.100' }} />
         <mesh name="road-straight101" geometry={nodes['road-straight101'].geometry} material={materials['colormap.052']} position={[-7.5, 0, 9.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.101' }} />
+        <mesh name="road-intersection001" geometry={nodes['road-intersection001'].geometry} material={materials['colormap.053']} position={[4.5, 0, 3.5]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'road-intersection.001' }} />
         <mesh name="firetruck" geometry={nodes.firetruck.geometry} material={materials['colormap.044']} position={[3, 0, 6.4]} rotation={[Math.PI / 2, 0, 1.079]} scale={0.5} userData={{ name: 'firetruck' }} />
         <mesh name="suv" geometry={nodes.suv.geometry} material={materials['colormap.046']} position={[10.3, 0, -1.4]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={0.5} userData={{ name: 'suv' }} />
         <mesh name="suv001" geometry={nodes.suv001.geometry} material={materials['colormap.046']} position={[-6.4, 0, -5.9]} rotation={[Math.PI / 2, 0, 0.26]} scale={0.5} userData={{ name: 'suv.001' }} />
         <mesh name="tractor-shovel" geometry={nodes['tractor-shovel'].geometry} material={materials['colormap.048']} position={[3, 0, 13]} rotation={[Math.PI / 2, 0, 0.661]} scale={0.5} userData={{ name: 'tractor-shovel' }} />
         <mesh name="sedan" geometry={nodes.sedan.geometry} material={materials['colormap.049']} position={[-8.5, 0, -0.8]} rotation={[Math.PI / 2, 0, 0.115]} scale={0.5} userData={{ name: 'sedan' }} />
-        <mesh name="police" geometry={nodes.police.geometry} material={materials['colormap.050']} position={[-1.1, 0, 2.2]} rotation={[Math.PI / 2, 0, -0.701]} scale={0.5} userData={{ name: 'police' }} />
         <mesh name="police001" geometry={nodes.police001.geometry} material={materials['colormap.050']} position={[-2.4, 0, 2.1]} rotation={[Math.PI / 2, 0, -0.067]} scale={0.5} userData={{ name: 'police.001' }} />
         <mesh name="suv002" geometry={nodes.suv002.geometry} material={materials['colormap.046']} position={[-4.8, 0, 9.9]} rotation={[Math.PI / 2, 0, 2.531]} scale={0.5} userData={{ name: 'suv.002' }} />
         <mesh name="police002" geometry={nodes.police002.geometry} material={materials['colormap.050']} position={[-5.4, 0, 11.1]} rotation={[Math.PI / 2, 0, 2.87]} scale={0.5} userData={{ name: 'police.002' }} />
