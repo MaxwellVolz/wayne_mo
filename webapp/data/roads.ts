@@ -113,7 +113,18 @@ let activeRoadNetwork = {
   nodes,
 }
 
+// Flag to track if real network has been loaded
+let isRealNetworkLoaded = false
+
 export const testRoadNetwork = activeRoadNetwork
+
+/**
+ * Check if the real road network from Blender has been loaded
+ * @returns true if real network is loaded, false if still using test data
+ */
+export function isRoadNetworkReady(): boolean {
+  return isRealNetworkLoaded
+}
 
 /**
  * Updates the active road network with nodes extracted from Blender model
@@ -177,6 +188,9 @@ export function updateRoadNetwork(extractedNodes: RoadNode[]) {
     nodes: extractedNodes,
     paths: generatedPaths
   }
+
+  // Mark network as ready
+  isRealNetworkLoaded = true
 
   console.log(`✅ Road network updated: ${extractedNodes.length} nodes, ${generatedPaths.length} paths`)
 

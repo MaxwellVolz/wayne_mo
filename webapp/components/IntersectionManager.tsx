@@ -17,22 +17,25 @@ export function IntersectionManager() {
 
   return (
     <group name="intersection-manager">
-      {Array.from(intersections.entries()).map(([nodeId, state]) => {
-        const node = network.nodes.find(n => n.id === nodeId)
-        if (!node) {
-          console.warn(`⚠️ Intersection node ${nodeId} not found in network`)
-          return null
-        }
+      {Array.from(intersections.entries())
+        .map(([nodeId, state]) => {
+          const node = network.nodes.find(n => n.id === nodeId)
+          if (!node) {
+            // Silently skip - this is normal during network initialization
+            // The hook will re-initialize once the real network loads
+            return null
+          }
 
-        return (
-          <IntersectionTile
-            key={nodeId}
-            position={node.position}
-            mode={state.mode}
-            onClick={() => toggleIntersectionMode(nodeId)}
-          />
-        )
-      })}
+          return (
+            <IntersectionTile
+              key={nodeId}
+              position={node.position}
+              mode={state.mode}
+              onClick={() => toggleIntersectionMode(nodeId)}
+            />
+          )
+        })
+        .filter(Boolean)}
     </group>
   )
 }

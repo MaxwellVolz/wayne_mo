@@ -1,16 +1,15 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
-import * as THREE from 'three'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { Canvas, useThree, useFrame } from '@react-three/fiber'
 import { Text } from '@react-three/drei'
 import { getHighScore, getCumulativeScore } from '@/lib/highScore'
 import CityModel from './CityModel'
+import InteractableManager from './InteractableManager'
+import { createIntroInteractables } from '@/config/introInteractables'
 
 // 3D Models
 import { Model as TheShop } from '@/generated_components/the_shop'
-import { Model as TheHeadset } from '@/generated_components/vr_headset'
-import { Model as ThePizza } from '@/generated_components/pizza'
 
 interface IntroSceneProps {
   onPlay: () => void
@@ -83,138 +82,6 @@ function LookAroundControls({ setIsPointerDown }: {
   return null
 }
 
-/**
- * Interactive headset that floats on hover and starts game on click
- */
-function InteractiveHeadset({ hovered }: {
-  hovered: boolean
-}) {
-  const groupRef = useRef<THREE.Group>(null)
-  const baseHeight = useRef(0)
-
-  useFrame((state) => {
-    if (groupRef.current) {
-      if (hovered) {
-        // Smoothly rise to hover height
-        baseHeight.current += (0.15 - baseHeight.current) * 0.1
-        // Add gentle bobble on top
-        const bobble = Math.sin(state.clock.elapsedTime * 3) * 0.05
-        groupRef.current.position.y = baseHeight.current + bobble
-      } else {
-        // Smoothly drop back down
-        baseHeight.current *= 0.9
-        groupRef.current.position.y = baseHeight.current
-      }
-    }
-  })
-
-  return (
-    <group ref={groupRef}>
-      <TheHeadset />
-    </group>
-  )
-}
-
-/**
- * Invisible interaction sphere for headset
- */
-function HeadsetInteractionSphere({ onClick, setHovered, isPointerDown }: {
-  onClick: () => void
-  setHovered: (value: boolean) => void
-  isPointerDown: boolean
-}) {
-  useEffect(() => {
-    return () => {
-      document.body.style.cursor = 'default'
-    }
-  }, [])
-
-  return (
-    <mesh
-      position={[-7.2, 1.48, 10.7]}
-      onPointerEnter={() => {
-        if (isPointerDown) return
-        setHovered(true)
-        document.body.style.cursor = 'pointer'
-      }}
-      onPointerLeave={() => {
-        setHovered(false)
-        document.body.style.cursor = 'default'
-      }}
-      onClick={onClick}
-    >
-      <sphereGeometry args={[0.15, 16, 16]} />
-      <meshBasicMaterial visible={false} />
-    </mesh>
-  )
-}
-
-/**
- * Interactive pizza that floats on hover and opens tutorial on click
- */
-function InteractivePizza({ hovered }: {
-  hovered: boolean
-}) {
-  const groupRef = useRef<THREE.Group>(null)
-  const baseHeight = useRef(0)
-
-  useFrame((state) => {
-    if (groupRef.current) {
-      if (hovered) {
-        // Smoothly rise to hover height
-        baseHeight.current += (0.15 - baseHeight.current) * 0.1
-        // Add gentle bobble on top
-        const bobble = Math.sin(state.clock.elapsedTime * 3) * 0.05
-        groupRef.current.position.y = baseHeight.current + bobble
-      } else {
-        // Smoothly drop back down
-        baseHeight.current *= 0.9
-        groupRef.current.position.y = baseHeight.current
-      }
-    }
-  })
-
-  return (
-    <group ref={groupRef}>
-      <ThePizza />
-    </group>
-  )
-}
-
-/**
- * Invisible interaction sphere for pizza
- */
-function PizzaInteractionSphere({ onClick, setHovered, isPointerDown }: {
-  onClick: () => void
-  setHovered: (value: boolean) => void
-  isPointerDown: boolean
-}) {
-  useEffect(() => {
-    return () => {
-      document.body.style.cursor = 'default'
-    }
-  }, [])
-
-  return (
-    <mesh
-      position={[-7.6, 1.5, 10.6]}
-      onPointerEnter={() => {
-        if (isPointerDown) return
-        setHovered(true)
-        document.body.style.cursor = 'pointer'
-      }}
-      onPointerLeave={() => {
-        if (isPointerDown) return
-        setHovered(false)
-        document.body.style.cursor = 'default'
-      }}
-      onClick={onClick}
-    >
-      <sphereGeometry args={[0.2, 16, 16]} />
-      <meshBasicMaterial visible={false} />
-    </mesh>
-  )
-}
 
 /**
  * 3D Text display for intro scene
@@ -363,8 +230,12 @@ export default function IntroScene({ onPlay, onTutorial }: IntroSceneProps) {
   })
 
   const [isPointerDown, setIsPointerDown] = useState(false)
-  const [headsetHovered, setHeadsetHovered] = useState(false)
-  const [pizzaHovered, setPizzaHovered] = useState(false)
+
+  // Create interactables configuration (memoized to prevent recreation)
+  const interactables = useMemo(
+    () => createIntroInteractables(onPlay, onTutorial),
+    [onPlay, onTutorial]
+  )
 
   return (
     <Canvas
@@ -390,12 +261,8 @@ export default function IntroScene({ onPlay, onTutorial }: IntroSceneProps) {
 
       <TheShop />
 
-      {/* Interactive objects with invisible spheres for interaction */}
-      <InteractiveHeadset hovered={headsetHovered} />
-      <HeadsetInteractionSphere onClick={onPlay} setHovered={setHeadsetHovered} isPointerDown={isPointerDown} />
-
-      <InteractivePizza hovered={pizzaHovered} />
-      <PizzaInteractionSphere onClick={onTutorial} setHovered={setPizzaHovered} isPointerDown={isPointerDown} />
+      {/* Interactive objects managed by config */}
+      <InteractableManager interactables={interactables} isPointerDown={isPointerDown} />
 
       {/* 3D Text display */}
       <IntroText highScore={highScore} cumulativeScore={cumulativeScore} />

@@ -134,6 +134,79 @@ export function Component() {
 - Better Next.js optimization and tree-shaking
 - Easier theming and design system updates
 
+## Interactable System (Intro Scene)
+
+The intro scene uses a **configuration-driven interactable system** for managing interactive 3D objects. Instead of writing duplicate code for each interactive object, define them in a configuration array.
+
+### Architecture
+
+```
+webapp/
+├── lib/
+│   └── interactableSystem.ts           # Core animation/interaction logic
+├── components/
+│   ├── Interactable.tsx                # Single interactable renderer
+│   └── InteractableManager.tsx         # Renders all interactables
+├── config/
+│   ├── introInteractables.ts           # Interactable definitions
+│   └── interactableTemplates.ts        # Copy-paste templates
+```
+
+### Quick Usage
+
+Add a new interactable by adding to `config/introInteractables.ts`:
+
+```typescript
+{
+  id: 'my_object',
+  modelComponent: MyGLBModel,
+  position: [-7, 1.5, 10],
+  radius: 0.2,
+  onClick: () => console.log('Clicked!'),
+  animationType: 'hover_bobble',  // See animation types below
+}
+```
+
+### Animation Types
+
+- **`hover`** - Float up on hover
+- **`bobble`** - Gentle sinusoidal motion
+- **`hover_bobble`** - Combined (default for UI elements)
+- **`spin`** - Continuous rotation (good for collectibles)
+- **`glb`** - Play Blender animation clips (doors, characters, etc.)
+
+### GLB Animation Setup
+
+For objects with Blender animations:
+
+```typescript
+{
+  animationType: 'glb',
+  animationConfig: {
+    clipName: 'DoorOpen',      // Blender clip name
+    playOnHover: true,          // Play on hover
+    loop: false,                // Don't loop
+  }
+}
+```
+
+**Requirements:**
+1. Export GLB from Blender with "Animation" enabled
+2. Generate component: `npx gltfjsx public/models/model.glb -o generated_components/ModelGenerated.tsx -t`
+3. Use exact clip name from Blender
+
+### Benefits
+
+- **~90% less code** vs. old approach (200 lines → 10 lines per interactable)
+- **Scalable** to 10+ objects without duplication
+- **GLB animation support** for doors, NPCs, machines
+- **Type-safe** configuration with TypeScript
+- **Consistent behavior** across all interactables
+
+### Documentation
+
+See `/docs/interactables.md` for complete guide and templates.
+
 ## Critical Design Constraints
 
 ### Core Game Mechanics (Implemented)
@@ -335,9 +408,16 @@ function getNextPath(currentPath: string, intersections: Map<string, Intersectio
 
 **Key Files:**
 - `lib/intersectionGeometry.ts` - Path direction detection (straight/left/right)
-- `hooks/useIntersectionManager.ts` - Intersection state management
+- `hooks/useIntersectionManager.ts` - Intersection state management (with network ready check)
 - `components/IntersectionTile.tsx` - Visual indicators using Lucide React icons
 - `components/IntersectionManager.tsx` - Renders all intersection controls
+- `data/roads.ts` - Network management with `isRoadNetworkReady()` flag
+
+**Initialization:**
+- ✅ Deferred initialization - waits for real Blender network to load
+- ✅ Race condition fixed - uses `isRoadNetworkReady()` flag to prevent test data initialization
+- ✅ Event-driven - listens for `roadNetworkUpdated` event from CityModel
+- See `/docs/INTERSECTION_LOADING_FIX.md` for details
 
 **Visual Feedback:**
 - Professional icons from Lucide React library (Move, RefreshCcw, RefreshCw)

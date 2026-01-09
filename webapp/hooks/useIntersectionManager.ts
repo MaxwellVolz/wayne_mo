@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import type { IntersectionState, RoadNode } from '@/types/game'
 import { getNodesByType } from '@/lib/extractPathNodes'
-import { getRoadNetwork } from '@/data/roads'
+import { getRoadNetwork, isRoadNetworkReady } from '@/data/roads'
 import { setIntersections as setGlobalIntersections } from '@/lib/intersectionState'
 
 /**
@@ -17,6 +17,12 @@ export function useIntersectionManager() {
   // Initialize intersections when road network loads or updates
   useEffect(() => {
     const initializeIntersections = () => {
+      // Only initialize if real network is loaded (not test data)
+      if (!isRoadNetworkReady()) {
+        console.log('⏳ Waiting for real road network to load...')
+        return
+      }
+
       const network = getRoadNetwork()
       const intersectionNodes = getNodesByType(network.nodes, 'intersection')
 
