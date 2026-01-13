@@ -11,7 +11,6 @@ import { getAssetPath } from '@/lib/assetPath'
 
 type GLTFResult = GLTF & {
   nodes: {
-    ['road-intersection-line']: THREE.Mesh
     ['tree-large']: THREE.Mesh
     ['tree-large001']: THREE.Mesh
     ['tree-small']: THREE.Mesh
@@ -647,9 +646,56 @@ type GLTFResult = GLTF & {
     ['tile-low402']: THREE.Mesh
     ['tile-low403']: THREE.Mesh
     ['tile-low405']: THREE.Mesh
+    walls: THREE.Mesh
+    windows: THREE.Mesh
+    back_wall: THREE.Mesh
+    chairDesk_1: THREE.Mesh
+    chairDesk_2: THREE.Mesh
+    desk_1: THREE.Mesh
+    desk_2: THREE.Mesh
+    kitchenCabinet_1: THREE.Mesh
+    kitchenCabinet_2: THREE.Mesh
+    kitchenCabinet_3: THREE.Mesh
+    kitchenCabinetUpper_1: THREE.Mesh
+    kitchenCabinetUpper_2: THREE.Mesh
+    kitchenCabinetUpper_3: THREE.Mesh
+    kitchenFridgeLarge_1: THREE.Mesh
+    kitchenFridgeLarge_2: THREE.Mesh
+    kitchenStove_1: THREE.Mesh
+    kitchenStove_2: THREE.Mesh
+    kitchenStove_3: THREE.Mesh
+    kitchenStove_4: THREE.Mesh
+    kitchenStove_5: THREE.Mesh
+    tableCoffeeGlass_1: THREE.Mesh
+    tableCoffeeGlass_2: THREE.Mesh
+    coatRackStanding: THREE.Mesh
+    lampRoundFloor_1: THREE.Mesh
+    lampRoundFloor_2: THREE.Mesh
+    plantSmall3_1: THREE.Mesh
+    plantSmall3_2: THREE.Mesh
+    pottedPlant_1: THREE.Mesh
+    pottedPlant_2: THREE.Mesh
+    pottedPlant_3: THREE.Mesh
+    pottedPlant001_1: THREE.Mesh
+    pottedPlant001_2: THREE.Mesh
+    pottedPlant001_3: THREE.Mesh
+    kitchenCoffeeMachine_1: THREE.Mesh
+    kitchenCoffeeMachine_2: THREE.Mesh
+    kitchenCoffeeMachine_3: THREE.Mesh
+    rugRounded_1: THREE.Mesh
+    rugRounded_2: THREE.Mesh
+    Cube001_1: THREE.Mesh
+    Cube001_2: THREE.Mesh
+    Cube001: THREE.Mesh
+    doorway_1: THREE.Mesh
+    doorway_2: THREE.Mesh
+    Cube005: THREE.Mesh
+    Cube005_1: THREE.Mesh
+    bedDouble_1: THREE.Mesh
+    bedDouble_2: THREE.Mesh
+    loungeSofa: THREE.Mesh
   }
   materials: {
-    ['colormap.061']: THREE.MeshStandardMaterial
     ['colormap.029']: THREE.MeshStandardMaterial
     ['colormap.030']: THREE.MeshStandardMaterial
     ['colormap.015']: THREE.MeshStandardMaterial
@@ -697,6 +743,47 @@ type GLTFResult = GLTF & {
     ['colormap.027']: THREE.MeshStandardMaterial
     ['colormap.039']: THREE.MeshStandardMaterial
     farm: THREE.MeshStandardMaterial
+    metalDark: THREE.MeshStandardMaterial
+    ['Material.001']: THREE.MeshStandardMaterial
+    metalMedium: THREE.MeshStandardMaterial
+    carpet: THREE.MeshStandardMaterial
+    wood: THREE.MeshStandardMaterial
+    metal: THREE.MeshStandardMaterial
+    ['metal.004']: THREE.MeshStandardMaterial
+    ['wood.002']: THREE.MeshStandardMaterial
+    woodDark: THREE.MeshStandardMaterial
+    ['wood.007']: THREE.MeshStandardMaterial
+    ['woodDark.001']: THREE.MeshStandardMaterial
+    ['metal.007']: THREE.MeshStandardMaterial
+    ['metalLight.001']: THREE.MeshStandardMaterial
+    ['metalMedium.001']: THREE.MeshStandardMaterial
+    ['metal.005']: THREE.MeshStandardMaterial
+    ['wood.003']: THREE.MeshStandardMaterial
+    ['metalDark.001']: THREE.MeshStandardMaterial
+    carpetWhite: THREE.MeshStandardMaterial
+    ['glass.001']: THREE.MeshStandardMaterial
+    ['metal.006']: THREE.MeshStandardMaterial
+    ['glass.002']: THREE.MeshStandardMaterial
+    ['wood.009']: THREE.MeshStandardMaterial
+    ['metal.009']: THREE.MeshStandardMaterial
+    lamp: THREE.MeshStandardMaterial
+    ['wood.010']: THREE.MeshStandardMaterial
+    plant: THREE.MeshStandardMaterial
+    ['wood.011']: THREE.MeshStandardMaterial
+    ['woodDark.002']: THREE.MeshStandardMaterial
+    ['plant.001']: THREE.MeshStandardMaterial
+    ['metalMedium.004']: THREE.MeshStandardMaterial
+    ['metal.010']: THREE.MeshStandardMaterial
+    ['carpetWhite.002']: THREE.MeshStandardMaterial
+    carpetDarker: THREE.MeshStandardMaterial
+    ['carpet.003']: THREE.MeshStandardMaterial
+    ['Material.002']: THREE.MeshStandardMaterial
+    ['Material.004']: THREE.MeshStandardMaterial
+    ['Material.003']: THREE.MeshStandardMaterial
+    ['wood.001']: THREE.MeshStandardMaterial
+    ['metal.002']: THREE.MeshStandardMaterial
+    ['carpetWhite.001']: THREE.MeshStandardMaterial
+    ['carpet.001']: THREE.MeshStandardMaterial
   }
 }
 
@@ -782,7 +869,6 @@ export function Model(props: React.ComponentProps<'group'>) {
         <group name="Pickup_House_01036" position={[-2.5, 0, -4.5]} userData={{ name: 'Pickup_House_01.036' }} />
         <group name="Pickup_House_01037" position={[-0.5, 0, -4.5]} userData={{ name: 'Pickup_House_01.037' }} />
         <group name="Pickup_House_01038" position={[8.5, 0, -0.5]} userData={{ name: 'Pickup_House_01.038' }} />
-        <mesh name="road-intersection-line" geometry={nodes['road-intersection-line'].geometry} material={materials['colormap.061']} position={[-13, 0, 13]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-intersection-line' }} />
         <mesh name="tree-large" geometry={nodes['tree-large'].geometry} material={materials['colormap.029']} position={[2.8, 0, -1.3]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-large' }} />
         <mesh name="tree-large001" geometry={nodes['tree-large001'].geometry} material={materials['colormap.029']} position={[3, 0, -1.6]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-large.001' }} />
         <mesh name="tree-small" geometry={nodes['tree-small'].geometry} material={materials['colormap.030']} position={[3.2, 0, -1.2]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-small' }} />
@@ -941,8 +1027,8 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="police002" geometry={nodes.police002.geometry} material={materials['colormap.050']} position={[-5.4, 0, 11.1]} rotation={[Math.PI / 2, 0, 2.87]} scale={0.5} userData={{ name: 'police.002' }} />
         <mesh name="sedan001" geometry={nodes.sedan001.geometry} material={materials['colormap.049']} position={[-11.2, 0, 8.9]} rotation={[Math.PI / 2, 0, -2.885]} scale={0.5} userData={{ name: 'sedan.001' }} />
         <mesh name="police003" geometry={nodes.police003.geometry} material={materials['colormap.050']} position={[-6.4, 0, 13.1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.5} userData={{ name: 'police.003' }} />
-        <mesh name="police004" geometry={nodes.police004.geometry} material={materials['colormap.050']} position={[-5.4, 0, 13.1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.5} userData={{ name: 'police.004' }} />
-        <mesh name="police005" geometry={nodes.police005.geometry} material={materials['colormap.050']} position={[-4.4, 0, 13.1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.5} userData={{ name: 'police.005' }} />
+        <mesh name="police004" geometry={nodes.police004.geometry} material={materials['colormap.050']} position={[-4.744, 0, 13.1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.5} userData={{ name: 'police.004' }} />
+        <mesh name="police005" geometry={nodes.police005.geometry} material={materials['colormap.050']} position={[-3.744, 0, 13.1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.5} userData={{ name: 'police.005' }} />
         <mesh name="building-type-a" geometry={nodes['building-type-a'].geometry} material={materials['colormap.009']} position={[-0.69, 0, -3.23]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-type-a' }} />
         <mesh name="building-type-b" geometry={nodes['building-type-b'].geometry} material={materials['colormap.010']} position={[-2.3, 0, -3]} rotation={[Math.PI / 2, 0, -1.547]} userData={{ name: 'building-type-b' }} />
         <mesh name="building-type-l" geometry={nodes['building-type-l'].geometry} material={materials['colormap.011']} position={[-0.7, 0, -1.7]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-type-l' }} />
@@ -1418,6 +1504,88 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="tile-low402" geometry={nodes['tile-low402'].geometry} material={materials.farm} position={[1.5, 0, 15.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.402' }} />
         <mesh name="tile-low403" geometry={nodes['tile-low403'].geometry} material={materials.farm} position={[0.5, 0, 15.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.403' }} />
         <mesh name="tile-low405" geometry={nodes['tile-low405'].geometry} material={materials.farm} position={[-0.5, 0, 15.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.405' }} />
+        <mesh name="walls" geometry={nodes.walls.geometry} material={materials.metalDark} position={[-7.298, 0, 11]} scale={[1.302, 1, 1]} userData={{ name: 'walls' }} />
+        <mesh name="windows" geometry={nodes.windows.geometry} material={materials['Material.001']} position={[-6.061, 1.065, 10.123]} scale={0.065} userData={{ name: 'windows' }} />
+        <mesh name="back_wall" geometry={nodes.back_wall.geometry} material={materials.metalDark} position={[-8.535, 2.421, 10.123]} rotation={[0, 0, -Math.PI]} scale={0.065} userData={{ name: 'back_wall' }} />
+        <group name="chairDesk" position={[-7.07, 1, 11.027]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'chairDesk' }}>
+          <mesh name="chairDesk_1" geometry={nodes.chairDesk_1.geometry} material={materials.metalMedium} />
+          <mesh name="chairDesk_2" geometry={nodes.chairDesk_2.geometry} material={materials.carpet} />
+        </group>
+        <group name="desk" position={[-7.652, 1, 10.837]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'desk' }}>
+          <mesh name="desk_1" geometry={nodes.desk_1.geometry} material={materials.wood} />
+          <mesh name="desk_2" geometry={nodes.desk_2.geometry} material={materials.metal} />
+        </group>
+        <group name="kitchenCabinet" position={[-6.555, 1, 12.801]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'kitchenCabinet' }}>
+          <mesh name="kitchenCabinet_1" geometry={nodes.kitchenCabinet_1.geometry} material={materials['metal.004']} />
+          <mesh name="kitchenCabinet_2" geometry={nodes.kitchenCabinet_2.geometry} material={materials['wood.002']} />
+          <mesh name="kitchenCabinet_3" geometry={nodes.kitchenCabinet_3.geometry} material={materials.woodDark} />
+        </group>
+        <group name="kitchenCabinetUpper" position={[-6.296, 1.724, 12.779]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'kitchenCabinetUpper' }}>
+          <mesh name="kitchenCabinetUpper_1" geometry={nodes.kitchenCabinetUpper_1.geometry} material={materials['wood.007']} />
+          <mesh name="kitchenCabinetUpper_2" geometry={nodes.kitchenCabinetUpper_2.geometry} material={materials['woodDark.001']} />
+          <mesh name="kitchenCabinetUpper_3" geometry={nodes.kitchenCabinetUpper_3.geometry} material={materials['metal.007']} />
+        </group>
+        <group name="kitchenFridgeLarge" position={[-6.467, 1, 13.713]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'kitchenFridgeLarge' }}>
+          <mesh name="kitchenFridgeLarge_1" geometry={nodes.kitchenFridgeLarge_1.geometry} material={materials['metalLight.001']} />
+          <mesh name="kitchenFridgeLarge_2" geometry={nodes.kitchenFridgeLarge_2.geometry} material={materials['metalMedium.001']} />
+        </group>
+        <group name="kitchenStove" position={[-6.516, 1, 13.259]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'kitchenStove' }}>
+          <mesh name="kitchenStove_1" geometry={nodes.kitchenStove_1.geometry} material={materials['metal.005']} />
+          <mesh name="kitchenStove_2" geometry={nodes.kitchenStove_2.geometry} material={materials['wood.003']} />
+          <mesh name="kitchenStove_3" geometry={nodes.kitchenStove_3.geometry} material={materials['metalDark.001']} />
+          <mesh name="kitchenStove_4" geometry={nodes.kitchenStove_4.geometry} material={materials.carpetWhite} />
+          <mesh name="kitchenStove_5" geometry={nodes.kitchenStove_5.geometry} material={materials['glass.001']} />
+        </group>
+        <group name="tableCoffeeGlass" position={[-7.622, 1, 13.404]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'tableCoffeeGlass' }}>
+          <mesh name="tableCoffeeGlass_1" geometry={nodes.tableCoffeeGlass_1.geometry} material={materials['metal.006']} />
+          <mesh name="tableCoffeeGlass_2" geometry={nodes.tableCoffeeGlass_2.geometry} material={materials['glass.002']} />
+        </group>
+        <mesh name="coatRackStanding" geometry={nodes.coatRackStanding.geometry} material={materials['wood.009']} position={[-8.353, 1, 14.009]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'coatRackStanding' }} />
+        <group name="lampRoundFloor" position={[-6.28, 1, 11.44]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'lampRoundFloor' }}>
+          <mesh name="lampRoundFloor_1" geometry={nodes.lampRoundFloor_1.geometry} material={materials['metal.009']} />
+          <mesh name="lampRoundFloor_2" geometry={nodes.lampRoundFloor_2.geometry} material={materials.lamp} />
+        </group>
+        <group name="plantSmall3" position={[-7.517, 1.23, 13.118]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'plantSmall3' }}>
+          <mesh name="plantSmall3_1" geometry={nodes.plantSmall3_1.geometry} material={materials['wood.010']} />
+          <mesh name="plantSmall3_2" geometry={nodes.plantSmall3_2.geometry} material={materials.plant} />
+        </group>
+        <group name="pottedPlant" position={[-8.306, 1, 10.343]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'pottedPlant' }}>
+          <mesh name="pottedPlant_1" geometry={nodes.pottedPlant_1.geometry} material={materials['wood.011']} />
+          <mesh name="pottedPlant_2" geometry={nodes.pottedPlant_2.geometry} material={materials['woodDark.002']} />
+          <mesh name="pottedPlant_3" geometry={nodes.pottedPlant_3.geometry} material={materials['plant.001']} />
+        </group>
+        <group name="pottedPlant001" position={[-6.308, 1, 10.343]} rotation={[Math.PI / 2, 0, 1.253]} userData={{ name: 'pottedPlant.001' }}>
+          <mesh name="pottedPlant001_1" geometry={nodes.pottedPlant001_1.geometry} material={materials['wood.011']} />
+          <mesh name="pottedPlant001_2" geometry={nodes.pottedPlant001_2.geometry} material={materials['woodDark.002']} />
+          <mesh name="pottedPlant001_3" geometry={nodes.pottedPlant001_3.geometry} material={materials['plant.001']} />
+        </group>
+        <group name="kitchenCoffeeMachine" position={[-6.4, 1.42, 13.023]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'kitchenCoffeeMachine' }}>
+          <mesh name="kitchenCoffeeMachine_1" geometry={nodes.kitchenCoffeeMachine_1.geometry} material={materials['metalMedium.004']} />
+          <mesh name="kitchenCoffeeMachine_2" geometry={nodes.kitchenCoffeeMachine_2.geometry} material={materials['metal.010']} />
+          <mesh name="kitchenCoffeeMachine_3" geometry={nodes.kitchenCoffeeMachine_3.geometry} material={materials['carpetWhite.002']} />
+        </group>
+        <group name="rugRounded" position={[-7.978, 1, 12.523]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'rugRounded' }}>
+          <mesh name="rugRounded_1" geometry={nodes.rugRounded_1.geometry} material={materials.carpetDarker} />
+          <mesh name="rugRounded_2" geometry={nodes.rugRounded_2.geometry} material={materials['carpet.003']} />
+        </group>
+        <group name="Cube" position={[-6.692, 1.106, 10.546]} rotation={[0, -0.17, 0]} scale={0.106} userData={{ name: 'Cube' }}>
+          <mesh name="Cube001_1" geometry={nodes.Cube001_1.geometry} material={materials['Material.002']} />
+          <mesh name="Cube001_2" geometry={nodes.Cube001_2.geometry} material={materials['Material.004']} />
+        </group>
+        <mesh name="Cube001" geometry={nodes.Cube001.geometry} material={materials['Material.003']} position={[-6.665, 1.416, 10.605]} rotation={[0.295, -0.163, 0.049]} scale={[1, 0.127, 1]} userData={{ name: 'Cube.001' }} />
+        <group name="doorway" position={[-6.951, 0.972, 13.074]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'doorway' }}>
+          <mesh name="doorway_1" geometry={nodes.doorway_1.geometry} material={materials['wood.001']} />
+          <mesh name="doorway_2" geometry={nodes.doorway_2.geometry} material={materials['metal.002']} />
+        </group>
+        <group name="Cube002" position={[-7.196, 1.215, 13.113]} scale={[-0.081, -0.02, -0.014]} userData={{ name: 'Cube.002' }}>
+          <mesh name="Cube005" geometry={nodes.Cube005.geometry} material={materials['carpetWhite.002']} />
+          <mesh name="Cube005_1" geometry={nodes.Cube005_1.geometry} material={materials.carpetDarker} />
+        </group>
+        <group name="bedDouble" position={[-7.91, 1, 11.922]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'bedDouble' }}>
+          <mesh name="bedDouble_1" geometry={nodes.bedDouble_1.geometry} material={materials['carpetWhite.001']} />
+          <mesh name="bedDouble_2" geometry={nodes.bedDouble_2.geometry} material={materials['carpet.001']} />
+        </group>
+        <mesh name="loungeSofa" geometry={nodes.loungeSofa.geometry} material={materials['carpet.003']} position={[-8.055, 0.972, 13.611]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'loungeSofa' }} />
       </group>
     </group>
   )

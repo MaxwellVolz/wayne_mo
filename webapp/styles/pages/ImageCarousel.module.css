@@ -1,0 +1,191 @@
+.carouselContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal-backdrop);
+  overflow: hidden;
+}
+
+.closeButton {
+  position: fixed;
+  top: var(--hud-spacing-desktop);
+  left: var(--hud-spacing-desktop);
+  z-index: var(--z-modal-content);
+}
+
+.slideContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Slide structure */
+.slide {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 90vw;
+  max-width: 1080px;
+  aspect-ratio: 1 / 1;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.animatedOverlay {
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Navigation buttons */
+.navButton {
+  position: fixed;
+  bottom: var(--space-3xl);
+  z-index: var(--z-modal-content);
+  width: 60px;
+  height: 60px;
+}
+
+.navButtonLeft {
+  left: var(--space-3xl);
+}
+
+.navButtonRight {
+  right: var(--space-3xl);
+}
+
+.navButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.navButton:disabled:hover {
+  transform: none;
+  box-shadow: 0 0 20px rgba(255, 255, 0, 0.4);
+}
+
+/* Progress dots */
+.progressDots {
+  position: fixed;
+  bottom: var(--space-3xl);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--space-md);
+  z-index: var(--z-modal-content);
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--duration-fast);
+  padding: 0;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.2);
+}
+
+.dotActive {
+  background: var(--color-primary);
+  border-color: var(--color-secondary);
+  transform: scale(1.3);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .closeButton {
+    top: var(--hud-spacing-mobile);
+    left: var(--hud-spacing-mobile);
+  }
+
+  .imageWrapper {
+    width: 95vw;
+  }
+
+  .navButton {
+    width: 50px;
+    height: 50px;
+    bottom: var(--space-2xl);
+  }
+
+  .navButtonLeft {
+    left: var(--space-lg);
+  }
+
+  .navButtonRight {
+    right: var(--space-lg);
+  }
+
+  .progressDots {
+    bottom: var(--space-2xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .imageWrapper {
+    width: 100vw;
+    padding: 0 var(--space-sm);
+  }
+
+  .navButton {
+    width: 45px;
+    height: 45px;
+    bottom: var(--space-xl);
+  }
+
+  .navButtonLeft {
+    left: var(--space-md);
+  }
+
+  .navButtonRight {
+    right: var(--space-md);
+  }
+
+  .progressDots {
+    bottom: var(--space-xl);
+    gap: var(--space-sm);
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .navButton {
+    width: 40px;
+    height: 40px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+}

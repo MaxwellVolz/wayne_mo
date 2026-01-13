@@ -4,6 +4,12 @@ import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import Game from '@/components/Game'
 import IntroScene from '@/components/IntroScene'
+import LoadingScreen from '@/components/LoadingScreen'
+import ImageCarousel from '@/components/ImageCarousel'
+import {
+  checkFirstVisit,
+  markFirstVisitComplete,
+} from '@/lib/firstVisitDetection'
 
 // Lazy load tutorial scene
 const TutorialScene = dynamic(() => import('@/components/TutorialScene'), {
@@ -23,16 +29,44 @@ const TutorialScene = dynamic(() => import('@/components/TutorialScene'), {
   ),
 })
 
-type GameMode = 'intro' | 'tutorial' | 'game'
+// Lazy load small city game
+const SmallCityGame = dynamic(() => import('@/components/SmallCityGame'), {
+  ssr: false,
+  loading: () => (
+    <div style={{
+      width: '100vw',
+      height: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: '#000',
+      color: '#fff'
+    }}>
+      Loading Small City...
+    </div>
+  ),
+})
+
+type GameMode = 'loading' | 'carousel' | 'intro' | 'tutorial' | 'game' | 'small_city'
 
 export default function Home() {
   const [gameMode, setGameMode] = useState<GameMode>('intro')
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [showOverlay, setShowOverlay] = useState(true)
   const [fadeInDuration, setFadeInDuration] = useState(1)
+  const [isFirstVisit, setIsFirstVisit] = useState<boolean>(false)
 
-  // Fade in from black on initial load
+  // Check first visit and set initial mode
   useEffect(() => {
+    const hasVisited = checkFirstVisit()
+    setIsFirstVisit(!hasVisited)
+
+    if (!hasVisited) {
+      setGameMode('loading')
+    } else {
+      setGameMode('intro')
+    }
+
     const timer = setTimeout(() => {
       setShowOverlay(false)
     }, 100)
@@ -62,6 +96,19 @@ export default function Home() {
     }, 600) // Wait for fade out + small buffer
   }
 
+  const handleLoadingComplete = () => {
+    transitionToMode('carousel')
+  }
+
+  const handleCarouselClose = () => {
+    markFirstVisitComplete()
+    transitionToMode('intro')
+  }
+
+  const handleOpenCarousel = () => {
+    transitionToMode('carousel')
+  }
+
   return (
     <>
       {/* Global transition overlay */}
@@ -81,11 +128,25 @@ export default function Home() {
       />
 
       {/* Scene rendering */}
+      {gameMode === 'loading' && (
+        <div className="scene-container">
+          <LoadingScreen onComplete={handleLoadingComplete} />
+        </div>
+      )}
+
+      {gameMode === 'carousel' && (
+        <div className="scene-container">
+          <ImageCarousel onClose={handleCarouselClose} />
+        </div>
+      )}
+
       {gameMode === 'intro' && (
         <div className="scene-container">
           <IntroScene
             onPlay={() => transitionToMode('game')}
             onTutorial={() => transitionToMode('tutorial')}
+            onSmallCity={() => transitionToMode('small_city')}
+            onOpenCarousel={handleOpenCarousel}
           />
         </div>
       )}
@@ -101,6 +162,10 @@ export default function Home() {
 
       {gameMode === 'game' && (
         <Game onExit={() => transitionToMode('intro')} />
+      )}
+
+      {gameMode === 'small_city' && (
+        <SmallCityGame onExit={() => transitionToMode('intro')} />
       )}
     </>
   )

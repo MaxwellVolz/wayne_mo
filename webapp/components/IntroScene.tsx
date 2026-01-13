@@ -3,10 +3,13 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
 import { Canvas, useThree, useFrame } from '@react-three/fiber'
 import { Text } from '@react-three/drei'
+import { Book } from 'lucide-react'
 import { getHighScore, getCumulativeScore } from '@/lib/highScore'
 import CityModel from './CityModel'
 import InteractableManager from './InteractableManager'
 import { createIntroInteractables } from '@/config/introInteractables'
+import buttonStyles from '@/styles/components/buttons.module.css'
+import positionStyles from '@/styles/utilities/positioning.module.css'
 
 // 3D Models
 import { Model as TheShop } from '@/generated_components/the_shop'
@@ -14,6 +17,8 @@ import { Model as TheShop } from '@/generated_components/the_shop'
 interface IntroSceneProps {
   onPlay: () => void
   onTutorial: () => void
+  onSmallCity: () => void
+  onOpenCarousel?: () => void
 }
 
 /**
@@ -212,7 +217,7 @@ How
  * Intro scene with play button
  * Displays before the main game starts
  */
-export default function IntroScene({ onPlay, onTutorial }: IntroSceneProps) {
+export default function IntroScene({ onPlay, onTutorial, onSmallCity, onOpenCarousel }: IntroSceneProps) {
   // Load high score immediately on first render
   const [highScore] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -233,39 +238,56 @@ export default function IntroScene({ onPlay, onTutorial }: IntroSceneProps) {
 
   // Create interactables configuration (memoized to prevent recreation)
   const interactables = useMemo(
-    () => createIntroInteractables(onPlay, onTutorial),
-    [onPlay, onTutorial]
+    () => createIntroInteractables(onPlay, onTutorial, onSmallCity),
+    [onPlay, onTutorial, onSmallCity]
   )
 
   return (
-    <Canvas
-      camera={{
-        position: [-7.2, 1.9, 11.2],
-        fov: 120,
-      }}
-      shadows={false}
-      frameloop="always"
-    >
-      {/* Camera - look around only - drag to rotate view */}
-      <LookAroundControls setIsPointerDown={setIsPointerDown} />
+    <>
+      {/* 3D Canvas */}
+      <Canvas
+        camera={{
+          position: [-7.2, 1.9, 11.2],
+          fov: 120,
+        }}
+        shadows={false}
+        frameloop="always"
+      >
+        {/* Camera - look around only - drag to rotate view */}
+        <LookAroundControls setIsPointerDown={setIsPointerDown} />
 
-      {/* Lights */}
-      <ambientLight intensity={0.6} />
-      <directionalLight
-        position={[5, 10, 5]}
-        intensity={0.8}
-        castShadow={false}
-      />
+        {/* Lights */}
+        <ambientLight intensity={0.6} />
+        <directionalLight
+          position={[5, 10, 5]}
+          intensity={0.8}
+          castShadow={false}
+        />
 
-      <CityModel />
+        <CityModel />
 
-      <TheShop />
+        <TheShop />
 
-      {/* Interactive objects managed by config */}
-      <InteractableManager interactables={interactables} isPointerDown={isPointerDown} />
+        {/* Interactive objects managed by config */}
+        <InteractableManager interactables={interactables} isPointerDown={isPointerDown} />
 
-      {/* 3D Text display */}
-      <IntroText highScore={highScore} cumulativeScore={cumulativeScore} />
-    </Canvas>
+        {/* 3D Text display */}
+        <IntroText highScore={highScore} cumulativeScore={cumulativeScore} />
+      </Canvas>
+
+      {/* UI Overlay - Tutorial/Carousel button */}
+      {onOpenCarousel && (
+        <div className={positionStyles.topLeft}>
+          <button
+            className={buttonStyles.icon}
+            onClick={onOpenCarousel}
+            aria-label="Open tutorial carousel"
+            title="View Tutorial"
+          >
+            <Book size={24} />
+          </button>
+        </div>
+      )}
+    </>
   )
 }

@@ -1,0 +1,75 @@
+.loadingContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal-content);
+}
+
+.logoSvg {
+  width: 80vw;
+  max-width: 600px;
+  height: auto;
+  animation:
+    logoFadeIn 0.5s ease-out forwards,
+    logoPulse 2s ease-in-out 0.5s 2,
+    logoFadeOut 0.5s ease-in 3s forwards;
+}
+
+.logoShapeOuter {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.logoShapeInner {
+  fill: var(--color-secondary);
+  animation: logoRotate 3s linear infinite;
+  transform-origin: center;
+}
+
+.logoText {
+  fill: var(--color-primary);
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 0.3em;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .logoSvg {
+    width: 85vw;
+    max-width: 400px;
+  }
+
+  .logoShapeOuter {
+    stroke-width: 3;
+  }
+
+  .logoText {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoSvg {
+    width: 90vw;
+  }
+
+  .logoShapeOuter {
+    stroke-width: 2;
+  }
+
+  .logoText {
+    font-size: 16px;
+  }
+}

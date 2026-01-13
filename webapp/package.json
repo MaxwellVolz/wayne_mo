@@ -8,35 +8,32 @@
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
-
     "gen:city": "npx gltfjsx@6.5.3 public/models/city_01.glb --output generated_components/CityModelGenerated.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/CityModelGenerated.tsx",
     "gen:smallcity": "npx gltfjsx@6.5.3 public/models/small_city_01.glb --output generated_components/SmallCityModelGenerated.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/SmallCityModelGenerated.tsx",
     "gen:taxi": "npx gltfjsx@6.5.3 public/models/taxi.glb --output generated_components/TaxiModelGenerated.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/TaxiModelGenerated.tsx",
     "gen:tutorial": "npx gltfjsx@6.5.3 public/models/tutorial_01.glb --output generated_components/TutorialModelGenerated.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/TutorialModelGenerated.tsx",
     "gen:models": "npm run gen:city && npm run gen:smallcity && npm run gen:taxi && npm run gen:tutorial",
-
     "gen:box-large": "npx gltfjsx@6.5.3 public/models/box_large.glb --output generated_components/box_large.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/box_large.tsx",
     "gen:box-wide": "npx gltfjsx@6.5.3 public/models/box_wide.glb --output generated_components/box_wide.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/box_wide.tsx",
     "gen:box-small": "npx gltfjsx@6.5.3 public/models/box_small.glb --output generated_components/box_small.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/box_small.tsx",
     "gen:box-long": "npx gltfjsx@6.5.3 public/models/box_long.glb --output generated_components/box_long.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/box_long.tsx",
     "gen:boxes": "npm run gen:box-large && npm run gen:box-wide && npm run gen:box-small && npm run gen:box-long ",
-
     "gen:arrow": "npx gltfjsx@6.5.3 public/models/arrow.glb --output generated_components/arrow.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/arrow.tsx",
     "gen:arrow_chevron": "npx gltfjsx@6.5.3 public/models/arrow_chevron.glb --output generated_components/arrow_chevron.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/arrow_chevron.tsx",
     "gen:arrows": "npm run gen:arrow && npm run gen:arrow_chevron ",
-
     "gen:the_shop": "npx gltfjsx@6.5.3 public/models/the_shop.glb --output generated_components/the_shop.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/the_shop.tsx",
     "gen:the_og_shop": "npx gltfjsx@6.5.3 public/models/the_og_shop.glb --output generated_components/the_og_shop.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/the_og_shop.tsx",
     "gen:vr_headset": "npx gltfjsx@6.5.3 public/models/vr_headset.glb --output generated_components/vr_headset.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/vr_headset.tsx",
     "gen:pizza": "npx gltfjsx@6.5.3 public/models/pizza.glb --output generated_components/pizza.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/pizza.tsx",
+    "gen:nutcracker": "npx gltfjsx@6.5.3 public/models/nutcracker.glb --output generated_components/nutcracker.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/nutcracker.tsx",
     "gen:inside_scene": "npm run gen:the_shop && npm run gen:the_og_shop && npm run gen:vr_headset && npm run gen:pizza ",
-    
     "gen:all": "npm run gen:models && npm run gen:inside_scene",
     "deploy": "npm run build && mkdir -p ~/_git/intervolzdotcom/public/crazytaxi && cp -r out/* ~/_git/intervolzdotcom/public/crazytaxi/ && echo 'Deployed to intervolz.com/crazytaxi'"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.6",
     "@react-three/fiber": "^9.3.0",
+    "framer-motion": "^12.26.2",
     "lucide-react": "^0.562.0",
     "next": "15.5.9",
     "react": "19.1.0",
