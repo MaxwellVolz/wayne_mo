@@ -9,7 +9,6 @@ rework part of the deliverySystem.ts
 we want the webapp/components/PickupIndicator.tsx and to also know about the packages score multiplier
 - this will determine what type of new package will be displayed
 - 4 new box .glb's : webapp/public/models/box_small box_large box_long and box_wide
-- 
 
 
 ## MVP in One Day
@@ -72,3 +71,24 @@ on scene.tsx load the starting scene camera position is great.
 
 we need to lerp the position from chase camera to the Atlas View
 and the lerp the position from Atlas View to chase camera view
+
+
+PATH_01_E_TO_02_<toDir>
+
+
+Unity GameObject Structure
+
+The Intersection "Rule" that is can be set during Runtime will determine Passthru, Clockwise, or CounterClockwise, the Taxi needs to determine which path to take based on its incoming direction
+
+- StreetLogic
+  - Intersections
+    - INT_01 (IntersectionNode.cs with optional N,E,S,W set in inspector)
+      - N
+        - P0 (path nodes from intersection to next intersection going N)
+        - P1
+      - E
+        - P0
+      - S
+        - P0
+      - W
+        - P0

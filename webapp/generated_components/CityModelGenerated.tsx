@@ -11,26 +11,246 @@ import { getAssetPath } from '@/lib/assetPath'
 
 type GLTFResult = GLTF & {
   nodes: {
-    ['tree-large']: THREE.Mesh
-    ['tree-large001']: THREE.Mesh
-    ['tree-small']: THREE.Mesh
-    ['tree-small001']: THREE.Mesh
-    ['tree-large002']: THREE.Mesh
-    ['tree-small003']: THREE.Mesh
-    ['detail-parasol-a']: THREE.Mesh
-    ['detail-parasol-a001']: THREE.Mesh
-    ['detail-parasol-a004']: THREE.Mesh
-    ['detail-parasol-a005']: THREE.Mesh
-    ['detail-parasol-a002']: THREE.Mesh
-    ['detail-parasol-a003']: THREE.Mesh
-    ['tree-large003']: THREE.Mesh
-    ['tree-large004']: THREE.Mesh
-    ['tree-large005']: THREE.Mesh
-    ['tree-small002']: THREE.Mesh
-    ['tree-small004']: THREE.Mesh
-    ['tree-small005']: THREE.Mesh
-    ['debris-spoiler-b']: THREE.Mesh
-    ['delivery-flat']: THREE.Mesh
+    SM_Bld_OfficeOld_Large_01: THREE.Mesh
+    SM_Bld_OfficeSquare_Base_08: THREE.Mesh
+    SM_Bld_OfficeSquare_02: THREE.Mesh
+    SM_Bld_OfficeSquare_03: THREE.Mesh
+    SM_Bld_OfficeSquare_04: THREE.Mesh
+    SM_Bld_OfficeSquare_05: THREE.Mesh
+    SM_Bld_OfficeSquare_Base_01_Glass: THREE.Mesh
+    SM_Bld_OfficeSquare_Roof_04: THREE.Mesh
+    SM_Bld_OfficeSquare_Roof_05: THREE.Mesh
+    SM_Bld_OfficeSquare_Roof_06: THREE.Mesh
+    SM_Bld_OfficeSquare_Roof_07: THREE.Mesh
+    station: THREE.Mesh
+    Scene065: THREE.Mesh
+    Scene065_1: THREE.Mesh
+    SM_Prop_LargeSign_Bottle_01: THREE.Mesh
+    city_hall: THREE.Mesh
+    Scene074: THREE.Mesh
+    Scene074_1: THREE.Mesh
+    Scene074_2: THREE.Mesh
+    Scene136: THREE.Mesh
+    Scene136_1: THREE.Mesh
+    SM_Bld_OfficeSquare_Base_01: THREE.Mesh
+    Scene076: THREE.Mesh
+    Scene076_1: THREE.Mesh
+    park: THREE.Mesh
+    Scene113: THREE.Mesh
+    Scene113_1: THREE.Mesh
+    Scene113_2: THREE.Mesh
+    Scene113_3: THREE.Mesh
+    Scene113_4: THREE.Mesh
+    Scene152: THREE.Mesh
+    Scene152_1: THREE.Mesh
+    Scene163: THREE.Mesh
+    Scene163_1: THREE.Mesh
+    Scene163_2: THREE.Mesh
+    Scene163_3: THREE.Mesh
+    SM_Veh_Car_Police_01: THREE.Mesh
+    SM_Veh_Car_Police_Glass: THREE.Mesh
+    SM_Veh_Car_Police_Plates: THREE.Mesh
+    SM_Veh_Car_Police_SteeringW: THREE.Mesh
+    SM_Veh_Car_Police_Wheel_fl: THREE.Mesh
+    SM_Veh_Car_Police_Wheel_fr: THREE.Mesh
+    SM_Veh_Car_Police_Wheel_rl: THREE.Mesh
+    SM_Veh_Car_Police_Wheel_rr: THREE.Mesh
+    SM_Veh_Steering_Wheel_09: THREE.Mesh
+    SM_Veh_Car_Police_01001: THREE.Mesh
+    SM_Veh_Car_Police_01002: THREE.Mesh
+    SM_Veh_Car_Taxi_01: THREE.Mesh
+    SM_Veh_Car_Taxi_Glass: THREE.Mesh
+    SM_Veh_Car_Taxi_Plates: THREE.Mesh
+    SM_Veh_Car_Taxi_SteeringW: THREE.Mesh
+    SM_Veh_Car_Taxi_Wheel_fl: THREE.Mesh
+    SM_Veh_Car_Taxi_Wheel_fr: THREE.Mesh
+    SM_Veh_Car_Taxi_Wheel_rl: THREE.Mesh
+    SM_Veh_Car_Taxi_Wheel_rr: THREE.Mesh
+    SM_Veh_Car_Taxi_01001: THREE.Mesh
+    SM_Veh_Car_Taxi_Glass001: THREE.Mesh
+    SM_Veh_Car_Taxi_Plates001: THREE.Mesh
+    SM_Veh_Car_Taxi_SteeringW001: THREE.Mesh
+    SM_Veh_Car_Taxi_Wheel_fl001: THREE.Mesh
+    SM_Veh_Car_Taxi_Wheel_fr001: THREE.Mesh
+    SM_Veh_Car_Taxi_Wheel_rl001: THREE.Mesh
+    SM_Veh_Car_Taxi_Wheel_rr001: THREE.Mesh
+    SM_Veh_Car_Taxi_01002: THREE.Mesh
+    SM_Veh_Car_Taxi_Glass002: THREE.Mesh
+    SM_Veh_Car_Taxi_Plates002: THREE.Mesh
+    SM_Veh_Car_Taxi_SteeringW002: THREE.Mesh
+    SM_Veh_Car_Taxi_Wheel_fl002: THREE.Mesh
+    SM_Veh_Car_Taxi_Wheel_fr002: THREE.Mesh
+    SM_Veh_Car_Taxi_Wheel_rl002: THREE.Mesh
+    SM_Veh_Car_Taxi_Wheel_rr002: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36001: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36002: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36003: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323001: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323002: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323003: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36008: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36009: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323008: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323009: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323010: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323011: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323012: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323013: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36010: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36011: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323014: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323015: THREE.Mesh
+    SM_Env_Sidewalk_Dip_06001: THREE.Mesh
+    SM_Env_Sidewalk_Dip_06: THREE.Mesh
+    SM_Env_Sidewalk_Dip_06002: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36017: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323042: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323043: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36020: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323044: THREE.Mesh
+    SM_Env_Sidewalk_Dip_06003: THREE.Mesh
+    SM_Env_Sidewalk_Dip_06004: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323040: THREE.Mesh
+    SM_Env_Sidewalk_Dip_06005: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36018: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36021: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36022: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36023: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323037: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323038: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36024: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36025: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323046: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323047: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323048: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323049: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323050: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36026: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36027: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323051: THREE.Mesh
+    SM_Env_Sidewalk_349: THREE.Mesh
+    SM_Env_Sidewalk_349001: THREE.Mesh
+    SM_Env_Sidewalk_349002: THREE.Mesh
+    SM_Env_Sidewalk_349003: THREE.Mesh
+    SM_Env_Sidewalk_349004: THREE.Mesh
+    SM_Env_Sidewalk_349005: THREE.Mesh
+    SM_Env_Sidewalk_349006: THREE.Mesh
+    SM_Env_Sidewalk_349007: THREE.Mesh
+    SM_Env_Sidewalk_349008: THREE.Mesh
+    SM_Env_Sidewalk_349009: THREE.Mesh
+    SM_Env_Sidewalk_349010: THREE.Mesh
+    SM_Env_Sidewalk_349011: THREE.Mesh
+    SM_Env_Sidewalk_349012: THREE.Mesh
+    SM_Env_Sidewalk_349013: THREE.Mesh
+    SM_Env_Sidewalk_349014: THREE.Mesh
+    SM_Env_Sidewalk_349015: THREE.Mesh
+    SM_Env_Sidewalk_349016: THREE.Mesh
+    SM_Env_Sidewalk_349017: THREE.Mesh
+    SM_Env_Sidewalk_349018: THREE.Mesh
+    SM_Env_Sidewalk_349019: THREE.Mesh
+    SM_Env_Sidewalk_349020: THREE.Mesh
+    SM_Env_Sidewalk_349021: THREE.Mesh
+    SM_Env_Sidewalk_349022: THREE.Mesh
+    SM_Env_Sidewalk_349023: THREE.Mesh
+    SM_Env_Sidewalk_349024: THREE.Mesh
+    SM_Env_Sidewalk_349025: THREE.Mesh
+    SM_Env_Sidewalk_349026: THREE.Mesh
+    SM_Env_Sidewalk_349027: THREE.Mesh
+    SM_Env_Sidewalk_349028: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36007: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36006: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36005: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36004: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323007: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323006: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323005: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323004: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323016: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323017: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323018: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323019: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11001: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11002: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11003: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323023: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323022: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323021: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323020: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11007: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11006: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11005: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11004: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323027: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323026: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323025: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323024: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11011: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11010: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11009: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11008: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323031: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323030: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323029: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323028: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11015: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11014: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11013: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11012: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36012: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36013: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36014: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36015: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323032: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323033: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323034: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323035: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36016: THREE.Mesh
+    SM_Env_Sidewalk_Dip_Corner_36019: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323036: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323039: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323041: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323045: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323052: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323053: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323054: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323055: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11016: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11018: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11019: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323056: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323057: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323058: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323059: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323060: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323061: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323062: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323063: THREE.Mesh
+    Scene225: THREE.Mesh
+    Scene225_1: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323067: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323066: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323065: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323064: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11023: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11022: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11021: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323068: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323069: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323070: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323071: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11024: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11025: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11027: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323072: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323073: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323075: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323076: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323077: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323078: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323074: THREE.Mesh
     ['road-end']: THREE.Mesh
     ['road-end001']: THREE.Mesh
     ['road-end002']: THREE.Mesh
@@ -159,631 +379,39 @@ type GLTFResult = GLTF & {
     ['road-straight100']: THREE.Mesh
     ['road-straight101']: THREE.Mesh
     ['road-intersection001']: THREE.Mesh
-    firetruck: THREE.Mesh
-    suv: THREE.Mesh
-    suv001: THREE.Mesh
-    ['tractor-shovel']: THREE.Mesh
-    sedan: THREE.Mesh
-    police001: THREE.Mesh
-    suv002: THREE.Mesh
-    police002: THREE.Mesh
-    sedan001: THREE.Mesh
-    police003: THREE.Mesh
-    police004: THREE.Mesh
-    police005: THREE.Mesh
-    ['building-type-a']: THREE.Mesh
-    ['building-type-b']: THREE.Mesh
-    ['building-type-l']: THREE.Mesh
-    ['building-type-a002']: THREE.Mesh
-    ['building-type-b001']: THREE.Mesh
-    ['building-type-a003']: THREE.Mesh
-    ['building-type-b002']: THREE.Mesh
-    ['building-type-c004']: THREE.Mesh
-    ['building-type-l003']: THREE.Mesh
-    ['building-type-l008']: THREE.Mesh
-    ['building-type-c010']: THREE.Mesh
-    ['building-type-b007']: THREE.Mesh
-    ['building-type-a009']: THREE.Mesh
-    ['building-type-a006']: THREE.Mesh
-    ['building-type-b004']: THREE.Mesh
-    ['building-type-c007']: THREE.Mesh
-    ['building-type-b009']: THREE.Mesh
-    ['building-type-a015']: THREE.Mesh
-    ['building-type-b011']: THREE.Mesh
-    ['building-type-l010']: THREE.Mesh
-    ['building-type-a010']: THREE.Mesh
-    ['building-type-a011']: THREE.Mesh
-    ['building-type-c011']: THREE.Mesh
-    ['building-type-c012']: THREE.Mesh
-    ['building-n004']: THREE.Mesh
-    ['building-o004']: THREE.Mesh
-    ['building-d001']: THREE.Mesh
-    ['building-d']: THREE.Mesh
-    ['building-o']: THREE.Mesh
-    ['building-type-a004']: THREE.Mesh
-    ['building-b001']: THREE.Mesh
-    ['building-o003']: THREE.Mesh
-    ['building-b']: THREE.Mesh
-    ['building-c']: THREE.Mesh
-    ['building-n002']: THREE.Mesh
-    ['building-o002']: THREE.Mesh
-    ['building-d003']: THREE.Mesh
-    ['building-m']: THREE.Mesh
-    ['building-p']: THREE.Mesh
-    ['building-q']: THREE.Mesh
-    ['building-t']: THREE.Mesh
-    ['building-type-a005']: THREE.Mesh
-    ['building-type-b003']: THREE.Mesh
-    ['building-type-l004']: THREE.Mesh
-    ['building-type-c017']: THREE.Mesh
-    ['building-type-c016']: THREE.Mesh
-    ['building-type-b016']: THREE.Mesh
-    ['building-type-b017']: THREE.Mesh
-    ['building-type-c019']: THREE.Mesh
-    ['building-type-l015']: THREE.Mesh
-    ['building-type-b019']: THREE.Mesh
-    ['detail-awning-wide001']: THREE.Mesh
-    ['detail-awning-wide']: THREE.Mesh
-    ['chimney-medium']: THREE.Mesh
-    ['detail-tank']: THREE.Mesh
-    ['building-type-b005']: THREE.Mesh
-    ['building-type-a008']: THREE.Mesh
-    ['building-type-b008']: THREE.Mesh
-    ['building-type-a012']: THREE.Mesh
-    ['building-type-a013']: THREE.Mesh
-    ['building-type-b010']: THREE.Mesh
-    ['building-type-a001']: THREE.Mesh
-    ['building-type-b012']: THREE.Mesh
-    ['building-type-a014']: THREE.Mesh
-    ['tile-low018']: THREE.Mesh
-    ['tile-low019']: THREE.Mesh
-    ['tile-low020']: THREE.Mesh
-    ['tile-low021']: THREE.Mesh
-    ['tile-low022']: THREE.Mesh
-    ['tile-low023']: THREE.Mesh
-    ['tile-low024']: THREE.Mesh
-    ['tile-low025']: THREE.Mesh
-    ['tile-low026']: THREE.Mesh
-    ['tile-low091']: THREE.Mesh
-    ['tile-low094']: THREE.Mesh
-    ['tile-low097']: THREE.Mesh
-    ['tile-low098']: THREE.Mesh
-    ['tile-low099']: THREE.Mesh
-    ['tile-low100']: THREE.Mesh
-    ['tile-low101']: THREE.Mesh
-    ['tile-low102']: THREE.Mesh
-    ['tile-low103']: THREE.Mesh
-    ['tile-low']: THREE.Mesh
-    ['tile-low001']: THREE.Mesh
-    ['tile-low002']: THREE.Mesh
-    ['tile-low003']: THREE.Mesh
-    ['tile-low004']: THREE.Mesh
-    ['tile-low005']: THREE.Mesh
-    ['tile-low006']: THREE.Mesh
-    ['tile-low007']: THREE.Mesh
-    ['tile-low008']: THREE.Mesh
-    ['tile-low027']: THREE.Mesh
-    ['tile-low028']: THREE.Mesh
-    ['tile-low029']: THREE.Mesh
-    ['tile-low030']: THREE.Mesh
-    ['tile-low031']: THREE.Mesh
-    ['tile-low032']: THREE.Mesh
-    ['tile-low033']: THREE.Mesh
-    ['tile-low034']: THREE.Mesh
-    ['tile-low035']: THREE.Mesh
-    ['tile-low054']: THREE.Mesh
-    ['tile-low055']: THREE.Mesh
-    ['tile-low056']: THREE.Mesh
-    ['tile-low057']: THREE.Mesh
-    ['tile-low058']: THREE.Mesh
-    ['tile-low059']: THREE.Mesh
-    ['tile-low060']: THREE.Mesh
-    ['tile-low061']: THREE.Mesh
-    ['tile-low062']: THREE.Mesh
-    ['tile-low063']: THREE.Mesh
-    ['tile-low064']: THREE.Mesh
-    ['tile-low065']: THREE.Mesh
-    ['tile-low066']: THREE.Mesh
-    ['tile-low067']: THREE.Mesh
-    ['tile-low089']: THREE.Mesh
-    ['tile-low090']: THREE.Mesh
-    ['tile-low092']: THREE.Mesh
-    ['tile-low093']: THREE.Mesh
-    ['tile-low095']: THREE.Mesh
-    ['tile-low096']: THREE.Mesh
-    ['tile-low009']: THREE.Mesh
-    ['tile-low010']: THREE.Mesh
-    ['tile-low011']: THREE.Mesh
-    ['tile-low012']: THREE.Mesh
-    ['tile-low013']: THREE.Mesh
-    ['tile-low014']: THREE.Mesh
-    ['tile-low015']: THREE.Mesh
-    ['tile-low016']: THREE.Mesh
-    ['tile-low017']: THREE.Mesh
-    ['tile-low045']: THREE.Mesh
-    ['tile-low046']: THREE.Mesh
-    ['tile-low047']: THREE.Mesh
-    ['tile-low048']: THREE.Mesh
-    ['tile-low049']: THREE.Mesh
-    ['tile-low050']: THREE.Mesh
-    ['tile-low051']: THREE.Mesh
-    ['tile-low052']: THREE.Mesh
-    ['tile-low053']: THREE.Mesh
-    ['tile-low036']: THREE.Mesh
-    ['tile-low037']: THREE.Mesh
-    ['tile-low038']: THREE.Mesh
-    ['tile-low039']: THREE.Mesh
-    ['tile-low040']: THREE.Mesh
-    ['tile-low041']: THREE.Mesh
-    ['tile-low042']: THREE.Mesh
-    ['tile-low043']: THREE.Mesh
-    ['tile-low044']: THREE.Mesh
-    ['tile-low068']: THREE.Mesh
-    ['tile-low069']: THREE.Mesh
-    ['tile-low070']: THREE.Mesh
-    ['tile-low071']: THREE.Mesh
-    ['tile-low072']: THREE.Mesh
-    ['tile-low073']: THREE.Mesh
-    ['tile-low074']: THREE.Mesh
-    ['tile-low075']: THREE.Mesh
-    ['tile-low076']: THREE.Mesh
-    ['tile-low077']: THREE.Mesh
-    ['tile-low078']: THREE.Mesh
-    ['tile-low079']: THREE.Mesh
-    ['tile-low080']: THREE.Mesh
-    ['tile-low081']: THREE.Mesh
-    ['tile-low082']: THREE.Mesh
-    ['tile-low083']: THREE.Mesh
-    ['tile-low084']: THREE.Mesh
-    ['tile-low085']: THREE.Mesh
-    ['tile-low086']: THREE.Mesh
-    ['tile-low087']: THREE.Mesh
-    ['tile-low088']: THREE.Mesh
-    ['tile-low140']: THREE.Mesh
-    ['tile-low141']: THREE.Mesh
-    ['tile-low142']: THREE.Mesh
-    ['tile-low143']: THREE.Mesh
-    ['tile-low144']: THREE.Mesh
-    ['tile-low145']: THREE.Mesh
-    ['tile-low146']: THREE.Mesh
-    ['tile-low147']: THREE.Mesh
-    ['tile-low148']: THREE.Mesh
-    ['tile-low237']: THREE.Mesh
-    ['tile-low238']: THREE.Mesh
-    ['tile-low244']: THREE.Mesh
-    ['tile-low326']: THREE.Mesh
-    ['tile-low327']: THREE.Mesh
-    ['tile-low328']: THREE.Mesh
-    ['tile-low332']: THREE.Mesh
-    ['tile-low333']: THREE.Mesh
-    ['tile-low104']: THREE.Mesh
-    ['tile-low105']: THREE.Mesh
-    ['tile-low106']: THREE.Mesh
-    ['tile-low107']: THREE.Mesh
-    ['tile-low108']: THREE.Mesh
-    ['tile-low109']: THREE.Mesh
-    ['tile-low110']: THREE.Mesh
-    ['tile-low111']: THREE.Mesh
-    ['tile-low112']: THREE.Mesh
-    ['tile-low282']: THREE.Mesh
-    ['tile-low113']: THREE.Mesh
-    ['tile-low114']: THREE.Mesh
-    ['tile-low115']: THREE.Mesh
-    ['tile-low116']: THREE.Mesh
-    ['tile-low117']: THREE.Mesh
-    ['tile-low118']: THREE.Mesh
-    ['tile-low119']: THREE.Mesh
-    ['tile-low120']: THREE.Mesh
-    ['tile-low121']: THREE.Mesh
-    ['tile-low228']: THREE.Mesh
-    ['tile-low229']: THREE.Mesh
-    ['tile-low230']: THREE.Mesh
-    ['tile-low312']: THREE.Mesh
-    ['tile-low313']: THREE.Mesh
-    ['tile-low314']: THREE.Mesh
-    ['tile-low315']: THREE.Mesh
-    ['tile-low316']: THREE.Mesh
-    ['tile-low317']: THREE.Mesh
-    ['tile-low122']: THREE.Mesh
-    ['tile-low123']: THREE.Mesh
-    ['tile-low124']: THREE.Mesh
-    ['tile-low125']: THREE.Mesh
-    ['tile-low126']: THREE.Mesh
-    ['tile-low127']: THREE.Mesh
-    ['tile-low128']: THREE.Mesh
-    ['tile-low129']: THREE.Mesh
-    ['tile-low130']: THREE.Mesh
-    ['tile-low131']: THREE.Mesh
-    ['tile-low132']: THREE.Mesh
-    ['tile-low133']: THREE.Mesh
-    ['tile-low134']: THREE.Mesh
-    ['tile-low135']: THREE.Mesh
-    ['tile-low136']: THREE.Mesh
-    ['tile-low137']: THREE.Mesh
-    ['tile-low138']: THREE.Mesh
-    ['tile-low139']: THREE.Mesh
-    ['tile-low227']: THREE.Mesh
-    ['tile-low231']: THREE.Mesh
-    ['tile-low232']: THREE.Mesh
-    ['tile-low233']: THREE.Mesh
-    ['tile-low234']: THREE.Mesh
-    ['tile-low235']: THREE.Mesh
-    ['tile-low236']: THREE.Mesh
-    ['tile-low245']: THREE.Mesh
-    ['tile-low300']: THREE.Mesh
-    ['tile-low321']: THREE.Mesh
-    ['tile-low322']: THREE.Mesh
-    ['tile-low323']: THREE.Mesh
-    ['tile-low324']: THREE.Mesh
-    ['tile-low325']: THREE.Mesh
-    ['tile-low167']: THREE.Mesh
-    ['tile-low168']: THREE.Mesh
-    ['tile-low169']: THREE.Mesh
-    ['tile-low170']: THREE.Mesh
-    ['tile-low171']: THREE.Mesh
-    ['tile-low172']: THREE.Mesh
-    ['tile-low173']: THREE.Mesh
-    ['tile-low174']: THREE.Mesh
-    ['tile-low175']: THREE.Mesh
-    ['tile-low176']: THREE.Mesh
-    ['tile-low177']: THREE.Mesh
-    ['tile-low178']: THREE.Mesh
-    ['tile-low179']: THREE.Mesh
-    ['tile-low180']: THREE.Mesh
-    ['tile-low181']: THREE.Mesh
-    ['tile-low240']: THREE.Mesh
-    ['tile-low241']: THREE.Mesh
-    ['tile-low303']: THREE.Mesh
-    ['tile-low307']: THREE.Mesh
-    ['tile-low308']: THREE.Mesh
-    ['tile-low309']: THREE.Mesh
-    ['tile-low310']: THREE.Mesh
-    ['tile-low311']: THREE.Mesh
-    ['tile-low182']: THREE.Mesh
-    ['tile-low183']: THREE.Mesh
-    ['tile-low184']: THREE.Mesh
-    ['tile-low185']: THREE.Mesh
-    ['tile-low186']: THREE.Mesh
-    ['tile-low187']: THREE.Mesh
-    ['tile-low188']: THREE.Mesh
-    ['tile-low189']: THREE.Mesh
-    ['tile-low190']: THREE.Mesh
-    ['tile-low191']: THREE.Mesh
-    ['tile-low192']: THREE.Mesh
-    ['tile-low193']: THREE.Mesh
-    ['tile-low194']: THREE.Mesh
-    ['tile-low195']: THREE.Mesh
-    ['tile-low196']: THREE.Mesh
-    ['tile-low242']: THREE.Mesh
-    ['tile-low197']: THREE.Mesh
-    ['tile-low198']: THREE.Mesh
-    ['tile-low199']: THREE.Mesh
-    ['tile-low200']: THREE.Mesh
-    ['tile-low201']: THREE.Mesh
-    ['tile-low202']: THREE.Mesh
-    ['tile-low203']: THREE.Mesh
-    ['tile-low204']: THREE.Mesh
-    ['tile-low205']: THREE.Mesh
-    ['tile-low206']: THREE.Mesh
-    ['tile-low207']: THREE.Mesh
-    ['tile-low208']: THREE.Mesh
-    ['tile-low209']: THREE.Mesh
-    ['tile-low210']: THREE.Mesh
-    ['tile-low211']: THREE.Mesh
-    ['tile-low213']: THREE.Mesh
-    ['tile-low243']: THREE.Mesh
-    ['tile-low304']: THREE.Mesh
-    ['tile-low305']: THREE.Mesh
-    ['tile-low306']: THREE.Mesh
-    ['tile-low212']: THREE.Mesh
-    ['tile-low214']: THREE.Mesh
-    ['tile-low215']: THREE.Mesh
-    ['tile-low216']: THREE.Mesh
-    ['tile-low217']: THREE.Mesh
-    ['tile-low218']: THREE.Mesh
-    ['tile-low219']: THREE.Mesh
-    ['tile-low220']: THREE.Mesh
-    ['tile-low221']: THREE.Mesh
-    ['tile-low222']: THREE.Mesh
-    ['tile-low223']: THREE.Mesh
-    ['tile-low224']: THREE.Mesh
-    ['tile-low225']: THREE.Mesh
-    ['tile-low226']: THREE.Mesh
-    ['tile-low149']: THREE.Mesh
-    ['tile-low150']: THREE.Mesh
-    ['tile-low151']: THREE.Mesh
-    ['tile-low152']: THREE.Mesh
-    ['tile-low153']: THREE.Mesh
-    ['tile-low154']: THREE.Mesh
-    ['tile-low155']: THREE.Mesh
-    ['tile-low156']: THREE.Mesh
-    ['tile-low157']: THREE.Mesh
-    ['tile-low158']: THREE.Mesh
-    ['tile-low159']: THREE.Mesh
-    ['tile-low160']: THREE.Mesh
-    ['tile-low161']: THREE.Mesh
-    ['tile-low162']: THREE.Mesh
-    ['tile-low163']: THREE.Mesh
-    ['tile-low164']: THREE.Mesh
-    ['tile-low165']: THREE.Mesh
-    ['tile-low166']: THREE.Mesh
-    ['tile-low239']: THREE.Mesh
-    ['tile-low329']: THREE.Mesh
-    ['tile-low330']: THREE.Mesh
-    ['tile-low331']: THREE.Mesh
-    ['tile-low246']: THREE.Mesh
-    ['tile-low247']: THREE.Mesh
-    ['tile-low248']: THREE.Mesh
-    ['tile-low249']: THREE.Mesh
-    ['tile-low250']: THREE.Mesh
-    ['tile-low251']: THREE.Mesh
-    ['tile-low252']: THREE.Mesh
-    ['tile-low254']: THREE.Mesh
-    ['tile-low255']: THREE.Mesh
-    ['tile-low256']: THREE.Mesh
-    ['tile-low257']: THREE.Mesh
-    ['tile-low258']: THREE.Mesh
-    ['tile-low259']: THREE.Mesh
-    ['tile-low260']: THREE.Mesh
-    ['tile-low261']: THREE.Mesh
-    ['tile-low262']: THREE.Mesh
-    ['tile-low263']: THREE.Mesh
-    ['tile-low264']: THREE.Mesh
-    ['tile-low265']: THREE.Mesh
-    ['tile-low266']: THREE.Mesh
-    ['tile-low267']: THREE.Mesh
-    ['tile-low268']: THREE.Mesh
-    ['tile-low269']: THREE.Mesh
-    ['tile-low270']: THREE.Mesh
-    ['tile-low271']: THREE.Mesh
-    ['tile-low272']: THREE.Mesh
-    ['tile-low273']: THREE.Mesh
-    ['tile-low274']: THREE.Mesh
-    ['tile-low275']: THREE.Mesh
-    ['tile-low276']: THREE.Mesh
-    ['tile-low277']: THREE.Mesh
-    ['tile-low278']: THREE.Mesh
-    ['tile-low279']: THREE.Mesh
-    ['tile-low280']: THREE.Mesh
-    ['tile-low281']: THREE.Mesh
-    ['tile-low318']: THREE.Mesh
-    ['tile-low319']: THREE.Mesh
-    ['tile-low320']: THREE.Mesh
-    ['tile-low283']: THREE.Mesh
-    ['tile-low284']: THREE.Mesh
-    ['tile-low285']: THREE.Mesh
-    ['tile-low286']: THREE.Mesh
-    ['tile-low287']: THREE.Mesh
-    ['tile-low288']: THREE.Mesh
-    ['tile-low289']: THREE.Mesh
-    ['tile-low290']: THREE.Mesh
-    ['tile-low291']: THREE.Mesh
-    ['tile-low292']: THREE.Mesh
-    ['tile-low293']: THREE.Mesh
-    ['tile-low294']: THREE.Mesh
-    ['tile-low295']: THREE.Mesh
-    ['tile-low296']: THREE.Mesh
-    ['tile-low297']: THREE.Mesh
-    ['tile-low298']: THREE.Mesh
-    ['tile-low299']: THREE.Mesh
-    ['tile-low334']: THREE.Mesh
-    ['tile-low253']: THREE.Mesh
-    ['tile-low301']: THREE.Mesh
-    ['tile-low302']: THREE.Mesh
-    ['tile-low335']: THREE.Mesh
-    ['tile-low336']: THREE.Mesh
-    ['tile-low337']: THREE.Mesh
-    ['tile-low338']: THREE.Mesh
-    ['tile-low339']: THREE.Mesh
-    ['tile-low340']: THREE.Mesh
-    ['tile-low341']: THREE.Mesh
-    ['tile-low348']: THREE.Mesh
-    ['tile-low354']: THREE.Mesh
-    ['tile-low355']: THREE.Mesh
-    ['tile-low356']: THREE.Mesh
-    ['tile-low357']: THREE.Mesh
-    ['tile-low358']: THREE.Mesh
-    ['tile-low359']: THREE.Mesh
-    ['tile-low360']: THREE.Mesh
-    ['tile-low361']: THREE.Mesh
-    ['tile-low362']: THREE.Mesh
-    ['tile-low363']: THREE.Mesh
-    ['tile-low364']: THREE.Mesh
-    ['tile-low365']: THREE.Mesh
-    ['tile-low366']: THREE.Mesh
-    ['tile-low367']: THREE.Mesh
-    ['tile-low368']: THREE.Mesh
-    ['tile-low369']: THREE.Mesh
-    ['tile-low370']: THREE.Mesh
-    ['tile-low371']: THREE.Mesh
-    ['tile-low372']: THREE.Mesh
-    ['tile-low373']: THREE.Mesh
-    ['tile-low374']: THREE.Mesh
-    ['tile-low375']: THREE.Mesh
-    ['tile-low376']: THREE.Mesh
-    ['tile-low377']: THREE.Mesh
-    ['tile-low378']: THREE.Mesh
-    ['tile-low379']: THREE.Mesh
-    ['tile-low380']: THREE.Mesh
-    ['tile-low381']: THREE.Mesh
-    ['tile-low382']: THREE.Mesh
-    ['tile-low383']: THREE.Mesh
-    ['tile-low384']: THREE.Mesh
-    ['tile-low385']: THREE.Mesh
-    ['tile-low386']: THREE.Mesh
-    ['tile-low387']: THREE.Mesh
-    ['tile-low388']: THREE.Mesh
-    ['tile-low389']: THREE.Mesh
-    ['tile-low390']: THREE.Mesh
-    ['tile-low391']: THREE.Mesh
-    ['tile-low392']: THREE.Mesh
-    ['tile-low393']: THREE.Mesh
-    ['tile-low395']: THREE.Mesh
-    ['tile-low396']: THREE.Mesh
-    ['tile-low397']: THREE.Mesh
-    ['tile-low398']: THREE.Mesh
-    ['tile-low399']: THREE.Mesh
-    ['tile-low400']: THREE.Mesh
-    ['tile-low404']: THREE.Mesh
-    ['tile-low406']: THREE.Mesh
-    ['tile-low407']: THREE.Mesh
-    ['tile-low408']: THREE.Mesh
-    ['tile-low409']: THREE.Mesh
-    ['tile-low410']: THREE.Mesh
-    ['tile-low342']: THREE.Mesh
-    ['tile-low343']: THREE.Mesh
-    ['tile-low344']: THREE.Mesh
-    ['tile-low345']: THREE.Mesh
-    ['tile-low346']: THREE.Mesh
-    ['tile-low347']: THREE.Mesh
-    ['tile-low349']: THREE.Mesh
-    ['tile-low350']: THREE.Mesh
-    ['tile-low351']: THREE.Mesh
-    ['tile-low352']: THREE.Mesh
-    ['tile-low353']: THREE.Mesh
-    ['tile-low394']: THREE.Mesh
-    ['tile-low401']: THREE.Mesh
-    ['tile-low402']: THREE.Mesh
-    ['tile-low403']: THREE.Mesh
-    ['tile-low405']: THREE.Mesh
-    walls: THREE.Mesh
-    windows: THREE.Mesh
-    back_wall: THREE.Mesh
-    chairDesk_1: THREE.Mesh
-    chairDesk_2: THREE.Mesh
-    desk_1: THREE.Mesh
-    desk_2: THREE.Mesh
-    kitchenCabinet_1: THREE.Mesh
-    kitchenCabinet_2: THREE.Mesh
-    kitchenCabinet_3: THREE.Mesh
-    kitchenCabinetUpper_1: THREE.Mesh
-    kitchenCabinetUpper_2: THREE.Mesh
-    kitchenCabinetUpper_3: THREE.Mesh
-    kitchenFridgeLarge_1: THREE.Mesh
-    kitchenFridgeLarge_2: THREE.Mesh
-    kitchenStove_1: THREE.Mesh
-    kitchenStove_2: THREE.Mesh
-    kitchenStove_3: THREE.Mesh
-    kitchenStove_4: THREE.Mesh
-    kitchenStove_5: THREE.Mesh
-    tableCoffeeGlass_1: THREE.Mesh
-    tableCoffeeGlass_2: THREE.Mesh
-    coatRackStanding: THREE.Mesh
-    lampRoundFloor_1: THREE.Mesh
-    lampRoundFloor_2: THREE.Mesh
-    plantSmall3_1: THREE.Mesh
-    plantSmall3_2: THREE.Mesh
-    pottedPlant_1: THREE.Mesh
-    pottedPlant_2: THREE.Mesh
-    pottedPlant_3: THREE.Mesh
-    pottedPlant001_1: THREE.Mesh
-    pottedPlant001_2: THREE.Mesh
-    pottedPlant001_3: THREE.Mesh
-    kitchenCoffeeMachine_1: THREE.Mesh
-    kitchenCoffeeMachine_2: THREE.Mesh
-    kitchenCoffeeMachine_3: THREE.Mesh
-    rugRounded_1: THREE.Mesh
-    rugRounded_2: THREE.Mesh
-    Cube001_1: THREE.Mesh
-    Cube001_2: THREE.Mesh
-    Cube001: THREE.Mesh
-    doorway_1: THREE.Mesh
-    doorway_2: THREE.Mesh
-    Cube005: THREE.Mesh
-    Cube005_1: THREE.Mesh
-    bedDouble_1: THREE.Mesh
-    bedDouble_2: THREE.Mesh
-    loungeSofa: THREE.Mesh
+    ['road-straight043']: THREE.Mesh
+    Plane: THREE.Mesh
+    Plane001: THREE.Mesh
   }
   materials: {
-    ['colormap.029']: THREE.MeshStandardMaterial
-    ['colormap.030']: THREE.MeshStandardMaterial
-    ['colormap.015']: THREE.MeshStandardMaterial
-    ['colormap.059']: THREE.MeshStandardMaterial
-    ['colormap.057']: THREE.MeshStandardMaterial
+    Synty_Palette_A: THREE.MeshStandardMaterial
+    Glass_01: THREE.MeshStandardMaterial
+    ['Glass_01.002']: THREE.MeshStandardMaterial
+    Billboard_01: THREE.MeshStandardMaterial
+    ['Billboard_01.001']: THREE.MeshStandardMaterial
+    ['PolygonCity_01_A.006']: THREE.MeshStandardMaterial
+    ['Synty_Palette_A.001']: THREE.MeshStandardMaterial
+    ['Synty_Palette_A.002']: THREE.MeshStandardMaterial
+    ['Synty_Palette_A.003']: THREE.MeshStandardMaterial
+    ['Synty_Palette_A.004']: THREE.MeshStandardMaterial
+    ['Synty_Palette_A.005']: THREE.MeshStandardMaterial
+    ['Synty_Palette_A.006']: THREE.MeshStandardMaterial
+    ['Synty_Palette_A.007']: THREE.MeshStandardMaterial
+    ['Synty_Palette_A.008']: THREE.MeshStandardMaterial
+    ['Synty_Palette_A.009']: THREE.MeshStandardMaterial
+    ['Synty_Palette_A.010']: THREE.MeshStandardMaterial
+    ['Synty_Palette_A.012']: THREE.MeshStandardMaterial
+    ['Synty_Palette_A.011']: THREE.MeshStandardMaterial
+    ['Synty_Palette_A.013']: THREE.MeshStandardMaterial
+    ['Synty_Palette_A.014']: THREE.MeshStandardMaterial
     ['colormap.051']: THREE.MeshStandardMaterial
     ['colormap.052']: THREE.MeshStandardMaterial
     ['colormap.053']: THREE.MeshStandardMaterial
     ['colormap.054']: THREE.MeshStandardMaterial
     ['colormap.055']: THREE.MeshStandardMaterial
     ['colormap.047']: THREE.MeshStandardMaterial
-    ['colormap.044']: THREE.MeshStandardMaterial
-    ['colormap.046']: THREE.MeshStandardMaterial
-    ['colormap.048']: THREE.MeshStandardMaterial
-    ['colormap.049']: THREE.MeshStandardMaterial
-    ['colormap.050']: THREE.MeshStandardMaterial
-    ['colormap.009']: THREE.MeshStandardMaterial
-    ['colormap.010']: THREE.MeshStandardMaterial
-    ['colormap.011']: THREE.MeshStandardMaterial
-    ['colormap.024']: THREE.MeshStandardMaterial
-    ['colormap.022']: THREE.MeshStandardMaterial
-    ['colormap.020']: THREE.MeshStandardMaterial
-    ['colormap.021']: THREE.MeshStandardMaterial
-    ['colormap.040']: THREE.MeshStandardMaterial
-    ['colormap.041']: THREE.MeshStandardMaterial
-    ['colormap.042']: THREE.MeshStandardMaterial
-    ['colormap.043']: THREE.MeshStandardMaterial
-    ['colormap.026']: THREE.MeshStandardMaterial
-    ['colormap.023']: THREE.MeshStandardMaterial
-    ['colormap.007']: THREE.MeshStandardMaterial
-    ['colormap.008']: THREE.MeshStandardMaterial
-    ['colormap.006']: THREE.MeshStandardMaterial
-    colormap: THREE.MeshStandardMaterial
-    ['colormap.012']: THREE.MeshStandardMaterial
-    ['colormap.038']: THREE.MeshStandardMaterial
-    ['colormap.034']: THREE.MeshStandardMaterial
-    ['colormap.033']: THREE.MeshStandardMaterial
-    ['colormap.036']: THREE.MeshStandardMaterial
-    ['colormap.031']: THREE.MeshStandardMaterial
-    ['colormap.018']: THREE.MeshStandardMaterial
-    ['colormap.032']: THREE.MeshStandardMaterial
-    ['colormap.028']: THREE.MeshStandardMaterial
-    ['colormap.004']: THREE.MeshStandardMaterial
-    ['colormap.025']: THREE.MeshStandardMaterial
-    ['colormap.027']: THREE.MeshStandardMaterial
-    ['colormap.039']: THREE.MeshStandardMaterial
-    farm: THREE.MeshStandardMaterial
-    metalDark: THREE.MeshStandardMaterial
-    ['Material.001']: THREE.MeshStandardMaterial
-    metalMedium: THREE.MeshStandardMaterial
-    carpet: THREE.MeshStandardMaterial
-    wood: THREE.MeshStandardMaterial
-    metal: THREE.MeshStandardMaterial
-    ['metal.004']: THREE.MeshStandardMaterial
-    ['wood.002']: THREE.MeshStandardMaterial
-    woodDark: THREE.MeshStandardMaterial
-    ['wood.007']: THREE.MeshStandardMaterial
-    ['woodDark.001']: THREE.MeshStandardMaterial
-    ['metal.007']: THREE.MeshStandardMaterial
-    ['metalLight.001']: THREE.MeshStandardMaterial
-    ['metalMedium.001']: THREE.MeshStandardMaterial
-    ['metal.005']: THREE.MeshStandardMaterial
-    ['wood.003']: THREE.MeshStandardMaterial
-    ['metalDark.001']: THREE.MeshStandardMaterial
-    carpetWhite: THREE.MeshStandardMaterial
-    ['glass.001']: THREE.MeshStandardMaterial
-    ['metal.006']: THREE.MeshStandardMaterial
-    ['glass.002']: THREE.MeshStandardMaterial
-    ['wood.009']: THREE.MeshStandardMaterial
-    ['metal.009']: THREE.MeshStandardMaterial
-    lamp: THREE.MeshStandardMaterial
-    ['wood.010']: THREE.MeshStandardMaterial
-    plant: THREE.MeshStandardMaterial
-    ['wood.011']: THREE.MeshStandardMaterial
-    ['woodDark.002']: THREE.MeshStandardMaterial
-    ['plant.001']: THREE.MeshStandardMaterial
-    ['metalMedium.004']: THREE.MeshStandardMaterial
-    ['metal.010']: THREE.MeshStandardMaterial
-    ['carpetWhite.002']: THREE.MeshStandardMaterial
-    carpetDarker: THREE.MeshStandardMaterial
-    ['carpet.003']: THREE.MeshStandardMaterial
-    ['Material.002']: THREE.MeshStandardMaterial
-    ['Material.004']: THREE.MeshStandardMaterial
-    ['Material.003']: THREE.MeshStandardMaterial
-    ['wood.001']: THREE.MeshStandardMaterial
-    ['metal.002']: THREE.MeshStandardMaterial
-    ['carpetWhite.001']: THREE.MeshStandardMaterial
-    ['carpet.001']: THREE.MeshStandardMaterial
+    ['Material.005']: THREE.MeshStandardMaterial
+    Material: THREE.MeshStandardMaterial
   }
 }
 
@@ -869,26 +497,267 @@ export function Model(props: React.ComponentProps<'group'>) {
         <group name="Pickup_House_01036" position={[-2.5, 0, -4.5]} userData={{ name: 'Pickup_House_01.036' }} />
         <group name="Pickup_House_01037" position={[-0.5, 0, -4.5]} userData={{ name: 'Pickup_House_01.037' }} />
         <group name="Pickup_House_01038" position={[8.5, 0, -0.5]} userData={{ name: 'Pickup_House_01.038' }} />
-        <mesh name="tree-large" geometry={nodes['tree-large'].geometry} material={materials['colormap.029']} position={[2.8, 0, -1.3]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-large' }} />
-        <mesh name="tree-large001" geometry={nodes['tree-large001'].geometry} material={materials['colormap.029']} position={[3, 0, -1.6]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-large.001' }} />
-        <mesh name="tree-small" geometry={nodes['tree-small'].geometry} material={materials['colormap.030']} position={[3.2, 0, -1.2]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-small' }} />
-        <mesh name="tree-small001" geometry={nodes['tree-small001'].geometry} material={materials['colormap.030']} position={[2.8, 0, -1.7]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-small.001' }} />
-        <mesh name="tree-large002" geometry={nodes['tree-large002'].geometry} material={materials['colormap.029']} position={[6.8, 0, -1.3]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-large.002' }} />
-        <mesh name="tree-small003" geometry={nodes['tree-small003'].geometry} material={materials['colormap.030']} position={[6.8, 0, -1.7]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-small.003' }} />
-        <mesh name="detail-parasol-a" geometry={nodes['detail-parasol-a'].geometry} material={materials['colormap.015']} position={[-1.4, 0.02, 5.6]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'detail-parasol-a' }} />
-        <mesh name="detail-parasol-a001" geometry={nodes['detail-parasol-a001'].geometry} material={materials['colormap.015']} position={[-0.8, 0.02, 5.6]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'detail-parasol-a.001' }} />
-        <mesh name="detail-parasol-a004" geometry={nodes['detail-parasol-a004'].geometry} material={materials['colormap.015']} position={[1.412, 0.02, 0.834]} rotation={[Math.PI / 2, 0, -Math.PI / 4]} userData={{ name: 'detail-parasol-a.004' }} />
-        <mesh name="detail-parasol-a005" geometry={nodes['detail-parasol-a005'].geometry} material={materials['colormap.015']} position={[1.788, 0.02, 0.366]} rotation={[Math.PI / 2, 0, -0.895]} userData={{ name: 'detail-parasol-a.005' }} />
-        <mesh name="detail-parasol-a002" geometry={nodes['detail-parasol-a002'].geometry} material={materials['colormap.015']} position={[2.6, 0.02, 5.6]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'detail-parasol-a.002' }} />
-        <mesh name="detail-parasol-a003" geometry={nodes['detail-parasol-a003'].geometry} material={materials['colormap.015']} position={[3.2, 0.02, 5.6]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'detail-parasol-a.003' }} />
-        <mesh name="tree-large003" geometry={nodes['tree-large003'].geometry} material={materials['colormap.029']} position={[-9, 0, 2.4]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-large.003' }} />
-        <mesh name="tree-large004" geometry={nodes['tree-large004'].geometry} material={materials['colormap.029']} position={[-9, 0, -0.6]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-large.004' }} />
-        <mesh name="tree-large005" geometry={nodes['tree-large005'].geometry} material={materials['colormap.029']} position={[-8.4, 0, 2.3]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-large.005' }} />
-        <mesh name="tree-small002" geometry={nodes['tree-small002'].geometry} material={materials['colormap.030']} position={[-9.2, 0, 2.3]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-small.002' }} />
-        <mesh name="tree-small004" geometry={nodes['tree-small004'].geometry} material={materials['colormap.030']} position={[-9.2, 0, -0.7]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-small.004' }} />
-        <mesh name="tree-small005" geometry={nodes['tree-small005'].geometry} material={materials['colormap.030']} position={[-8.6, 0, 2.7]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tree-small.005' }} />
-        <mesh name="debris-spoiler-b" geometry={nodes['debris-spoiler-b'].geometry} material={materials['colormap.059']} position={[-5.5, 0.029, 4.5]} rotation={[Math.PI / 2, -0.974, 1.526]} scale={0.642} userData={{ name: 'debris-spoiler-b' }} />
-        <mesh name="delivery-flat" geometry={nodes['delivery-flat'].geometry} material={materials['colormap.057']} position={[-5.9, 0, 5]} rotation={[Math.PI / 2, 0, 3.015]} scale={0.476} userData={{ name: 'delivery-flat' }} />
+        <mesh name="SM_Bld_OfficeOld_Large_01" geometry={nodes.SM_Bld_OfficeOld_Large_01.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Bld_OfficeOld_Large_01' }} />
+        <mesh name="SM_Bld_OfficeSquare_Base_08" geometry={nodes.SM_Bld_OfficeSquare_Base_08.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Bld_OfficeSquare_Base_08' }}>
+          <mesh name="SM_Bld_OfficeSquare_02" geometry={nodes.SM_Bld_OfficeSquare_02.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Bld_OfficeSquare_02' }} />
+          <mesh name="SM_Bld_OfficeSquare_03" geometry={nodes.SM_Bld_OfficeSquare_03.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Bld_OfficeSquare_03' }} />
+          <mesh name="SM_Bld_OfficeSquare_04" geometry={nodes.SM_Bld_OfficeSquare_04.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Bld_OfficeSquare_04' }} />
+          <mesh name="SM_Bld_OfficeSquare_05" geometry={nodes.SM_Bld_OfficeSquare_05.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Bld_OfficeSquare_05' }} />
+          <mesh name="SM_Bld_OfficeSquare_Base_01_Glass" geometry={nodes.SM_Bld_OfficeSquare_Base_01_Glass.geometry} material={materials.Glass_01} userData={{ name: 'SM_Bld_OfficeSquare_Base_01_Glass' }} />
+          <mesh name="SM_Bld_OfficeSquare_Roof_04" geometry={nodes.SM_Bld_OfficeSquare_Roof_04.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Bld_OfficeSquare_Roof_04' }} />
+          <mesh name="SM_Bld_OfficeSquare_Roof_05" geometry={nodes.SM_Bld_OfficeSquare_Roof_05.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Bld_OfficeSquare_Roof_05' }} />
+          <mesh name="SM_Bld_OfficeSquare_Roof_06" geometry={nodes.SM_Bld_OfficeSquare_Roof_06.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Bld_OfficeSquare_Roof_06' }} />
+          <mesh name="SM_Bld_OfficeSquare_Roof_07" geometry={nodes.SM_Bld_OfficeSquare_Roof_07.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Bld_OfficeSquare_Roof_07' }} />
+        </mesh>
+        <mesh name="station" geometry={nodes.station.geometry} material={materials.Synty_Palette_A} userData={{ name: 'station' }} />
+        <group name="SM_Bld_OfficeOld_Small_Roof_01" userData={{ name: 'SM_Bld_OfficeOld_Small_Roof_01' }}>
+          <mesh name="Scene065" geometry={nodes.Scene065.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene065_1" geometry={nodes.Scene065_1.geometry} material={materials.Glass_01} />
+        </group>
+        <mesh name="SM_Prop_LargeSign_Bottle_01" geometry={nodes.SM_Prop_LargeSign_Bottle_01.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Prop_LargeSign_Bottle_01' }} />
+        <mesh name="city_hall" geometry={nodes.city_hall.geometry} material={materials.Synty_Palette_A} userData={{ name: 'city_hall' }} />
+        <group name="SM_Bld_Shop_Corner_01_Glass_1" userData={{ name: 'SM_Bld_Shop_Corner_01_Glass_1' }}>
+          <mesh name="Scene074" geometry={nodes.Scene074.geometry} material={materials['Glass_01.002']} />
+          <mesh name="Scene074_1" geometry={nodes.Scene074_1.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene074_2" geometry={nodes.Scene074_2.geometry} material={materials.Glass_01} />
+        </group>
+        <group name="SM_Prop_Sign_Police_01" userData={{ name: 'SM_Prop_Sign_Police_01' }}>
+          <mesh name="Scene136" geometry={nodes.Scene136.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene136_1" geometry={nodes.Scene136_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <mesh name="SM_Bld_OfficeSquare_Base_01" geometry={nodes.SM_Bld_OfficeSquare_Base_01.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Bld_OfficeSquare_Base_01' }} />
+        <group name="SM_Prop_Skylight_01_Glass_1" position={[0, 0, 0.417]} userData={{ name: 'SM_Prop_Skylight_01_Glass_1' }}>
+          <mesh name="Scene076" geometry={nodes.Scene076.geometry} material={materials.Glass_01} />
+          <mesh name="Scene076_1" geometry={nodes.Scene076_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <mesh name="park" geometry={nodes.park.geometry} material={materials.Synty_Palette_A} userData={{ name: 'park' }} />
+        <group name="pizza001" userData={{ name: 'pizza.001' }}>
+          <mesh name="Scene113" geometry={nodes.Scene113.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene113_1" geometry={nodes.Scene113_1.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene113_2" geometry={nodes.Scene113_2.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene113_3" geometry={nodes.Scene113_3.geometry} material={materials.Glass_01} />
+          <mesh name="Scene113_4" geometry={nodes.Scene113_4.geometry} material={materials.Billboard_01} />
+        </group>
+        <group name="round_bld" userData={{ name: 'round_bld' }}>
+          <mesh name="Scene152" geometry={nodes.Scene152.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene152_1" geometry={nodes.Scene152_1.geometry} material={materials.Glass_01} />
+        </group>
+        <group name="taco" userData={{ name: 'taco' }}>
+          <mesh name="Scene163" geometry={nodes.Scene163.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene163_1" geometry={nodes.Scene163_1.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene163_2" geometry={nodes.Scene163_2.geometry} material={materials['Billboard_01.001']} />
+          <mesh name="Scene163_3" geometry={nodes.Scene163_3.geometry} material={materials.Glass_01} />
+        </group>
+        <mesh name="SM_Veh_Car_Police_01" geometry={nodes.SM_Veh_Car_Police_01.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Police_01' }}>
+          <mesh name="SM_Veh_Car_Police_Glass" geometry={nodes.SM_Veh_Car_Police_Glass.geometry} material={materials.Glass_01} userData={{ name: 'SM_Veh_Car_Police_Glass' }} />
+          <mesh name="SM_Veh_Car_Police_Plates" geometry={nodes.SM_Veh_Car_Police_Plates.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Police_Plates' }} />
+          <mesh name="SM_Veh_Car_Police_SteeringW" geometry={nodes.SM_Veh_Car_Police_SteeringW.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Police_SteeringW' }} />
+          <mesh name="SM_Veh_Car_Police_Wheel_fl" geometry={nodes.SM_Veh_Car_Police_Wheel_fl.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Police_Wheel_fl' }} />
+          <mesh name="SM_Veh_Car_Police_Wheel_fr" geometry={nodes.SM_Veh_Car_Police_Wheel_fr.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Police_Wheel_fr' }} />
+          <mesh name="SM_Veh_Car_Police_Wheel_rl" geometry={nodes.SM_Veh_Car_Police_Wheel_rl.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Police_Wheel_rl' }} />
+          <mesh name="SM_Veh_Car_Police_Wheel_rr" geometry={nodes.SM_Veh_Car_Police_Wheel_rr.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Police_Wheel_rr' }} />
+          <mesh name="SM_Veh_Steering_Wheel_09" geometry={nodes.SM_Veh_Steering_Wheel_09.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Steering_Wheel_09' }} />
+        </mesh>
+        <mesh name="SM_Veh_Car_Police_01001" geometry={nodes.SM_Veh_Car_Police_01001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Police_01.001' }} />
+        <mesh name="SM_Veh_Car_Police_01002" geometry={nodes.SM_Veh_Car_Police_01002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Police_01.002' }} />
+        <mesh name="SM_Veh_Car_Taxi_01" geometry={nodes.SM_Veh_Car_Taxi_01.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_01' }}>
+          <mesh name="SM_Veh_Car_Taxi_Glass" geometry={nodes.SM_Veh_Car_Taxi_Glass.geometry} material={materials.Glass_01} userData={{ name: 'SM_Veh_Car_Taxi_Glass' }} />
+          <mesh name="SM_Veh_Car_Taxi_Plates" geometry={nodes.SM_Veh_Car_Taxi_Plates.geometry} material={materials['PolygonCity_01_A.006']} userData={{ name: 'SM_Veh_Car_Taxi_Plates' }} />
+          <mesh name="SM_Veh_Car_Taxi_SteeringW" geometry={nodes.SM_Veh_Car_Taxi_SteeringW.geometry} material={materials['PolygonCity_01_A.006']} userData={{ name: 'SM_Veh_Car_Taxi_SteeringW' }} />
+          <mesh name="SM_Veh_Car_Taxi_Wheel_fl" geometry={nodes.SM_Veh_Car_Taxi_Wheel_fl.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_fl' }} />
+          <mesh name="SM_Veh_Car_Taxi_Wheel_fr" geometry={nodes.SM_Veh_Car_Taxi_Wheel_fr.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_fr' }} />
+          <mesh name="SM_Veh_Car_Taxi_Wheel_rl" geometry={nodes.SM_Veh_Car_Taxi_Wheel_rl.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_rl' }} />
+          <mesh name="SM_Veh_Car_Taxi_Wheel_rr" geometry={nodes.SM_Veh_Car_Taxi_Wheel_rr.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_rr' }} />
+        </mesh>
+        <mesh name="SM_Veh_Car_Taxi_01001" geometry={nodes.SM_Veh_Car_Taxi_01001.geometry} material={materials.Synty_Palette_A} position={[-0.656, 0, 0]} userData={{ name: 'SM_Veh_Car_Taxi_01.001' }}>
+          <mesh name="SM_Veh_Car_Taxi_Glass001" geometry={nodes.SM_Veh_Car_Taxi_Glass001.geometry} material={materials.Glass_01} userData={{ name: 'SM_Veh_Car_Taxi_Glass.001' }} />
+          <mesh name="SM_Veh_Car_Taxi_Plates001" geometry={nodes.SM_Veh_Car_Taxi_Plates001.geometry} material={materials['PolygonCity_01_A.006']} userData={{ name: 'SM_Veh_Car_Taxi_Plates.001' }} />
+          <mesh name="SM_Veh_Car_Taxi_SteeringW001" geometry={nodes.SM_Veh_Car_Taxi_SteeringW001.geometry} material={materials['PolygonCity_01_A.006']} userData={{ name: 'SM_Veh_Car_Taxi_SteeringW.001' }} />
+          <mesh name="SM_Veh_Car_Taxi_Wheel_fl001" geometry={nodes.SM_Veh_Car_Taxi_Wheel_fl001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_fl.001' }} />
+          <mesh name="SM_Veh_Car_Taxi_Wheel_fr001" geometry={nodes.SM_Veh_Car_Taxi_Wheel_fr001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_fr.001' }} />
+          <mesh name="SM_Veh_Car_Taxi_Wheel_rl001" geometry={nodes.SM_Veh_Car_Taxi_Wheel_rl001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_rl.001' }} />
+          <mesh name="SM_Veh_Car_Taxi_Wheel_rr001" geometry={nodes.SM_Veh_Car_Taxi_Wheel_rr001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_rr.001' }} />
+        </mesh>
+        <mesh name="SM_Veh_Car_Taxi_01002" geometry={nodes.SM_Veh_Car_Taxi_01002.geometry} material={materials.Synty_Palette_A} position={[-1.385, 0, 0]} userData={{ name: 'SM_Veh_Car_Taxi_01.002' }}>
+          <mesh name="SM_Veh_Car_Taxi_Glass002" geometry={nodes.SM_Veh_Car_Taxi_Glass002.geometry} material={materials.Glass_01} userData={{ name: 'SM_Veh_Car_Taxi_Glass.002' }} />
+          <mesh name="SM_Veh_Car_Taxi_Plates002" geometry={nodes.SM_Veh_Car_Taxi_Plates002.geometry} material={materials['PolygonCity_01_A.006']} userData={{ name: 'SM_Veh_Car_Taxi_Plates.002' }} />
+          <mesh name="SM_Veh_Car_Taxi_SteeringW002" geometry={nodes.SM_Veh_Car_Taxi_SteeringW002.geometry} material={materials['PolygonCity_01_A.006']} userData={{ name: 'SM_Veh_Car_Taxi_SteeringW.002' }} />
+          <mesh name="SM_Veh_Car_Taxi_Wheel_fl002" geometry={nodes.SM_Veh_Car_Taxi_Wheel_fl002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_fl.002' }} />
+          <mesh name="SM_Veh_Car_Taxi_Wheel_fr002" geometry={nodes.SM_Veh_Car_Taxi_Wheel_fr002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_fr.002' }} />
+          <mesh name="SM_Veh_Car_Taxi_Wheel_rl002" geometry={nodes.SM_Veh_Car_Taxi_Wheel_rl002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_rl.002' }} />
+          <mesh name="SM_Veh_Car_Taxi_Wheel_rr002" geometry={nodes.SM_Veh_Car_Taxi_Wheel_rr002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_rr.002' }} />
+        </mesh>
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36001" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.001' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36002" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.002' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36003" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36003.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.003' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323" geometry={nodes.SM_Env_Sidewalk_Straight_323.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323001" geometry={nodes.SM_Env_Sidewalk_Straight_323001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.001' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323002" geometry={nodes.SM_Env_Sidewalk_Straight_323002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.002' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323003" geometry={nodes.SM_Env_Sidewalk_Straight_323003.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.003' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36008" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36008.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.008' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36009" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36009.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.009' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323008" geometry={nodes.SM_Env_Sidewalk_Straight_323008.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.008' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323009" geometry={nodes.SM_Env_Sidewalk_Straight_323009.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.009' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323010" geometry={nodes.SM_Env_Sidewalk_Straight_323010.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.010' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323011" geometry={nodes.SM_Env_Sidewalk_Straight_323011.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.011' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323012" geometry={nodes.SM_Env_Sidewalk_Straight_323012.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.012' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323013" geometry={nodes.SM_Env_Sidewalk_Straight_323013.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.013' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36010" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36010.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.010' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36011" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36011.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.011' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323014" geometry={nodes.SM_Env_Sidewalk_Straight_323014.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.014' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323015" geometry={nodes.SM_Env_Sidewalk_Straight_323015.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.015' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_06001" geometry={nodes.SM_Env_Sidewalk_Dip_06001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_06.001' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_06" geometry={nodes.SM_Env_Sidewalk_Dip_06.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_06' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_06002" geometry={nodes.SM_Env_Sidewalk_Dip_06002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_06.002' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36017" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36017.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.017' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323042" geometry={nodes.SM_Env_Sidewalk_Straight_323042.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.042' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323043" geometry={nodes.SM_Env_Sidewalk_Straight_323043.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.043' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36020" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36020.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.020' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323044" geometry={nodes.SM_Env_Sidewalk_Straight_323044.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.044' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_06003" geometry={nodes.SM_Env_Sidewalk_Dip_06003.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_06.003' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_06004" geometry={nodes.SM_Env_Sidewalk_Dip_06004.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_06.004' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323040" geometry={nodes.SM_Env_Sidewalk_Straight_323040.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.040' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_06005" geometry={nodes.SM_Env_Sidewalk_Dip_06005.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_06.005' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36018" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36018.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.018' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36021" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36021.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.021' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36022" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36022.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.022' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36023" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36023.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.023' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323037" geometry={nodes.SM_Env_Sidewalk_Straight_323037.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.037' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323038" geometry={nodes.SM_Env_Sidewalk_Straight_323038.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.038' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36024" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36024.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.024' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36025" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36025.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.025' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323046" geometry={nodes.SM_Env_Sidewalk_Straight_323046.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.046' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323047" geometry={nodes.SM_Env_Sidewalk_Straight_323047.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.047' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323048" geometry={nodes.SM_Env_Sidewalk_Straight_323048.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.048' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323049" geometry={nodes.SM_Env_Sidewalk_Straight_323049.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.049' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323050" geometry={nodes.SM_Env_Sidewalk_Straight_323050.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.050' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36026" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36026.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.026' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36027" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36027.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.027' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323051" geometry={nodes.SM_Env_Sidewalk_Straight_323051.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.051' }} />
+        <mesh name="SM_Env_Sidewalk_349" geometry={nodes.SM_Env_Sidewalk_349.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349' }} />
+        <mesh name="SM_Env_Sidewalk_349001" geometry={nodes.SM_Env_Sidewalk_349001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.001' }} />
+        <mesh name="SM_Env_Sidewalk_349002" geometry={nodes.SM_Env_Sidewalk_349002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.002' }} />
+        <mesh name="SM_Env_Sidewalk_349003" geometry={nodes.SM_Env_Sidewalk_349003.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.003' }} />
+        <mesh name="SM_Env_Sidewalk_349004" geometry={nodes.SM_Env_Sidewalk_349004.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.004' }} />
+        <mesh name="SM_Env_Sidewalk_349005" geometry={nodes.SM_Env_Sidewalk_349005.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.005' }} />
+        <mesh name="SM_Env_Sidewalk_349006" geometry={nodes.SM_Env_Sidewalk_349006.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.006' }} />
+        <mesh name="SM_Env_Sidewalk_349007" geometry={nodes.SM_Env_Sidewalk_349007.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.007' }} />
+        <mesh name="SM_Env_Sidewalk_349008" geometry={nodes.SM_Env_Sidewalk_349008.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.008' }} />
+        <mesh name="SM_Env_Sidewalk_349009" geometry={nodes.SM_Env_Sidewalk_349009.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.009' }} />
+        <mesh name="SM_Env_Sidewalk_349010" geometry={nodes.SM_Env_Sidewalk_349010.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.010' }} />
+        <mesh name="SM_Env_Sidewalk_349011" geometry={nodes.SM_Env_Sidewalk_349011.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.011' }} />
+        <mesh name="SM_Env_Sidewalk_349012" geometry={nodes.SM_Env_Sidewalk_349012.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.012' }} />
+        <mesh name="SM_Env_Sidewalk_349013" geometry={nodes.SM_Env_Sidewalk_349013.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.013' }} />
+        <mesh name="SM_Env_Sidewalk_349014" geometry={nodes.SM_Env_Sidewalk_349014.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.014' }} />
+        <mesh name="SM_Env_Sidewalk_349015" geometry={nodes.SM_Env_Sidewalk_349015.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.015' }} />
+        <mesh name="SM_Env_Sidewalk_349016" geometry={nodes.SM_Env_Sidewalk_349016.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.016' }} />
+        <mesh name="SM_Env_Sidewalk_349017" geometry={nodes.SM_Env_Sidewalk_349017.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.017' }} />
+        <mesh name="SM_Env_Sidewalk_349018" geometry={nodes.SM_Env_Sidewalk_349018.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.018' }} />
+        <mesh name="SM_Env_Sidewalk_349019" geometry={nodes.SM_Env_Sidewalk_349019.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.019' }} />
+        <mesh name="SM_Env_Sidewalk_349020" geometry={nodes.SM_Env_Sidewalk_349020.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.020' }} />
+        <mesh name="SM_Env_Sidewalk_349021" geometry={nodes.SM_Env_Sidewalk_349021.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.021' }} />
+        <mesh name="SM_Env_Sidewalk_349022" geometry={nodes.SM_Env_Sidewalk_349022.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.022' }} />
+        <mesh name="SM_Env_Sidewalk_349023" geometry={nodes.SM_Env_Sidewalk_349023.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.023' }} />
+        <mesh name="SM_Env_Sidewalk_349024" geometry={nodes.SM_Env_Sidewalk_349024.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.024' }} />
+        <mesh name="SM_Env_Sidewalk_349025" geometry={nodes.SM_Env_Sidewalk_349025.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.025' }} />
+        <mesh name="SM_Env_Sidewalk_349026" geometry={nodes.SM_Env_Sidewalk_349026.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.026' }} />
+        <mesh name="SM_Env_Sidewalk_349027" geometry={nodes.SM_Env_Sidewalk_349027.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.027' }} />
+        <mesh name="SM_Env_Sidewalk_349028" geometry={nodes.SM_Env_Sidewalk_349028.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.028' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36007" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36007.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.007' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36006" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36006.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.006' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36005" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36005.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.005' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36004" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36004.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.004' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323007" geometry={nodes.SM_Env_Sidewalk_Straight_323007.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.007' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323006" geometry={nodes.SM_Env_Sidewalk_Straight_323006.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.006' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323005" geometry={nodes.SM_Env_Sidewalk_Straight_323005.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.005' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323004" geometry={nodes.SM_Env_Sidewalk_Straight_323004.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.004' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323016" geometry={nodes.SM_Env_Sidewalk_Straight_323016.geometry} material={materials['Synty_Palette_A.002']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.016' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323017" geometry={nodes.SM_Env_Sidewalk_Straight_323017.geometry} material={materials['Synty_Palette_A.002']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.017' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323018" geometry={nodes.SM_Env_Sidewalk_Straight_323018.geometry} material={materials['Synty_Palette_A.002']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.018' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323019" geometry={nodes.SM_Env_Sidewalk_Straight_323019.geometry} material={materials['Synty_Palette_A.002']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.019' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11" geometry={nodes.SM_Env_Sidewalk_Corner_11.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Corner_11' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11001" geometry={nodes.SM_Env_Sidewalk_Corner_11001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Corner_11.001' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11002" geometry={nodes.SM_Env_Sidewalk_Corner_11002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Corner_11.002' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11003" geometry={nodes.SM_Env_Sidewalk_Corner_11003.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Corner_11.003' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323023" geometry={nodes.SM_Env_Sidewalk_Straight_323023.geometry} material={materials['Synty_Palette_A.003']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.023' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323022" geometry={nodes.SM_Env_Sidewalk_Straight_323022.geometry} material={materials['Synty_Palette_A.003']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.022' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323021" geometry={nodes.SM_Env_Sidewalk_Straight_323021.geometry} material={materials['Synty_Palette_A.003']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.021' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323020" geometry={nodes.SM_Env_Sidewalk_Straight_323020.geometry} material={materials['Synty_Palette_A.003']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.020' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11007" geometry={nodes.SM_Env_Sidewalk_Corner_11007.geometry} material={materials['Synty_Palette_A.004']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.007' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11006" geometry={nodes.SM_Env_Sidewalk_Corner_11006.geometry} material={materials['Synty_Palette_A.004']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.006' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11005" geometry={nodes.SM_Env_Sidewalk_Corner_11005.geometry} material={materials['Synty_Palette_A.004']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.005' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11004" geometry={nodes.SM_Env_Sidewalk_Corner_11004.geometry} material={materials['Synty_Palette_A.004']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.004' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323027" geometry={nodes.SM_Env_Sidewalk_Straight_323027.geometry} material={materials['Synty_Palette_A.005']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.027' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323026" geometry={nodes.SM_Env_Sidewalk_Straight_323026.geometry} material={materials['Synty_Palette_A.005']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.026' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323025" geometry={nodes.SM_Env_Sidewalk_Straight_323025.geometry} material={materials['Synty_Palette_A.005']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.025' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323024" geometry={nodes.SM_Env_Sidewalk_Straight_323024.geometry} material={materials['Synty_Palette_A.005']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.024' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11011" geometry={nodes.SM_Env_Sidewalk_Corner_11011.geometry} material={materials['Synty_Palette_A.006']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.011' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11010" geometry={nodes.SM_Env_Sidewalk_Corner_11010.geometry} material={materials['Synty_Palette_A.006']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.010' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11009" geometry={nodes.SM_Env_Sidewalk_Corner_11009.geometry} material={materials['Synty_Palette_A.006']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.009' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11008" geometry={nodes.SM_Env_Sidewalk_Corner_11008.geometry} material={materials['Synty_Palette_A.006']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.008' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323031" geometry={nodes.SM_Env_Sidewalk_Straight_323031.geometry} material={materials['Synty_Palette_A.007']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.031' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323030" geometry={nodes.SM_Env_Sidewalk_Straight_323030.geometry} material={materials['Synty_Palette_A.007']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.030' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323029" geometry={nodes.SM_Env_Sidewalk_Straight_323029.geometry} material={materials['Synty_Palette_A.007']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.029' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323028" geometry={nodes.SM_Env_Sidewalk_Straight_323028.geometry} material={materials['Synty_Palette_A.007']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.028' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11015" geometry={nodes.SM_Env_Sidewalk_Corner_11015.geometry} material={materials['Synty_Palette_A.008']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.015' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11014" geometry={nodes.SM_Env_Sidewalk_Corner_11014.geometry} material={materials['Synty_Palette_A.008']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.014' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11013" geometry={nodes.SM_Env_Sidewalk_Corner_11013.geometry} material={materials['Synty_Palette_A.008']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.013' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11012" geometry={nodes.SM_Env_Sidewalk_Corner_11012.geometry} material={materials['Synty_Palette_A.008']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.012' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36012" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36012.geometry} material={materials['Synty_Palette_A.009']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.012' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36013" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36013.geometry} material={materials['Synty_Palette_A.009']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.013' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36014" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36014.geometry} material={materials['Synty_Palette_A.009']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.014' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36015" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36015.geometry} material={materials['Synty_Palette_A.009']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.015' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323032" geometry={nodes.SM_Env_Sidewalk_Straight_323032.geometry} material={materials['Synty_Palette_A.009']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.032' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323033" geometry={nodes.SM_Env_Sidewalk_Straight_323033.geometry} material={materials['Synty_Palette_A.009']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.033' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323034" geometry={nodes.SM_Env_Sidewalk_Straight_323034.geometry} material={materials['Synty_Palette_A.009']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.034' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323035" geometry={nodes.SM_Env_Sidewalk_Straight_323035.geometry} material={materials['Synty_Palette_A.009']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.035' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36016" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36016.geometry} material={materials['Synty_Palette_A.010']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.016' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36019" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36019.geometry} material={materials['Synty_Palette_A.010']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.019' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323036" geometry={nodes.SM_Env_Sidewalk_Straight_323036.geometry} material={materials['Synty_Palette_A.010']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.036' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323039" geometry={nodes.SM_Env_Sidewalk_Straight_323039.geometry} material={materials['Synty_Palette_A.010']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.039' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323041" geometry={nodes.SM_Env_Sidewalk_Straight_323041.geometry} material={materials['Synty_Palette_A.010']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.041' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323045" geometry={nodes.SM_Env_Sidewalk_Straight_323045.geometry} material={materials['Synty_Palette_A.010']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.045' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323052" geometry={nodes.SM_Env_Sidewalk_Straight_323052.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.052' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323053" geometry={nodes.SM_Env_Sidewalk_Straight_323053.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.053' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323054" geometry={nodes.SM_Env_Sidewalk_Straight_323054.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.054' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323055" geometry={nodes.SM_Env_Sidewalk_Straight_323055.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.055' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11016" geometry={nodes.SM_Env_Sidewalk_Corner_11016.geometry} material={materials['Synty_Palette_A.011']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.016' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11018" geometry={nodes.SM_Env_Sidewalk_Corner_11018.geometry} material={materials['Synty_Palette_A.011']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.018' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11019" geometry={nodes.SM_Env_Sidewalk_Corner_11019.geometry} material={materials['Synty_Palette_A.011']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.019' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323056" geometry={nodes.SM_Env_Sidewalk_Straight_323056.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.056' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323057" geometry={nodes.SM_Env_Sidewalk_Straight_323057.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.057' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323058" geometry={nodes.SM_Env_Sidewalk_Straight_323058.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.058' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323059" geometry={nodes.SM_Env_Sidewalk_Straight_323059.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.059' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323060" geometry={nodes.SM_Env_Sidewalk_Straight_323060.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.060' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323061" geometry={nodes.SM_Env_Sidewalk_Straight_323061.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.061' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323062" geometry={nodes.SM_Env_Sidewalk_Straight_323062.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.062' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323063" geometry={nodes.SM_Env_Sidewalk_Straight_323063.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.063' }} />
+        <group name="SM_Env_Sidewalk_Corner_11020" userData={{ name: 'SM_Env_Sidewalk_Corner_11.020' }}>
+          <mesh name="Scene225" geometry={nodes.Scene225.geometry} material={materials['Synty_Palette_A.011']} />
+          <mesh name="Scene225_1" geometry={nodes.Scene225_1.geometry} material={materials['Synty_Palette_A.012']} />
+        </group>
+        <mesh name="SM_Env_Sidewalk_Straight_323067" geometry={nodes.SM_Env_Sidewalk_Straight_323067.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.067' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323066" geometry={nodes.SM_Env_Sidewalk_Straight_323066.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.066' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323065" geometry={nodes.SM_Env_Sidewalk_Straight_323065.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.065' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323064" geometry={nodes.SM_Env_Sidewalk_Straight_323064.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.064' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11023" geometry={nodes.SM_Env_Sidewalk_Corner_11023.geometry} material={materials['Synty_Palette_A.014']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.023' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11022" geometry={nodes.SM_Env_Sidewalk_Corner_11022.geometry} material={materials['Synty_Palette_A.014']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.022' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11021" geometry={nodes.SM_Env_Sidewalk_Corner_11021.geometry} material={materials['Synty_Palette_A.014']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.021' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323068" geometry={nodes.SM_Env_Sidewalk_Straight_323068.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.068' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323069" geometry={nodes.SM_Env_Sidewalk_Straight_323069.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.069' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323070" geometry={nodes.SM_Env_Sidewalk_Straight_323070.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.070' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323071" geometry={nodes.SM_Env_Sidewalk_Straight_323071.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.071' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11024" geometry={nodes.SM_Env_Sidewalk_Corner_11024.geometry} material={materials['Synty_Palette_A.014']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.024' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11025" geometry={nodes.SM_Env_Sidewalk_Corner_11025.geometry} material={materials['Synty_Palette_A.014']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.025' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11027" geometry={nodes.SM_Env_Sidewalk_Corner_11027.geometry} material={materials['Synty_Palette_A.014']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.027' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323072" geometry={nodes.SM_Env_Sidewalk_Straight_323072.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.072' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323073" geometry={nodes.SM_Env_Sidewalk_Straight_323073.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.073' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323075" geometry={nodes.SM_Env_Sidewalk_Straight_323075.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.075' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323076" geometry={nodes.SM_Env_Sidewalk_Straight_323076.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.076' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323077" geometry={nodes.SM_Env_Sidewalk_Straight_323077.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.077' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323078" geometry={nodes.SM_Env_Sidewalk_Straight_323078.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.078' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323074" geometry={nodes.SM_Env_Sidewalk_Straight_323074.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.074' }} />
         <mesh name="road-end" geometry={nodes['road-end'].geometry} material={materials['colormap.051']} position={[-11.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-end' }} />
         <mesh name="road-end001" geometry={nodes['road-end001'].geometry} material={materials['colormap.051']} position={[-3.5, 0, 9.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-end.001' }} />
         <mesh name="road-end002" geometry={nodes['road-end002'].geometry} material={materials['colormap.051']} position={[0.5, 0, 10.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-end.002' }} />
@@ -1017,575 +886,9 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="road-straight100" geometry={nodes['road-straight100'].geometry} material={materials['colormap.052']} position={[-7.5, 0, 8.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.100' }} />
         <mesh name="road-straight101" geometry={nodes['road-straight101'].geometry} material={materials['colormap.052']} position={[-7.5, 0, 9.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.101' }} />
         <mesh name="road-intersection001" geometry={nodes['road-intersection001'].geometry} material={materials['colormap.053']} position={[4.5, 0, 3.5]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'road-intersection.001' }} />
-        <mesh name="firetruck" geometry={nodes.firetruck.geometry} material={materials['colormap.044']} position={[3, 0, 6.4]} rotation={[Math.PI / 2, 0, 1.079]} scale={0.5} userData={{ name: 'firetruck' }} />
-        <mesh name="suv" geometry={nodes.suv.geometry} material={materials['colormap.046']} position={[10.3, 0, -1.4]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={0.5} userData={{ name: 'suv' }} />
-        <mesh name="suv001" geometry={nodes.suv001.geometry} material={materials['colormap.046']} position={[-6.4, 0, -5.9]} rotation={[Math.PI / 2, 0, 0.26]} scale={0.5} userData={{ name: 'suv.001' }} />
-        <mesh name="tractor-shovel" geometry={nodes['tractor-shovel'].geometry} material={materials['colormap.048']} position={[3, 0, 13]} rotation={[Math.PI / 2, 0, 0.661]} scale={0.5} userData={{ name: 'tractor-shovel' }} />
-        <mesh name="sedan" geometry={nodes.sedan.geometry} material={materials['colormap.049']} position={[-8.5, 0, -0.8]} rotation={[Math.PI / 2, 0, 0.115]} scale={0.5} userData={{ name: 'sedan' }} />
-        <mesh name="police001" geometry={nodes.police001.geometry} material={materials['colormap.050']} position={[-2.4, 0, 2.1]} rotation={[Math.PI / 2, 0, -0.067]} scale={0.5} userData={{ name: 'police.001' }} />
-        <mesh name="suv002" geometry={nodes.suv002.geometry} material={materials['colormap.046']} position={[-4.8, 0, 9.9]} rotation={[Math.PI / 2, 0, 2.531]} scale={0.5} userData={{ name: 'suv.002' }} />
-        <mesh name="police002" geometry={nodes.police002.geometry} material={materials['colormap.050']} position={[-5.4, 0, 11.1]} rotation={[Math.PI / 2, 0, 2.87]} scale={0.5} userData={{ name: 'police.002' }} />
-        <mesh name="sedan001" geometry={nodes.sedan001.geometry} material={materials['colormap.049']} position={[-11.2, 0, 8.9]} rotation={[Math.PI / 2, 0, -2.885]} scale={0.5} userData={{ name: 'sedan.001' }} />
-        <mesh name="police003" geometry={nodes.police003.geometry} material={materials['colormap.050']} position={[-6.4, 0, 13.1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.5} userData={{ name: 'police.003' }} />
-        <mesh name="police004" geometry={nodes.police004.geometry} material={materials['colormap.050']} position={[-4.744, 0, 13.1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.5} userData={{ name: 'police.004' }} />
-        <mesh name="police005" geometry={nodes.police005.geometry} material={materials['colormap.050']} position={[-3.744, 0, 13.1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.5} userData={{ name: 'police.005' }} />
-        <mesh name="building-type-a" geometry={nodes['building-type-a'].geometry} material={materials['colormap.009']} position={[-0.69, 0, -3.23]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-type-a' }} />
-        <mesh name="building-type-b" geometry={nodes['building-type-b'].geometry} material={materials['colormap.010']} position={[-2.3, 0, -3]} rotation={[Math.PI / 2, 0, -1.547]} userData={{ name: 'building-type-b' }} />
-        <mesh name="building-type-l" geometry={nodes['building-type-l'].geometry} material={materials['colormap.011']} position={[-0.7, 0, -1.7]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-type-l' }} />
-        <mesh name="building-type-a002" geometry={nodes['building-type-a002'].geometry} material={materials['colormap.024']} position={[-4.69, 0, -3.23]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-type-a.002' }} />
-        <mesh name="building-type-b001" geometry={nodes['building-type-b001'].geometry} material={materials['colormap.022']} position={[-6.3, 0, -3]} rotation={[Math.PI / 2, 0, -1.547]} userData={{ name: 'building-type-b.001' }} />
-        <mesh name="building-type-a003" geometry={nodes['building-type-a003'].geometry} material={materials['colormap.024']} position={[-4.69, 0, -0.23]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-type-a.003' }} />
-        <mesh name="building-type-b002" geometry={nodes['building-type-b002'].geometry} material={materials['colormap.022']} position={[-6.3, 0, 0]} rotation={[Math.PI / 2, 0, -1.547]} userData={{ name: 'building-type-b.002' }} />
-        <mesh name="building-type-c004" geometry={nodes['building-type-c004'].geometry} material={materials['colormap.020']} position={[-6.3, 0, 2.5]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'building-type-c.004' }} />
-        <mesh name="building-type-l003" geometry={nodes['building-type-l003'].geometry} material={materials['colormap.021']} position={[-4.7, 0, 2.3]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-type-l.003' }} />
-        <mesh name="building-type-l008" geometry={nodes['building-type-l008'].geometry} material={materials['colormap.040']} position={[-8.7, 0, 6.3]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-type-l.008' }} />
-        <mesh name="building-type-c010" geometry={nodes['building-type-c010'].geometry} material={materials['colormap.041']} position={[-10.3, 0, 6.5]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'building-type-c.010' }} />
-        <mesh name="building-type-b007" geometry={nodes['building-type-b007'].geometry} material={materials['colormap.042']} position={[-10.3, 0, 5]} rotation={[Math.PI / 2, 0, -1.547]} userData={{ name: 'building-type-b.007' }} />
-        <mesh name="building-type-a009" geometry={nodes['building-type-a009'].geometry} material={materials['colormap.043']} position={[-8.69, 0, 4.77]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-type-a.009' }} />
-        <mesh name="building-type-a006" geometry={nodes['building-type-a006'].geometry} material={materials['colormap.043']} position={[-0.69, 0, 10.77]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-type-a.006' }} />
-        <mesh name="building-type-b004" geometry={nodes['building-type-b004'].geometry} material={materials['colormap.042']} position={[-1.5, 0, 9.1]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-type-b.004' }} />
-        <mesh name="building-type-c007" geometry={nodes['building-type-c007'].geometry} material={materials['colormap.041']} position={[-3.3, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-type-c.007' }} />
-        <mesh name="building-type-b009" geometry={nodes['building-type-b009'].geometry} material={materials['colormap.022']} position={[-5.1, 0.2, -5.7]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-type-b.009' }} />
-        <mesh name="building-type-a015" geometry={nodes['building-type-a015'].geometry} material={materials['colormap.024']} position={[-0.69, 0, -6.23]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-type-a.015' }} />
-        <mesh name="building-type-b011" geometry={nodes['building-type-b011'].geometry} material={materials['colormap.022']} position={[-2.3, 0, -6]} rotation={[Math.PI / 2, 0, -1.547]} userData={{ name: 'building-type-b.011' }} />
-        <mesh name="building-type-l010" geometry={nodes['building-type-l010'].geometry} material={materials['colormap.021']} position={[0.4, 0, -9]} rotation={[Math.PI / 2, 0, -Math.PI]} userData={{ name: 'building-type-l.010' }} />
-        <mesh name="building-type-a010" geometry={nodes['building-type-a010'].geometry} material={materials['colormap.026']} position={[-10.17, 0, 2.143]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'building-type-a.010' }} />
-        <mesh name="building-type-a011" geometry={nodes['building-type-a011'].geometry} material={materials['colormap.026']} position={[-10.17, 0, -1.157]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'building-type-a.011' }} />
-        <mesh name="building-type-c011" geometry={nodes['building-type-c011'].geometry} material={materials['colormap.023']} position={[-8.96, 0, 0.813]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-type-c.011' }} />
-        <mesh name="building-type-c012" geometry={nodes['building-type-c012'].geometry} material={materials['colormap.023']} position={[-8.96, 0, -2.187]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'building-type-c.012' }} />
-        <mesh name="building-n004" geometry={nodes['building-n004'].geometry} material={materials['colormap.007']} position={[-4.225, 0, 4.2]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-n.004' }} />
-        <mesh name="building-o004" geometry={nodes['building-o004'].geometry} material={materials['colormap.008']} position={[-5.075, 0, 6.85]} rotation={[Math.PI / 2, 0, -Math.PI]} userData={{ name: 'building-o.004' }} />
-        <mesh name="building-d001" geometry={nodes['building-d001'].geometry} material={materials['colormap.006']} position={[-5.975, 0, 6.45]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'building-d.001' }} />
-        <mesh name="building-d" geometry={nodes['building-d'].geometry} material={materials['colormap.006']} position={[-0.5, 0, 1]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-d' }} />
-        <mesh name="building-o" geometry={nodes['building-o'].geometry} material={materials['colormap.008']} position={[-2.6, 0, 0.3]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'building-o' }} />
-        <mesh name="building-type-a004" geometry={nodes['building-type-a004'].geometry} material={materials['colormap.026']} position={[5.83, 0, -1.757]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'building-type-a.004' }} />
-        <mesh name="building-b001" geometry={nodes['building-b001'].geometry} material={materials.colormap} position={[2.9, 0, 4.6]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-b.001' }} />
-        <mesh name="building-o003" geometry={nodes['building-o003'].geometry} material={materials['colormap.008']} position={[1.95, 0, 4.175]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-o.003' }} />
-        <mesh name="building-b" geometry={nodes['building-b'].geometry} material={materials.colormap} position={[-1.1, 0, 4.6]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-b' }} />
-        <mesh name="building-c" geometry={nodes['building-c'].geometry} material={materials['colormap.012']} position={[-1, 0, 6.4]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-c' }} />
-        <mesh name="building-n002" geometry={nodes['building-n002'].geometry} material={materials['colormap.007']} position={[-2.9, 0, 6.825]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'building-n.002' }} />
-        <mesh name="building-o002" geometry={nodes['building-o002'].geometry} material={materials['colormap.008']} position={[-2.05, 0, 4.175]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-o.002' }} />
-        <mesh name="building-d003" geometry={nodes['building-d003'].geometry} material={materials['colormap.038']} position={[1.5, 0, 2.2]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-d.003' }} />
-        <mesh name="building-m" geometry={nodes['building-m'].geometry} material={materials['colormap.034']} position={[6, 0, 0.9]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-m' }} />
-        <mesh name="building-p" geometry={nodes['building-p'].geometry} material={materials['colormap.033']} position={[6.4, 0, 3.1]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'building-p' }} />
-        <mesh name="building-q" geometry={nodes['building-q'].geometry} material={materials['colormap.036']} position={[3.162, 0, 1.6]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-q' }} />
-        <mesh name="building-t" geometry={nodes['building-t'].geometry} material={materials['colormap.031']} position={[6, 0, 5.3]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-t' }} />
-        <mesh name="building-type-a005" geometry={nodes['building-type-a005'].geometry} material={materials['colormap.043']} position={[3.31, 0, 8.77]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-type-a.005' }} />
-        <mesh name="building-type-b003" geometry={nodes['building-type-b003'].geometry} material={materials['colormap.042']} position={[1.7, 0, 9]} rotation={[Math.PI / 2, 0, -1.547]} userData={{ name: 'building-type-b.003' }} />
-        <mesh name="building-type-l004" geometry={nodes['building-type-l004'].geometry} material={materials['colormap.040']} position={[3.3, 0, 10.3]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-type-l.004' }} />
-        <mesh name="building-type-c017" geometry={nodes['building-type-c017'].geometry} material={materials['colormap.020']} position={[3.1, 0, -5.8]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'building-type-c.017' }} />
-        <mesh name="building-type-c016" geometry={nodes['building-type-c016'].geometry} material={materials['colormap.020']} position={[4.5, 0, -7.5]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'building-type-c.016' }} />
-        <mesh name="building-type-b016" geometry={nodes['building-type-b016'].geometry} material={materials['colormap.042']} position={[8.7, 0, 4]} rotation={[Math.PI / 2, 0, -1.547]} userData={{ name: 'building-type-b.016' }} />
-        <mesh name="building-type-b017" geometry={nodes['building-type-b017'].geometry} material={materials['colormap.042']} position={[8.7, 0, 6.4]} rotation={[Math.PI / 2, 0, -1.547]} userData={{ name: 'building-type-b.017' }} />
-        <mesh name="building-type-c019" geometry={nodes['building-type-c019'].geometry} material={materials['colormap.041']} position={[8.8, 0, 8.7]} rotation={[Math.PI / 2, 0, -0.821]} userData={{ name: 'building-type-c.019' }} />
-        <mesh name="building-type-l015" geometry={nodes['building-type-l015'].geometry} material={materials['colormap.040']} position={[5.5, 0, 10.6]} rotation={[Math.PI / 2, 0, -0.611]} userData={{ name: 'building-type-l.015' }} />
-        <mesh name="building-type-b019" geometry={nodes['building-type-b019'].geometry} material={materials['colormap.042']} position={[8.7, 0, -4]} rotation={[Math.PI / 2, 0, -1.547]} userData={{ name: 'building-type-b.019' }} />
-        <mesh name="detail-awning-wide001" geometry={nodes['detail-awning-wide001'].geometry} material={materials['colormap.018']} position={[2.848, 0, 5.3]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'detail-awning-wide.001' }} />
-        <mesh name="detail-awning-wide" geometry={nodes['detail-awning-wide'].geometry} material={materials['colormap.018']} position={[-1.152, 0, 5.3]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'detail-awning-wide' }} />
-        <mesh name="chimney-medium" geometry={nodes['chimney-medium'].geometry} material={materials['colormap.032']} position={[5.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'chimney-medium' }} />
-        <mesh name="detail-tank" geometry={nodes['detail-tank'].geometry} material={materials['colormap.028']} position={[6.5, 0, 6.5]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'detail-tank' }} />
-        <mesh name="building-type-b005" geometry={nodes['building-type-b005'].geometry} material={materials['colormap.042']} position={[-12.1, 0, 5.9]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'building-type-b.005' }} />
-        <mesh name="building-type-a008" geometry={nodes['building-type-a008'].geometry} material={materials['colormap.026']} position={[-11.17, 0, 3.143]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'building-type-a.008' }} />
-        <mesh name="building-type-b008" geometry={nodes['building-type-b008'].geometry} material={materials['colormap.042']} position={[1.9, 0, -6.3]} rotation={[Math.PI / 2, 0, -1.547]} userData={{ name: 'building-type-b.008' }} />
-        <mesh name="building-type-a012" geometry={nodes['building-type-a012'].geometry} material={materials['colormap.026']} position={[8.83, 0, -1.857]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'building-type-a.012' }} />
-        <mesh name="building-type-a013" geometry={nodes['building-type-a013'].geometry} material={materials['colormap.026']} position={[6.83, 0, -6.857]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'building-type-a.013' }} />
-        <mesh name="building-type-b010" geometry={nodes['building-type-b010'].geometry} material={materials['colormap.042']} position={[2.5, 0, -3.1]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'building-type-b.010' }} />
-        <mesh name="building-type-a001" geometry={nodes['building-type-a001'].geometry} material={materials['colormap.024']} position={[5.91, 0, -3.23]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'building-type-a.001' }} />
-        <mesh name="building-type-b012" geometry={nodes['building-type-b012'].geometry} material={materials['colormap.042']} position={[9.3, 0, 0.9]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-type-b.012' }} />
-        <mesh name="building-type-a014" geometry={nodes['building-type-a014'].geometry} material={materials['colormap.026']} position={[6.83, 0, 9.143]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'building-type-a.014' }} />
-        <mesh name="tile-low018" geometry={nodes['tile-low018'].geometry} material={materials['colormap.004']} position={[3.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.018' }} />
-        <mesh name="tile-low019" geometry={nodes['tile-low019'].geometry} material={materials['colormap.004']} position={[2.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.019' }} />
-        <mesh name="tile-low020" geometry={nodes['tile-low020'].geometry} material={materials['colormap.004']} position={[1.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.020' }} />
-        <mesh name="tile-low021" geometry={nodes['tile-low021'].geometry} material={materials['colormap.004']} position={[3.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.021' }} />
-        <mesh name="tile-low022" geometry={nodes['tile-low022'].geometry} material={materials['colormap.004']} position={[2.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.022' }} />
-        <mesh name="tile-low023" geometry={nodes['tile-low023'].geometry} material={materials['colormap.004']} position={[1.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.023' }} />
-        <mesh name="tile-low024" geometry={nodes['tile-low024'].geometry} material={materials['colormap.004']} position={[3.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.024' }} />
-        <mesh name="tile-low025" geometry={nodes['tile-low025'].geometry} material={materials['colormap.004']} position={[2.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.025' }} />
-        <mesh name="tile-low026" geometry={nodes['tile-low026'].geometry} material={materials['colormap.004']} position={[1.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.026' }} />
-        <mesh name="tile-low091" geometry={nodes['tile-low091'].geometry} material={materials['colormap.004']} position={[-4.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.091' }} />
-        <mesh name="tile-low094" geometry={nodes['tile-low094'].geometry} material={materials['colormap.004']} position={[-5.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.094' }} />
-        <mesh name="tile-low097" geometry={nodes['tile-low097'].geometry} material={materials['colormap.004']} position={[-6.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.097' }} />
-        <mesh name="tile-low098" geometry={nodes['tile-low098'].geometry} material={materials['colormap.004']} position={[-4.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.098' }} />
-        <mesh name="tile-low099" geometry={nodes['tile-low099'].geometry} material={materials['colormap.004']} position={[-5.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.099' }} />
-        <mesh name="tile-low100" geometry={nodes['tile-low100'].geometry} material={materials['colormap.004']} position={[-6.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.100' }} />
-        <mesh name="tile-low101" geometry={nodes['tile-low101'].geometry} material={materials['colormap.004']} position={[-4.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.101' }} />
-        <mesh name="tile-low102" geometry={nodes['tile-low102'].geometry} material={materials['colormap.004']} position={[-5.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.102' }} />
-        <mesh name="tile-low103" geometry={nodes['tile-low103'].geometry} material={materials['colormap.004']} position={[-6.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.103' }} />
-        <mesh name="tile-low" geometry={nodes['tile-low'].geometry} material={materials['colormap.004']} position={[-0.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low' }} />
-        <mesh name="tile-low001" geometry={nodes['tile-low001'].geometry} material={materials['colormap.004']} position={[-1.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.001' }} />
-        <mesh name="tile-low002" geometry={nodes['tile-low002'].geometry} material={materials['colormap.004']} position={[-2.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.002' }} />
-        <mesh name="tile-low003" geometry={nodes['tile-low003'].geometry} material={materials['colormap.004']} position={[-0.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.003' }} />
-        <mesh name="tile-low004" geometry={nodes['tile-low004'].geometry} material={materials['colormap.004']} position={[-1.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.004' }} />
-        <mesh name="tile-low005" geometry={nodes['tile-low005'].geometry} material={materials['colormap.004']} position={[-2.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.005' }} />
-        <mesh name="tile-low006" geometry={nodes['tile-low006'].geometry} material={materials['colormap.004']} position={[-0.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.006' }} />
-        <mesh name="tile-low007" geometry={nodes['tile-low007'].geometry} material={materials['colormap.004']} position={[-1.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.007' }} />
-        <mesh name="tile-low008" geometry={nodes['tile-low008'].geometry} material={materials['colormap.004']} position={[-2.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.008' }} />
-        <mesh name="tile-low027" geometry={nodes['tile-low027'].geometry} material={materials['colormap.025']} position={[1.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.027' }} />
-        <mesh name="tile-low028" geometry={nodes['tile-low028'].geometry} material={materials['colormap.025']} position={[2.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.028' }} />
-        <mesh name="tile-low029" geometry={nodes['tile-low029'].geometry} material={materials['colormap.025']} position={[3.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.029' }} />
-        <mesh name="tile-low030" geometry={nodes['tile-low030'].geometry} material={materials['colormap.025']} position={[1.5, 0, -2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.030' }} />
-        <mesh name="tile-low031" geometry={nodes['tile-low031'].geometry} material={materials['colormap.025']} position={[2.5, 0, -2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.031' }} />
-        <mesh name="tile-low032" geometry={nodes['tile-low032'].geometry} material={materials['colormap.025']} position={[3.5, 0, -2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.032' }} />
-        <mesh name="tile-low033" geometry={nodes['tile-low033'].geometry} material={materials['colormap.025']} position={[1.5, 0, -3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.033' }} />
-        <mesh name="tile-low034" geometry={nodes['tile-low034'].geometry} material={materials['colormap.025']} position={[2.5, 0, -3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.034' }} />
-        <mesh name="tile-low035" geometry={nodes['tile-low035'].geometry} material={materials['colormap.025']} position={[3.5, 0, -3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.035' }} />
-        <mesh name="tile-low054" geometry={nodes['tile-low054'].geometry} material={materials['colormap.027']} position={[6.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.054' }} />
-        <mesh name="tile-low055" geometry={nodes['tile-low055'].geometry} material={materials['colormap.027']} position={[5.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.055' }} />
-        <mesh name="tile-low056" geometry={nodes['tile-low056'].geometry} material={materials['colormap.027']} position={[6.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.056' }} />
-        <mesh name="tile-low057" geometry={nodes['tile-low057'].geometry} material={materials['colormap.027']} position={[5.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.057' }} />
-        <mesh name="tile-low058" geometry={nodes['tile-low058'].geometry} material={materials['colormap.027']} position={[6.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.058' }} />
-        <mesh name="tile-low059" geometry={nodes['tile-low059'].geometry} material={materials['colormap.027']} position={[5.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.059' }} />
-        <mesh name="tile-low060" geometry={nodes['tile-low060'].geometry} material={materials['colormap.027']} position={[6.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.060' }} />
-        <mesh name="tile-low061" geometry={nodes['tile-low061'].geometry} material={materials['colormap.027']} position={[5.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.061' }} />
-        <mesh name="tile-low062" geometry={nodes['tile-low062'].geometry} material={materials['colormap.027']} position={[6.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.062' }} />
-        <mesh name="tile-low063" geometry={nodes['tile-low063'].geometry} material={materials['colormap.027']} position={[5.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.063' }} />
-        <mesh name="tile-low064" geometry={nodes['tile-low064'].geometry} material={materials['colormap.027']} position={[6.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.064' }} />
-        <mesh name="tile-low065" geometry={nodes['tile-low065'].geometry} material={materials['colormap.027']} position={[5.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.065' }} />
-        <mesh name="tile-low066" geometry={nodes['tile-low066'].geometry} material={materials['colormap.027']} position={[6.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.066' }} />
-        <mesh name="tile-low067" geometry={nodes['tile-low067'].geometry} material={materials['colormap.027']} position={[5.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.067' }} />
-        <mesh name="tile-low089" geometry={nodes['tile-low089'].geometry} material={materials['colormap.025']} position={[6.5, 0, -3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.089' }} />
-        <mesh name="tile-low090" geometry={nodes['tile-low090'].geometry} material={materials['colormap.025']} position={[5.5, 0, -3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.090' }} />
-        <mesh name="tile-low092" geometry={nodes['tile-low092'].geometry} material={materials['colormap.025']} position={[6.5, 0, -2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.092' }} />
-        <mesh name="tile-low093" geometry={nodes['tile-low093'].geometry} material={materials['colormap.025']} position={[5.5, 0, -2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.093' }} />
-        <mesh name="tile-low095" geometry={nodes['tile-low095'].geometry} material={materials['colormap.025']} position={[6.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.095' }} />
-        <mesh name="tile-low096" geometry={nodes['tile-low096'].geometry} material={materials['colormap.025']} position={[5.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.096' }} />
-        <mesh name="tile-low009" geometry={nodes['tile-low009'].geometry} material={materials['colormap.025']} position={[-0.5, 0, -3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.009' }} />
-        <mesh name="tile-low010" geometry={nodes['tile-low010'].geometry} material={materials['colormap.025']} position={[-1.5, 0, -3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.010' }} />
-        <mesh name="tile-low011" geometry={nodes['tile-low011'].geometry} material={materials['colormap.025']} position={[-2.5, 0, -3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.011' }} />
-        <mesh name="tile-low012" geometry={nodes['tile-low012'].geometry} material={materials['colormap.025']} position={[-0.5, 0, -2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.012' }} />
-        <mesh name="tile-low013" geometry={nodes['tile-low013'].geometry} material={materials['colormap.025']} position={[-1.5, 0, -2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.013' }} />
-        <mesh name="tile-low014" geometry={nodes['tile-low014'].geometry} material={materials['colormap.025']} position={[-2.5, 0, -2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.014' }} />
-        <mesh name="tile-low015" geometry={nodes['tile-low015'].geometry} material={materials['colormap.025']} position={[-0.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.015' }} />
-        <mesh name="tile-low016" geometry={nodes['tile-low016'].geometry} material={materials['colormap.025']} position={[-1.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.016' }} />
-        <mesh name="tile-low017" geometry={nodes['tile-low017'].geometry} material={materials['colormap.025']} position={[-2.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.017' }} />
-        <mesh name="tile-low045" geometry={nodes['tile-low045'].geometry} material={materials['colormap.004']} position={[3.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.045' }} />
-        <mesh name="tile-low046" geometry={nodes['tile-low046'].geometry} material={materials['colormap.004']} position={[2.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.046' }} />
-        <mesh name="tile-low047" geometry={nodes['tile-low047'].geometry} material={materials['colormap.004']} position={[1.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.047' }} />
-        <mesh name="tile-low048" geometry={nodes['tile-low048'].geometry} material={materials['colormap.004']} position={[3.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.048' }} />
-        <mesh name="tile-low049" geometry={nodes['tile-low049'].geometry} material={materials['colormap.004']} position={[2.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.049' }} />
-        <mesh name="tile-low050" geometry={nodes['tile-low050'].geometry} material={materials['colormap.004']} position={[1.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.050' }} />
-        <mesh name="tile-low051" geometry={nodes['tile-low051'].geometry} material={materials['colormap.004']} position={[3.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.051' }} />
-        <mesh name="tile-low052" geometry={nodes['tile-low052'].geometry} material={materials['colormap.004']} position={[2.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.052' }} />
-        <mesh name="tile-low053" geometry={nodes['tile-low053'].geometry} material={materials['colormap.004']} position={[1.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.053' }} />
-        <mesh name="tile-low036" geometry={nodes['tile-low036'].geometry} material={materials['colormap.004']} position={[-0.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.036' }} />
-        <mesh name="tile-low037" geometry={nodes['tile-low037'].geometry} material={materials['colormap.004']} position={[-1.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.037' }} />
-        <mesh name="tile-low038" geometry={nodes['tile-low038'].geometry} material={materials['colormap.004']} position={[-2.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.038' }} />
-        <mesh name="tile-low039" geometry={nodes['tile-low039'].geometry} material={materials['colormap.004']} position={[-0.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.039' }} />
-        <mesh name="tile-low040" geometry={nodes['tile-low040'].geometry} material={materials['colormap.004']} position={[-1.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.040' }} />
-        <mesh name="tile-low041" geometry={nodes['tile-low041'].geometry} material={materials['colormap.004']} position={[-2.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.041' }} />
-        <mesh name="tile-low042" geometry={nodes['tile-low042'].geometry} material={materials['colormap.004']} position={[-0.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.042' }} />
-        <mesh name="tile-low043" geometry={nodes['tile-low043'].geometry} material={materials['colormap.004']} position={[-1.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.043' }} />
-        <mesh name="tile-low044" geometry={nodes['tile-low044'].geometry} material={materials['colormap.004']} position={[-2.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.044' }} />
-        <mesh name="tile-low068" geometry={nodes['tile-low068'].geometry} material={materials['colormap.025']} position={[-6.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.068' }} />
-        <mesh name="tile-low069" geometry={nodes['tile-low069'].geometry} material={materials['colormap.025']} position={[-5.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.069' }} />
-        <mesh name="tile-low070" geometry={nodes['tile-low070'].geometry} material={materials['colormap.025']} position={[-4.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.070' }} />
-        <mesh name="tile-low071" geometry={nodes['tile-low071'].geometry} material={materials['colormap.025']} position={[-6.5, 0, -2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.071' }} />
-        <mesh name="tile-low072" geometry={nodes['tile-low072'].geometry} material={materials['colormap.025']} position={[-5.5, 0, -2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.072' }} />
-        <mesh name="tile-low073" geometry={nodes['tile-low073'].geometry} material={materials['colormap.025']} position={[-4.5, 0, -2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.073' }} />
-        <mesh name="tile-low074" geometry={nodes['tile-low074'].geometry} material={materials['colormap.025']} position={[-6.5, 0, -3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.074' }} />
-        <mesh name="tile-low075" geometry={nodes['tile-low075'].geometry} material={materials['colormap.025']} position={[-5.5, 0, -3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.075' }} />
-        <mesh name="tile-low076" geometry={nodes['tile-low076'].geometry} material={materials['colormap.025']} position={[-4.5, 0, -3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.076' }} />
-        <mesh name="tile-low077" geometry={nodes['tile-low077'].geometry} material={materials['colormap.025']} position={[-5.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.077' }} />
-        <mesh name="tile-low078" geometry={nodes['tile-low078'].geometry} material={materials['colormap.025']} position={[-6.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.078' }} />
-        <mesh name="tile-low079" geometry={nodes['tile-low079'].geometry} material={materials['colormap.025']} position={[-4.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.079' }} />
-        <mesh name="tile-low080" geometry={nodes['tile-low080'].geometry} material={materials['colormap.025']} position={[-5.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.080' }} />
-        <mesh name="tile-low081" geometry={nodes['tile-low081'].geometry} material={materials['colormap.025']} position={[-6.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.081' }} />
-        <mesh name="tile-low082" geometry={nodes['tile-low082'].geometry} material={materials['colormap.025']} position={[-4.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.082' }} />
-        <mesh name="tile-low083" geometry={nodes['tile-low083'].geometry} material={materials['colormap.025']} position={[-5.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.083' }} />
-        <mesh name="tile-low084" geometry={nodes['tile-low084'].geometry} material={materials['colormap.025']} position={[-6.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.084' }} />
-        <mesh name="tile-low085" geometry={nodes['tile-low085'].geometry} material={materials['colormap.025']} position={[-4.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.085' }} />
-        <mesh name="tile-low086" geometry={nodes['tile-low086'].geometry} material={materials['colormap.025']} position={[-4.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.086' }} />
-        <mesh name="tile-low087" geometry={nodes['tile-low087'].geometry} material={materials['colormap.025']} position={[-5.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.087' }} />
-        <mesh name="tile-low088" geometry={nodes['tile-low088'].geometry} material={materials['colormap.025']} position={[-6.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.088' }} />
-        <mesh name="tile-low140" geometry={nodes['tile-low140'].geometry} material={materials['colormap.025']} position={[-10.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.140' }} />
-        <mesh name="tile-low141" geometry={nodes['tile-low141'].geometry} material={materials['colormap.025']} position={[-9.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.141' }} />
-        <mesh name="tile-low142" geometry={nodes['tile-low142'].geometry} material={materials['colormap.025']} position={[-8.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.142' }} />
-        <mesh name="tile-low143" geometry={nodes['tile-low143'].geometry} material={materials['colormap.025']} position={[-10.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.143' }} />
-        <mesh name="tile-low144" geometry={nodes['tile-low144'].geometry} material={materials['colormap.025']} position={[-9.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.144' }} />
-        <mesh name="tile-low145" geometry={nodes['tile-low145'].geometry} material={materials['colormap.025']} position={[-8.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.145' }} />
-        <mesh name="tile-low146" geometry={nodes['tile-low146'].geometry} material={materials['colormap.025']} position={[-10.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.146' }} />
-        <mesh name="tile-low147" geometry={nodes['tile-low147'].geometry} material={materials['colormap.025']} position={[-9.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.147' }} />
-        <mesh name="tile-low148" geometry={nodes['tile-low148'].geometry} material={materials['colormap.025']} position={[-8.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.148' }} />
-        <mesh name="tile-low237" geometry={nodes['tile-low237'].geometry} material={materials['colormap.025']} position={[-11.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.237' }} />
-        <mesh name="tile-low238" geometry={nodes['tile-low238'].geometry} material={materials['colormap.025']} position={[-12.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.238' }} />
-        <mesh name="tile-low244" geometry={nodes['tile-low244'].geometry} material={materials['colormap.025']} position={[-13.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.244' }} />
-        <mesh name="tile-low326" geometry={nodes['tile-low326'].geometry} material={materials['colormap.025']} position={[-11.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.326' }} />
-        <mesh name="tile-low327" geometry={nodes['tile-low327'].geometry} material={materials['colormap.025']} position={[-11.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.327' }} />
-        <mesh name="tile-low328" geometry={nodes['tile-low328'].geometry} material={materials['colormap.025']} position={[-12.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.328' }} />
-        <mesh name="tile-low332" geometry={nodes['tile-low332'].geometry} material={materials['colormap.025']} position={[-13.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.332' }} />
-        <mesh name="tile-low333" geometry={nodes['tile-low333'].geometry} material={materials['colormap.025']} position={[-12.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.333' }} />
-        <mesh name="tile-low104" geometry={nodes['tile-low104'].geometry} material={materials['colormap.025']} position={[1.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.104' }} />
-        <mesh name="tile-low105" geometry={nodes['tile-low105'].geometry} material={materials['colormap.025']} position={[2.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.105' }} />
-        <mesh name="tile-low106" geometry={nodes['tile-low106'].geometry} material={materials['colormap.025']} position={[3.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.106' }} />
-        <mesh name="tile-low107" geometry={nodes['tile-low107'].geometry} material={materials['colormap.025']} position={[1.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.107' }} />
-        <mesh name="tile-low108" geometry={nodes['tile-low108'].geometry} material={materials['colormap.025']} position={[2.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.108' }} />
-        <mesh name="tile-low109" geometry={nodes['tile-low109'].geometry} material={materials['colormap.025']} position={[3.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.109' }} />
-        <mesh name="tile-low110" geometry={nodes['tile-low110'].geometry} material={materials['colormap.025']} position={[1.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.110' }} />
-        <mesh name="tile-low111" geometry={nodes['tile-low111'].geometry} material={materials['colormap.025']} position={[2.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.111' }} />
-        <mesh name="tile-low112" geometry={nodes['tile-low112'].geometry} material={materials['colormap.025']} position={[3.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.112' }} />
-        <mesh name="tile-low282" geometry={nodes['tile-low282'].geometry} material={materials['colormap.025']} position={[4.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.282' }} />
-        <mesh name="tile-low113" geometry={nodes['tile-low113'].geometry} material={materials['colormap.025']} position={[-2.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.113' }} />
-        <mesh name="tile-low114" geometry={nodes['tile-low114'].geometry} material={materials['colormap.025']} position={[-1.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.114' }} />
-        <mesh name="tile-low115" geometry={nodes['tile-low115'].geometry} material={materials['colormap.025']} position={[-0.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.115' }} />
-        <mesh name="tile-low116" geometry={nodes['tile-low116'].geometry} material={materials['colormap.025']} position={[-2.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.116' }} />
-        <mesh name="tile-low117" geometry={nodes['tile-low117'].geometry} material={materials['colormap.025']} position={[-1.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.117' }} />
-        <mesh name="tile-low118" geometry={nodes['tile-low118'].geometry} material={materials['colormap.025']} position={[-0.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.118' }} />
-        <mesh name="tile-low119" geometry={nodes['tile-low119'].geometry} material={materials['colormap.025']} position={[-2.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.119' }} />
-        <mesh name="tile-low120" geometry={nodes['tile-low120'].geometry} material={materials['colormap.025']} position={[-1.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.120' }} />
-        <mesh name="tile-low121" geometry={nodes['tile-low121'].geometry} material={materials['colormap.025']} position={[-0.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.121' }} />
-        <mesh name="tile-low228" geometry={nodes['tile-low228'].geometry} material={materials['colormap.025']} position={[-0.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.228' }} />
-        <mesh name="tile-low229" geometry={nodes['tile-low229'].geometry} material={materials['colormap.025']} position={[0.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.229' }} />
-        <mesh name="tile-low230" geometry={nodes['tile-low230'].geometry} material={materials['colormap.025']} position={[1.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.230' }} />
-        <mesh name="tile-low312" geometry={nodes['tile-low312'].geometry} material={materials['colormap.025']} position={[2.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.312' }} />
-        <mesh name="tile-low313" geometry={nodes['tile-low313'].geometry} material={materials['colormap.025']} position={[3.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.313' }} />
-        <mesh name="tile-low314" geometry={nodes['tile-low314'].geometry} material={materials['colormap.025']} position={[4.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.314' }} />
-        <mesh name="tile-low315" geometry={nodes['tile-low315'].geometry} material={materials['colormap.025']} position={[5.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.315' }} />
-        <mesh name="tile-low316" geometry={nodes['tile-low316'].geometry} material={materials['colormap.025']} position={[6.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.316' }} />
-        <mesh name="tile-low317" geometry={nodes['tile-low317'].geometry} material={materials['colormap.025']} position={[7.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.317' }} />
-        <mesh name="tile-low122" geometry={nodes['tile-low122'].geometry} material={materials['colormap.039']} position={[-6.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.122' }} />
-        <mesh name="tile-low123" geometry={nodes['tile-low123'].geometry} material={materials['colormap.039']} position={[-5.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.123' }} />
-        <mesh name="tile-low124" geometry={nodes['tile-low124'].geometry} material={materials['colormap.039']} position={[-4.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.124' }} />
-        <mesh name="tile-low125" geometry={nodes['tile-low125'].geometry} material={materials['colormap.039']} position={[-6.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.125' }} />
-        <mesh name="tile-low126" geometry={nodes['tile-low126'].geometry} material={materials['colormap.039']} position={[-5.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.126' }} />
-        <mesh name="tile-low127" geometry={nodes['tile-low127'].geometry} material={materials['colormap.039']} position={[-4.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.127' }} />
-        <mesh name="tile-low128" geometry={nodes['tile-low128'].geometry} material={materials['colormap.039']} position={[-6.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.128' }} />
-        <mesh name="tile-low129" geometry={nodes['tile-low129'].geometry} material={materials['colormap.039']} position={[-5.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.129' }} />
-        <mesh name="tile-low130" geometry={nodes['tile-low130'].geometry} material={materials['colormap.039']} position={[-4.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.130' }} />
-        <mesh name="tile-low131" geometry={nodes['tile-low131'].geometry} material={materials['colormap.039']} position={[-10.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.131' }} />
-        <mesh name="tile-low132" geometry={nodes['tile-low132'].geometry} material={materials['colormap.039']} position={[-9.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.132' }} />
-        <mesh name="tile-low133" geometry={nodes['tile-low133'].geometry} material={materials['colormap.039']} position={[-8.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.133' }} />
-        <mesh name="tile-low134" geometry={nodes['tile-low134'].geometry} material={materials['colormap.039']} position={[-10.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.134' }} />
-        <mesh name="tile-low135" geometry={nodes['tile-low135'].geometry} material={materials['colormap.039']} position={[-9.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.135' }} />
-        <mesh name="tile-low136" geometry={nodes['tile-low136'].geometry} material={materials['colormap.039']} position={[-8.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.136' }} />
-        <mesh name="tile-low137" geometry={nodes['tile-low137'].geometry} material={materials['colormap.039']} position={[-10.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.137' }} />
-        <mesh name="tile-low138" geometry={nodes['tile-low138'].geometry} material={materials['colormap.039']} position={[-9.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.138' }} />
-        <mesh name="tile-low139" geometry={nodes['tile-low139'].geometry} material={materials['colormap.039']} position={[-8.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.139' }} />
-        <mesh name="tile-low227" geometry={nodes['tile-low227'].geometry} material={materials['colormap.039']} position={[-3.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.227' }} />
-        <mesh name="tile-low231" geometry={nodes['tile-low231'].geometry} material={materials['colormap.039']} position={[-7.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.231' }} />
-        <mesh name="tile-low232" geometry={nodes['tile-low232'].geometry} material={materials['colormap.039']} position={[-8.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.232' }} />
-        <mesh name="tile-low233" geometry={nodes['tile-low233'].geometry} material={materials['colormap.039']} position={[-6.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.233' }} />
-        <mesh name="tile-low234" geometry={nodes['tile-low234'].geometry} material={materials['colormap.039']} position={[-11.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.234' }} />
-        <mesh name="tile-low235" geometry={nodes['tile-low235'].geometry} material={materials['colormap.025']} position={[-12.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.235' }} />
-        <mesh name="tile-low236" geometry={nodes['tile-low236'].geometry} material={materials['colormap.025']} position={[-12.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.236' }} />
-        <mesh name="tile-low245" geometry={nodes['tile-low245'].geometry} material={materials['colormap.025']} position={[-13.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.245' }} />
-        <mesh name="tile-low300" geometry={nodes['tile-low300'].geometry} material={materials['colormap.039']} position={[-7.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.300' }} />
-        <mesh name="tile-low321" geometry={nodes['tile-low321'].geometry} material={materials['colormap.039']} position={[-5.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.321' }} />
-        <mesh name="tile-low322" geometry={nodes['tile-low322'].geometry} material={materials['colormap.039']} position={[-4.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.322' }} />
-        <mesh name="tile-low323" geometry={nodes['tile-low323'].geometry} material={materials['colormap.039']} position={[-3.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.323' }} />
-        <mesh name="tile-low324" geometry={nodes['tile-low324'].geometry} material={materials['colormap.025']} position={[-2.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.324' }} />
-        <mesh name="tile-low325" geometry={nodes['tile-low325'].geometry} material={materials['colormap.025']} position={[-1.5, 0, 11.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.325' }} />
-        <mesh name="tile-low167" geometry={nodes['tile-low167'].geometry} material={materials.farm} position={[-5.5, 0, -9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.167' }} />
-        <mesh name="tile-low168" geometry={nodes['tile-low168'].geometry} material={materials['colormap.025']} position={[-7.5, 0, -5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.168' }} />
-        <mesh name="tile-low169" geometry={nodes['tile-low169'].geometry} material={materials.farm} position={[-4.5, 0, -8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.169' }} />
-        <mesh name="tile-low170" geometry={nodes['tile-low170'].geometry} material={materials.farm} position={[-5.5, 0, -8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.170' }} />
-        <mesh name="tile-low171" geometry={nodes['tile-low171'].geometry} material={materials.farm} position={[-6.5, 0, -8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.171' }} />
-        <mesh name="tile-low172" geometry={nodes['tile-low172'].geometry} material={materials.farm} position={[-4.5, 0, -7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.172' }} />
-        <mesh name="tile-low173" geometry={nodes['tile-low173'].geometry} material={materials.farm} position={[-5.5, 0, -7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.173' }} />
-        <mesh name="tile-low174" geometry={nodes['tile-low174'].geometry} material={materials.farm} position={[-6.5, 0, -7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.174' }} />
-        <mesh name="tile-low175" geometry={nodes['tile-low175'].geometry} material={materials.farm} position={[-4.5, 0, -9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.175' }} />
-        <mesh name="tile-low176" geometry={nodes['tile-low176'].geometry} material={materials['colormap.025']} position={[-5.5, 0, -6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.176' }} />
-        <mesh name="tile-low177" geometry={nodes['tile-low177'].geometry} material={materials['colormap.025']} position={[-6.5, 0, -6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.177' }} />
-        <mesh name="tile-low178" geometry={nodes['tile-low178'].geometry} material={materials['colormap.025']} position={[-4.5, 0, -5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.178' }} />
-        <mesh name="tile-low179" geometry={nodes['tile-low179'].geometry} material={materials['colormap.025']} position={[-5.5, 0, -5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.179' }} />
-        <mesh name="tile-low180" geometry={nodes['tile-low180'].geometry} material={materials['colormap.025']} position={[-4.5, 0, -6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.180' }} />
-        <mesh name="tile-low181" geometry={nodes['tile-low181'].geometry} material={materials['colormap.025']} position={[-6.5, 0, -5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.181' }} />
-        <mesh name="tile-low240" geometry={nodes['tile-low240'].geometry} material={materials['colormap.025']} position={[-3.5, 0, -7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.240' }} />
-        <mesh name="tile-low241" geometry={nodes['tile-low241'].geometry} material={materials['colormap.025']} position={[-3.5, 0, -8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.241' }} />
-        <mesh name="tile-low303" geometry={nodes['tile-low303'].geometry} material={materials['colormap.025']} position={[-3.5, 0, -9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.303' }} />
-        <mesh name="tile-low307" geometry={nodes['tile-low307'].geometry} material={materials['colormap.025']} position={[-8.5, 0, -5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.307' }} />
-        <mesh name="tile-low308" geometry={nodes['tile-low308'].geometry} material={materials['colormap.025']} position={[-8.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.308' }} />
-        <mesh name="tile-low309" geometry={nodes['tile-low309'].geometry} material={materials['colormap.025']} position={[-8.5, 0, -3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.309' }} />
-        <mesh name="tile-low310" geometry={nodes['tile-low310'].geometry} material={materials['colormap.025']} position={[-9.5, 0, -3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.310' }} />
-        <mesh name="tile-low311" geometry={nodes['tile-low311'].geometry} material={materials['colormap.025']} position={[-7.5, 0, -6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.311' }} />
-        <mesh name="tile-low182" geometry={nodes['tile-low182'].geometry} material={materials['colormap.025']} position={[-1.5, 0, -9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.182' }} />
-        <mesh name="tile-low183" geometry={nodes['tile-low183'].geometry} material={materials['colormap.025']} position={[-2.5, 0, -9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.183' }} />
-        <mesh name="tile-low184" geometry={nodes['tile-low184'].geometry} material={materials['colormap.025']} position={[-0.5, 0, -8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.184' }} />
-        <mesh name="tile-low185" geometry={nodes['tile-low185'].geometry} material={materials['colormap.025']} position={[-1.5, 0, -8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.185' }} />
-        <mesh name="tile-low186" geometry={nodes['tile-low186'].geometry} material={materials['colormap.025']} position={[-2.5, 0, -8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.186' }} />
-        <mesh name="tile-low187" geometry={nodes['tile-low187'].geometry} material={materials['colormap.025']} position={[-0.5, 0, -7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.187' }} />
-        <mesh name="tile-low188" geometry={nodes['tile-low188'].geometry} material={materials['colormap.025']} position={[-1.5, 0, -7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.188' }} />
-        <mesh name="tile-low189" geometry={nodes['tile-low189'].geometry} material={materials['colormap.025']} position={[-2.5, 0, -7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.189' }} />
-        <mesh name="tile-low190" geometry={nodes['tile-low190'].geometry} material={materials['colormap.025']} position={[-0.5, 0, -9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.190' }} />
-        <mesh name="tile-low191" geometry={nodes['tile-low191'].geometry} material={materials['colormap.025']} position={[-1.5, 0, -6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.191' }} />
-        <mesh name="tile-low192" geometry={nodes['tile-low192'].geometry} material={materials['colormap.025']} position={[-2.5, 0, -6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.192' }} />
-        <mesh name="tile-low193" geometry={nodes['tile-low193'].geometry} material={materials['colormap.025']} position={[-0.5, 0, -5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.193' }} />
-        <mesh name="tile-low194" geometry={nodes['tile-low194'].geometry} material={materials['colormap.025']} position={[-1.5, 0, -5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.194' }} />
-        <mesh name="tile-low195" geometry={nodes['tile-low195'].geometry} material={materials['colormap.025']} position={[-0.5, 0, -6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.195' }} />
-        <mesh name="tile-low196" geometry={nodes['tile-low196'].geometry} material={materials['colormap.025']} position={[-2.5, 0, -5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.196' }} />
-        <mesh name="tile-low242" geometry={nodes['tile-low242'].geometry} material={materials['colormap.025']} position={[0.5, 0, -8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.242' }} />
-        <mesh name="tile-low197" geometry={nodes['tile-low197'].geometry} material={materials['colormap.025']} position={[2.5, 0, -9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.197' }} />
-        <mesh name="tile-low198" geometry={nodes['tile-low198'].geometry} material={materials['colormap.025']} position={[1.5, 0, -9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.198' }} />
-        <mesh name="tile-low199" geometry={nodes['tile-low199'].geometry} material={materials['colormap.025']} position={[3.5, 0, -8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.199' }} />
-        <mesh name="tile-low200" geometry={nodes['tile-low200'].geometry} material={materials['colormap.025']} position={[2.5, 0, -8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.200' }} />
-        <mesh name="tile-low201" geometry={nodes['tile-low201'].geometry} material={materials['colormap.025']} position={[1.5, 0, -8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.201' }} />
-        <mesh name="tile-low202" geometry={nodes['tile-low202'].geometry} material={materials['colormap.025']} position={[3.5, 0, -7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.202' }} />
-        <mesh name="tile-low203" geometry={nodes['tile-low203'].geometry} material={materials['colormap.025']} position={[2.5, 0, -7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.203' }} />
-        <mesh name="tile-low204" geometry={nodes['tile-low204'].geometry} material={materials['colormap.025']} position={[1.5, 0, -7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.204' }} />
-        <mesh name="tile-low205" geometry={nodes['tile-low205'].geometry} material={materials['colormap.025']} position={[4.5, 0, -8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.205' }} />
-        <mesh name="tile-low206" geometry={nodes['tile-low206'].geometry} material={materials['colormap.025']} position={[2.5, 0, -6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.206' }} />
-        <mesh name="tile-low207" geometry={nodes['tile-low207'].geometry} material={materials['colormap.025']} position={[1.5, 0, -6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.207' }} />
-        <mesh name="tile-low208" geometry={nodes['tile-low208'].geometry} material={materials['colormap.025']} position={[3.5, 0, -5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.208' }} />
-        <mesh name="tile-low209" geometry={nodes['tile-low209'].geometry} material={materials['colormap.025']} position={[2.5, 0, -5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.209' }} />
-        <mesh name="tile-low210" geometry={nodes['tile-low210'].geometry} material={materials['colormap.025']} position={[3.5, 0, -6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.210' }} />
-        <mesh name="tile-low211" geometry={nodes['tile-low211'].geometry} material={materials['colormap.025']} position={[1.5, 0, -5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.211' }} />
-        <mesh name="tile-low213" geometry={nodes['tile-low213'].geometry} material={materials['colormap.025']} position={[0.5, 0, -9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.213' }} />
-        <mesh name="tile-low243" geometry={nodes['tile-low243'].geometry} material={materials['colormap.025']} position={[4.5, 0, -7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.243' }} />
-        <mesh name="tile-low304" geometry={nodes['tile-low304'].geometry} material={materials['colormap.025']} position={[3.5, 0, -9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.304' }} />
-        <mesh name="tile-low305" geometry={nodes['tile-low305'].geometry} material={materials['colormap.025']} position={[4.5, 0, -9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.305' }} />
-        <mesh name="tile-low306" geometry={nodes['tile-low306'].geometry} material={materials['colormap.025']} position={[5.5, 0, -9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.306' }} />
-        <mesh name="tile-low212" geometry={nodes['tile-low212'].geometry} material={materials['colormap.025']} position={[6.5, 0, -9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.212' }} />
-        <mesh name="tile-low214" geometry={nodes['tile-low214'].geometry} material={materials['colormap.025']} position={[7.5, 0, -8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.214' }} />
-        <mesh name="tile-low215" geometry={nodes['tile-low215'].geometry} material={materials['colormap.025']} position={[6.5, 0, -8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.215' }} />
-        <mesh name="tile-low216" geometry={nodes['tile-low216'].geometry} material={materials['colormap.025']} position={[5.5, 0, -8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.216' }} />
-        <mesh name="tile-low217" geometry={nodes['tile-low217'].geometry} material={materials['colormap.025']} position={[7.5, 0, -7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.217' }} />
-        <mesh name="tile-low218" geometry={nodes['tile-low218'].geometry} material={materials['colormap.025']} position={[6.5, 0, -7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.218' }} />
-        <mesh name="tile-low219" geometry={nodes['tile-low219'].geometry} material={materials['colormap.025']} position={[5.5, 0, -7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.219' }} />
-        <mesh name="tile-low220" geometry={nodes['tile-low220'].geometry} material={materials['colormap.025']} position={[8.5, 0, -6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.220' }} />
-        <mesh name="tile-low221" geometry={nodes['tile-low221'].geometry} material={materials['colormap.025']} position={[6.5, 0, -6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.221' }} />
-        <mesh name="tile-low222" geometry={nodes['tile-low222'].geometry} material={materials['colormap.025']} position={[5.5, 0, -6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.222' }} />
-        <mesh name="tile-low223" geometry={nodes['tile-low223'].geometry} material={materials['colormap.025']} position={[7.5, 0, -5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.223' }} />
-        <mesh name="tile-low224" geometry={nodes['tile-low224'].geometry} material={materials['colormap.025']} position={[6.5, 0, -5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.224' }} />
-        <mesh name="tile-low225" geometry={nodes['tile-low225'].geometry} material={materials['colormap.025']} position={[7.5, 0, -6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.225' }} />
-        <mesh name="tile-low226" geometry={nodes['tile-low226'].geometry} material={materials['colormap.025']} position={[5.5, 0, -5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.226' }} />
-        <mesh name="tile-low149" geometry={nodes['tile-low149'].geometry} material={materials['colormap.025']} position={[-9.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.149' }} />
-        <mesh name="tile-low150" geometry={nodes['tile-low150'].geometry} material={materials['colormap.025']} position={[-10.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.150' }} />
-        <mesh name="tile-low151" geometry={nodes['tile-low151'].geometry} material={materials['colormap.025']} position={[-8.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.151' }} />
-        <mesh name="tile-low152" geometry={nodes['tile-low152'].geometry} material={materials['colormap.025']} position={[-9.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.152' }} />
-        <mesh name="tile-low153" geometry={nodes['tile-low153'].geometry} material={materials['colormap.025']} position={[-10.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.153' }} />
-        <mesh name="tile-low154" geometry={nodes['tile-low154'].geometry} material={materials['colormap.025']} position={[-8.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.154' }} />
-        <mesh name="tile-low155" geometry={nodes['tile-low155'].geometry} material={materials['colormap.025']} position={[-9.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.155' }} />
-        <mesh name="tile-low156" geometry={nodes['tile-low156'].geometry} material={materials['colormap.025']} position={[-10.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.156' }} />
-        <mesh name="tile-low157" geometry={nodes['tile-low157'].geometry} material={materials['colormap.025']} position={[-8.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.157' }} />
-        <mesh name="tile-low158" geometry={nodes['tile-low158'].geometry} material={materials['colormap.025']} position={[-9.5, 0, -2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.158' }} />
-        <mesh name="tile-low159" geometry={nodes['tile-low159'].geometry} material={materials['colormap.025']} position={[-10.5, 0, -2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.159' }} />
-        <mesh name="tile-low160" geometry={nodes['tile-low160'].geometry} material={materials['colormap.025']} position={[-8.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.160' }} />
-        <mesh name="tile-low161" geometry={nodes['tile-low161'].geometry} material={materials['colormap.025']} position={[-9.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.161' }} />
-        <mesh name="tile-low162" geometry={nodes['tile-low162'].geometry} material={materials['colormap.025']} position={[-10.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.162' }} />
-        <mesh name="tile-low163" geometry={nodes['tile-low163'].geometry} material={materials['colormap.025']} position={[-8.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.163' }} />
-        <mesh name="tile-low164" geometry={nodes['tile-low164'].geometry} material={materials['colormap.025']} position={[-9.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.164' }} />
-        <mesh name="tile-low165" geometry={nodes['tile-low165'].geometry} material={materials['colormap.025']} position={[-10.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.165' }} />
-        <mesh name="tile-low166" geometry={nodes['tile-low166'].geometry} material={materials['colormap.025']} position={[-8.5, 0, -2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.166' }} />
-        <mesh name="tile-low239" geometry={nodes['tile-low239'].geometry} material={materials['colormap.025']} position={[-10.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.239' }} />
-        <mesh name="tile-low329" geometry={nodes['tile-low329'].geometry} material={materials['colormap.025']} position={[-11.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.329' }} />
-        <mesh name="tile-low330" geometry={nodes['tile-low330'].geometry} material={materials['colormap.025']} position={[-11.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.330' }} />
-        <mesh name="tile-low331" geometry={nodes['tile-low331'].geometry} material={materials['colormap.025']} position={[-11.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.331' }} />
-        <mesh name="tile-low246" geometry={nodes['tile-low246'].geometry} material={materials['colormap.025']} position={[8.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.246' }} />
-        <mesh name="tile-low247" geometry={nodes['tile-low247'].geometry} material={materials['colormap.025']} position={[9.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.247' }} />
-        <mesh name="tile-low248" geometry={nodes['tile-low248'].geometry} material={materials['colormap.025']} position={[10.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.248' }} />
-        <mesh name="tile-low249" geometry={nodes['tile-low249'].geometry} material={materials['colormap.025']} position={[9.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.249' }} />
-        <mesh name="tile-low250" geometry={nodes['tile-low250'].geometry} material={materials['colormap.025']} position={[10.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.250' }} />
-        <mesh name="tile-low251" geometry={nodes['tile-low251'].geometry} material={materials['colormap.025']} position={[9.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.251' }} />
-        <mesh name="tile-low252" geometry={nodes['tile-low252'].geometry} material={materials['colormap.025']} position={[10.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.252' }} />
-        <mesh name="tile-low254" geometry={nodes['tile-low254'].geometry} material={materials['colormap.025']} position={[8.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.254' }} />
-        <mesh name="tile-low255" geometry={nodes['tile-low255'].geometry} material={materials['colormap.025']} position={[8.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.255' }} />
-        <mesh name="tile-low256" geometry={nodes['tile-low256'].geometry} material={materials['colormap.025']} position={[9.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.256' }} />
-        <mesh name="tile-low257" geometry={nodes['tile-low257'].geometry} material={materials['colormap.025']} position={[10.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.257' }} />
-        <mesh name="tile-low258" geometry={nodes['tile-low258'].geometry} material={materials['colormap.025']} position={[9.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.258' }} />
-        <mesh name="tile-low259" geometry={nodes['tile-low259'].geometry} material={materials['colormap.025']} position={[10.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.259' }} />
-        <mesh name="tile-low260" geometry={nodes['tile-low260'].geometry} material={materials['colormap.025']} position={[9.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.260' }} />
-        <mesh name="tile-low261" geometry={nodes['tile-low261'].geometry} material={materials['colormap.025']} position={[10.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.261' }} />
-        <mesh name="tile-low262" geometry={nodes['tile-low262'].geometry} material={materials['colormap.025']} position={[8.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.262' }} />
-        <mesh name="tile-low263" geometry={nodes['tile-low263'].geometry} material={materials['colormap.025']} position={[8.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.263' }} />
-        <mesh name="tile-low264" geometry={nodes['tile-low264'].geometry} material={materials['colormap.025']} position={[8.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.264' }} />
-        <mesh name="tile-low265" geometry={nodes['tile-low265'].geometry} material={materials['colormap.025']} position={[9.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.265' }} />
-        <mesh name="tile-low266" geometry={nodes['tile-low266'].geometry} material={materials['colormap.025']} position={[10.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.266' }} />
-        <mesh name="tile-low267" geometry={nodes['tile-low267'].geometry} material={materials['colormap.025']} position={[9.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.267' }} />
-        <mesh name="tile-low268" geometry={nodes['tile-low268'].geometry} material={materials['colormap.025']} position={[10.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.268' }} />
-        <mesh name="tile-low269" geometry={nodes['tile-low269'].geometry} material={materials['colormap.025']} position={[9.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.269' }} />
-        <mesh name="tile-low270" geometry={nodes['tile-low270'].geometry} material={materials['colormap.025']} position={[10.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.270' }} />
-        <mesh name="tile-low271" geometry={nodes['tile-low271'].geometry} material={materials['colormap.025']} position={[8.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.271' }} />
-        <mesh name="tile-low272" geometry={nodes['tile-low272'].geometry} material={materials['colormap.025']} position={[8.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.272' }} />
-        <mesh name="tile-low273" geometry={nodes['tile-low273'].geometry} material={materials['colormap.025']} position={[5.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.273' }} />
-        <mesh name="tile-low274" geometry={nodes['tile-low274'].geometry} material={materials['colormap.025']} position={[6.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.274' }} />
-        <mesh name="tile-low275" geometry={nodes['tile-low275'].geometry} material={materials['colormap.025']} position={[7.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.275' }} />
-        <mesh name="tile-low276" geometry={nodes['tile-low276'].geometry} material={materials['colormap.025']} position={[6.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.276' }} />
-        <mesh name="tile-low277" geometry={nodes['tile-low277'].geometry} material={materials['colormap.025']} position={[7.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.277' }} />
-        <mesh name="tile-low278" geometry={nodes['tile-low278'].geometry} material={materials['colormap.025']} position={[6.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.278' }} />
-        <mesh name="tile-low279" geometry={nodes['tile-low279'].geometry} material={materials['colormap.025']} position={[7.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.279' }} />
-        <mesh name="tile-low280" geometry={nodes['tile-low280'].geometry} material={materials['colormap.025']} position={[5.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.280' }} />
-        <mesh name="tile-low281" geometry={nodes['tile-low281'].geometry} material={materials['colormap.025']} position={[5.5, 0, 8.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.281' }} />
-        <mesh name="tile-low318" geometry={nodes['tile-low318'].geometry} material={materials['colormap.025']} position={[8.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.318' }} />
-        <mesh name="tile-low319" geometry={nodes['tile-low319'].geometry} material={materials['colormap.025']} position={[8.5, 0, 10.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.319' }} />
-        <mesh name="tile-low320" geometry={nodes['tile-low320'].geometry} material={materials['colormap.025']} position={[9.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.320' }} />
-        <mesh name="tile-low283" geometry={nodes['tile-low283'].geometry} material={materials['colormap.025']} position={[8.5, 0, -2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.283' }} />
-        <mesh name="tile-low284" geometry={nodes['tile-low284'].geometry} material={materials['colormap.025']} position={[9.5, 0, -2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.284' }} />
-        <mesh name="tile-low285" geometry={nodes['tile-low285'].geometry} material={materials['colormap.025']} position={[10.5, 0, -2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.285' }} />
-        <mesh name="tile-low286" geometry={nodes['tile-low286'].geometry} material={materials['colormap.025']} position={[9.5, 0, -3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.286' }} />
-        <mesh name="tile-low287" geometry={nodes['tile-low287'].geometry} material={materials['colormap.025']} position={[10.5, 0, -3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.287' }} />
-        <mesh name="tile-low288" geometry={nodes['tile-low288'].geometry} material={materials['colormap.025']} position={[9.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.288' }} />
-        <mesh name="tile-low289" geometry={nodes['tile-low289'].geometry} material={materials['colormap.025']} position={[10.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.289' }} />
-        <mesh name="tile-low290" geometry={nodes['tile-low290'].geometry} material={materials['colormap.025']} position={[8.5, 0, -3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.290' }} />
-        <mesh name="tile-low291" geometry={nodes['tile-low291'].geometry} material={materials['colormap.025']} position={[8.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.291' }} />
-        <mesh name="tile-low292" geometry={nodes['tile-low292'].geometry} material={materials['colormap.025']} position={[9.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.292' }} />
-        <mesh name="tile-low293" geometry={nodes['tile-low293'].geometry} material={materials['colormap.025']} position={[10.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.293' }} />
-        <mesh name="tile-low294" geometry={nodes['tile-low294'].geometry} material={materials['colormap.025']} position={[8.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.294' }} />
-        <mesh name="tile-low295" geometry={nodes['tile-low295'].geometry} material={materials['colormap.025']} position={[9.5, 0, -5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.295' }} />
-        <mesh name="tile-low296" geometry={nodes['tile-low296'].geometry} material={materials['colormap.025']} position={[8.5, 0, -5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.296' }} />
-        <mesh name="tile-low297" geometry={nodes['tile-low297'].geometry} material={materials['colormap.025']} position={[11.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.297' }} />
-        <mesh name="tile-low298" geometry={nodes['tile-low298'].geometry} material={materials['colormap.025']} position={[11.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.298' }} />
-        <mesh name="tile-low299" geometry={nodes['tile-low299'].geometry} material={materials['colormap.025']} position={[11.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.299' }} />
-        <mesh name="tile-low334" geometry={nodes['tile-low334'].geometry} material={materials['colormap.039']} position={[-11.5, 0, 9.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.334' }} />
-        <mesh name="tile-low253" geometry={nodes['tile-low253'].geometry} material={materials['colormap.025']} position={[8.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.253' }} />
-        <mesh name="tile-low301" geometry={nodes['tile-low301'].geometry} material={materials['colormap.025']} position={[-0.5, 0, 12.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.301' }} />
-        <mesh name="tile-low302" geometry={nodes['tile-low302'].geometry} material={materials['colormap.025']} position={[0.5, 0, 12.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.302' }} />
-        <mesh name="tile-low335" geometry={nodes['tile-low335'].geometry} material={materials['colormap.025']} position={[1.5, 0, 12.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.335' }} />
-        <mesh name="tile-low336" geometry={nodes['tile-low336'].geometry} material={materials['colormap.025']} position={[2.5, 0, 12.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.336' }} />
-        <mesh name="tile-low337" geometry={nodes['tile-low337'].geometry} material={materials['colormap.025']} position={[3.5, 0, 12.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.337' }} />
-        <mesh name="tile-low338" geometry={nodes['tile-low338'].geometry} material={materials['colormap.025']} position={[4.5, 0, 12.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.338' }} />
-        <mesh name="tile-low339" geometry={nodes['tile-low339'].geometry} material={materials['colormap.025']} position={[5.5, 0, 12.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.339' }} />
-        <mesh name="tile-low340" geometry={nodes['tile-low340'].geometry} material={materials['colormap.025']} position={[6.5, 0, 12.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.340' }} />
-        <mesh name="tile-low341" geometry={nodes['tile-low341'].geometry} material={materials['colormap.025']} position={[-1.5, 0, 12.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.341' }} />
-        <mesh name="tile-low348" geometry={nodes['tile-low348'].geometry} material={materials['colormap.025']} position={[5.5, 0, 13.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.348' }} />
-        <mesh name="tile-low354" geometry={nodes['tile-low354'].geometry} material={materials['colormap.025']} position={[-14.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.354' }} />
-        <mesh name="tile-low355" geometry={nodes['tile-low355'].geometry} material={materials['colormap.025']} position={[-14.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.355' }} />
-        <mesh name="tile-low356" geometry={nodes['tile-low356'].geometry} material={materials['colormap.025']} position={[-14.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.356' }} />
-        <mesh name="tile-low357" geometry={nodes['tile-low357'].geometry} material={materials['colormap.025']} position={[-13.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.357' }} />
-        <mesh name="tile-low358" geometry={nodes['tile-low358'].geometry} material={materials['colormap.025']} position={[-14.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.358' }} />
-        <mesh name="tile-low359" geometry={nodes['tile-low359'].geometry} material={materials['colormap.025']} position={[-12.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.359' }} />
-        <mesh name="tile-low360" geometry={nodes['tile-low360'].geometry} material={materials['colormap.025']} position={[-13.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.360' }} />
-        <mesh name="tile-low361" geometry={nodes['tile-low361'].geometry} material={materials['colormap.025']} position={[-12.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.361' }} />
-        <mesh name="tile-low362" geometry={nodes['tile-low362'].geometry} material={materials['colormap.025']} position={[-15.5, 0, 5.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.362' }} />
-        <mesh name="tile-low363" geometry={nodes['tile-low363'].geometry} material={materials['colormap.025']} position={[-15.5, 0, 4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.363' }} />
-        <mesh name="tile-low364" geometry={nodes['tile-low364'].geometry} material={materials['colormap.025']} position={[-14.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.364' }} />
-        <mesh name="tile-low365" geometry={nodes['tile-low365'].geometry} material={materials['colormap.025']} position={[-15.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.365' }} />
-        <mesh name="tile-low366" geometry={nodes['tile-low366'].geometry} material={materials['colormap.025']} position={[-13.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.366' }} />
-        <mesh name="tile-low367" geometry={nodes['tile-low367'].geometry} material={materials['colormap.025']} position={[-14.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.367' }} />
-        <mesh name="tile-low368" geometry={nodes['tile-low368'].geometry} material={materials['colormap.025']} position={[-12.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.368' }} />
-        <mesh name="tile-low369" geometry={nodes['tile-low369'].geometry} material={materials['colormap.025']} position={[-13.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.369' }} />
-        <mesh name="tile-low370" geometry={nodes['tile-low370'].geometry} material={materials['colormap.025']} position={[-14.5, 0, 1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.370' }} />
-        <mesh name="tile-low371" geometry={nodes['tile-low371'].geometry} material={materials['colormap.025']} position={[-11.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.371' }} />
-        <mesh name="tile-low372" geometry={nodes['tile-low372'].geometry} material={materials['colormap.025']} position={[-12.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.372' }} />
-        <mesh name="tile-low373" geometry={nodes['tile-low373'].geometry} material={materials['colormap.025']} position={[-13.5, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.373' }} />
-        <mesh name="tile-low374" geometry={nodes['tile-low374'].geometry} material={materials['colormap.025']} position={[-11.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.374' }} />
-        <mesh name="tile-low375" geometry={nodes['tile-low375'].geometry} material={materials['colormap.025']} position={[-12.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.375' }} />
-        <mesh name="tile-low376" geometry={nodes['tile-low376'].geometry} material={materials['colormap.025']} position={[-13.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.376' }} />
-        <mesh name="tile-low377" geometry={nodes['tile-low377'].geometry} material={materials['colormap.025']} position={[-11.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.377' }} />
-        <mesh name="tile-low378" geometry={nodes['tile-low378'].geometry} material={materials['colormap.025']} position={[-12.5, 0, -1.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.378' }} />
-        <mesh name="tile-low379" geometry={nodes['tile-low379'].geometry} material={materials['colormap.025']} position={[-15.5, 0, 6.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.379' }} />
-        <mesh name="tile-low380" geometry={nodes['tile-low380'].geometry} material={materials['colormap.025']} position={[-15.5, 0, 2.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.380' }} />
-        <mesh name="tile-low381" geometry={nodes['tile-low381'].geometry} material={materials['colormap.039']} position={[-7.5, 0, 12.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.381' }} />
-        <mesh name="tile-low382" geometry={nodes['tile-low382'].geometry} material={materials['colormap.039']} position={[-6.5, 0, 12.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.382' }} />
-        <mesh name="tile-low383" geometry={nodes['tile-low383'].geometry} material={materials['colormap.039']} position={[-5.5, 0, 12.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.383' }} />
-        <mesh name="tile-low384" geometry={nodes['tile-low384'].geometry} material={materials['colormap.039']} position={[-4.5, 0, 12.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.384' }} />
-        <mesh name="tile-low385" geometry={nodes['tile-low385'].geometry} material={materials['colormap.039']} position={[-3.5, 0, 12.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.385' }} />
-        <mesh name="tile-low386" geometry={nodes['tile-low386'].geometry} material={materials['colormap.025']} position={[-2.5, 0, 12.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.386' }} />
-        <mesh name="tile-low387" geometry={nodes['tile-low387'].geometry} material={materials['colormap.025']} position={[-2.5, 0, 13.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.387' }} />
-        <mesh name="tile-low388" geometry={nodes['tile-low388'].geometry} material={materials['colormap.025']} position={[-1.5, 0, 13.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.388' }} />
-        <mesh name="tile-low389" geometry={nodes['tile-low389'].geometry} material={materials['colormap.039']} position={[-7.5, 0, 13.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.389' }} />
-        <mesh name="tile-low390" geometry={nodes['tile-low390'].geometry} material={materials['colormap.039']} position={[-6.5, 0, 13.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.390' }} />
-        <mesh name="tile-low391" geometry={nodes['tile-low391'].geometry} material={materials['colormap.039']} position={[-5.5, 0, 13.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.391' }} />
-        <mesh name="tile-low392" geometry={nodes['tile-low392'].geometry} material={materials['colormap.039']} position={[-4.5, 0, 13.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.392' }} />
-        <mesh name="tile-low393" geometry={nodes['tile-low393'].geometry} material={materials['colormap.039']} position={[-3.5, 0, 13.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.393' }} />
-        <mesh name="tile-low395" geometry={nodes['tile-low395'].geometry} material={materials['colormap.025']} position={[-2.5, 0, 14.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.395' }} />
-        <mesh name="tile-low396" geometry={nodes['tile-low396'].geometry} material={materials['colormap.025']} position={[-1.5, 0, 14.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.396' }} />
-        <mesh name="tile-low397" geometry={nodes['tile-low397'].geometry} material={materials['colormap.039']} position={[-6.5, 0, 14.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.397' }} />
-        <mesh name="tile-low398" geometry={nodes['tile-low398'].geometry} material={materials['colormap.039']} position={[-5.5, 0, 14.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.398' }} />
-        <mesh name="tile-low399" geometry={nodes['tile-low399'].geometry} material={materials['colormap.039']} position={[-4.5, 0, 14.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.399' }} />
-        <mesh name="tile-low400" geometry={nodes['tile-low400'].geometry} material={materials['colormap.039']} position={[-3.5, 0, 14.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.400' }} />
-        <mesh name="tile-low404" geometry={nodes['tile-low404'].geometry} material={materials.farm} position={[3.5, 0, 15.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.404' }} />
-        <mesh name="tile-low406" geometry={nodes['tile-low406'].geometry} material={materials['colormap.025']} position={[-2.5, 0, 15.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.406' }} />
-        <mesh name="tile-low407" geometry={nodes['tile-low407'].geometry} material={materials['colormap.025']} position={[-1.5, 0, 15.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.407' }} />
-        <mesh name="tile-low408" geometry={nodes['tile-low408'].geometry} material={materials['colormap.039']} position={[-5.5, 0, 15.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.408' }} />
-        <mesh name="tile-low409" geometry={nodes['tile-low409'].geometry} material={materials['colormap.039']} position={[-4.5, 0, 15.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.409' }} />
-        <mesh name="tile-low410" geometry={nodes['tile-low410'].geometry} material={materials['colormap.039']} position={[-3.5, 0, 15.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.410' }} />
-        <mesh name="tile-low342" geometry={nodes['tile-low342'].geometry} material={materials.farm} position={[4.5, 0, 13.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.342' }} />
-        <mesh name="tile-low343" geometry={nodes['tile-low343'].geometry} material={materials.farm} position={[3.5, 0, 13.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.343' }} />
-        <mesh name="tile-low344" geometry={nodes['tile-low344'].geometry} material={materials.farm} position={[2.5, 0, 13.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.344' }} />
-        <mesh name="tile-low345" geometry={nodes['tile-low345'].geometry} material={materials.farm} position={[1.5, 0, 13.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.345' }} />
-        <mesh name="tile-low346" geometry={nodes['tile-low346'].geometry} material={materials.farm} position={[0.5, 0, 13.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.346' }} />
-        <mesh name="tile-low347" geometry={nodes['tile-low347'].geometry} material={materials.farm} position={[-0.5, 0, 13.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.347' }} />
-        <mesh name="tile-low349" geometry={nodes['tile-low349'].geometry} material={materials.farm} position={[4.5, 0, 14.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.349' }} />
-        <mesh name="tile-low350" geometry={nodes['tile-low350'].geometry} material={materials.farm} position={[3.5, 0, 14.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.350' }} />
-        <mesh name="tile-low351" geometry={nodes['tile-low351'].geometry} material={materials.farm} position={[2.5, 0, 14.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.351' }} />
-        <mesh name="tile-low352" geometry={nodes['tile-low352'].geometry} material={materials.farm} position={[1.5, 0, 14.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.352' }} />
-        <mesh name="tile-low353" geometry={nodes['tile-low353'].geometry} material={materials.farm} position={[0.5, 0, 14.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.353' }} />
-        <mesh name="tile-low394" geometry={nodes['tile-low394'].geometry} material={materials.farm} position={[-0.5, 0, 14.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.394' }} />
-        <mesh name="tile-low401" geometry={nodes['tile-low401'].geometry} material={materials.farm} position={[2.5, 0, 15.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.401' }} />
-        <mesh name="tile-low402" geometry={nodes['tile-low402'].geometry} material={materials.farm} position={[1.5, 0, 15.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.402' }} />
-        <mesh name="tile-low403" geometry={nodes['tile-low403'].geometry} material={materials.farm} position={[0.5, 0, 15.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.403' }} />
-        <mesh name="tile-low405" geometry={nodes['tile-low405'].geometry} material={materials.farm} position={[-0.5, 0, 15.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'tile-low.405' }} />
-        <mesh name="walls" geometry={nodes.walls.geometry} material={materials.metalDark} position={[-7.298, 0, 11]} scale={[1.302, 1, 1]} userData={{ name: 'walls' }} />
-        <mesh name="windows" geometry={nodes.windows.geometry} material={materials['Material.001']} position={[-6.061, 1.065, 10.123]} scale={0.065} userData={{ name: 'windows' }} />
-        <mesh name="back_wall" geometry={nodes.back_wall.geometry} material={materials.metalDark} position={[-8.535, 2.421, 10.123]} rotation={[0, 0, -Math.PI]} scale={0.065} userData={{ name: 'back_wall' }} />
-        <group name="chairDesk" position={[-7.07, 1, 11.027]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'chairDesk' }}>
-          <mesh name="chairDesk_1" geometry={nodes.chairDesk_1.geometry} material={materials.metalMedium} />
-          <mesh name="chairDesk_2" geometry={nodes.chairDesk_2.geometry} material={materials.carpet} />
-        </group>
-        <group name="desk" position={[-7.652, 1, 10.837]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'desk' }}>
-          <mesh name="desk_1" geometry={nodes.desk_1.geometry} material={materials.wood} />
-          <mesh name="desk_2" geometry={nodes.desk_2.geometry} material={materials.metal} />
-        </group>
-        <group name="kitchenCabinet" position={[-6.555, 1, 12.801]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'kitchenCabinet' }}>
-          <mesh name="kitchenCabinet_1" geometry={nodes.kitchenCabinet_1.geometry} material={materials['metal.004']} />
-          <mesh name="kitchenCabinet_2" geometry={nodes.kitchenCabinet_2.geometry} material={materials['wood.002']} />
-          <mesh name="kitchenCabinet_3" geometry={nodes.kitchenCabinet_3.geometry} material={materials.woodDark} />
-        </group>
-        <group name="kitchenCabinetUpper" position={[-6.296, 1.724, 12.779]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'kitchenCabinetUpper' }}>
-          <mesh name="kitchenCabinetUpper_1" geometry={nodes.kitchenCabinetUpper_1.geometry} material={materials['wood.007']} />
-          <mesh name="kitchenCabinetUpper_2" geometry={nodes.kitchenCabinetUpper_2.geometry} material={materials['woodDark.001']} />
-          <mesh name="kitchenCabinetUpper_3" geometry={nodes.kitchenCabinetUpper_3.geometry} material={materials['metal.007']} />
-        </group>
-        <group name="kitchenFridgeLarge" position={[-6.467, 1, 13.713]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'kitchenFridgeLarge' }}>
-          <mesh name="kitchenFridgeLarge_1" geometry={nodes.kitchenFridgeLarge_1.geometry} material={materials['metalLight.001']} />
-          <mesh name="kitchenFridgeLarge_2" geometry={nodes.kitchenFridgeLarge_2.geometry} material={materials['metalMedium.001']} />
-        </group>
-        <group name="kitchenStove" position={[-6.516, 1, 13.259]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'kitchenStove' }}>
-          <mesh name="kitchenStove_1" geometry={nodes.kitchenStove_1.geometry} material={materials['metal.005']} />
-          <mesh name="kitchenStove_2" geometry={nodes.kitchenStove_2.geometry} material={materials['wood.003']} />
-          <mesh name="kitchenStove_3" geometry={nodes.kitchenStove_3.geometry} material={materials['metalDark.001']} />
-          <mesh name="kitchenStove_4" geometry={nodes.kitchenStove_4.geometry} material={materials.carpetWhite} />
-          <mesh name="kitchenStove_5" geometry={nodes.kitchenStove_5.geometry} material={materials['glass.001']} />
-        </group>
-        <group name="tableCoffeeGlass" position={[-7.622, 1, 13.404]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'tableCoffeeGlass' }}>
-          <mesh name="tableCoffeeGlass_1" geometry={nodes.tableCoffeeGlass_1.geometry} material={materials['metal.006']} />
-          <mesh name="tableCoffeeGlass_2" geometry={nodes.tableCoffeeGlass_2.geometry} material={materials['glass.002']} />
-        </group>
-        <mesh name="coatRackStanding" geometry={nodes.coatRackStanding.geometry} material={materials['wood.009']} position={[-8.353, 1, 14.009]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'coatRackStanding' }} />
-        <group name="lampRoundFloor" position={[-6.28, 1, 11.44]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'lampRoundFloor' }}>
-          <mesh name="lampRoundFloor_1" geometry={nodes.lampRoundFloor_1.geometry} material={materials['metal.009']} />
-          <mesh name="lampRoundFloor_2" geometry={nodes.lampRoundFloor_2.geometry} material={materials.lamp} />
-        </group>
-        <group name="plantSmall3" position={[-7.517, 1.23, 13.118]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'plantSmall3' }}>
-          <mesh name="plantSmall3_1" geometry={nodes.plantSmall3_1.geometry} material={materials['wood.010']} />
-          <mesh name="plantSmall3_2" geometry={nodes.plantSmall3_2.geometry} material={materials.plant} />
-        </group>
-        <group name="pottedPlant" position={[-8.306, 1, 10.343]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'pottedPlant' }}>
-          <mesh name="pottedPlant_1" geometry={nodes.pottedPlant_1.geometry} material={materials['wood.011']} />
-          <mesh name="pottedPlant_2" geometry={nodes.pottedPlant_2.geometry} material={materials['woodDark.002']} />
-          <mesh name="pottedPlant_3" geometry={nodes.pottedPlant_3.geometry} material={materials['plant.001']} />
-        </group>
-        <group name="pottedPlant001" position={[-6.308, 1, 10.343]} rotation={[Math.PI / 2, 0, 1.253]} userData={{ name: 'pottedPlant.001' }}>
-          <mesh name="pottedPlant001_1" geometry={nodes.pottedPlant001_1.geometry} material={materials['wood.011']} />
-          <mesh name="pottedPlant001_2" geometry={nodes.pottedPlant001_2.geometry} material={materials['woodDark.002']} />
-          <mesh name="pottedPlant001_3" geometry={nodes.pottedPlant001_3.geometry} material={materials['plant.001']} />
-        </group>
-        <group name="kitchenCoffeeMachine" position={[-6.4, 1.42, 13.023]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'kitchenCoffeeMachine' }}>
-          <mesh name="kitchenCoffeeMachine_1" geometry={nodes.kitchenCoffeeMachine_1.geometry} material={materials['metalMedium.004']} />
-          <mesh name="kitchenCoffeeMachine_2" geometry={nodes.kitchenCoffeeMachine_2.geometry} material={materials['metal.010']} />
-          <mesh name="kitchenCoffeeMachine_3" geometry={nodes.kitchenCoffeeMachine_3.geometry} material={materials['carpetWhite.002']} />
-        </group>
-        <group name="rugRounded" position={[-7.978, 1, 12.523]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'rugRounded' }}>
-          <mesh name="rugRounded_1" geometry={nodes.rugRounded_1.geometry} material={materials.carpetDarker} />
-          <mesh name="rugRounded_2" geometry={nodes.rugRounded_2.geometry} material={materials['carpet.003']} />
-        </group>
-        <group name="Cube" position={[-6.692, 1.106, 10.546]} rotation={[0, -0.17, 0]} scale={0.106} userData={{ name: 'Cube' }}>
-          <mesh name="Cube001_1" geometry={nodes.Cube001_1.geometry} material={materials['Material.002']} />
-          <mesh name="Cube001_2" geometry={nodes.Cube001_2.geometry} material={materials['Material.004']} />
-        </group>
-        <mesh name="Cube001" geometry={nodes.Cube001.geometry} material={materials['Material.003']} position={[-6.665, 1.416, 10.605]} rotation={[0.295, -0.163, 0.049]} scale={[1, 0.127, 1]} userData={{ name: 'Cube.001' }} />
-        <group name="doorway" position={[-6.951, 0.972, 13.074]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'doorway' }}>
-          <mesh name="doorway_1" geometry={nodes.doorway_1.geometry} material={materials['wood.001']} />
-          <mesh name="doorway_2" geometry={nodes.doorway_2.geometry} material={materials['metal.002']} />
-        </group>
-        <group name="Cube002" position={[-7.196, 1.215, 13.113]} scale={[-0.081, -0.02, -0.014]} userData={{ name: 'Cube.002' }}>
-          <mesh name="Cube005" geometry={nodes.Cube005.geometry} material={materials['carpetWhite.002']} />
-          <mesh name="Cube005_1" geometry={nodes.Cube005_1.geometry} material={materials.carpetDarker} />
-        </group>
-        <group name="bedDouble" position={[-7.91, 1, 11.922]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'bedDouble' }}>
-          <mesh name="bedDouble_1" geometry={nodes.bedDouble_1.geometry} material={materials['carpetWhite.001']} />
-          <mesh name="bedDouble_2" geometry={nodes.bedDouble_2.geometry} material={materials['carpet.001']} />
-        </group>
-        <mesh name="loungeSofa" geometry={nodes.loungeSofa.geometry} material={materials['carpet.003']} position={[-8.055, 0.972, 13.611]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'loungeSofa' }} />
+        <mesh name="road-straight043" geometry={nodes['road-straight043'].geometry} material={materials['colormap.052']} position={[8.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.043' }} />
+        <mesh name="Plane" geometry={nodes.Plane.geometry} material={materials['Material.005']} position={[-0.018, -0.686, 1.689]} scale={[11.646, 13.148, 11.509]} userData={{ name: 'Plane' }} />
+        <mesh name="Plane001" geometry={nodes.Plane001.geometry} material={materials.Material} position={[-0.018, -0.686, 1.689]} scale={[11.646, 13.148, 11.509]} userData={{ name: 'Plane.001' }} />
       </group>
     </group>
   )

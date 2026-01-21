@@ -7,8 +7,12 @@ dependencies
 on load of the app add...
 
 1. Title Intro - like a modern game loading screen
-   1. fade in a placeholder svg centered dvh and w
+   1. transition in a placeholder svg centered dvh and w
+   2. transition out
 2. keep the screen black, have carousel of images with forward/backward buttons in bottom corners and close button in top left
+   1. images fit width and will be 1080x1080 like instagram
+   2. images will contain one base image
+      1. 1-3 'animated components' that will use a framer motion transition 
 
 lets discuss laying out our scenes and the animated element
 
@@ -17,36 +21,25 @@ lets discuss laying out our scenes and the animated element
 
 ## Panel 1: The Mistake
 
-Visual
 
-> door with sign above, 'Approvals' in a corporate office setting, simple
+corporate office
 
-A bored clerk at a mega-corporate desk rubber-stamps contracts. 
+--- 
 
-> contracts roll across on conveyor belt
-> stamp, stamp, stamp
-
-Wayne appears in window above, drops paper, it falls on the treadmill
-
-## Panel 2: The Mistake
-
-> head slids up in window, paper falls down, show paper landing on conveyor belt
-
-The name line clearly reads **WAYNE MO**. She stamps it anyway.
-
-> topdown over paper on conveyor belt, stamp appears, stamps slids out, 'approved'
-
-“Approved.”
-
-Dialog (clerk, deadpan)
-
-Small text on form
-
-“Fleet Control Access: FULL”
+door with sign above, 'Approvals' in a corporate office setting, simple
 
 ---
 
-## Panel 3: Wayne, the Guy
+A bored clerk at a mega-corporate desk rubber-stamps contracts. 
+contracts roll across on conveyor belt
+Wayne appears in window above, drops paper, it falls on the treadmill
+
+---
+
+paper is stamped
+
+
+## Panel 2: Wayne, the Guy
 
 Wayne Mo in a cramped apartment. Hoodie, coffee, mismatched socks. His laptop PINGS like a slot machine jackpot.
 
@@ -54,25 +47,28 @@ Wayne Mo in a cramped apartment. Hoodie, coffee, mismatched socks. His laptop PI
 > phone on bed
 > zoom
 
-Phone notification
-
-"You have been approved.
-
-Welcome, Fleet Administrator."
-
-notification number increases comically fast
+Phone notifications
 
 ---
 
-## Panel 4: Operators Guide
+## Panel 3: Operators Guide
 
-> Mail flies into the room through slot
+Mail  flies into Waynes hand the room through slot
+Present drops in background
 
-Operators manual
+---
 
-super short emoji / symbol guide to game
+giant hand and finger taps on tiny city intersections
 
-> operators manual slides down to reveal Wayne (smiling, a little scared).
+---
+
+delivery packages
+package -> taxi -> delivery
+
+---
+
+TURN LEFT
+GO STRA
 
 ---
 

@@ -6,6 +6,7 @@ import { useGameLoop } from '@/hooks/useGameLoop'
 import { GameHUD } from './GameHUD'
 import { TaxiControls } from './TaxiControls'
 import { getRoadNetwork } from '@/data/roads'
+import { addToCumulativeScore } from '@/lib/highScore'
 import type { Taxi } from '@/types/game'
 import buttonStyles from '@/styles/components/buttons.module.css'
 import positionStyles from '@/styles/utilities/positioning.module.css'
@@ -108,8 +109,13 @@ export default function SmallCityGame({ onExit }: SmallCityGameProps = {}) {
     console.log(`   Tax (75%): -$${taxAmount}`)
     console.log(`   Take Home: $${takeHomePay}`)
 
-    // TODO: Could save take-home pay to cumulative earnings here
-    // For now, just exit
+    // Add take-home pay to cumulative earnings (but NOT high score)
+    if (takeHomePay > 0) {
+      addToCumulativeScore(takeHomePay)
+      console.log(`✅ Added $${takeHomePay} to cumulative earnings`)
+    }
+
+    // Exit to main menu
     if (onExit) {
       onExit()
     }

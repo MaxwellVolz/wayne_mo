@@ -31,7 +31,7 @@ export default function CityModel() {
       // Hide mesh-based path node markers (make them invisible in game)
       if (object.name.startsWith('PathNode_')) {
         object.visible = false
-        console.log(`👻 Hiding path node marker: ${object.name}`)
+        // console.log(`👻 Hiding path node marker: ${object.name}`)
       }
     })
     console.log('All objects in scene:', allObjects)
@@ -43,14 +43,14 @@ export default function CityModel() {
       console.log(`✅ Extracted ${pathNodes.length} path nodes:`, pathNodes)
 
       // Log each node with details
-      pathNodes.forEach(node => {
-        console.log(`  - ${node.id}:`, {
-          position: node.position,
-          types: node.types,
-          next: node.next,
-          metadata: node.metadata
-        })
-      })
+      // pathNodes.forEach(node => {
+      //   console.log(`  - ${node.id}:`, {
+      //     position: node.position,
+      //     types: node.types,
+      //     next: node.next,
+      //     metadata: node.metadata
+      //   })
+      // })
 
       // Update global road network with extracted nodes
       const updatedNetwork = updateRoadNetwork(pathNodes)

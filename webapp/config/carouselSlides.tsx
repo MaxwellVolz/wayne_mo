@@ -1,3 +1,4 @@
+import { getAssetPath } from '@/lib/assetPath'
 import { ArrowRight, Target, Zap } from 'lucide-react'
 
 export interface AnimationConfig {
@@ -22,7 +23,7 @@ export interface SlideConfig {
 
 export const carouselSlides: SlideConfig[] = [
   {
-    imageSrc: '/tutorial_01.png',
+    imageSrc: getAssetPath('/tutorial_01.png'),
     alt: 'Camera controls tutorial',
     animations: [
       {
@@ -75,7 +76,7 @@ export const carouselSlides: SlideConfig[] = [
   },
 
   {
-    imageSrc: '/tutorial_02.png',
+    imageSrc: getAssetPath('/tutorial_02.png'),
     alt: 'Intersection routing tutorial',
     animations: [
       {
@@ -160,7 +161,7 @@ export const carouselSlides: SlideConfig[] = [
   },
 
   {
-    imageSrc: '/tutorial_03.png',
+    imageSrc: getAssetPath('/tutorial_03.png'),
     alt: 'Delivery mechanics tutorial',
     animations: [
       {

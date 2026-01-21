@@ -15,6 +15,7 @@ export type AnimationType =
   | 'bobble'         // Gentle bobbing motion
   | 'hover_bobble'   // Combination of hover + bobble
   | 'spin'           // Continuous rotation
+  | 'press'          // Press down animation on click
   | 'glb'            // Play GLB animation clip
 
 /**
@@ -53,6 +54,11 @@ export interface InteractableConfig {
     spinSpeed?: number                // Rotation speed in rad/s (default: 1)
     spinAxis?: 'x' | 'y' | 'z'        // Rotation axis (default: 'y')
 
+    // For 'press'
+    pressDepth?: number               // How far to push down (default: 0.05)
+    pressSpeed?: number               // Press animation speed (default: 0.2)
+    pressDuration?: number            // How long to stay pressed in ms (default: 150)
+
     // For 'glb'
     clipName?: string                 // Animation clip name to play
     playOnHover?: boolean             // Play animation on hover (default: false)
@@ -78,6 +84,9 @@ export const DEFAULT_ANIMATION_CONFIG = {
   bobbleFrequency: 3,
   spinSpeed: 1,
   spinAxis: 'y' as 'x' | 'y' | 'z',
+  pressDepth: 0.05,
+  pressSpeed: 0.2,
+  pressDuration: 150,
   loop: true,
   timeScale: 1,
   playOnHover: false,
@@ -91,6 +100,9 @@ export interface AnimationState {
   rotation: THREE.Euler
   animationMixer?: THREE.AnimationMixer
   currentAction?: THREE.AnimationAction
+  pressOffset?: number
+  pressTarget?: number
+  pressingTime?: number
 }
 
 /**
@@ -126,6 +138,10 @@ export function applyAnimation(
 
     case 'spin':
       applySpinAnimation(group, clock.elapsedTime, animConfig)
+      break
+
+    case 'press':
+      applyPressAnimation(group, animConfig, animationState)
       break
 
     case 'glb':
@@ -175,6 +191,50 @@ function applySpinAnimation(
   if (axis === 'x') group.rotation.x = time * config.spinSpeed
   if (axis === 'y') group.rotation.y = time * config.spinSpeed
   if (axis === 'z') group.rotation.z = time * config.spinSpeed
+}
+
+/**
+ * Press animation: push down and spring back
+ */
+function applyPressAnimation(
+  group: THREE.Group,
+  config: typeof DEFAULT_ANIMATION_CONFIG,
+  state: AnimationState
+): void {
+  // Initialize press state if needed
+  if (state.pressOffset === undefined) {
+    state.pressOffset = 0
+  }
+  if (state.pressTarget === undefined) {
+    state.pressTarget = 0
+  }
+
+  // Smoothly interpolate to target
+  const speed = config.pressSpeed
+  state.pressOffset += (state.pressTarget - state.pressOffset) * speed
+
+  // Apply offset
+  group.position.y = state.pressOffset
+}
+
+/**
+ * Trigger press animation
+ */
+export function triggerPress(
+  state: AnimationState,
+  config: typeof DEFAULT_ANIMATION_CONFIG
+): void {
+  if (state.pressOffset === undefined) {
+    state.pressOffset = 0
+  }
+
+  // Press down
+  state.pressTarget = -config.pressDepth
+
+  // Schedule release
+  setTimeout(() => {
+    state.pressTarget = 0
+  }, config.pressDuration)
 }
 
 /**

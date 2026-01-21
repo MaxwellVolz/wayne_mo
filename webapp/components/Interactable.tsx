@@ -15,6 +15,8 @@ import {
   applyAnimation,
   initializeGLBAnimation,
   updateGLBAnimation,
+  triggerPress,
+  DEFAULT_ANIMATION_CONFIG,
 } from '@/lib/interactableSystem'
 
 interface InteractableProps {
@@ -28,15 +30,20 @@ interface InteractableProps {
 export function InteractableModel({
   config,
   hovered,
+  animationStateRef,
 }: {
   config: InteractableConfig
   hovered: boolean
+  animationStateRef?: React.MutableRefObject<AnimationState>
 }) {
   const groupRef = useRef<THREE.Group>(null)
-  const animationState = useRef<AnimationState>({
+  const internalAnimationState = useRef<AnimationState>({
     baseHeight: 0,
     rotation: new THREE.Euler(0, 0, 0),
   })
+
+  // Use external ref if provided, otherwise use internal
+  const animationState = animationStateRef || internalAnimationState
 
   // Initialize GLB animations if needed
   useEffect(() => {
@@ -89,11 +96,13 @@ export function InteractionSphere({
   hovered,
   setHovered,
   isPointerDown,
+  animationStateRef,
 }: {
   config: InteractableConfig
   hovered: boolean
   setHovered: (value: boolean) => void
   isPointerDown: boolean
+  animationStateRef?: React.MutableRefObject<AnimationState>
 }) {
   // Cleanup cursor on unmount
   useEffect(() => {
@@ -118,6 +127,12 @@ export function InteractionSphere({
   }
 
   const handleClick = () => {
+    // Trigger press animation if this is a press-type interactable
+    if (config.animationType === 'press' && animationStateRef) {
+      const animConfig = { ...DEFAULT_ANIMATION_CONFIG, ...config.animationConfig }
+      triggerPress(animationStateRef.current, animConfig)
+    }
+
     config.onClick?.()
   }
 
@@ -164,15 +179,24 @@ export function InteractableLabel({ config }: { config: InteractableConfig }) {
  */
 export default function Interactable({ config, isPointerDown }: InteractableProps) {
   const [hovered, setHovered] = useState(false)
+  const animationStateRef = useRef<AnimationState>({
+    baseHeight: 0,
+    rotation: new THREE.Euler(0, 0, 0),
+  })
 
   return (
     <>
-      <InteractableModel config={config} hovered={hovered} />
+      <InteractableModel
+        config={config}
+        hovered={hovered}
+        animationStateRef={animationStateRef}
+      />
       <InteractionSphere
         config={config}
         hovered={hovered}
         setHovered={setHovered}
         isPointerDown={isPointerDown}
+        animationStateRef={animationStateRef}
       />
       <InteractableLabel config={config} />
     </>

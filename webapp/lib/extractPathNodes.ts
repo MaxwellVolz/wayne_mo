@@ -86,7 +86,7 @@ export function extractPathNodesFromGLTF(gltf: GLTF): RoadNode[] {
           west || null
         ]
 
-        console.log(`  📍 ${object.name} [TOPO-SPLIT] → N:${north || '-'}, E:${east || '-'}, S:${south || '-'}, W:${west || '-'}`)
+        // console.log(`  📍 ${object.name} [TOPO-SPLIT] → N:${north || '-'}, E:${east || '-'}, S:${south || '-'}, W:${west || '-'}`)
       }
       // FORMAT 2 (LEGACY): Single neighbors property
       else if (object.userData && object.userData.neighbors) {
@@ -100,7 +100,7 @@ export function extractPathNodesFromGLTF(gltf: GLTF): RoadNode[] {
               // Strip brackets and parse as comma-separated
               rawNeighbors = neighborsData.trim().slice(1, -1) // Remove [ and ]
               rawNeighbors = rawNeighbors.replace(/"/g, '').replace(/'/g, '')
-              console.log(`  📍 ${object.name} [JSON format] → parsing: "${rawNeighbors}"`)
+              // console.log(`  📍 ${object.name} [JSON format] → parsing: "${rawNeighbors}"`)
             } else {
               // Already comma-separated format: "NodeA,NodeB,,NodeC"
               rawNeighbors = neighborsData
@@ -118,7 +118,7 @@ export function extractPathNodesFromGLTF(gltf: GLTF): RoadNode[] {
               neighbors = [...neighbors, null, null, null, null].slice(0, 4)
             }
 
-            console.log(`  📍 ${object.name} [TOPO-STRING] → neighbors:`, neighbors)
+            // console.log(`  📍 ${object.name} [TOPO-STRING] → neighbors:`, neighbors)
           }
         } catch (e) {
           console.error(`❌ Failed to parse neighbors for ${object.name}:`, e)
@@ -145,9 +145,9 @@ export function extractPathNodesFromGLTF(gltf: GLTF): RoadNode[] {
         }
       }
 
-      if (!neighbors && !nextNodes) {
-        console.log(`  ⚠️ ${object.name} has NO neighbors or next_nodes property`)
-      }
+      // if (!neighbors && !nextNodes) {
+      //   console.log(`  ⚠️ ${object.name} has NO neighbors or next_nodes property`)
+      // }
 
       // Determine node types
       const types = parseNodeTypes(object.name)
@@ -158,7 +158,7 @@ export function extractPathNodesFromGLTF(gltf: GLTF): RoadNode[] {
         const connectionCount = neighbors.filter(n => n !== null).length
         if (connectionCount >= 2 && !types.includes('intersection')) {
           types.push('intersection')
-          console.log(`  🚦 ${object.name} detected as intersection (${connectionCount} neighbors)`)
+          // console.log(`  🚦 ${object.name} detected as intersection (${connectionCount} neighbors)`)
         }
       }
 

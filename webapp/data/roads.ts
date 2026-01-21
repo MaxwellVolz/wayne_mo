@@ -145,7 +145,9 @@ export function updateRoadNetwork(extractedNodes: RoadNode[]) {
     if (node.neighbors) {
       // Topological format: neighbors array [N, E, S, W]
       connections = node.neighbors.filter((n): n is string => n !== null)
-      console.log(`  ${node.id}: topological format, ${connections.length} neighbors`)
+
+      // Roads Debugging
+      // console.log(`  ${node.id}: topological format, ${connections.length} neighbors`)
     } else if (node.next) {
       // Legacy format: next array
       connections = node.next
@@ -179,7 +181,9 @@ export function updateRoadNetwork(extractedNodes: RoadNode[]) {
       })
 
       pathsAdded.add(pathId)
-      console.log(`  ✅ Created path: ${pathId}`)
+
+      // Roads Debugging
+      // console.log(`  ✅ Created path: ${pathId}`)
     })
   })
 
@@ -192,22 +196,23 @@ export function updateRoadNetwork(extractedNodes: RoadNode[]) {
   // Mark network as ready
   isRealNetworkLoaded = true
 
-  console.log(`✅ Road network updated: ${extractedNodes.length} nodes, ${generatedPaths.length} paths`)
+  // Roads Debugging
+  // console.log(`✅ Road network updated: ${extractedNodes.length} nodes, ${generatedPaths.length} paths`)
 
-  // Log the full network graph for debugging
-  console.log('📊 Network Graph:')
-  extractedNodes.forEach(node => {
-    if (node.neighbors) {
-      console.log(`  ${node.id} [TOPO] → N:${node.neighbors[0] || '-'}, E:${node.neighbors[1] || '-'}, S:${node.neighbors[2] || '-'}, W:${node.neighbors[3] || '-'}`)
-    } else if (node.next) {
-      console.log(`  ${node.id} [LEGACY] → [${node.next.join(', ')}]`)
-    }
-  })
+  // // Log the full network graph for debugging
+  // console.log('📊 Network Graph:')
+  // extractedNodes.forEach(node => {
+  //   if (node.neighbors) {
+  //     console.log(`  ${node.id} [TOPO] → N:${node.neighbors[0] || '-'}, E:${node.neighbors[1] || '-'}, S:${node.neighbors[2] || '-'}, W:${node.neighbors[3] || '-'}`)
+  //   } else if (node.next) {
+  //     console.log(`  ${node.id} [LEGACY] → [${node.next.join(', ')}]`)
+  //   }
+  // })
 
-  console.log('🛣️ Generated Paths:')
-  generatedPaths.forEach(path => {
-    console.log(`  ${path.id} (${path.length.toFixed(2)} units)`)
-  })
+  // console.log('🛣️ Generated Paths:')
+  // generatedPaths.forEach(path => {
+  //   console.log(`  ${path.id} (${path.length.toFixed(2)} units)`)
+  // })
 
   return activeRoadNetwork
 }

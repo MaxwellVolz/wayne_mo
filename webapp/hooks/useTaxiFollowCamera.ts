@@ -34,8 +34,8 @@ export function useTaxiFollowCamera({
   const targetPositionRef = useRef(new THREE.Vector3())
 
   // Atlas View (overview) - default camera position
-  const atlasTarget = useRef(new THREE.Vector3(0, 1, 5))
-  const atlasCameraPos = useRef(new THREE.Vector3(0, 20, 15))
+  const atlasTarget = useRef(new THREE.Vector3(-2, 1, 1))
+  const atlasCameraPos = useRef(new THREE.Vector3(-2, 25, 5))
 
   const initializedRef = useRef(false)
   const wasFollowingRef = useRef(false)
