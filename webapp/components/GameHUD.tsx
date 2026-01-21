@@ -35,6 +35,7 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
 
   // Use ref to avoid recreating interval on pause state change
   const isPausedRef = useRef(isPaused)
+  const gameOverCalledRef = useRef(false) // Prevent multiple onGameOver calls
 
   // Keep ref in sync with state
   useEffect(() => {
@@ -79,8 +80,9 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
               }, 3000)
             }
 
-            // Check if game over
-            if (remaining <= 0) {
+            // Check if game over (use ref to prevent multiple calls)
+            if (remaining <= 0 && !gameOverCalledRef.current) {
+              gameOverCalledRef.current = true
               onGameOver(total)
             }
 

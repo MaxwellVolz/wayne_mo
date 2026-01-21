@@ -13,6 +13,7 @@ import { DeliverySystem } from './DeliverySystem'
 import { CollisionSystem } from './CollisionSystem'
 import { TaxiManager } from './TaxiManager'
 import { CameraController } from './CameraController'
+import { SceneEffects } from './SceneEffects'
 import { Model as TheOGShop } from '@/generated_components/the_og_shop'
 
 
@@ -52,6 +53,9 @@ const Scene = React.memo(function Scene({
       shadows={false}
       frameloop="always"
     >
+      {/* Scene effects (fog and renderer config) */}
+      <SceneEffects />
+
       {/* Lighting */}
       <ambientLight intensity={0.6} />
       <directionalLight

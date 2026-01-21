@@ -17,10 +17,14 @@ import { getAssetPath } from '@/lib/assetPath'
 
 type GLTFResult = GLTF & {
   nodes: {
-    taxi: THREE.Mesh
+    Scene148: THREE.Mesh
+    Scene148_1: THREE.Mesh
+    Scene148_2: THREE.Mesh
   }
   materials: {
-    ['colormap.013']: THREE.MeshStandardMaterial
+    Synty_Palette_A: THREE.MeshStandardMaterial
+    Glass_01: THREE.MeshStandardMaterial
+    ['PolygonCity_01_A.006']: THREE.MeshStandardMaterial
   }
 }
 
@@ -29,8 +33,10 @@ export function Model(props: React.ComponentProps<'group'>) {
   const { nodes, materials } = useGLTF(getAssetPath('models/taxi.glb')) as unknown as GLTFResult
   return (
     <group {...props} dispose={null}>
-      <group name="Scene">
-        <mesh name="taxi" geometry={nodes.taxi.geometry} material={materials['colormap.013']} rotation={[Math.PI / 2, 0, 0]} scale={0.297} userData={{ name: 'taxi' }} />
+      <group name="taxi_cab">
+        <mesh name="Scene148" geometry={nodes.Scene148.geometry} material={materials.Synty_Palette_A} />
+        <mesh name="Scene148_1" geometry={nodes.Scene148_1.geometry} material={materials.Glass_01} />
+        <mesh name="Scene148_2" geometry={nodes.Scene148_2.geometry} material={materials['PolygonCity_01_A.006']} />
       </group>
     </group>
   )
@@ -46,6 +52,8 @@ interface TaxiProps {
 export default function Taxi({ taxi, isPaused, deliveryColor }: TaxiProps) {
   const groupRef = useRef<THREE.Group>(null)
   const meshRef = useRef<THREE.Mesh>(null)
+  const glassMeshRef = useRef<THREE.Mesh>(null)
+  const detailMeshRef = useRef<THREE.Mesh>(null)
   const previousPosition = useRef<THREE.Vector3>(new THREE.Vector3())
   const spawnTime = useRef<number>(Date.now())
   const { nodes, materials } = useGLTF(getAssetPath('models/taxi.glb')) as unknown as GLTFResult
@@ -67,10 +75,15 @@ export default function Taxi({ taxi, isPaused, deliveryColor }: TaxiProps) {
     const FADE_DURATION = 0.5
     const opacity = Math.min(elapsedTime / FADE_DURATION, 1)
 
-    // Update material opacity directly
-    if (meshRef.current && meshRef.current.material instanceof THREE.Material) {
-      (meshRef.current.material as THREE.MeshStandardMaterial).opacity = opacity
+    // Update material opacity for all meshes
+    const updateMeshOpacity = (mesh: THREE.Mesh | null) => {
+      if (mesh?.material instanceof THREE.Material) {
+        (mesh.material as THREE.MeshStandardMaterial).opacity = opacity
+      }
     }
+    updateMeshOpacity(meshRef.current)
+    updateMeshOpacity(glassMeshRef.current)
+    updateMeshOpacity(detailMeshRef.current)
 
     // Don't update movement when paused
     if (isPaused) return
@@ -118,44 +131,51 @@ export default function Taxi({ taxi, isPaused, deliveryColor }: TaxiProps) {
 
   return (
     <group ref={groupRef} position={initialPosition}>
-      <mesh
-        ref={meshRef}
-        geometry={nodes.taxi.geometry}
-        material={materials['colormap.013']}
-        rotation={[Math.PI / 2, 0, 0]}
-        scale={0.297}
-        castShadow
-        renderOrder={10}
-      >
-        {/* Clone material and add emissive for state indication + fade-in */}
-        <meshStandardMaterial
-          {...materials['colormap.013']}
-          emissive={getEmissiveColor()}
-          emissiveIntensity={0.5}
-          transparent={true}
-          opacity={0}
-        />
-      </mesh>
+      <group name="taxi_cab">
+        {/* Main body mesh */}
+        <mesh
+          ref={meshRef}
+          geometry={nodes.Scene148.geometry}
+          castShadow
+          renderOrder={10}
+        >
+          <meshStandardMaterial
+            {...materials.Synty_Palette_A}
+            emissive={getEmissiveColor()}
+            emissiveIntensity={0.5}
+            transparent={true}
+            opacity={0}
+          />
+        </mesh>
+        {/* Glass mesh */}
+        <mesh ref={glassMeshRef} geometry={nodes.Scene148_1.geometry}>
+          <meshStandardMaterial
+            {...materials.Glass_01}
+            transparent={true}
+            opacity={0}
+          />
+        </mesh>
+        {/* Additional details mesh */}
+        <mesh ref={detailMeshRef} geometry={nodes.Scene148_2.geometry}>
+          <meshStandardMaterial
+            {...materials['PolygonCity_01_A.006']}
+            emissive={getEmissiveColor()}
+            emissiveIntensity={0.5}
+            transparent={true}
+            opacity={0}
+          />
+        </mesh>
+      </group>
 
       {/* Colored rectangle underglow when carrying a package */}
       {taxi.hasPackage && deliveryColor && (
-        <>
-          {/* <mesh position={[0, 0.05, 0]}>
-            <boxGeometry args={[0.5, 0.05, 0.9]} />
-            <meshBasicMaterial
-              color={deliveryColor}
-              transparent
-              opacity={0.8}
-            />
-          </mesh> */}
-          <pointLight
-            position={[0, .3, 0]}
-            color={deliveryColor}
-            intensity={3}
-            distance={1}
-            decay={3}
-          />
-        </>
+        <pointLight
+          position={[0, 0.3, 0]}
+          color={deliveryColor}
+          intensity={3}
+          distance={1}
+          decay={3}
+        />
       )}
     </group>
   )

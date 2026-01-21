@@ -13,6 +13,7 @@ import { DeliverySystem } from './DeliverySystem'
 import { CollisionSystem } from './CollisionSystem'
 import { TaxiManager } from './TaxiManager'
 import { CameraController } from './CameraController'
+import { SceneEffects } from './SceneEffects'
 
 interface SmallCitySceneCanvasProps {
   taxisRef: MutableRefObject<TaxiType[]>
@@ -49,6 +50,9 @@ const SmallCitySceneCanvas = React.memo(function SmallCitySceneCanvas({
       shadows={false}
       frameloop="always"
     >
+      {/* Scene effects (fog and renderer config) */}
+      <SceneEffects fogDensity={0.025} />
+
       {/* Lighting */}
       <ambientLight intensity={0.6} />
       <directionalLight

@@ -10,6 +10,7 @@ import { TaxiManager } from './TaxiManager'
 import { CameraController } from './CameraController'
 import { DeliverySystem } from './DeliverySystem'
 import { DeliveryManager } from './DeliveryManager'
+import { SceneEffects } from './SceneEffects'
 import { extractPathNodesFromGLTF } from '@/lib/extractPathNodes'
 import { updateRoadNetwork } from '@/data/roads'
 import { getAssetPath } from '@/lib/assetPath'
@@ -43,6 +44,9 @@ export default function TutorialGameScene({
       shadows={false}
       frameloop="always"
     >
+      {/* Scene effects (fog and renderer config) */}
+      <SceneEffects />
+
       {/* Lighting */}
       <ambientLight intensity={0.6} />
       <directionalLight

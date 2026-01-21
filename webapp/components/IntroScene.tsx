@@ -1,12 +1,13 @@
 'use client'
 
 import { useState, useEffect, useRef, useMemo } from 'react'
-import { Canvas, useThree, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Text } from '@react-three/drei'
 import { Book } from 'lucide-react'
 import { getHighScore, getCumulativeScore } from '@/lib/highScore'
 import CityModel from './CityModel'
 import InteractableManager from './InteractableManager'
+import { SceneEffects } from './SceneEffects'
 import { createIntroInteractables } from '@/config/introInteractables'
 import buttonStyles from '@/styles/components/buttons.module.css'
 import positionStyles from '@/styles/utilities/positioning.module.css'
@@ -120,66 +121,70 @@ function IntroText({ highScore, cumulativeScore }: { highScore: number; cumulati
         One Man. One Mission. Optimization.
       </Text>
 
-      {/* High Score */}
-      {highScore > 0 && (
-        <>
-          <Text
-            position={[0, -0.1, 0]}
-            fontSize={0.12}
-            color="#00ff00"
-            anchorX="center"
-            anchorY="middle"
-            outlineWidth={0.008}
-            outlineColor="#000000"
-          >
-            Score To Beat
-          </Text>
-          <Text
-            position={[0, -0.3, 0]}
-            fontSize={0.25}
-            color="#ffff00"
-            anchorX="center"
-            anchorY="middle"
-            outlineWidth={0.01}
-            outlineColor="#000000"
-          >
-            ${highScore}
-          </Text>
-        </>
-      )}
+      <group position={[1.1, .3, 1.95]} rotation={[0, -Math.PI * .5, 0]}>
 
-      {/* Cumulative Score */}
-      {cumulativeScore > 0 && (
-        <>
-          <Text
-            position={[0, highScore > 0 ? -0.5 : -0.1, 0]}
-            fontSize={0.08}
-            color="#ff6b00"
-            anchorX="center"
-            anchorY="middle"
-            outlineWidth={0.006}
-            outlineColor="#000000"
-          >
-            Career Earnings
-          </Text>
-          <Text
-            position={[0, highScore > 0 ? -0.65 : -0.25, 0]}
-            fontSize={0.15}
-            color="#ffff00"
-            anchorX="center"
-            anchorY="middle"
-            outlineWidth={0.008}
-            outlineColor="#000000"
-          >
-            ${cumulativeScore}
-          </Text>
-        </>
-      )}
+
+        {/* High Score */}
+        {highScore > 0 && (
+          <>
+            <Text
+              position={[0, 0, 0]}
+              fontSize={0.12}
+              color="#00ff00"
+              anchorX="center"
+              anchorY="middle"
+              outlineWidth={0.008}
+              outlineColor="#000000"
+            >
+              Score To Beat
+            </Text>
+            <Text
+              position={[0, -0.2, 0]}
+              fontSize={0.25}
+              color="#ffff00"
+              anchorX="center"
+              anchorY="middle"
+              outlineWidth={0.01}
+              outlineColor="#000000"
+            >
+              ${highScore}
+            </Text>
+          </>
+        )}
+
+        {/* Cumulative Score */}
+        {cumulativeScore > 0 && (
+          <>
+            <Text
+              position={[0, -.5, 0]}
+              fontSize={0.12}
+              color="#ff6b00"
+              anchorX="center"
+              anchorY="middle"
+              outlineWidth={0.008}
+              outlineColor="#000000"
+            >
+              Career Earnings
+            </Text>
+            <Text
+              position={[0, -.7, 0]}
+              fontSize={0.25}
+              color="#ffff00"
+              anchorX="center"
+              anchorY="middle"
+              outlineWidth={0.01}
+              outlineColor="#000000"
+            >
+              ${cumulativeScore}
+            </Text>
+          </>
+        )}
+      </group>
 
       {/* Tutorial instruction (pizza) */}
       <Text
-        position={[-.4, -.15, .6]}
-        rotation={[0, Math.PI * 0.3, 0]}
+        position={[-.2, -.2, .65]}
+        rotation={[0, Math.PI * 0.2, 0]}
         fontSize={0.04}
         lineHeight={1.1}
         color="#ff6b00"
@@ -189,15 +194,12 @@ function IntroText({ highScore, cumulativeScore }: { highScore: number; cumulati
         outlineColor="#000000"
       >
         {`
-How
-  To
-   Play
- Pizza`}
+Endless Mode`}
       </Text>
 
       {/* Play instruction (headset) */}
       <Text
-        position={[.15, -.15, .7]}
+        position={[.12, -.2, .65]}
         rotation={[0, -Math.PI * 0.1, 0]}
         fontSize={0.04}
         lineHeight={1.1}
@@ -207,7 +209,21 @@ How
         outlineWidth={0.005}
         outlineColor="#000000"
       >
-        ← Play
+        Play
+      </Text>
+
+      <Text
+        position={[.55, -.15, .60]}
+        rotation={[0, -Math.PI * 0.2, 0]}
+        fontSize={0.04}
+        lineHeight={1.1}
+        color="#ff6b00"
+        anchorX="center"
+        anchorY="middle"
+        outlineWidth={0.005}
+        outlineColor="#000000"
+      >
+        Tutorial
       </Text>
     </group>
   )
@@ -247,12 +263,16 @@ export default function IntroScene({ onPlay, onTutorial, onSmallCity, onOpenCaro
       {/* 3D Canvas */}
       <Canvas
         camera={{
-          position: [-7.2, 1.9, 11.2],
+          position: [-7.2, 1.9, 11.2], // desk location
+          // position: [-7.3, 1.9, 12],
           fov: 120,
         }}
         shadows={false}
         frameloop="always"
       >
+        {/* Scene effects (fog and renderer config) */}
+        <SceneEffects />
+
         {/* Camera - look around only - drag to rotate view */}
         <LookAroundControls setIsPointerDown={setIsPointerDown} />
 

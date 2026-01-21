@@ -42,6 +42,7 @@ export default function Game({ onExit }: GameProps = {}) {
   const [gameOver, setGameOver] = useState(false)
   const [finalScore, setFinalScore] = useState(0)
   const [gameKey, setGameKey] = useState(0) // Used to force remount on restart
+  const gameOverCalledRef = useRef(false) // Prevent multiple onGameOver calls
   const [isPaused, setIsPaused] = useState(true) // Start paused
   const [debugMode, setDebugMode] = useState(false)
   const [isRushHour, setIsRushHour] = useState(false)
@@ -53,7 +54,9 @@ export default function Game({ onExit }: GameProps = {}) {
   const { taxisRef, deliveriesRef, pickupNodesRef, deliveryTimerRef, initialSpawnDoneRef } = useGameLoop()
 
   const handleGameOver = (score: number) => {
-    if (!gameOver) { // Prevent multiple calls
+    // Use ref to prevent multiple calls (state check has stale closure issues)
+    if (!gameOverCalledRef.current) {
+      gameOverCalledRef.current = true
       setFinalScore(score)
       setGameOver(true)
     }
@@ -92,6 +95,7 @@ export default function Game({ onExit }: GameProps = {}) {
 
     setGameOver(false)
     setFinalScore(0)
+    gameOverCalledRef.current = false // Reset for new game
     setIsRushHour(false)
     setIsPaused(true) // Start paused after restart
     setSelectedTaxiId('taxi-1') // Follow first taxi after restart
