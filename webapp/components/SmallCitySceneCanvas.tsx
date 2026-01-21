@@ -68,7 +68,7 @@ const SmallCitySceneCanvas = React.memo(function SmallCitySceneCanvas({
         enableRotate={true}
         maxPolarAngle={Math.PI / 2.2}
         minDistance={3}
-        maxDistance={30}
+        maxDistance={40}
         panSpeed={0.8}
         makeDefault
       />

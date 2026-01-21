@@ -62,7 +62,7 @@ export default function TutorialGameScene({
         enableRotate={true}
         maxPolarAngle={Math.PI / 2.2}
         minDistance={3}
-        maxDistance={15}
+        maxDistance={20}
         panSpeed={0.8}
         makeDefault
       />

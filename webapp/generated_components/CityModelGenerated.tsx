@@ -47,41 +47,22 @@ type GLTFResult = GLTF & {
     Scene163_1: THREE.Mesh
     Scene163_2: THREE.Mesh
     Scene163_3: THREE.Mesh
-    SM_Veh_Car_Police_01: THREE.Mesh
-    SM_Veh_Car_Police_Glass: THREE.Mesh
-    SM_Veh_Car_Police_Plates: THREE.Mesh
-    SM_Veh_Car_Police_SteeringW: THREE.Mesh
-    SM_Veh_Car_Police_Wheel_fl: THREE.Mesh
-    SM_Veh_Car_Police_Wheel_fr: THREE.Mesh
-    SM_Veh_Car_Police_Wheel_rl: THREE.Mesh
-    SM_Veh_Car_Police_Wheel_rr: THREE.Mesh
-    SM_Veh_Steering_Wheel_09: THREE.Mesh
-    SM_Veh_Car_Police_01001: THREE.Mesh
-    SM_Veh_Car_Police_01002: THREE.Mesh
-    SM_Veh_Car_Taxi_01: THREE.Mesh
-    SM_Veh_Car_Taxi_Glass: THREE.Mesh
-    SM_Veh_Car_Taxi_Plates: THREE.Mesh
-    SM_Veh_Car_Taxi_SteeringW: THREE.Mesh
-    SM_Veh_Car_Taxi_Wheel_fl: THREE.Mesh
-    SM_Veh_Car_Taxi_Wheel_fr: THREE.Mesh
-    SM_Veh_Car_Taxi_Wheel_rl: THREE.Mesh
-    SM_Veh_Car_Taxi_Wheel_rr: THREE.Mesh
-    SM_Veh_Car_Taxi_01001: THREE.Mesh
-    SM_Veh_Car_Taxi_Glass001: THREE.Mesh
-    SM_Veh_Car_Taxi_Plates001: THREE.Mesh
-    SM_Veh_Car_Taxi_SteeringW001: THREE.Mesh
-    SM_Veh_Car_Taxi_Wheel_fl001: THREE.Mesh
-    SM_Veh_Car_Taxi_Wheel_fr001: THREE.Mesh
-    SM_Veh_Car_Taxi_Wheel_rl001: THREE.Mesh
-    SM_Veh_Car_Taxi_Wheel_rr001: THREE.Mesh
-    SM_Veh_Car_Taxi_01002: THREE.Mesh
-    SM_Veh_Car_Taxi_Glass002: THREE.Mesh
-    SM_Veh_Car_Taxi_Plates002: THREE.Mesh
-    SM_Veh_Car_Taxi_SteeringW002: THREE.Mesh
-    SM_Veh_Car_Taxi_Wheel_fl002: THREE.Mesh
-    SM_Veh_Car_Taxi_Wheel_fr002: THREE.Mesh
-    SM_Veh_Car_Taxi_Wheel_rl002: THREE.Mesh
-    SM_Veh_Car_Taxi_Wheel_rr002: THREE.Mesh
+    SM_Env_Sidewalk_Gutter_10: THREE.Mesh
+    Scene137: THREE.Mesh
+    Scene137_1: THREE.Mesh
+    Scene048: THREE.Mesh
+    Scene048_1: THREE.Mesh
+    Scene048_2: THREE.Mesh
+    Scene134: THREE.Mesh
+    Scene134_1: THREE.Mesh
+    Scene134_2: THREE.Mesh
+    Scene148: THREE.Mesh
+    Scene148_1: THREE.Mesh
+    Scene148_2: THREE.Mesh
+    Scene372: THREE.Mesh
+    Scene372_1: THREE.Mesh
+    Scene373: THREE.Mesh
+    Scene373_1: THREE.Mesh
     SM_Env_Sidewalk_Dip_Corner_36: THREE.Mesh
     SM_Env_Sidewalk_Dip_Corner_36001: THREE.Mesh
     SM_Env_Sidewalk_Dip_Corner_36002: THREE.Mesh
@@ -159,6 +140,14 @@ type GLTFResult = GLTF & {
     SM_Env_Sidewalk_349026: THREE.Mesh
     SM_Env_Sidewalk_349027: THREE.Mesh
     SM_Env_Sidewalk_349028: THREE.Mesh
+    SM_Env_Sidewalk_349029: THREE.Mesh
+    SM_Env_Sidewalk_349030: THREE.Mesh
+    SM_Env_Sidewalk_349031: THREE.Mesh
+    SM_Env_Sidewalk_349032: THREE.Mesh
+    SM_Env_Sidewalk_349033: THREE.Mesh
+    SM_Env_Sidewalk_349034: THREE.Mesh
+    SM_Env_Sidewalk_349035: THREE.Mesh
+    SM_Env_Sidewalk_349036: THREE.Mesh
     SM_Env_Sidewalk_Dip_Corner_36007: THREE.Mesh
     SM_Env_Sidewalk_Dip_Corner_36006: THREE.Mesh
     SM_Env_Sidewalk_Dip_Corner_36005: THREE.Mesh
@@ -205,7 +194,6 @@ type GLTFResult = GLTF & {
     SM_Env_Sidewalk_Dip_Corner_36015: THREE.Mesh
     SM_Env_Sidewalk_Straight_323032: THREE.Mesh
     SM_Env_Sidewalk_Straight_323033: THREE.Mesh
-    SM_Env_Sidewalk_Straight_323034: THREE.Mesh
     SM_Env_Sidewalk_Straight_323035: THREE.Mesh
     SM_Env_Sidewalk_Dip_Corner_36016: THREE.Mesh
     SM_Env_Sidewalk_Dip_Corner_36019: THREE.Mesh
@@ -213,11 +201,8 @@ type GLTFResult = GLTF & {
     SM_Env_Sidewalk_Straight_323039: THREE.Mesh
     SM_Env_Sidewalk_Straight_323041: THREE.Mesh
     SM_Env_Sidewalk_Straight_323045: THREE.Mesh
-    SM_Env_Sidewalk_Straight_323052: THREE.Mesh
     SM_Env_Sidewalk_Straight_323053: THREE.Mesh
     SM_Env_Sidewalk_Straight_323054: THREE.Mesh
-    SM_Env_Sidewalk_Straight_323055: THREE.Mesh
-    SM_Env_Sidewalk_Corner_11016: THREE.Mesh
     SM_Env_Sidewalk_Corner_11018: THREE.Mesh
     SM_Env_Sidewalk_Corner_11019: THREE.Mesh
     SM_Env_Sidewalk_Straight_323056: THREE.Mesh
@@ -251,137 +236,212 @@ type GLTFResult = GLTF & {
     SM_Env_Sidewalk_Straight_323077: THREE.Mesh
     SM_Env_Sidewalk_Straight_323078: THREE.Mesh
     SM_Env_Sidewalk_Straight_323074: THREE.Mesh
-    ['road-end']: THREE.Mesh
-    ['road-end001']: THREE.Mesh
-    ['road-end002']: THREE.Mesh
-    ['road-end003']: THREE.Mesh
-    ['road-end004']: THREE.Mesh
-    ['road-end005']: THREE.Mesh
-    ['road-end006']: THREE.Mesh
-    ['road-end007']: THREE.Mesh
-    ['road-straight']: THREE.Mesh
-    ['road-straight001']: THREE.Mesh
-    ['road-straight002']: THREE.Mesh
-    ['road-straight003']: THREE.Mesh
-    ['road-straight004']: THREE.Mesh
-    ['road-straight005']: THREE.Mesh
-    ['road-straight006']: THREE.Mesh
-    ['road-straight007']: THREE.Mesh
-    ['road-straight008']: THREE.Mesh
-    ['road-straight009']: THREE.Mesh
-    ['road-straight010']: THREE.Mesh
-    ['road-straight011']: THREE.Mesh
-    ['road-straight012']: THREE.Mesh
-    ['road-straight013']: THREE.Mesh
-    ['road-straight014']: THREE.Mesh
-    ['road-straight015']: THREE.Mesh
-    ['road-straight016']: THREE.Mesh
-    ['road-straight017']: THREE.Mesh
-    ['road-straight018']: THREE.Mesh
-    ['road-straight019']: THREE.Mesh
-    ['road-straight020']: THREE.Mesh
-    ['road-straight021']: THREE.Mesh
-    ['road-straight022']: THREE.Mesh
-    ['road-straight023']: THREE.Mesh
-    ['road-straight024']: THREE.Mesh
-    ['road-straight025']: THREE.Mesh
-    ['road-straight026']: THREE.Mesh
-    ['road-straight027']: THREE.Mesh
-    ['road-straight028']: THREE.Mesh
-    ['road-straight029']: THREE.Mesh
-    ['road-straight030']: THREE.Mesh
-    ['road-straight031']: THREE.Mesh
-    ['road-straight032']: THREE.Mesh
-    ['road-straight033']: THREE.Mesh
-    ['road-straight034']: THREE.Mesh
-    ['road-straight035']: THREE.Mesh
-    ['road-straight036']: THREE.Mesh
-    ['road-straight037']: THREE.Mesh
-    ['road-straight038']: THREE.Mesh
-    ['road-straight039']: THREE.Mesh
-    ['road-straight040']: THREE.Mesh
-    ['road-straight041']: THREE.Mesh
-    ['road-straight042']: THREE.Mesh
-    ['road-straight044']: THREE.Mesh
-    ['road-straight045']: THREE.Mesh
-    ['road-straight046']: THREE.Mesh
-    ['road-straight047']: THREE.Mesh
-    ['road-straight048']: THREE.Mesh
-    ['road-straight049']: THREE.Mesh
-    ['road-straight050']: THREE.Mesh
-    ['road-straight051']: THREE.Mesh
-    ['road-straight052']: THREE.Mesh
-    ['road-straight053']: THREE.Mesh
-    ['road-straight054']: THREE.Mesh
-    ['road-straight055']: THREE.Mesh
-    ['road-straight056']: THREE.Mesh
-    ['road-straight057']: THREE.Mesh
-    ['road-straight058']: THREE.Mesh
-    ['road-straight059']: THREE.Mesh
-    ['road-straight060']: THREE.Mesh
-    ['road-straight061']: THREE.Mesh
-    ['road-straight062']: THREE.Mesh
-    ['road-straight063']: THREE.Mesh
-    ['road-straight064']: THREE.Mesh
-    ['road-straight065']: THREE.Mesh
-    ['road-straight066']: THREE.Mesh
-    ['road-straight067']: THREE.Mesh
-    ['road-straight068']: THREE.Mesh
-    ['road-straight069']: THREE.Mesh
-    ['road-straight070']: THREE.Mesh
-    ['road-straight071']: THREE.Mesh
-    ['road-straight072']: THREE.Mesh
-    ['road-straight073']: THREE.Mesh
-    ['road-straight074']: THREE.Mesh
-    ['road-straight076']: THREE.Mesh
-    ['road-straight077']: THREE.Mesh
-    ['road-straight078']: THREE.Mesh
-    ['road-straight079']: THREE.Mesh
-    ['road-straight080']: THREE.Mesh
-    ['road-straight081']: THREE.Mesh
-    ['road-straight082']: THREE.Mesh
-    ['road-straight083']: THREE.Mesh
-    ['road-straight084']: THREE.Mesh
-    ['road-straight085']: THREE.Mesh
-    ['road-straight086']: THREE.Mesh
-    ['road-straight087']: THREE.Mesh
-    ['road-straight088']: THREE.Mesh
-    ['road-straight089']: THREE.Mesh
-    ['road-straight090']: THREE.Mesh
-    ['road-straight091']: THREE.Mesh
-    ['road-straight092']: THREE.Mesh
-    ['road-straight093']: THREE.Mesh
-    ['road-straight095']: THREE.Mesh
-    ['road-straight096']: THREE.Mesh
-    ['road-straight097']: THREE.Mesh
-    ['road-straight098']: THREE.Mesh
-    ['road-intersection']: THREE.Mesh
-    ['road-crossroad']: THREE.Mesh
-    ['road-crossroad001']: THREE.Mesh
-    ['road-crossroad002']: THREE.Mesh
-    ['road-crossroad003']: THREE.Mesh
-    ['road-crossroad004']: THREE.Mesh
-    ['road-crossroad005']: THREE.Mesh
-    ['road-straight099']: THREE.Mesh
-    ['road-crossroad-line']: THREE.Mesh
-    ['road-crossroad-line001']: THREE.Mesh
-    ['road-crossroad-line003']: THREE.Mesh
-    ['road-crossroad-line004']: THREE.Mesh
-    ['road-crossroad-line005']: THREE.Mesh
-    ['road-crossroad-line006']: THREE.Mesh
-    ['road-crossroad-line007']: THREE.Mesh
-    ['road-end008']: THREE.Mesh
-    ['road-straight075']: THREE.Mesh
-    ['road-straight094']: THREE.Mesh
-    ['road-bend-square']: THREE.Mesh
-    ['road-bend-square001']: THREE.Mesh
-    ['road-bend-square002']: THREE.Mesh
-    ['road-straight100']: THREE.Mesh
-    ['road-straight101']: THREE.Mesh
-    ['road-intersection001']: THREE.Mesh
-    ['road-straight043']: THREE.Mesh
-    Plane: THREE.Mesh
-    Plane001: THREE.Mesh
+    Cylinder: THREE.Mesh
+    grass: THREE.Mesh
+    Icosphere: THREE.Mesh
+    Icosphere001: THREE.Mesh
+    Icosphere002: THREE.Mesh
+    Icosphere003: THREE.Mesh
+    Icosphere004: THREE.Mesh
+    Icosphere005: THREE.Mesh
+    Icosphere006: THREE.Mesh
+    Icosphere007: THREE.Mesh
+    Icosphere008: THREE.Mesh
+    Icosphere009: THREE.Mesh
+    Icosphere010: THREE.Mesh
+    Icosphere011: THREE.Mesh
+    Icosphere012: THREE.Mesh
+    Icosphere013: THREE.Mesh
+    Icosphere014: THREE.Mesh
+    SM_Env_Road_Bare_99: THREE.Mesh
+    SM_Env_Road_Bare_99001: THREE.Mesh
+    SM_Env_Road_Bare_99002: THREE.Mesh
+    SM_Env_Road_Bare_99003: THREE.Mesh
+    SM_Env_Road_Bare_99004: THREE.Mesh
+    SM_Env_Road_Bare_99005: THREE.Mesh
+    SM_Env_Road_Bare_99006: THREE.Mesh
+    SM_Env_Road_Bare_99007: THREE.Mesh
+    SM_Env_Road_Bare_99008: THREE.Mesh
+    SM_Env_Road_Bare_99009: THREE.Mesh
+    SM_Env_Road_Bare_99010: THREE.Mesh
+    SM_Env_Road_Bare_99011: THREE.Mesh
+    SM_Env_Road_Bare_99012: THREE.Mesh
+    SM_Env_Road_Bare_99013: THREE.Mesh
+    SM_Env_Road_Bare_99014: THREE.Mesh
+    SM_Env_Road_Bare_99015: THREE.Mesh
+    SM_Env_Road_Bare_99016: THREE.Mesh
+    SM_Env_Road_Bare_99017: THREE.Mesh
+    SM_Env_Road_Bare_99018: THREE.Mesh
+    SM_Env_Road_Bare_99019: THREE.Mesh
+    SM_Env_Road_Bare_99020: THREE.Mesh
+    SM_Env_Road_Bare_99021: THREE.Mesh
+    SM_Env_Road_Bare_99022: THREE.Mesh
+    SM_Env_Road_Bare_99023: THREE.Mesh
+    SM_Env_Road_Bare_99024: THREE.Mesh
+    SM_Env_Road_Bare_99025: THREE.Mesh
+    SM_Env_Road_Bare_99026: THREE.Mesh
+    SM_Env_Road_Bare_99027: THREE.Mesh
+    SM_Env_Road_Bare_99028: THREE.Mesh
+    SM_Env_Road_Bare_99029: THREE.Mesh
+    SM_Env_Road_Bare_99030: THREE.Mesh
+    SM_Env_Road_Bare_99031: THREE.Mesh
+    SM_Env_Road_Bare_99032: THREE.Mesh
+    SM_Env_Road_Bare_99033: THREE.Mesh
+    SM_Env_Road_Bare_99034: THREE.Mesh
+    SM_Env_Road_Bare_99035: THREE.Mesh
+    SM_Env_Road_Bare_99036: THREE.Mesh
+    SM_Env_Road_Bare_99037: THREE.Mesh
+    SM_Env_Road_Bare_99038: THREE.Mesh
+    SM_Env_Road_Bare_99039: THREE.Mesh
+    SM_Env_Road_Bare_99040: THREE.Mesh
+    SM_Env_Road_Bare_99041: THREE.Mesh
+    SM_Env_Road_Bare_99042: THREE.Mesh
+    SM_Env_Road_Bare_99043: THREE.Mesh
+    SM_Env_Road_Bare_99044: THREE.Mesh
+    SM_Env_Road_Bare_99045: THREE.Mesh
+    SM_Env_Road_Bare_99046: THREE.Mesh
+    SM_Env_Road_Bare_99047: THREE.Mesh
+    SM_Env_Road_Bare_99048: THREE.Mesh
+    SM_Env_Road_Bare_99049: THREE.Mesh
+    SM_Env_Road_Bare_99050: THREE.Mesh
+    SM_Env_Road_Bare_99051: THREE.Mesh
+    SM_Env_Road_Bare_99052: THREE.Mesh
+    SM_Env_Road_Bare_99053: THREE.Mesh
+    SM_Env_Road_Bare_99054: THREE.Mesh
+    SM_Env_Road_Bare_99055: THREE.Mesh
+    SM_Env_Road_Bare_99056: THREE.Mesh
+    SM_Env_Road_Bare_99057: THREE.Mesh
+    SM_Env_Road_Bare_99058: THREE.Mesh
+    SM_Env_Road_Bare_99059: THREE.Mesh
+    SM_Env_Road_Bare_99060: THREE.Mesh
+    SM_Env_Road_Bare_99061: THREE.Mesh
+    SM_Env_Road_Bare_99062: THREE.Mesh
+    SM_Env_Road_Bare_99063: THREE.Mesh
+    SM_Env_Road_Bare_99064: THREE.Mesh
+    SM_Env_Road_Bare_99065: THREE.Mesh
+    SM_Env_Road_Bare_99066: THREE.Mesh
+    SM_Env_Road_Bare_99067: THREE.Mesh
+    SM_Env_Road_Bare_99068: THREE.Mesh
+    SM_Env_Road_Bare_99069: THREE.Mesh
+    SM_Env_Road_Bare_99070: THREE.Mesh
+    SM_Env_Road_Bare_99071: THREE.Mesh
+    SM_Env_Road_Bare_99072: THREE.Mesh
+    SM_Env_Road_Bare_99073: THREE.Mesh
+    SM_Env_Road_Bare_99074: THREE.Mesh
+    SM_Env_Road_Bare_99075: THREE.Mesh
+    SM_Env_Road_Bare_99076: THREE.Mesh
+    SM_Env_Road_Bare_99077: THREE.Mesh
+    SM_Env_Road_Bare_99078: THREE.Mesh
+    SM_Env_Road_Bare_99079: THREE.Mesh
+    SM_Env_Road_Bare_99080: THREE.Mesh
+    SM_Env_Road_Bare_99081: THREE.Mesh
+    SM_Env_Road_Bare_99082: THREE.Mesh
+    SM_Env_Road_Bare_99084: THREE.Mesh
+    SM_Env_Road_Bare_99085: THREE.Mesh
+    SM_Env_Road_Bare_99086: THREE.Mesh
+    SM_Env_Road_Bare_99087: THREE.Mesh
+    SM_Env_Road_Bare_99088: THREE.Mesh
+    SM_Env_Road_Bare_99089: THREE.Mesh
+    SM_Env_Road_Bare_99090: THREE.Mesh
+    SM_Env_Road_Bare_99091: THREE.Mesh
+    SM_Env_Road_Bare_99092: THREE.Mesh
+    SM_Env_Road_Bare_99093: THREE.Mesh
+    SM_Env_Road_Bare_99094: THREE.Mesh
+    SM_Env_Road_Bare_99095: THREE.Mesh
+    SM_Env_Road_Bare_99096: THREE.Mesh
+    SM_Env_Road_Bare_99097: THREE.Mesh
+    SM_Env_Road_Bare_99098: THREE.Mesh
+    SM_Env_Road_Bare_99099: THREE.Mesh
+    SM_Env_Road_Bare_99100: THREE.Mesh
+    SM_Env_Road_Bare_99101: THREE.Mesh
+    SM_Env_Road_Bare_99102: THREE.Mesh
+    SM_Env_Road_Bare_99103: THREE.Mesh
+    SM_Env_Road_Bare_99104: THREE.Mesh
+    SM_Env_Road_Bare_99105: THREE.Mesh
+    SM_Env_Road_Bare_99106: THREE.Mesh
+    SM_Env_Road_Bare_99107: THREE.Mesh
+    SM_Env_Road_Bare_99108: THREE.Mesh
+    SM_Env_Road_Bare_99109: THREE.Mesh
+    SM_Env_Road_Bare_99110: THREE.Mesh
+    SM_Env_Road_Bare_99111: THREE.Mesh
+    SM_Env_Road_Bare_99112: THREE.Mesh
+    SM_Env_Road_Bare_99113: THREE.Mesh
+    SM_Env_Road_Bare_99114: THREE.Mesh
+    SM_Env_Road_Bare_99115: THREE.Mesh
+    SM_Env_Road_Bare_99116: THREE.Mesh
+    SM_Env_Road_Bare_99117: THREE.Mesh
+    SM_Env_Road_Bare_99118: THREE.Mesh
+    SM_Env_Road_Bare_99119: THREE.Mesh
+    SM_Env_Road_Bare_99120: THREE.Mesh
+    SM_Env_Road_Bare_99121: THREE.Mesh
+    SM_Env_Road_Bare_99122: THREE.Mesh
+    SM_Env_Road_Bare_99083: THREE.Mesh
+    SM_Env_Road_Bare_99123: THREE.Mesh
+    SM_Env_Road_Bare_99124: THREE.Mesh
+    SM_Env_Road_Bare_99125: THREE.Mesh
+    SM_Env_Road_Bare_99126: THREE.Mesh
+    SM_Env_Road_Bare_99127: THREE.Mesh
+    SM_Env_Road_Bare_99128: THREE.Mesh
+    mailbox: THREE.Mesh
+    SM_Prop_SidewalkPoles_08: THREE.Mesh
+    trashcan: THREE.Mesh
+    SM_Prop_SidewalkPoles_08001: THREE.Mesh
+    SM_Prop_SidewalkPoles_08002: THREE.Mesh
+    SM_Prop_SidewalkPoles_08003: THREE.Mesh
+    SM_Prop_SidewalkPoles_08004: THREE.Mesh
+    trashcan001: THREE.Mesh
+    trashcan002: THREE.Mesh
+    trashcan003: THREE.Mesh
+    trashcan004: THREE.Mesh
+    trashcan005: THREE.Mesh
+    trashcan006: THREE.Mesh
+    trashcan007: THREE.Mesh
+    trashcan008: THREE.Mesh
+    mailbox001: THREE.Mesh
+    mailbox002: THREE.Mesh
+    SM_Prop_Manhole_29: THREE.Mesh
+    SM_Prop_Manhole_29001: THREE.Mesh
+    SM_Prop_Manhole_29002: THREE.Mesh
+    SM_Prop_Manhole_29003: THREE.Mesh
+    SM_Prop_Manhole_29004: THREE.Mesh
+    SM_Prop_Manhole_29005: THREE.Mesh
+    SM_Prop_Manhole_29006: THREE.Mesh
+    SM_Prop_Manhole_29007: THREE.Mesh
+    SM_Prop_Manhole_29008: THREE.Mesh
+    SM_Prop_Manhole_29009: THREE.Mesh
+    SM_Prop_Manhole_29010: THREE.Mesh
+    SM_Prop_Manhole_29011: THREE.Mesh
+    SM_Prop_Manhole_29012: THREE.Mesh
+    Scene344: THREE.Mesh
+    Scene344_1: THREE.Mesh
+    Scene351: THREE.Mesh
+    Scene351_1: THREE.Mesh
+    Scene352: THREE.Mesh
+    Scene352_1: THREE.Mesh
+    Scene353: THREE.Mesh
+    Scene353_1: THREE.Mesh
+    Scene354: THREE.Mesh
+    Scene354_1: THREE.Mesh
+    Scene356: THREE.Mesh
+    Scene356_1: THREE.Mesh
+    Scene357: THREE.Mesh
+    Scene357_1: THREE.Mesh
+    Scene358: THREE.Mesh
+    Scene358_1: THREE.Mesh
+    Scene359: THREE.Mesh
+    Scene359_1: THREE.Mesh
+    Scene360: THREE.Mesh
+    Scene360_1: THREE.Mesh
+    Scene361: THREE.Mesh
+    Scene361_1: THREE.Mesh
+    Scene362: THREE.Mesh
+    Scene362_1: THREE.Mesh
+    Scene364: THREE.Mesh
+    Scene364_1: THREE.Mesh
+    Scene365: THREE.Mesh
+    Scene365_1: THREE.Mesh
+    Scene367: THREE.Mesh
+    Scene367_1: THREE.Mesh
   }
   materials: {
     Synty_Palette_A: THREE.MeshStandardMaterial
@@ -404,14 +464,12 @@ type GLTFResult = GLTF & {
     ['Synty_Palette_A.011']: THREE.MeshStandardMaterial
     ['Synty_Palette_A.013']: THREE.MeshStandardMaterial
     ['Synty_Palette_A.014']: THREE.MeshStandardMaterial
-    ['colormap.051']: THREE.MeshStandardMaterial
-    ['colormap.052']: THREE.MeshStandardMaterial
-    ['colormap.053']: THREE.MeshStandardMaterial
-    ['colormap.054']: THREE.MeshStandardMaterial
-    ['colormap.055']: THREE.MeshStandardMaterial
-    ['colormap.047']: THREE.MeshStandardMaterial
-    ['Material.005']: THREE.MeshStandardMaterial
-    Material: THREE.MeshStandardMaterial
+    dirt: THREE.MeshStandardMaterial
+    grass: THREE.MeshStandardMaterial
+    iron: THREE.MeshStandardMaterial
+    ruby: THREE.MeshStandardMaterial
+    gold: THREE.MeshStandardMaterial
+    Road_01: THREE.MeshStandardMaterial
   }
 }
 
@@ -457,7 +515,7 @@ export function Model(props: React.ComponentProps<'group'>) {
         <group name="PathNode_DE_west_01" position={[-9.5, 0, 3.5]} userData={{ name: 'PathNode_DE_west_01', north: 'INT_left', south: '', east: '', west: '' }} />
         <group name="PathNode_DE_west_02" position={[-11.5, 0, 7.5]} userData={{ name: 'PathNode_DE_west_02', north: '', south: '', east: 'INT_bottom_left', west: '' }} />
         <group name="PathNode_top_right" position={[7.5, 0, -4.5]} userData={{ name: 'PathNode_top_right', north: '', south: 'INT_EE', east: '', west: 'INT_NNE' }} />
-        <group name="StarterNode" position={[-7.5, 0, 10.5]} userData={{ name: 'StarterNode', north: 'INT_bottom_left', south: '', east: '', west: '' }} />
+        <group name="StarterNode" position={[-7.5, 0, 10.7]} userData={{ name: 'StarterNode', north: 'INT_bottom_left', south: '', east: '', west: '', ant_landscape: {} }} />
         <group name="Pickup_House_01" position={[4.5, 0, -1.5]} userData={{ name: 'Pickup_House_01' }} />
         <group name="Pickup_House_01001" position={[5.5, 0, -4.5]} userData={{ name: 'Pickup_House_01.001' }} />
         <group name="Pickup_House_01002" position={[3.5, 0, -4.5]} userData={{ name: 'Pickup_House_01.002' }} />
@@ -548,45 +606,34 @@ export function Model(props: React.ComponentProps<'group'>) {
           <mesh name="Scene163_2" geometry={nodes.Scene163_2.geometry} material={materials['Billboard_01.001']} />
           <mesh name="Scene163_3" geometry={nodes.Scene163_3.geometry} material={materials.Glass_01} />
         </group>
-        <mesh name="SM_Veh_Car_Police_01" geometry={nodes.SM_Veh_Car_Police_01.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Police_01' }}>
-          <mesh name="SM_Veh_Car_Police_Glass" geometry={nodes.SM_Veh_Car_Police_Glass.geometry} material={materials.Glass_01} userData={{ name: 'SM_Veh_Car_Police_Glass' }} />
-          <mesh name="SM_Veh_Car_Police_Plates" geometry={nodes.SM_Veh_Car_Police_Plates.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Police_Plates' }} />
-          <mesh name="SM_Veh_Car_Police_SteeringW" geometry={nodes.SM_Veh_Car_Police_SteeringW.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Police_SteeringW' }} />
-          <mesh name="SM_Veh_Car_Police_Wheel_fl" geometry={nodes.SM_Veh_Car_Police_Wheel_fl.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Police_Wheel_fl' }} />
-          <mesh name="SM_Veh_Car_Police_Wheel_fr" geometry={nodes.SM_Veh_Car_Police_Wheel_fr.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Police_Wheel_fr' }} />
-          <mesh name="SM_Veh_Car_Police_Wheel_rl" geometry={nodes.SM_Veh_Car_Police_Wheel_rl.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Police_Wheel_rl' }} />
-          <mesh name="SM_Veh_Car_Police_Wheel_rr" geometry={nodes.SM_Veh_Car_Police_Wheel_rr.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Police_Wheel_rr' }} />
-          <mesh name="SM_Veh_Steering_Wheel_09" geometry={nodes.SM_Veh_Steering_Wheel_09.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Steering_Wheel_09' }} />
-        </mesh>
-        <mesh name="SM_Veh_Car_Police_01001" geometry={nodes.SM_Veh_Car_Police_01001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Police_01.001' }} />
-        <mesh name="SM_Veh_Car_Police_01002" geometry={nodes.SM_Veh_Car_Police_01002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Police_01.002' }} />
-        <mesh name="SM_Veh_Car_Taxi_01" geometry={nodes.SM_Veh_Car_Taxi_01.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_01' }}>
-          <mesh name="SM_Veh_Car_Taxi_Glass" geometry={nodes.SM_Veh_Car_Taxi_Glass.geometry} material={materials.Glass_01} userData={{ name: 'SM_Veh_Car_Taxi_Glass' }} />
-          <mesh name="SM_Veh_Car_Taxi_Plates" geometry={nodes.SM_Veh_Car_Taxi_Plates.geometry} material={materials['PolygonCity_01_A.006']} userData={{ name: 'SM_Veh_Car_Taxi_Plates' }} />
-          <mesh name="SM_Veh_Car_Taxi_SteeringW" geometry={nodes.SM_Veh_Car_Taxi_SteeringW.geometry} material={materials['PolygonCity_01_A.006']} userData={{ name: 'SM_Veh_Car_Taxi_SteeringW' }} />
-          <mesh name="SM_Veh_Car_Taxi_Wheel_fl" geometry={nodes.SM_Veh_Car_Taxi_Wheel_fl.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_fl' }} />
-          <mesh name="SM_Veh_Car_Taxi_Wheel_fr" geometry={nodes.SM_Veh_Car_Taxi_Wheel_fr.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_fr' }} />
-          <mesh name="SM_Veh_Car_Taxi_Wheel_rl" geometry={nodes.SM_Veh_Car_Taxi_Wheel_rl.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_rl' }} />
-          <mesh name="SM_Veh_Car_Taxi_Wheel_rr" geometry={nodes.SM_Veh_Car_Taxi_Wheel_rr.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_rr' }} />
-        </mesh>
-        <mesh name="SM_Veh_Car_Taxi_01001" geometry={nodes.SM_Veh_Car_Taxi_01001.geometry} material={materials.Synty_Palette_A} position={[-0.656, 0, 0]} userData={{ name: 'SM_Veh_Car_Taxi_01.001' }}>
-          <mesh name="SM_Veh_Car_Taxi_Glass001" geometry={nodes.SM_Veh_Car_Taxi_Glass001.geometry} material={materials.Glass_01} userData={{ name: 'SM_Veh_Car_Taxi_Glass.001' }} />
-          <mesh name="SM_Veh_Car_Taxi_Plates001" geometry={nodes.SM_Veh_Car_Taxi_Plates001.geometry} material={materials['PolygonCity_01_A.006']} userData={{ name: 'SM_Veh_Car_Taxi_Plates.001' }} />
-          <mesh name="SM_Veh_Car_Taxi_SteeringW001" geometry={nodes.SM_Veh_Car_Taxi_SteeringW001.geometry} material={materials['PolygonCity_01_A.006']} userData={{ name: 'SM_Veh_Car_Taxi_SteeringW.001' }} />
-          <mesh name="SM_Veh_Car_Taxi_Wheel_fl001" geometry={nodes.SM_Veh_Car_Taxi_Wheel_fl001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_fl.001' }} />
-          <mesh name="SM_Veh_Car_Taxi_Wheel_fr001" geometry={nodes.SM_Veh_Car_Taxi_Wheel_fr001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_fr.001' }} />
-          <mesh name="SM_Veh_Car_Taxi_Wheel_rl001" geometry={nodes.SM_Veh_Car_Taxi_Wheel_rl001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_rl.001' }} />
-          <mesh name="SM_Veh_Car_Taxi_Wheel_rr001" geometry={nodes.SM_Veh_Car_Taxi_Wheel_rr001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_rr.001' }} />
-        </mesh>
-        <mesh name="SM_Veh_Car_Taxi_01002" geometry={nodes.SM_Veh_Car_Taxi_01002.geometry} material={materials.Synty_Palette_A} position={[-1.385, 0, 0]} userData={{ name: 'SM_Veh_Car_Taxi_01.002' }}>
-          <mesh name="SM_Veh_Car_Taxi_Glass002" geometry={nodes.SM_Veh_Car_Taxi_Glass002.geometry} material={materials.Glass_01} userData={{ name: 'SM_Veh_Car_Taxi_Glass.002' }} />
-          <mesh name="SM_Veh_Car_Taxi_Plates002" geometry={nodes.SM_Veh_Car_Taxi_Plates002.geometry} material={materials['PolygonCity_01_A.006']} userData={{ name: 'SM_Veh_Car_Taxi_Plates.002' }} />
-          <mesh name="SM_Veh_Car_Taxi_SteeringW002" geometry={nodes.SM_Veh_Car_Taxi_SteeringW002.geometry} material={materials['PolygonCity_01_A.006']} userData={{ name: 'SM_Veh_Car_Taxi_SteeringW.002' }} />
-          <mesh name="SM_Veh_Car_Taxi_Wheel_fl002" geometry={nodes.SM_Veh_Car_Taxi_Wheel_fl002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_fl.002' }} />
-          <mesh name="SM_Veh_Car_Taxi_Wheel_fr002" geometry={nodes.SM_Veh_Car_Taxi_Wheel_fr002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_fr.002' }} />
-          <mesh name="SM_Veh_Car_Taxi_Wheel_rl002" geometry={nodes.SM_Veh_Car_Taxi_Wheel_rl002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_rl.002' }} />
-          <mesh name="SM_Veh_Car_Taxi_Wheel_rr002" geometry={nodes.SM_Veh_Car_Taxi_Wheel_rr002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Veh_Car_Taxi_Wheel_rr.002' }} />
-        </mesh>
+        <mesh name="SM_Env_Sidewalk_Gutter_10" geometry={nodes.SM_Env_Sidewalk_Gutter_10.geometry} material={materials.Synty_Palette_A} position={[-6, 0, 7]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Env_Sidewalk_Gutter_10', ant_landscape: {} }} />
+        <group name="SM_Veh_Car_Police_01" userData={{ name: 'SM_Veh_Car_Police_01', ant_landscape: {} }}>
+          <mesh name="Scene137" geometry={nodes.Scene137.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene137_1" geometry={nodes.Scene137_1.geometry} material={materials.Glass_01} />
+        </group>
+        <group name="taxi_cab" position={[-5.798, 0, 8.94]} rotation={[Math.PI, -0.098, Math.PI]} userData={{ name: 'taxi_cab', ant_landscape: {} }}>
+          <mesh name="Scene048" geometry={nodes.Scene048.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene048_1" geometry={nodes.Scene048_1.geometry} material={materials.Glass_01} />
+          <mesh name="Scene048_2" geometry={nodes.Scene048_2.geometry} material={materials['PolygonCity_01_A.006']} />
+        </group>
+        <group name="taxi_cab001" position={[-5.253, 0, 8.94]} rotation={[-Math.PI, 0.081, -Math.PI]} userData={{ name: 'taxi_cab.001' }}>
+          <mesh name="Scene134" geometry={nodes.Scene134.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene134_1" geometry={nodes.Scene134_1.geometry} material={materials.Glass_01} />
+          <mesh name="Scene134_2" geometry={nodes.Scene134_2.geometry} material={materials['PolygonCity_01_A.006']} />
+        </group>
+        <group name="taxi_cab002" position={[-4.731, 0, 8.94]} rotation={[Math.PI, 0, Math.PI]} userData={{ name: 'taxi_cab.002', ant_landscape: {} }}>
+          <mesh name="Scene148" geometry={nodes.Scene148.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene148_1" geometry={nodes.Scene148_1.geometry} material={materials.Glass_01} />
+          <mesh name="Scene148_2" geometry={nodes.Scene148_2.geometry} material={materials['PolygonCity_01_A.006']} />
+        </group>
+        <group name="SM_Veh_Car_Police_01001" position={[5.973, 0.139, 2.247]} userData={{ name: 'SM_Veh_Car_Police_01.001', ant_landscape: {} }}>
+          <mesh name="Scene372" geometry={nodes.Scene372.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene372_1" geometry={nodes.Scene372_1.geometry} material={materials.Glass_01} />
+        </group>
+        <group name="SM_Veh_Car_Police_01002" position={[5.973, 0.139, 1.522]} rotation={[0, 0.438, 0]} userData={{ name: 'SM_Veh_Car_Police_01.002', ant_landscape: {} }}>
+          <mesh name="Scene373" geometry={nodes.Scene373.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene373_1" geometry={nodes.Scene373_1.geometry} material={materials.Glass_01} />
+        </group>
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36' }} />
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36001" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.001' }} />
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36002" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.002' }} />
@@ -645,8 +692,8 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="SM_Env_Sidewalk_349007" geometry={nodes.SM_Env_Sidewalk_349007.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.007' }} />
         <mesh name="SM_Env_Sidewalk_349008" geometry={nodes.SM_Env_Sidewalk_349008.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.008' }} />
         <mesh name="SM_Env_Sidewalk_349009" geometry={nodes.SM_Env_Sidewalk_349009.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.009' }} />
-        <mesh name="SM_Env_Sidewalk_349010" geometry={nodes.SM_Env_Sidewalk_349010.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.010' }} />
-        <mesh name="SM_Env_Sidewalk_349011" geometry={nodes.SM_Env_Sidewalk_349011.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.011' }} />
+        <mesh name="SM_Env_Sidewalk_349010" geometry={nodes.SM_Env_Sidewalk_349010.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.010', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349011" geometry={nodes.SM_Env_Sidewalk_349011.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.011', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_349012" geometry={nodes.SM_Env_Sidewalk_349012.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.012' }} />
         <mesh name="SM_Env_Sidewalk_349013" geometry={nodes.SM_Env_Sidewalk_349013.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.013' }} />
         <mesh name="SM_Env_Sidewalk_349014" geometry={nodes.SM_Env_Sidewalk_349014.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.014' }} />
@@ -660,10 +707,18 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="SM_Env_Sidewalk_349022" geometry={nodes.SM_Env_Sidewalk_349022.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.022' }} />
         <mesh name="SM_Env_Sidewalk_349023" geometry={nodes.SM_Env_Sidewalk_349023.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.023' }} />
         <mesh name="SM_Env_Sidewalk_349024" geometry={nodes.SM_Env_Sidewalk_349024.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.024' }} />
-        <mesh name="SM_Env_Sidewalk_349025" geometry={nodes.SM_Env_Sidewalk_349025.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.025' }} />
+        <mesh name="SM_Env_Sidewalk_349025" geometry={nodes.SM_Env_Sidewalk_349025.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.025', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_349026" geometry={nodes.SM_Env_Sidewalk_349026.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.026' }} />
         <mesh name="SM_Env_Sidewalk_349027" geometry={nodes.SM_Env_Sidewalk_349027.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.027' }} />
         <mesh name="SM_Env_Sidewalk_349028" geometry={nodes.SM_Env_Sidewalk_349028.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.028' }} />
+        <mesh name="SM_Env_Sidewalk_349029" geometry={nodes.SM_Env_Sidewalk_349029.geometry} material={materials.Synty_Palette_A} position={[0, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_349.029', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349030" geometry={nodes.SM_Env_Sidewalk_349030.geometry} material={materials.Synty_Palette_A} position={[0, 0, 2]} userData={{ name: 'SM_Env_Sidewalk_349.030', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349031" geometry={nodes.SM_Env_Sidewalk_349031.geometry} material={materials.Synty_Palette_A} position={[-2, 0, 0]} userData={{ name: 'SM_Env_Sidewalk_349.031', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349032" geometry={nodes.SM_Env_Sidewalk_349032.geometry} material={materials.Synty_Palette_A} position={[-2, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_349.032', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349033" geometry={nodes.SM_Env_Sidewalk_349033.geometry} material={materials.Synty_Palette_A} position={[-2, 0, 2]} userData={{ name: 'SM_Env_Sidewalk_349.033', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349034" geometry={nodes.SM_Env_Sidewalk_349034.geometry} material={materials.Synty_Palette_A} position={[-1, 0, 0]} userData={{ name: 'SM_Env_Sidewalk_349.034', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349035" geometry={nodes.SM_Env_Sidewalk_349035.geometry} material={materials.Synty_Palette_A} position={[-1, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_349.035', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349036" geometry={nodes.SM_Env_Sidewalk_349036.geometry} material={materials.Synty_Palette_A} position={[-1, 0, 2]} userData={{ name: 'SM_Env_Sidewalk_349.036', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36007" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36007.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.007' }} />
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36006" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36006.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.006' }} />
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36005" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36005.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.005' }} />
@@ -677,7 +732,7 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="SM_Env_Sidewalk_Straight_323018" geometry={nodes.SM_Env_Sidewalk_Straight_323018.geometry} material={materials['Synty_Palette_A.002']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.018' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323019" geometry={nodes.SM_Env_Sidewalk_Straight_323019.geometry} material={materials['Synty_Palette_A.002']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.019' }} />
         <mesh name="SM_Env_Sidewalk_Corner_11" geometry={nodes.SM_Env_Sidewalk_Corner_11.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Corner_11' }} />
-        <mesh name="SM_Env_Sidewalk_Corner_11001" geometry={nodes.SM_Env_Sidewalk_Corner_11001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Corner_11.001' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11001" geometry={nodes.SM_Env_Sidewalk_Corner_11001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Corner_11.001', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_Corner_11002" geometry={nodes.SM_Env_Sidewalk_Corner_11002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Corner_11.002' }} />
         <mesh name="SM_Env_Sidewalk_Corner_11003" geometry={nodes.SM_Env_Sidewalk_Corner_11003.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Corner_11.003' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323023" geometry={nodes.SM_Env_Sidewalk_Straight_323023.geometry} material={materials['Synty_Palette_A.003']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.023' }} />
@@ -706,11 +761,10 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="SM_Env_Sidewalk_Corner_11012" geometry={nodes.SM_Env_Sidewalk_Corner_11012.geometry} material={materials['Synty_Palette_A.008']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.012' }} />
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36012" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36012.geometry} material={materials['Synty_Palette_A.009']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.012' }} />
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36013" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36013.geometry} material={materials['Synty_Palette_A.009']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.013' }} />
-        <mesh name="SM_Env_Sidewalk_Dip_Corner_36014" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36014.geometry} material={materials['Synty_Palette_A.009']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.014' }} />
+        <mesh name="SM_Env_Sidewalk_Dip_Corner_36014" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36014.geometry} material={materials['Synty_Palette_A.009']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.014', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36015" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36015.geometry} material={materials['Synty_Palette_A.009']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.015' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323032" geometry={nodes.SM_Env_Sidewalk_Straight_323032.geometry} material={materials['Synty_Palette_A.009']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.032' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323033" geometry={nodes.SM_Env_Sidewalk_Straight_323033.geometry} material={materials['Synty_Palette_A.009']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.033' }} />
-        <mesh name="SM_Env_Sidewalk_Straight_323034" geometry={nodes.SM_Env_Sidewalk_Straight_323034.geometry} material={materials['Synty_Palette_A.009']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.034' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323035" geometry={nodes.SM_Env_Sidewalk_Straight_323035.geometry} material={materials['Synty_Palette_A.009']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.035' }} />
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36016" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36016.geometry} material={materials['Synty_Palette_A.010']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.016' }} />
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36019" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36019.geometry} material={materials['Synty_Palette_A.010']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.019' }} />
@@ -718,11 +772,8 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="SM_Env_Sidewalk_Straight_323039" geometry={nodes.SM_Env_Sidewalk_Straight_323039.geometry} material={materials['Synty_Palette_A.010']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.039' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323041" geometry={nodes.SM_Env_Sidewalk_Straight_323041.geometry} material={materials['Synty_Palette_A.010']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.041' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323045" geometry={nodes.SM_Env_Sidewalk_Straight_323045.geometry} material={materials['Synty_Palette_A.010']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.045' }} />
-        <mesh name="SM_Env_Sidewalk_Straight_323052" geometry={nodes.SM_Env_Sidewalk_Straight_323052.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.052' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323053" geometry={nodes.SM_Env_Sidewalk_Straight_323053.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.053' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323054" geometry={nodes.SM_Env_Sidewalk_Straight_323054.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.054' }} />
-        <mesh name="SM_Env_Sidewalk_Straight_323055" geometry={nodes.SM_Env_Sidewalk_Straight_323055.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.055' }} />
-        <mesh name="SM_Env_Sidewalk_Corner_11016" geometry={nodes.SM_Env_Sidewalk_Corner_11016.geometry} material={materials['Synty_Palette_A.011']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.016' }} />
         <mesh name="SM_Env_Sidewalk_Corner_11018" geometry={nodes.SM_Env_Sidewalk_Corner_11018.geometry} material={materials['Synty_Palette_A.011']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.018' }} />
         <mesh name="SM_Env_Sidewalk_Corner_11019" geometry={nodes.SM_Env_Sidewalk_Corner_11019.geometry} material={materials['Synty_Palette_A.011']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.019' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323056" geometry={nodes.SM_Env_Sidewalk_Straight_323056.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.056' }} />
@@ -758,137 +809,242 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="SM_Env_Sidewalk_Straight_323077" geometry={nodes.SM_Env_Sidewalk_Straight_323077.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.077' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323078" geometry={nodes.SM_Env_Sidewalk_Straight_323078.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.078' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323074" geometry={nodes.SM_Env_Sidewalk_Straight_323074.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.074' }} />
-        <mesh name="road-end" geometry={nodes['road-end'].geometry} material={materials['colormap.051']} position={[-11.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-end' }} />
-        <mesh name="road-end001" geometry={nodes['road-end001'].geometry} material={materials['colormap.051']} position={[-3.5, 0, 9.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-end.001' }} />
-        <mesh name="road-end002" geometry={nodes['road-end002'].geometry} material={materials['colormap.051']} position={[0.5, 0, 10.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-end.002' }} />
-        <mesh name="road-end003" geometry={nodes['road-end003'].geometry} material={materials['colormap.051']} position={[4.5, 0, 9.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-end.003' }} />
-        <mesh name="road-end004" geometry={nodes['road-end004'].geometry} material={materials['colormap.051']} position={[10.5, 0, -0.5]} rotation={[Math.PI / 2, 0, Math.PI]} userData={{ name: 'road-end.004' }} />
-        <mesh name="road-end005" geometry={nodes['road-end005'].geometry} material={materials['colormap.051']} position={[4.5, 0, -6.5]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'road-end.005' }} />
-        <mesh name="road-end006" geometry={nodes['road-end006'].geometry} material={materials['colormap.051']} position={[-3.5, 0, -6.5]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'road-end.006' }} />
-        <mesh name="road-end007" geometry={nodes['road-end007'].geometry} material={materials['colormap.051']} position={[-9.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-end.007' }} />
-        <mesh name="road-straight" geometry={nodes['road-straight'].geometry} material={materials['colormap.052']} position={[-0.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight' }} />
-        <mesh name="road-straight001" geometry={nodes['road-straight001'].geometry} material={materials['colormap.052']} position={[-1.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.001' }} />
-        <mesh name="road-straight002" geometry={nodes['road-straight002'].geometry} material={materials['colormap.052']} position={[-2.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.002' }} />
-        <mesh name="road-straight003" geometry={nodes['road-straight003'].geometry} material={materials['colormap.052']} position={[1.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.003' }} />
-        <mesh name="road-straight004" geometry={nodes['road-straight004'].geometry} material={materials['colormap.052']} position={[2.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.004' }} />
-        <mesh name="road-straight005" geometry={nodes['road-straight005'].geometry} material={materials['colormap.052']} position={[3.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.005' }} />
-        <mesh name="road-straight006" geometry={nodes['road-straight006'].geometry} material={materials['colormap.052']} position={[5.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.006' }} />
-        <mesh name="road-straight007" geometry={nodes['road-straight007'].geometry} material={materials['colormap.052']} position={[6.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.007' }} />
-        <mesh name="road-straight008" geometry={nodes['road-straight008'].geometry} material={materials['colormap.052']} position={[6.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.008' }} />
-        <mesh name="road-straight009" geometry={nodes['road-straight009'].geometry} material={materials['colormap.052']} position={[5.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.009' }} />
-        <mesh name="road-straight010" geometry={nodes['road-straight010'].geometry} material={materials['colormap.052']} position={[3.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.010' }} />
-        <mesh name="road-straight011" geometry={nodes['road-straight011'].geometry} material={materials['colormap.052']} position={[1.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.011' }} />
-        <mesh name="road-straight012" geometry={nodes['road-straight012'].geometry} material={materials['colormap.052']} position={[2.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.012' }} />
-        <mesh name="road-straight013" geometry={nodes['road-straight013'].geometry} material={materials['colormap.052']} position={[-0.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.013' }} />
-        <mesh name="road-straight014" geometry={nodes['road-straight014'].geometry} material={materials['colormap.052']} position={[-2.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.014' }} />
-        <mesh name="road-straight015" geometry={nodes['road-straight015'].geometry} material={materials['colormap.052']} position={[-1.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.015' }} />
-        <mesh name="road-straight016" geometry={nodes['road-straight016'].geometry} material={materials['colormap.052']} position={[-4.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.016' }} />
-        <mesh name="road-straight017" geometry={nodes['road-straight017'].geometry} material={materials['colormap.052']} position={[-5.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.017' }} />
-        <mesh name="road-straight018" geometry={nodes['road-straight018'].geometry} material={materials['colormap.052']} position={[-6.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.018' }} />
-        <mesh name="road-straight019" geometry={nodes['road-straight019'].geometry} material={materials['colormap.052']} position={[-8.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.019' }} />
-        <mesh name="road-straight020" geometry={nodes['road-straight020'].geometry} material={materials['colormap.052']} position={[-9.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.020' }} />
-        <mesh name="road-straight021" geometry={nodes['road-straight021'].geometry} material={materials['colormap.052']} position={[-10.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.021' }} />
-        <mesh name="road-straight022" geometry={nodes['road-straight022'].geometry} material={materials['colormap.052']} position={[-4.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.022' }} />
-        <mesh name="road-straight023" geometry={nodes['road-straight023'].geometry} material={materials['colormap.052']} position={[-5.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.023' }} />
-        <mesh name="road-straight024" geometry={nodes['road-straight024'].geometry} material={materials['colormap.052']} position={[-6.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.024' }} />
-        <mesh name="road-straight025" geometry={nodes['road-straight025'].geometry} material={materials['colormap.052']} position={[-0.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.025' }} />
-        <mesh name="road-straight026" geometry={nodes['road-straight026'].geometry} material={materials['colormap.052']} position={[-1.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.026' }} />
-        <mesh name="road-straight027" geometry={nodes['road-straight027'].geometry} material={materials['colormap.052']} position={[-2.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.027' }} />
-        <mesh name="road-straight028" geometry={nodes['road-straight028'].geometry} material={materials['colormap.052']} position={[3.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.028' }} />
-        <mesh name="road-straight029" geometry={nodes['road-straight029'].geometry} material={materials['colormap.052']} position={[2.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.029' }} />
-        <mesh name="road-straight030" geometry={nodes['road-straight030'].geometry} material={materials['colormap.052']} position={[1.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.030' }} />
-        <mesh name="road-straight031" geometry={nodes['road-straight031'].geometry} material={materials['colormap.052']} position={[6.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.031' }} />
-        <mesh name="road-straight032" geometry={nodes['road-straight032'].geometry} material={materials['colormap.052']} position={[5.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.032' }} />
-        <mesh name="road-straight033" geometry={nodes['road-straight033'].geometry} material={materials['colormap.052']} position={[3.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.033' }} />
-        <mesh name="road-straight034" geometry={nodes['road-straight034'].geometry} material={materials['colormap.052']} position={[2.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.034' }} />
-        <mesh name="road-straight035" geometry={nodes['road-straight035'].geometry} material={materials['colormap.052']} position={[1.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.035' }} />
-        <mesh name="road-straight036" geometry={nodes['road-straight036'].geometry} material={materials['colormap.052']} position={[-0.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.036' }} />
-        <mesh name="road-straight037" geometry={nodes['road-straight037'].geometry} material={materials['colormap.052']} position={[-1.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.037' }} />
-        <mesh name="road-straight038" geometry={nodes['road-straight038'].geometry} material={materials['colormap.052']} position={[-2.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.038' }} />
-        <mesh name="road-straight039" geometry={nodes['road-straight039'].geometry} material={materials['colormap.052']} position={[-4.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.039' }} />
-        <mesh name="road-straight040" geometry={nodes['road-straight040'].geometry} material={materials['colormap.052']} position={[-5.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.040' }} />
-        <mesh name="road-straight041" geometry={nodes['road-straight041'].geometry} material={materials['colormap.052']} position={[-6.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.041' }} />
-        <mesh name="road-straight042" geometry={nodes['road-straight042'].geometry} material={materials['colormap.052']} position={[9.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.042' }} />
-        <mesh name="road-straight044" geometry={nodes['road-straight044'].geometry} material={materials['colormap.052']} position={[-8.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.044' }} />
-        <mesh name="road-straight045" geometry={nodes['road-straight045'].geometry} material={materials['colormap.052']} position={[-7.5, 0, -3.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.045' }} />
-        <mesh name="road-straight046" geometry={nodes['road-straight046'].geometry} material={materials['colormap.052']} position={[-7.5, 0, -2.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.046' }} />
-        <mesh name="road-straight047" geometry={nodes['road-straight047'].geometry} material={materials['colormap.052']} position={[-7.5, 0, -1.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.047' }} />
-        <mesh name="road-straight048" geometry={nodes['road-straight048'].geometry} material={materials['colormap.052']} position={[-7.5, 0, -0.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.048' }} />
-        <mesh name="road-straight049" geometry={nodes['road-straight049'].geometry} material={materials['colormap.052']} position={[-7.5, 0, 0.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.049' }} />
-        <mesh name="road-straight050" geometry={nodes['road-straight050'].geometry} material={materials['colormap.052']} position={[-7.5, 0, 1.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.050' }} />
-        <mesh name="road-straight051" geometry={nodes['road-straight051'].geometry} material={materials['colormap.052']} position={[-7.5, 0, 2.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.051' }} />
-        <mesh name="road-straight052" geometry={nodes['road-straight052'].geometry} material={materials['colormap.052']} position={[-7.5, 0, 4.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.052' }} />
-        <mesh name="road-straight053" geometry={nodes['road-straight053'].geometry} material={materials['colormap.052']} position={[-7.5, 0, 5.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.053' }} />
-        <mesh name="road-straight054" geometry={nodes['road-straight054'].geometry} material={materials['colormap.052']} position={[-7.5, 0, 6.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.054' }} />
-        <mesh name="road-straight055" geometry={nodes['road-straight055'].geometry} material={materials['colormap.052']} position={[-3.5, 0, 6.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.055' }} />
-        <mesh name="road-straight056" geometry={nodes['road-straight056'].geometry} material={materials['colormap.052']} position={[-3.5, 0, 8.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.056' }} />
-        <mesh name="road-straight057" geometry={nodes['road-straight057'].geometry} material={materials['colormap.052']} position={[-3.5, 0, 5.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.057' }} />
-        <mesh name="road-straight058" geometry={nodes['road-straight058'].geometry} material={materials['colormap.052']} position={[-3.5, 0, 4.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.058' }} />
-        <mesh name="road-straight059" geometry={nodes['road-straight059'].geometry} material={materials['colormap.052']} position={[-3.5, 0, 2.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.059' }} />
-        <mesh name="road-straight060" geometry={nodes['road-straight060'].geometry} material={materials['colormap.052']} position={[-3.5, 0, 1.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.060' }} />
-        <mesh name="road-straight061" geometry={nodes['road-straight061'].geometry} material={materials['colormap.052']} position={[-3.5, 0, 0.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.061' }} />
-        <mesh name="road-straight062" geometry={nodes['road-straight062'].geometry} material={materials['colormap.052']} position={[-3.5, 0, -1.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.062' }} />
-        <mesh name="road-straight063" geometry={nodes['road-straight063'].geometry} material={materials['colormap.052']} position={[-3.5, 0, -2.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.063' }} />
-        <mesh name="road-straight064" geometry={nodes['road-straight064'].geometry} material={materials['colormap.052']} position={[-3.5, 0, -3.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.064' }} />
-        <mesh name="road-straight065" geometry={nodes['road-straight065'].geometry} material={materials['colormap.052']} position={[0.5, 0, -3.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.065' }} />
-        <mesh name="road-straight066" geometry={nodes['road-straight066'].geometry} material={materials['colormap.052']} position={[0.5, 0, -2.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.066' }} />
-        <mesh name="road-straight067" geometry={nodes['road-straight067'].geometry} material={materials['colormap.052']} position={[0.5, 0, -1.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.067' }} />
-        <mesh name="road-straight068" geometry={nodes['road-straight068'].geometry} material={materials['colormap.052']} position={[4.5, 0, -1.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.068' }} />
-        <mesh name="road-straight069" geometry={nodes['road-straight069'].geometry} material={materials['colormap.052']} position={[4.5, 0, -2.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.069' }} />
-        <mesh name="road-straight070" geometry={nodes['road-straight070'].geometry} material={materials['colormap.052']} position={[4.5, 0, -3.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.070' }} />
-        <mesh name="road-straight071" geometry={nodes['road-straight071'].geometry} material={materials['colormap.052']} position={[7.5, 0, -3.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.071' }} />
-        <mesh name="road-straight072" geometry={nodes['road-straight072'].geometry} material={materials['colormap.052']} position={[7.5, 0, -2.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.072' }} />
-        <mesh name="road-straight073" geometry={nodes['road-straight073'].geometry} material={materials['colormap.052']} position={[7.5, 0, -1.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.073' }} />
-        <mesh name="road-straight074" geometry={nodes['road-straight074'].geometry} material={materials['colormap.052']} position={[7.5, 0, 0.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.074' }} />
-        <mesh name="road-straight076" geometry={nodes['road-straight076'].geometry} material={materials['colormap.052']} position={[7.5, 0, 1.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.076' }} />
-        <mesh name="road-straight077" geometry={nodes['road-straight077'].geometry} material={materials['colormap.052']} position={[7.5, 0, 2.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.077' }} />
-        <mesh name="road-straight078" geometry={nodes['road-straight078'].geometry} material={materials['colormap.052']} position={[7.5, 0, 3.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.078' }} />
-        <mesh name="road-straight079" geometry={nodes['road-straight079'].geometry} material={materials['colormap.052']} position={[7.5, 0, 4.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.079' }} />
-        <mesh name="road-straight080" geometry={nodes['road-straight080'].geometry} material={materials['colormap.052']} position={[7.5, 0, 5.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.080' }} />
-        <mesh name="road-straight081" geometry={nodes['road-straight081'].geometry} material={materials['colormap.052']} position={[7.5, 0, 6.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.081' }} />
-        <mesh name="road-straight082" geometry={nodes['road-straight082'].geometry} material={materials['colormap.052']} position={[4.5, 0, 4.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.082' }} />
-        <mesh name="road-straight083" geometry={nodes['road-straight083'].geometry} material={materials['colormap.052']} position={[4.5, 0, 5.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.083' }} />
-        <mesh name="road-straight084" geometry={nodes['road-straight084'].geometry} material={materials['colormap.052']} position={[4.5, 0, 6.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.084' }} />
-        <mesh name="road-straight085" geometry={nodes['road-straight085'].geometry} material={materials['colormap.052']} position={[0.5, 0, 4.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.085' }} />
-        <mesh name="road-straight086" geometry={nodes['road-straight086'].geometry} material={materials['colormap.052']} position={[0.5, 0, 5.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.086' }} />
-        <mesh name="road-straight087" geometry={nodes['road-straight087'].geometry} material={materials['colormap.052']} position={[0.5, 0, 6.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.087' }} />
-        <mesh name="road-straight088" geometry={nodes['road-straight088'].geometry} material={materials['colormap.052']} position={[0.5, 0, 0.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.088' }} />
-        <mesh name="road-straight089" geometry={nodes['road-straight089'].geometry} material={materials['colormap.052']} position={[0.5, 0, 1.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.089' }} />
-        <mesh name="road-straight090" geometry={nodes['road-straight090'].geometry} material={materials['colormap.052']} position={[0.5, 0, 2.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.090' }} />
-        <mesh name="road-straight091" geometry={nodes['road-straight091'].geometry} material={materials['colormap.052']} position={[4.5, 0, 0.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.091' }} />
-        <mesh name="road-straight092" geometry={nodes['road-straight092'].geometry} material={materials['colormap.052']} position={[4.5, 0, 1.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.092' }} />
-        <mesh name="road-straight093" geometry={nodes['road-straight093'].geometry} material={materials['colormap.052']} position={[4.5, 0, 2.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.093' }} />
-        <mesh name="road-straight095" geometry={nodes['road-straight095'].geometry} material={materials['colormap.052']} position={[0.5, 0, 8.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.095' }} />
-        <mesh name="road-straight096" geometry={nodes['road-straight096'].geometry} material={materials['colormap.052']} position={[0.5, 0, 9.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.096' }} />
-        <mesh name="road-straight097" geometry={nodes['road-straight097'].geometry} material={materials['colormap.052']} position={[4.5, 0, 8.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.097' }} />
-        <mesh name="road-straight098" geometry={nodes['road-straight098'].geometry} material={materials['colormap.052']} position={[-3.5, 0, -5.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.098' }} />
-        <mesh name="road-intersection" geometry={nodes['road-intersection'].geometry} material={materials['colormap.053']} position={[-3.5, 0, -0.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-intersection' }} />
-        <mesh name="road-crossroad" geometry={nodes['road-crossroad'].geometry} material={materials['colormap.054']} position={[0.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad' }} />
-        <mesh name="road-crossroad001" geometry={nodes['road-crossroad001'].geometry} material={materials['colormap.054']} position={[-7.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad.001' }} />
-        <mesh name="road-crossroad002" geometry={nodes['road-crossroad002'].geometry} material={materials['colormap.054']} position={[0.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad.002' }} />
-        <mesh name="road-crossroad003" geometry={nodes['road-crossroad003'].geometry} material={materials['colormap.054']} position={[4.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad.003' }} />
-        <mesh name="road-crossroad004" geometry={nodes['road-crossroad004'].geometry} material={materials['colormap.054']} position={[0.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad.004' }} />
-        <mesh name="road-crossroad005" geometry={nodes['road-crossroad005'].geometry} material={materials['colormap.054']} position={[0.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad.005' }} />
-        <mesh name="road-straight099" geometry={nodes['road-straight099'].geometry} material={materials['colormap.052']} position={[4.5, 0, -5.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.099' }} />
-        <mesh name="road-crossroad-line" geometry={nodes['road-crossroad-line'].geometry} material={materials['colormap.055']} position={[4.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad-line' }} />
-        <mesh name="road-crossroad-line001" geometry={nodes['road-crossroad-line001'].geometry} material={materials['colormap.055']} position={[7.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad-line.001' }} />
-        <mesh name="road-crossroad-line003" geometry={nodes['road-crossroad-line003'].geometry} material={materials['colormap.055']} position={[4.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad-line.003' }} />
-        <mesh name="road-crossroad-line004" geometry={nodes['road-crossroad-line004'].geometry} material={materials['colormap.055']} position={[-3.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad-line.004' }} />
-        <mesh name="road-crossroad-line005" geometry={nodes['road-crossroad-line005'].geometry} material={materials['colormap.055']} position={[-3.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad-line.005' }} />
-        <mesh name="road-crossroad-line006" geometry={nodes['road-crossroad-line006'].geometry} material={materials['colormap.055']} position={[-7.5, 0, 3.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad-line.006' }} />
-        <mesh name="road-crossroad-line007" geometry={nodes['road-crossroad-line007'].geometry} material={materials['colormap.055']} position={[-3.5, 0, 7.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-crossroad-line.007' }} />
-        <mesh name="road-end008" geometry={nodes['road-end008'].geometry} material={materials['colormap.051']} position={[0.5, 0, -7.5]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'road-end.008' }} />
-        <mesh name="road-straight075" geometry={nodes['road-straight075'].geometry} material={materials['colormap.052']} position={[0.5, 0, -6.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.075' }} />
-        <mesh name="road-straight094" geometry={nodes['road-straight094'].geometry} material={materials['colormap.052']} position={[0.5, 0, -5.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.094' }} />
-        <mesh name="road-bend-square" geometry={nodes['road-bend-square'].geometry} material={materials['colormap.047']} position={[7.5, 0, -4.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-bend-square' }} />
-        <mesh name="road-bend-square001" geometry={nodes['road-bend-square001'].geometry} material={materials['colormap.047']} position={[-7.5, 0, -4.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-bend-square.001' }} />
-        <mesh name="road-bend-square002" geometry={nodes['road-bend-square002'].geometry} material={materials['colormap.047']} position={[7.5, 0, 7.5]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'road-bend-square.002' }} />
-        <mesh name="road-straight100" geometry={nodes['road-straight100'].geometry} material={materials['colormap.052']} position={[-7.5, 0, 8.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.100' }} />
-        <mesh name="road-straight101" geometry={nodes['road-straight101'].geometry} material={materials['colormap.052']} position={[-7.5, 0, 9.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} userData={{ name: 'road-straight.101' }} />
-        <mesh name="road-intersection001" geometry={nodes['road-intersection001'].geometry} material={materials['colormap.053']} position={[4.5, 0, 3.5]} rotation={[Math.PI / 2, 0, Math.PI / 2]} userData={{ name: 'road-intersection.001' }} />
-        <mesh name="road-straight043" geometry={nodes['road-straight043'].geometry} material={materials['colormap.052']} position={[8.5, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} userData={{ name: 'road-straight.043' }} />
-        <mesh name="Plane" geometry={nodes.Plane.geometry} material={materials['Material.005']} position={[-0.018, -0.686, 1.689]} scale={[11.646, 13.148, 11.509]} userData={{ name: 'Plane' }} />
-        <mesh name="Plane001" geometry={nodes.Plane001.geometry} material={materials.Material} position={[-0.018, -0.686, 1.689]} scale={[11.646, 13.148, 11.509]} userData={{ name: 'Plane.001' }} />
+        <mesh name="Cylinder" geometry={nodes.Cylinder.geometry} material={materials.dirt} position={[-0.984, -9.427, 2.993]} scale={[1.169, 0.776, 1.169]} userData={{ name: 'Cylinder', ant_landscape: {} }} />
+        <mesh name="grass" geometry={nodes.grass.geometry} material={materials.grass} userData={{ name: 'grass', ant_landscape: {} }} />
+        <mesh name="Icosphere" geometry={nodes.Icosphere.geometry} material={materials.grass} position={[-2.725, -2.335, 16.253]} rotation={[0.398, -0.08, 0.497]} scale={[7.227, 4.824, 4.824]} userData={{ name: 'Icosphere', ant_landscape: {} }} />
+        <mesh name="Icosphere001" geometry={nodes.Icosphere001.geometry} material={materials.grass} position={[4.343, -2.625, 18.129]} rotation={[0, 0.432, 0]} scale={[4.63, 3.09, 3.09]} userData={{ name: 'Icosphere.001', ant_landscape: {} }} />
+        <mesh name="Icosphere002" geometry={nodes.Icosphere002.geometry} material={nodes.Icosphere002.material} position={[-12.673, -7.358, 3.056]} rotation={[0, 0, 0.508]} scale={[2.744, 3.501, 3.267]} userData={{ name: 'Icosphere.002', ant_landscape: {} }} />
+        <mesh name="Icosphere003" geometry={nodes.Icosphere003.geometry} material={materials.iron} position={[6.55, -9.569, -2.045]} rotation={[0, 1.004, -0.345]} scale={[2.408, 3.072, 2.867]} userData={{ name: 'Icosphere.003', ant_landscape: {} }} />
+        <mesh name="Icosphere004" geometry={nodes.Icosphere004.geometry} material={materials.ruby} position={[-5.439, -11.102, -4.979]} rotation={[-0.516, 1.004, -0.345]} scale={[2.408, 3.072, 2.867]} userData={{ name: 'Icosphere.004', ant_landscape: {} }} />
+        <mesh name="Icosphere005" geometry={nodes.Icosphere005.geometry} material={materials.gold} position={[-5.313, -11.102, 6.447]} rotation={[-2.873, -0.066, 2.369]} scale={[1.827, 2.331, 2.175]} userData={{ name: 'Icosphere.005', ant_landscape: {} }} />
+        <mesh name="Icosphere006" geometry={nodes.Icosphere006.geometry} material={materials.grass} position={[-16.159, -3.291, 3.564]} rotation={[1.602, -0.508, 2.105]} scale={[6.928, 2.964, 4.342]} userData={{ name: 'Icosphere.006', ant_landscape: {} }} />
+        <mesh name="Icosphere007" geometry={nodes.Icosphere007.geometry} material={materials.grass} position={[-14.3, -1.635, 15.178]} rotation={[0.898, -0.399, 0.679]} scale={[5.601, 2.396, 3.51]} userData={{ name: 'Icosphere.007', ant_landscape: {} }} />
+        <mesh name="Icosphere008" geometry={nodes.Icosphere008.geometry} material={materials.grass} position={[11.454, -2.798, -7.189]} rotation={[2.294, 0.975, -2.013]} scale={[7.227, 4.824, 4.824]} userData={{ name: 'Icosphere.008', ant_landscape: {} }} />
+        <mesh name="Icosphere009" geometry={nodes.Icosphere009.geometry} material={materials.grass} position={[16.523, -1.173, 3.169]} rotation={[1.433, 0.765, -1.275]} scale={[5.601, 2.396, 3.51]} userData={{ name: 'Icosphere.009', ant_landscape: {} }} />
+        <mesh name="Icosphere010" geometry={nodes.Icosphere010.geometry} material={materials.grass} position={[12.724, -2.348, 12.274]} rotation={[1.111, 0.512, -0.566]} scale={[7.875, 3.103, 3.017]} userData={{ name: 'Icosphere.010', ant_landscape: {} }} />
+        <mesh name="Icosphere011" geometry={nodes.Icosphere011.geometry} material={materials.grass} position={[-12.273, -3.062, -9.907]} rotation={[2.97, -0.452, -2.932]} scale={[7.227, 4.824, 4.824]} userData={{ name: 'Icosphere.011', ant_landscape: {} }} />
+        <mesh name="Icosphere012" geometry={nodes.Icosphere012.geometry} material={materials.grass} position={[-2.144, -0.378, -14.989]} rotation={[2.631, 0.025, -2.947]} scale={[5.601, 2.396, 3.51]} userData={{ name: 'Icosphere.012', ant_landscape: {} }} />
+        <mesh name="Icosphere013" geometry={nodes.Icosphere013.geometry} material={materials.grass} position={[7.089, -2.878, -12.3]} rotation={[2.429, 0.326, -2.397]} scale={[7.875, 3.103, 3.017]} userData={{ name: 'Icosphere.013', ant_landscape: {} }} />
+        <mesh name="Icosphere014" geometry={nodes.Icosphere014.geometry} material={materials.grass} position={[-17.088, -1.635, -0.594]} rotation={[1.763, -0.857, 1.599]} scale={[5.601, 2.396, 3.51]} userData={{ name: 'Icosphere.014', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99" geometry={nodes.SM_Env_Road_Bare_99.geometry} material={materials.Road_01} position={[1, 0, -1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99001" geometry={nodes.SM_Env_Road_Bare_99001.geometry} material={materials.Road_01} position={[2, 0, -1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.001', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99002" geometry={nodes.SM_Env_Road_Bare_99002.geometry} material={materials.Road_01} position={[3, 0, -1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.002', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99003" geometry={nodes.SM_Env_Road_Bare_99003.geometry} material={materials.Road_01} position={[4, 0, -1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.003', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99004" geometry={nodes.SM_Env_Road_Bare_99004.geometry} material={materials.Road_01} position={[5, 0, -1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.004', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99005" geometry={nodes.SM_Env_Road_Bare_99005.geometry} material={materials.Road_01} position={[6, 0, -1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.005', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99006" geometry={nodes.SM_Env_Road_Bare_99006.geometry} material={materials.Road_01} position={[7, 0, -1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.006', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99007" geometry={nodes.SM_Env_Road_Bare_99007.geometry} material={materials.Road_01} position={[8, 0, -1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.007', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99008" geometry={nodes.SM_Env_Road_Bare_99008.geometry} material={materials.Road_01} position={[9, 0, -1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.008', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99009" geometry={nodes.SM_Env_Road_Bare_99009.geometry} material={materials.Road_01} position={[10, 0, -1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.009', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99010" geometry={nodes.SM_Env_Road_Bare_99010.geometry} material={materials.Road_01} position={[11, 0, -1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.010', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99011" geometry={nodes.SM_Env_Road_Bare_99011.geometry} material={materials.Road_01} position={[-1, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.011', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99012" geometry={nodes.SM_Env_Road_Bare_99012.geometry} material={materials.Road_01} position={[0, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.012', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99013" geometry={nodes.SM_Env_Road_Bare_99013.geometry} material={materials.Road_01} position={[1, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.013', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99014" geometry={nodes.SM_Env_Road_Bare_99014.geometry} material={materials.Road_01} position={[2, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.014', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99015" geometry={nodes.SM_Env_Road_Bare_99015.geometry} material={materials.Road_01} position={[3, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.015', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99016" geometry={nodes.SM_Env_Road_Bare_99016.geometry} material={materials.Road_01} position={[4, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.016', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99017" geometry={nodes.SM_Env_Road_Bare_99017.geometry} material={materials.Road_01} position={[5, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.017', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99018" geometry={nodes.SM_Env_Road_Bare_99018.geometry} material={materials.Road_01} position={[6, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.018', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99019" geometry={nodes.SM_Env_Road_Bare_99019.geometry} material={materials.Road_01} position={[7, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.019', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99020" geometry={nodes.SM_Env_Road_Bare_99020.geometry} material={materials.Road_01} position={[8, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.020', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99021" geometry={nodes.SM_Env_Road_Bare_99021.geometry} material={materials.Road_01} position={[-4, 0, 3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.021', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99022" geometry={nodes.SM_Env_Road_Bare_99022.geometry} material={materials.Road_01} position={[-3, 0, 3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.022', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99023" geometry={nodes.SM_Env_Road_Bare_99023.geometry} material={materials.Road_01} position={[-2, 0, 3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.023', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99024" geometry={nodes.SM_Env_Road_Bare_99024.geometry} material={materials.Road_01} position={[-1, 0, 3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.024', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99025" geometry={nodes.SM_Env_Road_Bare_99025.geometry} material={materials.Road_01} position={[0, 0, 3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.025', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99026" geometry={nodes.SM_Env_Road_Bare_99026.geometry} material={materials.Road_01} position={[1, 0, 3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.026', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99027" geometry={nodes.SM_Env_Road_Bare_99027.geometry} material={materials.Road_01} position={[2, 0, 3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.027', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99028" geometry={nodes.SM_Env_Road_Bare_99028.geometry} material={materials.Road_01} position={[3, 0, 3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.028', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99029" geometry={nodes.SM_Env_Road_Bare_99029.geometry} material={materials.Road_01} position={[4, 0, 3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.029', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99030" geometry={nodes.SM_Env_Road_Bare_99030.geometry} material={materials.Road_01} position={[5, 0, 3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.030', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99031" geometry={nodes.SM_Env_Road_Bare_99031.geometry} material={materials.Road_01} position={[-1, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.031', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99032" geometry={nodes.SM_Env_Road_Bare_99032.geometry} material={materials.Road_01} position={[0, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.032', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99033" geometry={nodes.SM_Env_Road_Bare_99033.geometry} material={materials.Road_01} position={[1, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.033', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99034" geometry={nodes.SM_Env_Road_Bare_99034.geometry} material={materials.Road_01} position={[2, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.034', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99035" geometry={nodes.SM_Env_Road_Bare_99035.geometry} material={materials.Road_01} position={[3, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.035', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99036" geometry={nodes.SM_Env_Road_Bare_99036.geometry} material={materials.Road_01} position={[4, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.036', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99037" geometry={nodes.SM_Env_Road_Bare_99037.geometry} material={materials.Road_01} position={[5, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.037', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99038" geometry={nodes.SM_Env_Road_Bare_99038.geometry} material={materials.Road_01} position={[6, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.038', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99039" geometry={nodes.SM_Env_Road_Bare_99039.geometry} material={materials.Road_01} position={[7, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.039', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99040" geometry={nodes.SM_Env_Road_Bare_99040.geometry} material={materials.Road_01} position={[8, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.040', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99041" geometry={nodes.SM_Env_Road_Bare_99041.geometry} material={materials.Road_01} position={[-11, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.041', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99042" geometry={nodes.SM_Env_Road_Bare_99042.geometry} material={materials.Road_01} position={[-10, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.042', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99043" geometry={nodes.SM_Env_Road_Bare_99043.geometry} material={materials.Road_01} position={[-9, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.043', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99044" geometry={nodes.SM_Env_Road_Bare_99044.geometry} material={materials.Road_01} position={[-8, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.044', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99045" geometry={nodes.SM_Env_Road_Bare_99045.geometry} material={materials.Road_01} position={[-7, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.045', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99046" geometry={nodes.SM_Env_Road_Bare_99046.geometry} material={materials.Road_01} position={[-6, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.046', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99047" geometry={nodes.SM_Env_Road_Bare_99047.geometry} material={materials.Road_01} position={[-5, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.047', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99048" geometry={nodes.SM_Env_Road_Bare_99048.geometry} material={materials.Road_01} position={[-4, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.048', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99049" geometry={nodes.SM_Env_Road_Bare_99049.geometry} material={materials.Road_01} position={[-3, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.049', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99050" geometry={nodes.SM_Env_Road_Bare_99050.geometry} material={materials.Road_01} position={[-2, 0, 7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.050', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99051" geometry={nodes.SM_Env_Road_Bare_99051.geometry} material={materials.Road_01} position={[1, 0, 4]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.051', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99052" geometry={nodes.SM_Env_Road_Bare_99052.geometry} material={materials.Road_01} position={[1, 0, 5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.052', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99053" geometry={nodes.SM_Env_Road_Bare_99053.geometry} material={materials.Road_01} position={[1, 0, 6]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.053', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99054" geometry={nodes.SM_Env_Road_Bare_99054.geometry} material={materials.Road_01} position={[5, 0, 4]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.054', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99055" geometry={nodes.SM_Env_Road_Bare_99055.geometry} material={materials.Road_01} position={[5, 0, 5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.055', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99056" geometry={nodes.SM_Env_Road_Bare_99056.geometry} material={materials.Road_01} position={[5, 0, 6]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.056', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99057" geometry={nodes.SM_Env_Road_Bare_99057.geometry} material={materials.Road_01} position={[-3, 0, 4]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.057', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99058" geometry={nodes.SM_Env_Road_Bare_99058.geometry} material={materials.Road_01} position={[-3, 0, 5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.058', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99059" geometry={nodes.SM_Env_Road_Bare_99059.geometry} material={materials.Road_01} position={[-3, 0, 6]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.059', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99060" geometry={nodes.SM_Env_Road_Bare_99060.geometry} material={materials.Road_01} position={[1, 0, 0]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.060', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99061" geometry={nodes.SM_Env_Road_Bare_99061.geometry} material={materials.Road_01} position={[1, 0, 1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.061', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99062" geometry={nodes.SM_Env_Road_Bare_99062.geometry} material={materials.Road_01} position={[1, 0, 2]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.062', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99063" geometry={nodes.SM_Env_Road_Bare_99063.geometry} material={materials.Road_01} position={[5, 0, 0]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.063', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99064" geometry={nodes.SM_Env_Road_Bare_99064.geometry} material={materials.Road_01} position={[5, 0, 1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.064', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99065" geometry={nodes.SM_Env_Road_Bare_99065.geometry} material={materials.Road_01} position={[5, 0, 2]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.065', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99066" geometry={nodes.SM_Env_Road_Bare_99066.geometry} material={materials.Road_01} position={[5, 0, -4]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.066', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99067" geometry={nodes.SM_Env_Road_Bare_99067.geometry} material={materials.Road_01} position={[5, 0, -3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.067', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99068" geometry={nodes.SM_Env_Road_Bare_99068.geometry} material={materials.Road_01} position={[5, 0, -2]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.068', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99069" geometry={nodes.SM_Env_Road_Bare_99069.geometry} material={materials.Road_01} position={[8, 0, -4]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.069', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99070" geometry={nodes.SM_Env_Road_Bare_99070.geometry} material={materials.Road_01} position={[8, 0, -3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.070', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99071" geometry={nodes.SM_Env_Road_Bare_99071.geometry} material={materials.Road_01} position={[8, 0, -2]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.071', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99072" geometry={nodes.SM_Env_Road_Bare_99072.geometry} material={materials.Road_01} position={[1, 0, -4]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.072', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99073" geometry={nodes.SM_Env_Road_Bare_99073.geometry} material={materials.Road_01} position={[1, 0, -3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.073', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99074" geometry={nodes.SM_Env_Road_Bare_99074.geometry} material={materials.Road_01} position={[1, 0, -2]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.074', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99075" geometry={nodes.SM_Env_Road_Bare_99075.geometry} material={materials.Road_01} position={[8, 0, 0]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.075', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99076" geometry={nodes.SM_Env_Road_Bare_99076.geometry} material={materials.Road_01} position={[8, 0, 1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.076', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99077" geometry={nodes.SM_Env_Road_Bare_99077.geometry} material={materials.Road_01} position={[8, 0, 2]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.077', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99078" geometry={nodes.SM_Env_Road_Bare_99078.geometry} material={materials.Road_01} position={[8, 0, 3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.078', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99079" geometry={nodes.SM_Env_Road_Bare_99079.geometry} material={materials.Road_01} position={[8, 0, 4]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.079', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99080" geometry={nodes.SM_Env_Road_Bare_99080.geometry} material={materials.Road_01} position={[8, 0, 5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.080', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99081" geometry={nodes.SM_Env_Road_Bare_99081.geometry} material={materials.Road_01} position={[8, 0, 6]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.081', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99082" geometry={nodes.SM_Env_Road_Bare_99082.geometry} material={materials.Road_01} position={[5, 0, -6]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.082', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99084" geometry={nodes.SM_Env_Road_Bare_99084.geometry} material={materials.Road_01} position={[5, 0, -7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.084', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99085" geometry={nodes.SM_Env_Road_Bare_99085.geometry} material={materials.Road_01} position={[1, 0, -6]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.085', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99086" geometry={nodes.SM_Env_Road_Bare_99086.geometry} material={materials.Road_01} position={[1, 0, -8]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.086', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99087" geometry={nodes.SM_Env_Road_Bare_99087.geometry} material={materials.Road_01} position={[1, 0, -7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.087', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99088" geometry={nodes.SM_Env_Road_Bare_99088.geometry} material={materials.Road_01} position={[-3, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.088', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99089" geometry={nodes.SM_Env_Road_Bare_99089.geometry} material={materials.Road_01} position={[-3, 0, -7]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.089', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99090" geometry={nodes.SM_Env_Road_Bare_99090.geometry} material={materials.Road_01} position={[-3, 0, -6]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.090', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99091" geometry={nodes.SM_Env_Road_Bare_99091.geometry} material={materials.Road_01} position={[-2, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.091', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99092" geometry={nodes.SM_Env_Road_Bare_99092.geometry} material={materials.Road_01} position={[-3, 0, -4]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.092', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99093" geometry={nodes.SM_Env_Road_Bare_99093.geometry} material={materials.Road_01} position={[-3, 0, -3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.093', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99094" geometry={nodes.SM_Env_Road_Bare_99094.geometry} material={materials.Road_01} position={[-3, 0, -2]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.094', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99095" geometry={nodes.SM_Env_Road_Bare_99095.geometry} material={materials.Road_01} position={[-3, 0, -1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.095', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99096" geometry={nodes.SM_Env_Road_Bare_99096.geometry} material={materials.Road_01} position={[-3, 0, 0]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.096', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99097" geometry={nodes.SM_Env_Road_Bare_99097.geometry} material={materials.Road_01} position={[-3, 0, 1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.097', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99098" geometry={nodes.SM_Env_Road_Bare_99098.geometry} material={materials.Road_01} position={[-3, 0, 2]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.098', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99099" geometry={nodes.SM_Env_Road_Bare_99099.geometry} material={materials.Road_01} position={[-2, 0, -1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.099', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99100" geometry={nodes.SM_Env_Road_Bare_99100.geometry} material={materials.Road_01} position={[-1, 0, -1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.100', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99101" geometry={nodes.SM_Env_Road_Bare_99101.geometry} material={materials.Road_01} position={[0, 0, -1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.101', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99102" geometry={nodes.SM_Env_Road_Bare_99102.geometry} material={materials.Road_01} position={[-7, 0, -3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.102', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99103" geometry={nodes.SM_Env_Road_Bare_99103.geometry} material={materials.Road_01} position={[-7, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.103', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99104" geometry={nodes.SM_Env_Road_Bare_99104.geometry} material={materials.Road_01} position={[-7, 0, -4]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.104', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99105" geometry={nodes.SM_Env_Road_Bare_99105.geometry} material={materials.Road_01} position={[-7, 0, 0]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.105', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99106" geometry={nodes.SM_Env_Road_Bare_99106.geometry} material={materials.Road_01} position={[-7, 0, -2]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.106', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99107" geometry={nodes.SM_Env_Road_Bare_99107.geometry} material={materials.Road_01} position={[-7, 0, -1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.107', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99108" geometry={nodes.SM_Env_Road_Bare_99108.geometry} material={materials.Road_01} position={[-7, 0, 3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.108', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99109" geometry={nodes.SM_Env_Road_Bare_99109.geometry} material={materials.Road_01} position={[-7, 0, 1]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.109', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99110" geometry={nodes.SM_Env_Road_Bare_99110.geometry} material={materials.Road_01} position={[-7, 0, 2]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.110', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99111" geometry={nodes.SM_Env_Road_Bare_99111.geometry} material={materials.Road_01} position={[-7, 0, 6]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.111', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99112" geometry={nodes.SM_Env_Road_Bare_99112.geometry} material={materials.Road_01} position={[-7, 0, 4]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.112', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99113" geometry={nodes.SM_Env_Road_Bare_99113.geometry} material={materials.Road_01} position={[-7, 0, 5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.113', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99114" geometry={nodes.SM_Env_Road_Bare_99114.geometry} material={materials.Road_01} position={[-6, 0, 3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.114', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99115" geometry={nodes.SM_Env_Road_Bare_99115.geometry} material={materials.Road_01} position={[-5, 0, 3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.115', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99116" geometry={nodes.SM_Env_Road_Bare_99116.geometry} material={materials.Road_01} position={[-8, 0, 3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.116', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99117" geometry={nodes.SM_Env_Road_Bare_99117.geometry} material={materials.Road_01} position={[-9, 0, 3]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.117', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99118" geometry={nodes.SM_Env_Road_Bare_99118.geometry} material={materials.Road_01} position={[-6, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.118', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99119" geometry={nodes.SM_Env_Road_Bare_99119.geometry} material={materials.Road_01} position={[-5, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.119', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99120" geometry={nodes.SM_Env_Road_Bare_99120.geometry} material={materials.Road_01} position={[-4, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.120', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99121" geometry={nodes.SM_Env_Road_Bare_99121.geometry} material={materials.Road_01} position={[-7, 0, 8]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.121', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99122" geometry={nodes.SM_Env_Road_Bare_99122.geometry} material={materials.Road_01} position={[-7, 0, 9]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.122', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99083" geometry={nodes.SM_Env_Road_Bare_99083.geometry} material={materials.Road_01} position={[5, 0, 8]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.083', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99123" geometry={nodes.SM_Env_Road_Bare_99123.geometry} material={materials.Road_01} position={[5, 0, 9]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.123', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99124" geometry={nodes.SM_Env_Road_Bare_99124.geometry} material={materials.Road_01} position={[1, 0, 8]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.124', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99125" geometry={nodes.SM_Env_Road_Bare_99125.geometry} material={materials.Road_01} position={[1, 0, 9]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.125', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99126" geometry={nodes.SM_Env_Road_Bare_99126.geometry} material={materials.Road_01} position={[-3, 0, 8]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.126', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99127" geometry={nodes.SM_Env_Road_Bare_99127.geometry} material={materials.Road_01} position={[-3, 0, 9]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.127', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99128" geometry={nodes.SM_Env_Road_Bare_99128.geometry} material={materials.Road_01} position={[1, 0, 10]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.128', ant_landscape: {} }} />
+        <mesh name="mailbox" geometry={nodes.mailbox.geometry} material={materials.Synty_Palette_A} position={[3.186, 0, 6.643]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'mailbox', ant_landscape: {} }} />
+        <mesh name="SM_Prop_SidewalkPoles_08" geometry={nodes.SM_Prop_SidewalkPoles_08.geometry} material={materials.Synty_Palette_A} position={[5.649, 0.004, 1.063]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_SidewalkPoles_08', ant_landscape: {} }} />
+        <mesh name="trashcan" geometry={nodes.trashcan.geometry} material={materials.Synty_Palette_A} position={[-0.48, 0.001, -3.237]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'trashcan', ant_landscape: {} }} />
+        <mesh name="SM_Prop_SidewalkPoles_08001" geometry={nodes.SM_Prop_SidewalkPoles_08001.geometry} material={materials.Synty_Palette_A} position={[6.396, 0.004, 1.063]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_SidewalkPoles_08.001', ant_landscape: {} }} />
+        <mesh name="SM_Prop_SidewalkPoles_08002" geometry={nodes.SM_Prop_SidewalkPoles_08002.geometry} material={materials.Synty_Palette_A} position={[1.597, -0.002, -3.053]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} scale={0.002} userData={{ name: 'SM_Prop_SidewalkPoles_08.002', ant_landscape: {} }} />
+        <mesh name="SM_Prop_SidewalkPoles_08003" geometry={nodes.SM_Prop_SidewalkPoles_08003.geometry} material={materials.Synty_Palette_A} position={[-1.956, 0.002, -1.53]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_SidewalkPoles_08.003', ant_landscape: {} }} />
+        <mesh name="SM_Prop_SidewalkPoles_08004" geometry={nodes.SM_Prop_SidewalkPoles_08004.geometry} material={materials.Synty_Palette_A} position={[-1.209, 0.002, -1.53]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_SidewalkPoles_08.004', ant_landscape: {} }} />
+        <mesh name="trashcan001" geometry={nodes.trashcan001.geometry} material={materials.Synty_Palette_A} position={[3.555, -0.001, -1.899]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'trashcan.001', ant_landscape: {} }} />
+        <mesh name="trashcan002" geometry={nodes.trashcan002.geometry} material={materials.Synty_Palette_A} position={[5.378, -0.001, 0.677]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'trashcan.002', ant_landscape: {} }} />
+        <mesh name="trashcan003" geometry={nodes.trashcan003.geometry} material={materials.Synty_Palette_A} position={[2.297, 0.001, -7.659]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'trashcan.003', ant_landscape: {} }} />
+        <mesh name="trashcan004" geometry={nodes.trashcan004.geometry} material={materials.Synty_Palette_A} position={[-6.495, -0.003, 4.796]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'trashcan.004', ant_landscape: {} }} />
+        <mesh name="trashcan005" geometry={nodes.trashcan005.geometry} material={materials.Synty_Palette_A} position={[-8.891, 0, 2.677]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'trashcan.005', ant_landscape: {} }} />
+        <mesh name="trashcan006" geometry={nodes.trashcan006.geometry} material={materials.Synty_Palette_A} position={[-6.361, 0, 8.65]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'trashcan.006', ant_landscape: {} }} />
+        <mesh name="trashcan007" geometry={nodes.trashcan007.geometry} material={materials.Synty_Palette_A} position={[5.32, 0, 8.928]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'trashcan.007', ant_landscape: {} }} />
+        <mesh name="trashcan008" geometry={nodes.trashcan008.geometry} material={materials.Synty_Palette_A} position={[3.362, 0.001, 6.633]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'trashcan.008', ant_landscape: {} }} />
+        <mesh name="mailbox001" geometry={nodes.mailbox001.geometry} material={materials.Synty_Palette_A} position={[2.658, 0.002, -3.433]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'mailbox.001', ant_landscape: {} }} />
+        <mesh name="mailbox002" geometry={nodes.mailbox002.geometry} material={materials.Synty_Palette_A} position={[-9.137, 0.003, 2.676]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'mailbox.002', ant_landscape: {} }} />
+        <mesh name="SM_Prop_Manhole_29" geometry={nodes.SM_Prop_Manhole_29.geometry} material={materials.Synty_Palette_A} position={[0.48, 0, -0.439]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_Manhole_29', ant_landscape: {} }} />
+        <mesh name="SM_Prop_Manhole_29001" geometry={nodes.SM_Prop_Manhole_29001.geometry} material={materials.Synty_Palette_A} position={[-3.477, 0, -0.48]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_Manhole_29.001', ant_landscape: {} }} />
+        <mesh name="SM_Prop_Manhole_29002" geometry={nodes.SM_Prop_Manhole_29002.geometry} material={materials.Synty_Palette_A} position={[-3.456, 0, 3.531]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_Manhole_29.002', ant_landscape: {} }} />
+        <mesh name="SM_Prop_Manhole_29003" geometry={nodes.SM_Prop_Manhole_29003.geometry} material={materials.Synty_Palette_A} position={[-7.417, 0, 3.531]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_Manhole_29.003', ant_landscape: {} }} />
+        <mesh name="SM_Prop_Manhole_29004" geometry={nodes.SM_Prop_Manhole_29004.geometry} material={materials.Synty_Palette_A} position={[-7.478, 0, 7.604]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_Manhole_29.004', ant_landscape: {} }} />
+        <mesh name="SM_Prop_Manhole_29005" geometry={nodes.SM_Prop_Manhole_29005.geometry} material={materials.Synty_Palette_A} position={[-3.487, 0, 7.502]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_Manhole_29.005', ant_landscape: {} }} />
+        <mesh name="SM_Prop_Manhole_29006" geometry={nodes.SM_Prop_Manhole_29006.geometry} material={materials.Synty_Palette_A} position={[0.504, 0, 7.543]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_Manhole_29.006', ant_landscape: {} }} />
+        <mesh name="SM_Prop_Manhole_29007" geometry={nodes.SM_Prop_Manhole_29007.geometry} material={materials.Synty_Palette_A} position={[4.536, 0, 7.481]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_Manhole_29.007', ant_landscape: {} }} />
+        <mesh name="SM_Prop_Manhole_29008" geometry={nodes.SM_Prop_Manhole_29008.geometry} material={materials.Synty_Palette_A} position={[4.454, 0, 3.47]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_Manhole_29.008', ant_landscape: {} }} />
+        <mesh name="SM_Prop_Manhole_29009" geometry={nodes.SM_Prop_Manhole_29009.geometry} material={materials.Synty_Palette_A} position={[7.475, 0, -0.49]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_Manhole_29.009', ant_landscape: {} }} />
+        <mesh name="SM_Prop_Manhole_29010" geometry={nodes.SM_Prop_Manhole_29010.geometry} material={materials.Synty_Palette_A} position={[4.454, 0, -4.461]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_Manhole_29.010', ant_landscape: {} }} />
+        <mesh name="SM_Prop_Manhole_29011" geometry={nodes.SM_Prop_Manhole_29011.geometry} material={materials.Synty_Palette_A} position={[0.525, 0, -4.461]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_Manhole_29.011', ant_landscape: {} }} />
+        <mesh name="SM_Prop_Manhole_29012" geometry={nodes.SM_Prop_Manhole_29012.geometry} material={materials.Synty_Palette_A} position={[0.483, 0, 3.406]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_Manhole_29.012', ant_landscape: {} }} />
+        <group name="streetlight" position={[3.4, 0, -1.6]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'streetlight', ant_landscape: {} }}>
+          <mesh name="Scene344" geometry={nodes.Scene344.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene344_1" geometry={nodes.Scene344_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <group name="streetlight001" position={[-0.6, 0, -1.6]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'streetlight.001', ant_landscape: {} }}>
+          <mesh name="Scene351" geometry={nodes.Scene351.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene351_1" geometry={nodes.Scene351_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <group name="streetlight002" position={[-2.6, 0, 2.7]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'streetlight.002', ant_landscape: {} }}>
+          <mesh name="Scene352" geometry={nodes.Scene352.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene352_1" geometry={nodes.Scene352_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <group name="streetlight003" position={[1.4, 0, 2.7]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'streetlight.003', ant_landscape: {} }}>
+          <mesh name="Scene353" geometry={nodes.Scene353.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene353_1" geometry={nodes.Scene353_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <group name="streetlight004" position={[-4.4, 0.1, 8.8]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} scale={0.002} userData={{ name: 'streetlight.004', ant_landscape: {} }}>
+          <mesh name="Scene354" geometry={nodes.Scene354.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene354_1" geometry={nodes.Scene354_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <group name="streetlight005" position={[-6.4, 0, 4.5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'streetlight.005', ant_landscape: {} }}>
+          <mesh name="Scene356" geometry={nodes.Scene356.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene356_1" geometry={nodes.Scene356_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <group name="streetlight006" position={[-8.6, 0, 2.4]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'streetlight.006', ant_landscape: {} }}>
+          <mesh name="Scene357" geometry={nodes.Scene357.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene357_1" geometry={nodes.Scene357_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <group name="streetlight007" position={[-2.5, 0.1, -3.4]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'streetlight.007', ant_landscape: {} }}>
+          <mesh name="Scene358" geometry={nodes.Scene358.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene358_1" geometry={nodes.Scene358_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <group name="streetlight008" position={[1.6, 0, -3.5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'streetlight.008', ant_landscape: {} }}>
+          <mesh name="Scene359" geometry={nodes.Scene359.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene359_1" geometry={nodes.Scene359_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <group name="streetlight009" position={[6.5, 0.1, -1.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} scale={0.002} userData={{ name: 'streetlight.009', ant_landscape: {} }}>
+          <mesh name="Scene360" geometry={nodes.Scene360.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene360_1" geometry={nodes.Scene360_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <group name="streetlight010" position={[5.5, 0.1, 0.5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'streetlight.010', ant_landscape: {} }}>
+          <mesh name="Scene361" geometry={nodes.Scene361.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene361_1" geometry={nodes.Scene361_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <group name="streetlight011" position={[3.6, 0, 6.6]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'streetlight.011', ant_landscape: {} }}>
+          <mesh name="Scene362" geometry={nodes.Scene362.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene362_1" geometry={nodes.Scene362_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <group name="streetlight012" position={[-6.4, 0, 8.5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'streetlight.012', ant_landscape: {} }}>
+          <mesh name="Scene364" geometry={nodes.Scene364.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene364_1" geometry={nodes.Scene364_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <group name="streetlight013" position={[-2.4, 0, -1.6]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'streetlight.013', ant_landscape: {} }}>
+          <mesh name="Scene365" geometry={nodes.Scene365.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene365_1" geometry={nodes.Scene365_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <group name="streetlight014" position={[3.4, 0.1, -3.5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'streetlight.014', ant_landscape: {} }}>
+          <mesh name="Scene367" geometry={nodes.Scene367.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene367_1" geometry={nodes.Scene367_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
       </group>
     </group>
   )

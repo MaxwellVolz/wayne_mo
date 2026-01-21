@@ -71,7 +71,7 @@ const Scene = React.memo(function Scene({
         enableRotate={true}
         maxPolarAngle={Math.PI / 2.2}
         minDistance={3}
-        maxDistance={30}
+        maxDistance={50}
         panSpeed={0.8}
         makeDefault
       />
