@@ -102,14 +102,6 @@ export function DropoffIndicator({ position, color, opacity = 0.9 }: DropoffIndi
         />
       </mesh>
 
-      {/* Point light for glow */}
-      <pointLight
-        position={[0, 0.5, 0]}
-        color={color}
-        intensity={3}
-        distance={2}
-        decay={2}
-      />
     </group>
   )
 }

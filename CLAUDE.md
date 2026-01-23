@@ -173,6 +173,7 @@ Add a new interactable by adding to `config/introInteractables.ts`:
 - **`bobble`** - Gentle sinusoidal motion
 - **`hover_bobble`** - Combined (default for UI elements)
 - **`spin`** - Continuous rotation (good for collectibles)
+- **`press`** - Button press animation (depth + duration configurable)
 - **`glb`** - Play Blender animation clips (doors, characters, etc.)
 
 ### GLB Animation Setup
@@ -232,7 +233,7 @@ The game is built around **intersection control** as the primary mechanic:
 13. **Delivery visuals** - Pickup indicators, dropoff indicators, curved arc delivery paths
 14. **Smart spawning** - Prevents overlapping pickups/dropoffs on same nodes
 15. **Intro/Menu System** - Title screen with high score display, play and tutorial buttons
-16. **Tutorial System** - Interactive 3-step tutorial with image slides and in-game guidance
+16. **Tutorial System** - Interactive 2-step tutorial with image slides and in-game guidance
 17. **High Score System** - Persistent localStorage-based high score tracking
 18. **Mobile Responsiveness** - Comprehensive mobile support with breakpoints (768px, 480px, 360px)
 19. **Static Export** - Next.js configured for static deployment
@@ -460,10 +461,9 @@ The game has three distinct modes managed via state machine:
 - Mobile-responsive design with multiple breakpoints
 
 **2. Tutorial Mode (Optional)**
-- Interactive 3-step walkthrough:
-  - Step 1: Camera controls explanation
-  - Step 2: Intersection routing mechanics
-  - Step 3: Delivery system and objectives
+- Interactive 2-step walkthrough:
+  - Step 1: Camera controls and intersection routing
+  - Step 2: Delivery system and objectives
 - Live 3D scene with functional game mechanics
 - "Start Game" button to proceed to main game
 - Can be skipped from intro screen
@@ -475,10 +475,15 @@ The game has three distinct modes managed via state machine:
 - Automatically saves high score if beaten
 - "Play Again" returns to intro screen
 
+**4. Small City Mode (Sandbox)**
+- Accessible via pizza interactable in intro scene
+- Open-ended gameplay without timer
+- Smaller map for experimentation
+
 **Technical Implementation:**
 - File: `webapp/app/page.tsx` - Game mode state machine
-- Modes: `'intro' | 'tutorial' | 'game'`
-- Lazy loading for tutorial scene (performance optimization)
+- Modes: `'intro' | 'tutorial' | 'game' | 'small_city'`
+- Lazy loading for tutorial and small city scenes (performance optimization)
 
 ## Design Pillars
 
@@ -574,7 +579,7 @@ When implementing features:
 
 **Game Systems (IMPLEMENTED):**
 - ✅ **Intro/Menu System** - Polished title screen with game branding
-- ✅ **Tutorial System** - 3-step interactive tutorial with image slides
+- ✅ **Tutorial System** - 2-step interactive tutorial with image slides
 - ✅ **High Score System** - localStorage persistence, displayed on intro screen
 - ✅ 120-second timed game sessions
 - ✅ Rush Hour at 30s remaining (2x spawn frequency + dramatic banner)
@@ -593,7 +598,7 @@ When implementing features:
 ```
 webapp/
 ├── app/
-│   └── page.tsx                     ✅ Game mode management (intro/tutorial/game)
+│   └── page.tsx                     ✅ Game mode management (intro/tutorial/game/small_city)
 ├── lib/
 │   ├── intersectionTopology.ts      ✅ Priority-based routing with explicit tables
 │   ├── intersectionGeometry.ts      ✅ Legacy vector-based detection
@@ -601,20 +606,23 @@ webapp/
 │   ├── movement.ts                  ✅ Topological routing + intersection integration
 │   ├── deliverySystem.ts            ✅ Delivery spawning, collision, smart node allocation
 │   ├── gameState.ts                 ✅ Time scale management
-│   └── highScore.ts                 ✅ localStorage-based high score persistence
+│   ├── highScore.ts                 ✅ localStorage-based high score persistence
+│   └── interactableSystem.ts        ✅ Animation/interaction logic for intro objects
 ├── components/
+│   ├── SceneEffects.tsx             ✅ Shared fog, skybox (HDRI), and stars
 │   ├── IntroScene.tsx               ✅ Title screen with high score display
 │   ├── TutorialScene.tsx            ✅ Interactive tutorial game scene
 │   ├── TutorialGameScene.tsx        ✅ 3D scene for tutorial mode
+│   ├── SmallCityGame.tsx            ✅ Small City sandbox mode
+│   ├── SmallCitySceneCanvas.tsx     ✅ Small City 3D scene
 │   ├── IntersectionTile.tsx         ✅ Lucide icons (Move, RefreshCcw, RefreshCw)
 │   ├── IntersectionManager.tsx      ✅ Renders all tiles
-│   ├── Taxi.tsx                     ✅ Topological routing + state-based emissive
+│   ├── Taxi.tsx                     ✅ Multi-mesh taxi model + movement
 │   ├── DeliverySystem.tsx           ✅ Spawn timer + Rush Hour support
-│   ├── DeliveryManager.tsx          ✅ Visual indicators orchestration
-│   ├── DeliveryPath.tsx             ✅ Curved particle arc visualization
-│   ├── PickupIndicator.tsx          ✅ Box models with colored directional arrows (multiplier-based)
-│   ├── DropoffIndicator.tsx         ✅ Dropoff sphere indicators
-│   ├── PackageIndicator.tsx         ✅ Above-taxi box display (matches pickup box type)
+│   ├── DeliveryManager.tsx          ✅ Visual indicators (throttled updates)
+│   ├── PickupIndicator.tsx          ✅ Box models with colored directional arrows
+│   ├── DropoffIndicator.tsx         ✅ Dropoff ring indicators (no pointLight)
+│   ├── PackageIndicator.tsx         ✅ Above-taxi box with glowing sphere
 │   ├── CollisionSystem.tsx          ✅ Taxi collision detection
 │   ├── GameHUD.tsx                  ✅ Timer, money, pause, reset, Rush Hour banner
 │   ├── GameOverModal.tsx            ✅ End screen with high score detection + restart
@@ -627,24 +635,39 @@ webapp/
 │   └── roads.ts                     ✅ Dual-mode routing (topological + legacy)
 └── public/
     ├── models/
+    │   ├── city_01.glb              ✅ Main city model with path nodes
+    │   ├── taxi.glb                 ✅ Multi-mesh taxi (Synty assets)
     │   ├── box_small.glb            ✅ Multiplier 1 package
     │   ├── box_large.glb            ✅ Multiplier 2 package
     │   ├── box_long.glb             ✅ Multiplier 3 package
     │   ├── box_wide.glb             ✅ Multiplier 4 package
-    │   ├── arrow.glb                ✅ Long distance indicator (distance > 4)
-    │   └── arrow_chevron.glb        ✅ Short distance indicator (distance ≤ 4)
+    │   ├── arrow.glb                ✅ Long distance indicator (distance > 8)
+    │   ├── arrow_chevron.glb        ✅ Short distance indicator (distance ≤ 8)
+    │   └── tutorial_button.glb      ✅ Interactive button for intro
     ├── tutorial_01.png              ✅ Tutorial slide images
-    ├── tutorial_02.png
-    └── tutorial_03.png
+    └── tutorial_02.png
 ```
 
+**Scene Effects (SceneEffects.tsx):**
+- ✅ Shared component used by all scene canvases
+- ✅ Exponential fog (`FogExp2`) with configurable density
+- ✅ HDRI skybox using drei's `Environment` preset="night" (built-in, no file download)
+- ✅ Background blur for stylized low-poly look
+- ✅ Procedural `Stars` component for night atmosphere
+- Props: `fogDensity`, `showSky`, `showStars`
+
+**Performance Optimizations:**
+- ✅ DeliveryManager uses throttled updates (10fps) instead of every frame
+- ✅ Removed pointLights from DropoffIndicator (use emissive materials)
+- ✅ PackageIndicator uses sphere mesh instead of pointLight
+- ✅ Taxi underglow uses circle mesh instead of pointLight
+- ✅ Single Stars layer instead of multiple overlapping layers
+- ✅ Game over detection uses refs to prevent stale closure bugs
+
 **📋 FUTURE PHASES:**
-- Local save for game state (intersection states, persistent progress beyond high score)
+- Local save for game state (persistent progress beyond high score, unlocks)
 - Sound effects and music
-- Particle effects for pickups/dropoffs
 - Additional visual polish and animations
-- Performance optimizations for 20+ taxis
-- Additional tutorial content/refinements
 
 **Documentation:**
 - `/docs/blender.md` - Blender integration guide (intersection setup)

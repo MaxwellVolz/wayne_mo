@@ -23,10 +23,11 @@ const BOX_MODELS: Record<number, string> = {
 
 /**
  * Box model that follows taxi when carrying a delivery
- * Shows the same box model that was picked up
+ * Shows the same box model that was picked up with a glowing sphere around it
  */
-export function PackageIndicator({ taxiPosition, deliveryId, multiplier }: PackageIndicatorProps) {
+export function PackageIndicator({ taxiPosition, color, multiplier }: PackageIndicatorProps) {
   const groupRef = useRef<THREE.Group>(null)
+  const sphereRef = useRef<THREE.Mesh>(null)
   const timeRef = useRef(0)
 
   // Select box model based on multiplier (clamp to 1-4)
@@ -51,18 +52,36 @@ export function PackageIndicator({ taxiPosition, deliveryId, multiplier }: Packa
     groupRef.current.rotation.y = timeRef.current
 
     // Slight bob
-    const bob = Math.sin(timeRef.current * 4) * 0.1
+    const bob = Math.sin(timeRef.current * 4) * 0.05
     groupRef.current.position.set(
       taxiPosition.x,
-      taxiPosition.y + 0.8 + bob,
+      taxiPosition.y + 0.6 + bob,
       taxiPosition.z
     )
+
+    // Pulse the sphere opacity
+    if (sphereRef.current) {
+      const material = sphereRef.current.material as THREE.MeshBasicMaterial
+      material.opacity = 0.15 + Math.sin(timeRef.current * 3) * 0.1
+    }
   })
 
   return (
-    <group ref={groupRef} scale={0.8}>
-      {/* Box model with textures */}
-      <primitive object={boxClone} />
+    <group ref={groupRef} >
+      {/* Glowing sphere around package */}
+      <mesh ref={sphereRef} position={[0, 0.11, 0]}>
+        <sphereGeometry args={[0.35, 16, 12]} />
+        <meshBasicMaterial
+          color={color}
+          transparent
+          opacity={0.2}
+          depthWrite={false}
+        />
+      </mesh>
+      {/* Box model with textures (smaller scale) */}
+      <group scale={0.5} position={[0, 0, 0]}>
+        <primitive object={boxClone} />
+      </group>
     </group>
   )
 }

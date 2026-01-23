@@ -115,9 +115,9 @@ export function Model(props: React.ComponentProps<'group'>) {
             ],
           },
         }}>
-        <mesh name="walls" geometry={nodes.walls.geometry} material={materials.metalDark} position={[-7.298, 0, 11]} scale={[1.302, 1, 1]} userData={{ name: 'walls' }} />
-        <mesh name="windows" geometry={nodes.windows.geometry} material={materials['Material.001']} position={[-6.061, 1.065, 10.123]} scale={0.065} userData={{ name: 'windows' }} />
-        <mesh name="back_wall" geometry={nodes.back_wall.geometry} material={materials.metalDark} position={[-8.535, 2.421, 10.123]} rotation={[0, 0, -Math.PI]} scale={0.065} userData={{ name: 'back_wall' }} />
+        <mesh name="walls" geometry={nodes.walls.geometry} material={materials.metalDark} position={[-7.298, 0, 11]} scale={[1.302, 1, 1]} userData={{ name: 'walls', ant_landscape: {} }} />
+        <mesh name="windows" geometry={nodes.windows.geometry} material={materials['Material.001']} position={[-6.061, 1.065, 10.123]} scale={0.065} userData={{ name: 'windows', ant_landscape: {} }} />
+        <mesh name="back_wall" geometry={nodes.back_wall.geometry} material={materials.metalDark} position={[-8.535, 2.421, 10.123]} rotation={[0, 0, -Math.PI]} scale={0.065} userData={{ name: 'back_wall', ant_landscape: {} }} />
         <group name="tutorial_stand" position={[-6.547, 1.106, 10.675]} rotation={[0, -0.358, 0]} scale={0.106} userData={{ name: 'tutorial_stand' }}>
           <mesh name="Cube001" geometry={nodes.Cube001.geometry} material={materials['Material.002']} />
           <mesh name="Cube001_1" geometry={nodes.Cube001_1.geometry} material={materials['Material.004']} />

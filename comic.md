@@ -1,5 +1,19 @@
 # wayne mo comic
 
+
+## New Intro
+
+```
+THE YEAR IS 2030
+EVERYONE WORKS FROM HOME
+YOU START AN AI DELIVERY COMPANY
+THERE IS NO AI
+ITS JUST YOU
+WAYNE MO, YOU ARE THE DEMONS
+```
+
+FLASH BETWEEN "AI" AND "DEMON"
+
 dependencies
 
 - add Framer Motion
@@ -53,7 +67,7 @@ Phone notifications
 
 ## Panel 3: Operators Guide
 
-Mail  flies into Waynes hand the room through slot
+Mail flies into Waynes hand the room through slot
 Present drops in background
 
 ---

@@ -92,3 +92,49 @@ The Intersection "Rule" that is can be set during Runtime will determine Passthr
         - P0
       - W
         - P0
+
+
+
+## Visual Upgrades
+
+- roads
+- island
+- zoom out from above 'player office location' and fly around floating island to orbit
+
+## Intro
+
+- text intro
+  - fast load
+  - text intro for first time
+  - say the intro
+
+## Progression - backlog
+
+> Pimp your garage -Josh
+
+### Desk
+
+- CRT
+- Laptop
+- Multiscreen
+- VR
+
+### Apartments
+
+- Different IntroScreen Camera locations
+
+
+#### Apartment Tiers
+
+1. Garage / Basement
+2. Above Taco
+3. Midcity Apartment
+4. Penthouse
+5. Orbiting
+
+### Garages
+
+- Cab Unlocks
+
+## Fixes
+

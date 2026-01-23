@@ -167,15 +167,16 @@ export default function Taxi({ taxi, isPaused, deliveryColor }: TaxiProps) {
         </mesh>
       </group>
 
-      {/* Colored rectangle underglow when carrying a package */}
+      {/* Colored underglow when carrying a package (emissive mesh instead of pointLight for performance) */}
       {taxi.hasPackage && deliveryColor && (
-        <pointLight
-          position={[0, 0.3, 0]}
-          color={deliveryColor}
-          intensity={3}
-          distance={1}
-          decay={3}
-        />
+        <mesh position={[0, 0.001, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+          <circleGeometry args={[0.4, 16]} />
+          <meshBasicMaterial
+            color={deliveryColor}
+            transparent
+            opacity={0.6}
+          />
+        </mesh>
       )}
     </group>
   )

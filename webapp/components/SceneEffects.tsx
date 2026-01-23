@@ -17,7 +17,7 @@ interface SceneEffectsProps {
  * Used by Scene.tsx, TutorialGameScene.tsx, SmallCitySceneCanvas.tsx, IntroScene.tsx
  */
 export function SceneEffects({
-  fogDensity = 0.035,
+  fogDensity = 0.015,
   showSky = true,
   showStars = true,
 }: SceneEffectsProps) {
@@ -64,6 +64,15 @@ export function SceneEffects({
           />
           <Stars
             radius={50}
+            depth={100}
+            count={2000}
+            factor={8}
+            saturation={1}
+            fade
+            speed={0.5}
+          />
+          <Stars
+            radius={1}
             depth={100}
             count={2000}
             factor={8}

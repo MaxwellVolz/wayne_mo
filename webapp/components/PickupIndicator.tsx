@@ -44,7 +44,6 @@ export function PickupIndicator({ position, dropoffPosition, color, deliveryId, 
 
   // Select arrow model based on distance
   const arrowModelPath = useMemo(() => {
-    console.log("distance", distance)
     return distance > 8 ? ARROW_LONG : ARROW_SHORT
   }, [distance])
 

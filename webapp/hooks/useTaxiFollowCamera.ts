@@ -89,7 +89,7 @@ export function useTaxiFollowCamera({
       }
 
       // Calculate desired chase camera position
-      const cameraOffset = new THREE.Vector3(-5, 8, -5)
+      const cameraOffset = new THREE.Vector3(-2, 2, -2)
       const desiredCameraPos = taxiPosition.clone().add(cameraOffset)
 
       // Update transition timer
