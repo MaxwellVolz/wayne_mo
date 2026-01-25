@@ -7,6 +7,7 @@ import { GameHUD } from './GameHUD'
 import { GameOverModal } from './GameOverModal'
 import { TaxiControls } from './TaxiControls'
 import { getRoadNetwork } from '@/data/roads'
+import { playTaxiSpawnSound } from '@/lib/audioManager'
 import type { Taxi } from '@/types/game'
 
 // Load Scene only on client side (Three.js doesn't work with SSR)
@@ -184,6 +185,7 @@ export default function Game({ onExit }: GameProps = {}) {
     }
 
     taxisRef.current.push(newTaxi)
+    playTaxiSpawnSound()
     console.log(`🚕 Spawned ${newTaxi.id} on path ${startPath.id} for $${nextTaxiCost}`)
 
     // Increase cost for next taxi
@@ -228,6 +230,33 @@ export default function Game({ onExit }: GameProps = {}) {
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [gameOver, handleTogglePause, taxisRef])
+
+  // Ambient car horns - play randomly during gameplay
+  useEffect(() => {
+    if (gameOver || isPaused) return
+
+    const playRandomHorn = async () => {
+      const { playRandomHorn } = await import('@/lib/audioManager')
+      playRandomHorn()
+    }
+
+    // Play horn at random intervals (8-20 seconds)
+    const scheduleNextHorn = () => {
+      const delay = 8000 + Math.random() * 12000
+      return setTimeout(() => {
+        playRandomHorn()
+        hornTimeoutRef.current = scheduleNextHorn()
+      }, delay)
+    }
+
+    const hornTimeoutRef = { current: scheduleNextHorn() }
+
+    return () => {
+      if (hornTimeoutRef.current) {
+        clearTimeout(hornTimeoutRef.current)
+      }
+    }
+  }, [gameOver, isPaused])
 
   return (
     <div className="game-container" key={gameKey}>

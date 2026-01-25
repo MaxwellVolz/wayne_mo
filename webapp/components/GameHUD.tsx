@@ -1,8 +1,12 @@
 'use client'
 
 import { useState, useEffect, useRef, type MutableRefObject } from 'react'
-import { Play, Pause, RotateCcw, X } from 'lucide-react'
+import { Play, Pause, RotateCcw, X, ChevronDown } from 'lucide-react'
 import type { Taxi } from '@/types/game'
+import { playRushHourSound, playGameOverSound } from '@/lib/audioManager'
+import { MuteButton } from './MuteButton'
+import { KeyboardHints } from './KeyboardHints'
+import { SettingsPanel } from './SettingsPanel'
 import buttonStyles from '@/styles/components/buttons.module.css'
 import displayStyles from '@/styles/components/displays.module.css'
 import positionStyles from '@/styles/utilities/positioning.module.css'
@@ -32,6 +36,8 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
   const [isRushHour, setIsRushHour] = useState(false)
   const [showRushHourBanner, setShowRushHourBanner] = useState(false)
   const [hudVisible, setHudVisible] = useState(false)
+  const [showPauseArrow, setShowPauseArrow] = useState(true)
+  const [arrowOpacity, setArrowOpacity] = useState(1)
 
   // Use ref to avoid recreating interval on pause state change
   const isPausedRef = useRef(isPaused)
@@ -49,6 +55,28 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
     }, 3000)
     return () => clearTimeout(timer)
   }, [])
+
+  // Fade out pause arrow after 3 seconds (starts when HUD becomes visible)
+  useEffect(() => {
+    if (!hudVisible) return
+
+    const fadeStart = 2500 // Start fading at 2.5s after HUD visible
+    const fadeEnd = 3500 // Fully gone at 3.5s
+    const startTime = Date.now()
+
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - startTime
+      if (elapsed >= fadeEnd) {
+        setShowPauseArrow(false)
+        clearInterval(interval)
+      } else if (elapsed >= fadeStart) {
+        const fadeProgress = (elapsed - fadeStart) / (fadeEnd - fadeStart)
+        setArrowOpacity(1 - fadeProgress)
+      }
+    }, 50)
+
+    return () => clearInterval(interval)
+  }, [hudVisible])
 
   // Update total money and timer periodically
   useEffect(() => {
@@ -73,6 +101,7 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
               setIsRushHour(true)
               setShowRushHourBanner(true)
               onRushHourChange?.(true)
+              playRushHourSound()
 
               // Hide banner after 3 seconds
               setTimeout(() => {
@@ -83,6 +112,7 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
             // Check if game over (use ref to prevent multiple calls)
             if (remaining <= 0 && !gameOverCalledRef.current) {
               gameOverCalledRef.current = true
+              playGameOverSound()
               onGameOver(total)
             }
 
@@ -101,6 +131,7 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
   }, [taxisRef, onGameOver, isRushHour, onRushHourChange])
 
   const secondsRemaining = Math.floor(timeRemaining)
+  const millisecondsRemaining = Math.floor((timeRemaining % 1) * 100)
 
   return (
     <>
@@ -112,7 +143,7 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
           pointerEvents: hudVisible ? 'auto' : 'none',
         }}
       >
-        {/* Top left - reset and exit buttons */}
+        {/* Top left - reset, exit, and mute buttons */}
         <div className={positionStyles.topLeft} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <button
             className={buttonStyles.icon}
@@ -128,11 +159,16 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
           >
             <X size={24} />
           </button>
+          <MuteButton />
+          <KeyboardHints />
+          <SettingsPanel />
         </div>
 
         {/* Top center - timer */}
         <div className={displayStyles.timerDisplay}>
-          {secondsRemaining}
+          <span className={displayStyles.timerSeconds}>{secondsRemaining}</span>
+          <span className={displayStyles.timerSymbol}>&quot;</span>
+          <span className={displayStyles.timerMs}>{millisecondsRemaining.toString().padStart(2, '0')}</span>
         </div>
 
         {/* Top right - total money */}
@@ -140,8 +176,21 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
           ${totalMoney}
         </div>
 
-        {/* Bottom right - pause button */}
-        <div className={positionStyles.bottomRight}>
+        {/* Bottom right - pause button with bouncing arrow */}
+        <div className={positionStyles.bottomRight} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          {/* Bouncing arrow pointing at pause button */}
+          {showPauseArrow && (
+            <div
+              style={{
+                animation: 'bounce 0.5s ease-in-out infinite',
+                opacity: arrowOpacity,
+                marginBottom: '8px',
+                filter: 'drop-shadow(0 0 8px #ffff00)',
+              }}
+            >
+              <ChevronDown size={32} color="#ffff00" strokeWidth={3} />
+            </div>
+          )}
           <button
             className={styles.pauseButton}
             onClick={onTogglePause}

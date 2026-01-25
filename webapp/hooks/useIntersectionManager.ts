@@ -3,6 +3,7 @@ import type { IntersectionState, RoadNode } from '@/types/game'
 import { getNodesByType } from '@/lib/extractPathNodes'
 import { getRoadNetwork, isRoadNetworkReady } from '@/data/roads'
 import { setIntersections as setGlobalIntersections } from '@/lib/intersectionState'
+import { playIntersectionSound } from '@/lib/audioManager'
 
 /**
  * Hook for managing intersection states
@@ -120,6 +121,7 @@ export function useIntersectionManager() {
       })
 
       setGlobalIntersections(newMap) // Update global state
+      playIntersectionSound()
       console.log(`🚦 ${nodeId} mode changed: ${current.mode} → ${nextMode}`)
       return newMap
     })

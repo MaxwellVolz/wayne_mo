@@ -138,15 +138,22 @@ export function InteractionSphere({
 
   if (config.visible === false) return null
 
+  // Toggle for debugging interaction spheres
+  const DEBUG_SPHERES = false
+
   return (
     <mesh
-      position={config.position}
       onPointerEnter={handlePointerEnter}
       onPointerLeave={handlePointerLeave}
       onClick={handleClick}
     >
       <sphereGeometry args={[config.radius, 16, 16]} />
-      <meshBasicMaterial visible={false} />
+      <meshBasicMaterial
+        visible={DEBUG_SPHERES}
+        color={hovered ? "#00ff00" : "#ff0000"}
+        transparent
+        opacity={0.5}
+      />
     </mesh>
   )
 }
@@ -176,6 +183,7 @@ export function InteractableLabel({ config }: { config: InteractableConfig }) {
 
 /**
  * Complete interactable object with model, collision, and label
+ * Note: Models with baked positions render at origin, interaction sphere uses config.position
  */
 export default function Interactable({ config, isPointerDown }: InteractableProps) {
   const [hovered, setHovered] = useState(false)
@@ -186,18 +194,22 @@ export default function Interactable({ config, isPointerDown }: InteractableProp
 
   return (
     <>
+      {/* Model renders at origin - uses baked position from GLB */}
       <InteractableModel
         config={config}
         hovered={hovered}
         animationStateRef={animationStateRef}
       />
-      <InteractionSphere
-        config={config}
-        hovered={hovered}
-        setHovered={setHovered}
-        isPointerDown={isPointerDown}
-        animationStateRef={animationStateRef}
-      />
+      {/* Interaction sphere at explicit position for click detection */}
+      <group position={config.position}>
+        <InteractionSphere
+          config={config}
+          hovered={hovered}
+          setHovered={setHovered}
+          isPointerDown={isPointerDown}
+          animationStateRef={animationStateRef}
+        />
+      </group>
       <InteractableLabel config={config} />
     </>
   )

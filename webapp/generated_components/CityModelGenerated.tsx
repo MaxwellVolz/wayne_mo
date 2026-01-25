@@ -40,14 +40,18 @@ type GLTFResult = GLTF & {
     Scene113_1: THREE.Mesh
     Scene113_2: THREE.Mesh
     Scene113_3: THREE.Mesh
-    Scene113_4: THREE.Mesh
     Scene152: THREE.Mesh
     Scene152_1: THREE.Mesh
     Scene163: THREE.Mesh
     Scene163_1: THREE.Mesh
     Scene163_2: THREE.Mesh
-    Scene163_3: THREE.Mesh
     SM_Env_Sidewalk_Gutter_10: THREE.Mesh
+    Scene228: THREE.Mesh
+    Scene228_1: THREE.Mesh
+    Scene235: THREE.Mesh
+    Scene235_1: THREE.Mesh
+    Scene297: THREE.Mesh
+    Scene297_1: THREE.Mesh
     Scene137: THREE.Mesh
     Scene137_1: THREE.Mesh
     Scene048: THREE.Mesh
@@ -63,6 +67,15 @@ type GLTFResult = GLTF & {
     Scene372_1: THREE.Mesh
     Scene373: THREE.Mesh
     Scene373_1: THREE.Mesh
+    Scene12140: THREE.Mesh
+    Scene12140_1: THREE.Mesh
+    Scene12140_2: THREE.Mesh
+    Scene12141: THREE.Mesh
+    Scene12141_1: THREE.Mesh
+    Scene12141_2: THREE.Mesh
+    Scene12142: THREE.Mesh
+    Scene12142_1: THREE.Mesh
+    Scene12142_2: THREE.Mesh
     SM_Env_Sidewalk_Dip_Corner_36: THREE.Mesh
     SM_Env_Sidewalk_Dip_Corner_36001: THREE.Mesh
     SM_Env_Sidewalk_Dip_Corner_36002: THREE.Mesh
@@ -151,6 +164,17 @@ type GLTFResult = GLTF & {
     SM_Env_Sidewalk_Dip_06006: THREE.Mesh
     SM_Env_Sidewalk_Dip_06007: THREE.Mesh
     SM_Env_Sidewalk_349037: THREE.Mesh
+    SM_Env_Sidewalk_349039: THREE.Mesh
+    SM_Env_Sidewalk_349040: THREE.Mesh
+    SM_Env_Sidewalk_Dip_06008: THREE.Mesh
+    SM_Env_Sidewalk_349038: THREE.Mesh
+    SM_Env_Sidewalk_349041: THREE.Mesh
+    SM_Env_Sidewalk_349042: THREE.Mesh
+    SM_Env_Sidewalk_349043: THREE.Mesh
+    SM_Env_Sidewalk_349044: THREE.Mesh
+    SM_Env_Sidewalk_349045: THREE.Mesh
+    SM_Env_Sidewalk_349046: THREE.Mesh
+    SM_Env_Sidewalk_349047: THREE.Mesh
     SM_Env_Sidewalk_Dip_Corner_36007: THREE.Mesh
     SM_Env_Sidewalk_Dip_Corner_36006: THREE.Mesh
     SM_Env_Sidewalk_Dip_Corner_36005: THREE.Mesh
@@ -239,7 +263,15 @@ type GLTFResult = GLTF & {
     SM_Env_Sidewalk_Straight_323076: THREE.Mesh
     SM_Env_Sidewalk_Straight_323077: THREE.Mesh
     SM_Env_Sidewalk_Straight_323078: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323034: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11028: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323055: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11029: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323052: THREE.Mesh
+    SM_Env_Sidewalk_Corner_11031: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323067: THREE.Mesh
     SM_Env_Sidewalk_Straight_323074: THREE.Mesh
+    SM_Env_Sidewalk_Straight_323079: THREE.Mesh
     Cylinder: THREE.Mesh
     grass: THREE.Mesh
     Icosphere: THREE.Mesh
@@ -382,7 +414,6 @@ type GLTFResult = GLTF & {
     SM_Env_Road_Bare_99083: THREE.Mesh
     SM_Env_Road_Bare_99123: THREE.Mesh
     SM_Env_Road_Bare_99124: THREE.Mesh
-    SM_Env_Road_Bare_99125: THREE.Mesh
     SM_Env_Road_Bare_99126: THREE.Mesh
     SM_Env_Road_Bare_99127: THREE.Mesh
     SM_Env_Road_Bare_99128: THREE.Mesh
@@ -399,6 +430,7 @@ type GLTFResult = GLTF & {
     SM_Env_Road_Bare_99139: THREE.Mesh
     SM_Env_Road_Bare_99140: THREE.Mesh
     SM_Env_Road_Bare_99141: THREE.Mesh
+    SM_Env_Road_Bare_99125: THREE.Mesh
     mailbox: THREE.Mesh
     SM_Prop_SidewalkPoles_08: THREE.Mesh
     trashcan: THREE.Mesh
@@ -440,39 +472,11 @@ type GLTFResult = GLTF & {
     SM_Prop_SidewalkPoles_08012: THREE.Mesh
     SM_Prop_SidewalkPoles_08013: THREE.Mesh
     trashcan009: THREE.Mesh
-    Scene344: THREE.Mesh
-    Scene344_1: THREE.Mesh
-    Scene351: THREE.Mesh
-    Scene351_1: THREE.Mesh
-    Scene352: THREE.Mesh
-    Scene352_1: THREE.Mesh
-    Scene353: THREE.Mesh
-    Scene353_1: THREE.Mesh
-    Scene354: THREE.Mesh
-    Scene354_1: THREE.Mesh
-    Scene356: THREE.Mesh
-    Scene356_1: THREE.Mesh
-    Scene357: THREE.Mesh
-    Scene357_1: THREE.Mesh
-    Scene358: THREE.Mesh
-    Scene358_1: THREE.Mesh
-    Scene359: THREE.Mesh
-    Scene359_1: THREE.Mesh
-    Scene360: THREE.Mesh
-    Scene360_1: THREE.Mesh
-    Scene361: THREE.Mesh
-    Scene361_1: THREE.Mesh
-    Scene362: THREE.Mesh
-    Scene362_1: THREE.Mesh
-    Scene364: THREE.Mesh
-    Scene364_1: THREE.Mesh
-    Scene365: THREE.Mesh
-    Scene365_1: THREE.Mesh
-    Scene367: THREE.Mesh
-    Scene367_1: THREE.Mesh
     park001: THREE.Mesh
     park1133: THREE.Mesh
-    park2393: THREE.Mesh
+    Scene400: THREE.Mesh
+    Scene400_1: THREE.Mesh
+    Scene400_2: THREE.Mesh
     park4393: THREE.Mesh
     park4505: THREE.Mesh
     park4940: THREE.Mesh
@@ -503,13 +507,30 @@ type GLTFResult = GLTF & {
     park4965: THREE.Mesh
     park4966: THREE.Mesh
     park4967: THREE.Mesh
+    Scene139: THREE.Mesh
+    Scene139_1: THREE.Mesh
+    ['SM_Prop_Chair_BeanBag_03_(2)']: THREE.Mesh
+    SM_Prop_Shelf_Wall_03: THREE.Mesh
+    ['SM_Prop_Cup_Coffee_Disposable_Open_Full_01_(1)']: THREE.Mesh
+    SM_Prop_Cord_Wall_01: THREE.Mesh
+    ['SM_Prop_Certificate_01_(3)']: THREE.Mesh
+    Scene140: THREE.Mesh
+    Scene140_1: THREE.Mesh
+    tutorial: THREE.Mesh
+    SM_Prop_Laptop_02: THREE.Mesh
+    SM_Prop_Laptop_02_1: THREE.Mesh
+    endless_mode: THREE.Mesh
+    speaker: THREE.Mesh
+    Scene345: THREE.Mesh
+    Scene345_1: THREE.Mesh
+    glass: THREE.Mesh
+    walls001: THREE.Mesh
   }
   materials: {
     Synty_Palette_A: THREE.MeshStandardMaterial
     Glass_01: THREE.MeshStandardMaterial
     ['Glass_01.002']: THREE.MeshStandardMaterial
     Billboard_01: THREE.MeshStandardMaterial
-    ['Billboard_01.001']: THREE.MeshStandardMaterial
     ['PolygonCity_01_A.006']: THREE.MeshStandardMaterial
     ['Synty_Palette_A.001']: THREE.MeshStandardMaterial
     ['Synty_Palette_A.002']: THREE.MeshStandardMaterial
@@ -531,6 +552,19 @@ type GLTFResult = GLTF & {
     ruby: THREE.MeshStandardMaterial
     gold: THREE.MeshStandardMaterial
     Road_01: THREE.MeshStandardMaterial
+    ['Synty_Palette_A.016']: THREE.MeshStandardMaterial
+    ['Synty_Palette_A.017']: THREE.MeshStandardMaterial
+    Mat_PolygonOffice_01_A: THREE.MeshStandardMaterial
+    ['Mat_PolygonOffice_01_A.002']: THREE.MeshStandardMaterial
+    ['Mat_PolygonOffice_01_A.005']: THREE.MeshStandardMaterial
+    ['Mat_PolygonOffice_01_A.006']: THREE.MeshStandardMaterial
+    ['Mat_PolygonOffice_01_A.012']: THREE.MeshStandardMaterial
+    ['Mat_PolygonOffice_01_A.007']: THREE.MeshStandardMaterial
+    ['Mat_PolygonOffice_01_A.004']: THREE.MeshStandardMaterial
+    Mat_PolygonOffice_Screen_01: THREE.MeshStandardMaterial
+    ['Mat_PolygonOffice_01_A.008']: THREE.MeshStandardMaterial
+    ['Mat_PolygonOffice_01_A.013']: THREE.MeshStandardMaterial
+    glass_blue: THREE.MeshStandardMaterial
   }
 }
 
@@ -549,7 +583,7 @@ export function Model(props: React.ComponentProps<'group'>) {
             ],
           },
         }}>
-        <group name="INT_bottom_left" position={[-7.5, 0, 7.5]} userData={{ name: 'INT_bottom_left', north: 'INT_left', south: 'StarterNode', east: 'INT_SSW', west: 'PathNode_DE_west_02' }} />
+        <group name="INT_bottom_left" position={[-7.5, 0, 7.5]} userData={{ name: 'INT_bottom_left', north: 'INT_left', south: 'PathNode_SSE_CORNER', east: 'INT_SSW', west: 'PathNode_DE_west_02', ant_landscape: {} }} />
         <group name="INT_bottom_right" position={[4.5, 0, 7.5]} userData={{ name: 'INT_bottom_right', north: 'INT_SE', south: 'PathNode_DE_south_03', east: 'PathNode_bottom_right', west: 'INT_SSE' }} />
         <group name="INT_Central" position={[0.5, 0, 3.5]} userData={{ name: 'INT_Central', north: 'INT_NorthCentral', south: 'INT_SSE', east: 'INT_SE', west: 'INT_SW' }} />
         <group name="INT_E" position={[4.5, 0, -0.5]} userData={{ name: 'INT_E', north: 'INT_NNE', south: 'INT_SE', east: 'INT_EE', west: 'INT_NorthCentral', ant_landscape: {} }} />
@@ -560,7 +594,7 @@ export function Model(props: React.ComponentProps<'group'>) {
         <group name="INT_NW" position={[-3.5, 0, -4.5]} userData={{ name: 'INT_NW', north: 'PathNode_DE_01', south: 'INT_W', east: 'INT_top_middle', west: 'PathNode_Corner_01' }} />
         <group name="INT_SE" position={[4.5, 0, 3.5]} userData={{ name: 'INT_SE', north: 'INT_E', south: 'INT_bottom_right', east: '', west: 'INT_Central' }} />
         <group name="INT_SSE" position={[0.5, 0, 7.5]} userData={{ name: 'INT_SSE', north: 'INT_Central', south: 'PathNode_DE_south_02', east: 'INT_bottom_right', west: 'INT_SSW' }} />
-        <group name="INT_SSW" position={[-3.5, 0, 7.5]} userData={{ name: 'INT_SSW', north: 'INT_SW', south: 'PathNode_DE_south_01', east: 'INT_SSE', west: 'INT_bottom_left' }} />
+        <group name="INT_SSW" position={[-3.5, 0, 7.5]} userData={{ name: 'INT_SSW', north: 'INT_SW', south: 'StarterNode', east: 'INT_SSE', west: 'INT_bottom_left', ant_landscape: {} }} />
         <group name="INT_SW" position={[-3.5, 0, 3.5]} userData={{ name: 'INT_SW', north: 'INT_W', south: 'INT_SSW', east: 'INT_Central', west: 'INT_left' }} />
         <group name="INT_top_middle" position={[0.5, 0, -4.5]} userData={{ name: 'INT_top_middle', north: 'PathNode_DE_02', south: 'INT_NorthCentral', east: 'INT_NNE', west: 'INT_NW' }} />
         <group name="INT_W" position={[-3.5, 0, -0.5]} userData={{ name: 'INT_W', north: 'INT_NW', south: 'INT_SW', east: 'INT_NorthCentral', west: '' }} />
@@ -570,13 +604,13 @@ export function Model(props: React.ComponentProps<'group'>) {
         <group name="PathNode_DE_02" position={[0.5, 0, -7.5]} userData={{ name: 'PathNode_DE_02', north: '', south: 'INT_top_middle', east: '', west: '' }} />
         <group name="PathNode_DE_03" position={[4.5, 0, -6.5]} userData={{ name: 'PathNode_DE_03', north: '', south: 'INT_NNE', east: '', west: '' }} />
         <group name="PathNode_DE_east" position={[10.5, 0, -0.5]} userData={{ name: 'PathNode_DE_east', north: '', south: '', east: '', west: 'INT_EE', ant_landscape: {} }} />
-        <group name="PathNode_DE_south_01" position={[-3.5, 0, 9.5]} userData={{ name: 'PathNode_DE_south_01', north: 'INT_SSW', south: '', east: '', west: '' }} />
+        <group name="StarterNode" position={[-3.353, 0, 10.72]} userData={{ name: 'StarterNode', north: 'INT_SSW', south: '', east: '', west: '', ant_landscape: {} }} />
         <group name="PathNode_DE_south_02" position={[0.5, 0, 10.5]} userData={{ name: 'PathNode_DE_south_02', north: 'INT_SSE', south: '', east: '', west: '' }} />
         <group name="PathNode_DE_south_03" position={[4.5, 0, 9.5]} userData={{ name: 'PathNode_DE_south_03', north: 'INT_bottom_right', south: '', east: '', west: '' }} />
         <group name="PathNode_DE_west_01" position={[-9.5, 0, 3.5]} userData={{ name: 'PathNode_DE_west_01', north: 'INT_left', south: '', east: '', west: '' }} />
-        <group name="PathNode_DE_west_02" position={[-11.5, 0, 7.5]} userData={{ name: 'PathNode_DE_west_02', north: '', south: '', east: 'INT_bottom_left', west: '' }} />
+        <group name="PathNode_DE_west_02" position={[-11.5, 0, 7.5]} userData={{ name: 'PathNode_DE_west_02', north: '', south: '', east: 'INT_bottom_left', west: '', ant_landscape: {} }} />
         <group name="PathNode_top_right" position={[7.5, 0, -4.5]} userData={{ name: 'PathNode_top_right', north: '', south: 'INT_EE', east: '', west: 'INT_NNE', ant_landscape: {} }} />
-        <group name="StarterNode" position={[-7.5, 0, 10.7]} userData={{ name: 'StarterNode', north: 'INT_bottom_left', south: '', east: '', west: '', ant_landscape: {} }} />
+        <group name="PathNode_SSE_CORNER" position={[-7.5, 0, 9.489]} userData={{ name: 'PathNode_SSE_CORNER', north: 'INT_bottom_left', south: '', east: '', west: '', ant_landscape: {} }} />
         <group name="Pickup_House_01" position={[4.5, 0, -1.5]} userData={{ name: 'Pickup_House_01' }} />
         <group name="Pickup_House_01001" position={[5.5, 0, -4.5]} userData={{ name: 'Pickup_House_01.001' }} />
         <group name="Pickup_House_01002" position={[3.5, 0, -4.5]} userData={{ name: 'Pickup_House_01.002' }} />
@@ -593,14 +627,14 @@ export function Model(props: React.ComponentProps<'group'>) {
         <group name="Pickup_House_01013" position={[-8.5, 0, 3.5]} userData={{ name: 'Pickup_House_01.013' }} />
         <group name="Pickup_House_01014" position={[-7.5, 0, 4.5]} userData={{ name: 'Pickup_House_01.014', ant_landscape: {} }} />
         <group name="Pickup_House_01016" position={[-10.5, 0, 7.5]} userData={{ name: 'Pickup_House_01.016', ant_landscape: {} }} />
-        <group name="Pickup_House_01018" position={[-4.5, 0, 7.5]} userData={{ name: 'Pickup_House_01.018', ant_landscape: {} }} />
-        <group name="Pickup_House_01019" position={[-2.5, 0, 7.5]} userData={{ name: 'Pickup_House_01.019' }} />
-        <group name="Pickup_House_01020" position={[0.5, 0, 9.5]} userData={{ name: 'Pickup_House_01.020' }} />
+        <group name="Pickup_House_01018" position={[-5.5, 0, 7.5]} userData={{ name: 'Pickup_House_01.018', ant_landscape: {} }} />
+        <group name="Pickup_House_01019" position={[-1.5, 0, 7.5]} userData={{ name: 'Pickup_House_01.019', ant_landscape: {} }} />
+        <group name="Pickup_House_01020" position={[0.5, 0, 9.5]} userData={{ name: 'Pickup_House_01.020', ant_landscape: {} }} />
         <group name="Pickup_House_01021" position={[-3.5, 0, 8.5]} userData={{ name: 'Pickup_House_01.021' }} />
         <group name="Pickup_House_01022" position={[4.5, 0, 8.5]} userData={{ name: 'Pickup_House_01.022' }} />
         <group name="Pickup_House_01023" position={[1.5, 0, 7.5]} userData={{ name: 'Pickup_House_01.023' }} />
         <group name="Pickup_House_01024" position={[0.5, 0, 6.5]} userData={{ name: 'Pickup_House_01.024' }} />
-        <group name="Pickup_House_01025" position={[0.5, 0, 4.5]} userData={{ name: 'Pickup_House_01.025' }} />
+        <group name="Pickup_House_01025" position={[0.5, 0, 4.5]} userData={{ name: 'Pickup_House_01.025', ant_landscape: {} }} />
         <group name="Pickup_House_01026" position={[4.5, 0, 4.5]} userData={{ name: 'Pickup_House_01.026' }} />
         <group name="Pickup_House_01027" position={[3.5, 0, 3.5]} userData={{ name: 'Pickup_House_01.027' }} />
         <group name="Pickup_House_01028" position={[0.5, 0, 2.5]} userData={{ name: 'Pickup_House_01.028' }} />
@@ -616,7 +650,7 @@ export function Model(props: React.ComponentProps<'group'>) {
         <group name="Pickup_House_01036" position={[-2.5, 0, -4.5]} userData={{ name: 'Pickup_House_01.036' }} />
         <group name="Pickup_House_01037" position={[-0.5, 0, -4.5]} userData={{ name: 'Pickup_House_01.037' }} />
         <group name="Pickup_House_01038" position={[8.5, 0, -0.5]} userData={{ name: 'Pickup_House_01.038' }} />
-        <mesh name="SM_Bld_OfficeOld_Large_01" geometry={nodes.SM_Bld_OfficeOld_Large_01.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Bld_OfficeOld_Large_01' }} />
+        <mesh name="SM_Bld_OfficeOld_Large_01" geometry={nodes.SM_Bld_OfficeOld_Large_01.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Bld_OfficeOld_Large_01', ant_landscape: {} }} />
         <mesh name="SM_Bld_OfficeSquare_Base_08" geometry={nodes.SM_Bld_OfficeSquare_Base_08.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Bld_OfficeSquare_Base_08', ant_landscape: {} }}>
           <mesh name="SM_Bld_OfficeSquare_02" geometry={nodes.SM_Bld_OfficeSquare_02.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Bld_OfficeSquare_02', ant_landscape: {} }} />
           <mesh name="SM_Bld_OfficeSquare_03" geometry={nodes.SM_Bld_OfficeSquare_03.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Bld_OfficeSquare_03', ant_landscape: {} }} />
@@ -629,18 +663,18 @@ export function Model(props: React.ComponentProps<'group'>) {
           <mesh name="SM_Bld_OfficeSquare_Roof_07" geometry={nodes.SM_Bld_OfficeSquare_Roof_07.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Bld_OfficeSquare_Roof_07', ant_landscape: {} }} />
         </mesh>
         <mesh name="station" geometry={nodes.station.geometry} material={materials.Synty_Palette_A} userData={{ name: 'station' }} />
-        <group name="SM_Bld_OfficeOld_Small_Roof_01" userData={{ name: 'SM_Bld_OfficeOld_Small_Roof_01' }}>
+        <group name="SM_Bld_OfficeOld_Small_Roof_01" userData={{ name: 'SM_Bld_OfficeOld_Small_Roof_01', ant_landscape: {} }}>
           <mesh name="Scene065" geometry={nodes.Scene065.geometry} material={materials.Synty_Palette_A} />
           <mesh name="Scene065_1" geometry={nodes.Scene065_1.geometry} material={materials.Glass_01} />
         </group>
         <mesh name="SM_Prop_LargeSign_Bottle_01" geometry={nodes.SM_Prop_LargeSign_Bottle_01.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Prop_LargeSign_Bottle_01' }} />
         <mesh name="city_hall" geometry={nodes.city_hall.geometry} material={materials.Synty_Palette_A} position={[-0.5, 0, -1.6]} userData={{ name: 'city_hall', ant_landscape: {} }} />
-        <group name="SM_Bld_Shop_Corner_01_Glass_1" position={[0, 0, -0.6]} userData={{ name: 'SM_Bld_Shop_Corner_01_Glass_1', ant_landscape: {} }}>
+        <group name="SM_Bld_Shop_Corner_01_Glass_1" position={[2.532, 0.785, -7.112]} rotation={[0, 1.571, 0]} userData={{ name: 'SM_Bld_Shop_Corner_01_Glass_1', ant_landscape: {} }}>
           <mesh name="Scene074" geometry={nodes.Scene074.geometry} material={materials['Glass_01.002']} />
           <mesh name="Scene074_1" geometry={nodes.Scene074_1.geometry} material={materials.Synty_Palette_A} />
           <mesh name="Scene074_2" geometry={nodes.Scene074_2.geometry} material={materials.Glass_01} />
         </group>
-        <group name="SM_Prop_Sign_Police_01" userData={{ name: 'SM_Prop_Sign_Police_01' }}>
+        <group name="SM_Prop_Sign_Police_01" userData={{ name: 'SM_Prop_Sign_Police_01', ant_landscape: {} }}>
           <mesh name="Scene136" geometry={nodes.Scene136.geometry} material={materials.Synty_Palette_A} />
           <mesh name="Scene136_1" geometry={nodes.Scene136_1.geometry} material={materials.Synty_Palette_A} />
         </group>
@@ -650,39 +684,49 @@ export function Model(props: React.ComponentProps<'group'>) {
           <mesh name="Scene076_1" geometry={nodes.Scene076_1.geometry} material={materials.Synty_Palette_A} />
         </group>
         <mesh name="park" geometry={nodes.park.geometry} material={materials.Synty_Palette_A} userData={{ name: 'park', ant_landscape: {} }} />
-        <group name="pizza001" userData={{ name: 'pizza.001', ant_landscape: {} }}>
+        <group name="pizza001" position={[-1.275, 1.048, -2.523]} rotation={[0, -1.571, 0]} userData={{ name: 'pizza.001', ant_landscape: {} }}>
           <mesh name="Scene113" geometry={nodes.Scene113.geometry} material={materials.Synty_Palette_A} />
           <mesh name="Scene113_1" geometry={nodes.Scene113_1.geometry} material={materials.Synty_Palette_A} />
           <mesh name="Scene113_2" geometry={nodes.Scene113_2.geometry} material={materials.Synty_Palette_A} />
           <mesh name="Scene113_3" geometry={nodes.Scene113_3.geometry} material={materials.Glass_01} />
-          <mesh name="Scene113_4" geometry={nodes.Scene113_4.geometry} material={materials.Billboard_01} />
         </group>
         <group name="round_bld" userData={{ name: 'round_bld' }}>
           <mesh name="Scene152" geometry={nodes.Scene152.geometry} material={materials.Synty_Palette_A} />
           <mesh name="Scene152_1" geometry={nodes.Scene152_1.geometry} material={materials.Glass_01} />
         </group>
-        <group name="taco" userData={{ name: 'taco' }}>
+        <group name="taco" userData={{ name: 'taco', ant_landscape: {} }}>
           <mesh name="Scene163" geometry={nodes.Scene163.geometry} material={materials.Synty_Palette_A} />
           <mesh name="Scene163_1" geometry={nodes.Scene163_1.geometry} material={materials.Synty_Palette_A} />
-          <mesh name="Scene163_2" geometry={nodes.Scene163_2.geometry} material={materials['Billboard_01.001']} />
-          <mesh name="Scene163_3" geometry={nodes.Scene163_3.geometry} material={materials.Glass_01} />
+          <mesh name="Scene163_2" geometry={nodes.Scene163_2.geometry} material={materials.Glass_01} />
         </group>
         <mesh name="SM_Env_Sidewalk_Gutter_10" geometry={nodes.SM_Env_Sidewalk_Gutter_10.geometry} material={materials.Synty_Palette_A} position={[-6, 0, 7]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Env_Sidewalk_Gutter_10', ant_landscape: {} }} />
+        <group name="pizza002" position={[-1.076, 2.297, -2.905]} rotation={[0, -1.571, 0]} scale={1.8} userData={{ name: 'pizza.002', ant_landscape: {} }}>
+          <mesh name="Scene228" geometry={nodes.Scene228.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene228_1" geometry={nodes.Scene228_1.geometry} material={materials.Billboard_01} />
+        </group>
+        <group name="pizza003" position={[2.071, 2.297, -2.766]} rotation={[0, -0.069, 0]} scale={1.8} userData={{ name: 'pizza.003', ant_landscape: {} }}>
+          <mesh name="Scene235" geometry={nodes.Scene235.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene235_1" geometry={nodes.Scene235_1.geometry} material={materials.Billboard_01} />
+        </group>
+        <group name="pizza004" position={[-5.565, 2.322, 5.884]} rotation={[-Math.PI, 0.867, -Math.PI]} scale={2.909} userData={{ name: 'pizza.004', ant_landscape: {} }}>
+          <mesh name="Scene297" geometry={nodes.Scene297.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene297_1" geometry={nodes.Scene297_1.geometry} material={materials.Billboard_01} />
+        </group>
         <group name="SM_Veh_Car_Police_01" userData={{ name: 'SM_Veh_Car_Police_01', ant_landscape: {} }}>
           <mesh name="Scene137" geometry={nodes.Scene137.geometry} material={materials.Synty_Palette_A} />
           <mesh name="Scene137_1" geometry={nodes.Scene137_1.geometry} material={materials.Glass_01} />
         </group>
-        <group name="taxi_cab" position={[-5.798, 0, 8.94]} rotation={[Math.PI, -0.098, Math.PI]} userData={{ name: 'taxi_cab', ant_landscape: {} }}>
+        <group name="taxi_cab" position={[-11.318, 0, 10.624]} rotation={[Math.PI, -0.098, Math.PI]} userData={{ name: 'taxi_cab', ant_landscape: {} }}>
           <mesh name="Scene048" geometry={nodes.Scene048.geometry} material={materials.Synty_Palette_A} />
           <mesh name="Scene048_1" geometry={nodes.Scene048_1.geometry} material={materials.Glass_01} />
           <mesh name="Scene048_2" geometry={nodes.Scene048_2.geometry} material={materials['PolygonCity_01_A.006']} />
         </group>
-        <group name="taxi_cab001" position={[-5.253, 0, 8.94]} rotation={[-Math.PI, 0.081, -Math.PI]} userData={{ name: 'taxi_cab.001' }}>
+        <group name="taxi_cab001" position={[-10.573, 0, 10.624]} rotation={[-Math.PI, 0.081, -Math.PI]} userData={{ name: 'taxi_cab.001', ant_landscape: {} }}>
           <mesh name="Scene134" geometry={nodes.Scene134.geometry} material={materials.Synty_Palette_A} />
           <mesh name="Scene134_1" geometry={nodes.Scene134_1.geometry} material={materials.Glass_01} />
           <mesh name="Scene134_2" geometry={nodes.Scene134_2.geometry} material={materials['PolygonCity_01_A.006']} />
         </group>
-        <group name="taxi_cab002" position={[-4.731, 0, 8.94]} rotation={[Math.PI, 0, Math.PI]} userData={{ name: 'taxi_cab.002', ant_landscape: {} }}>
+        <group name="taxi_cab002" position={[-9.651, 0, 10.724]} rotation={[Math.PI, 0, Math.PI]} userData={{ name: 'taxi_cab.002', ant_landscape: {} }}>
           <mesh name="Scene148" geometry={nodes.Scene148.geometry} material={materials.Synty_Palette_A} />
           <mesh name="Scene148_1" geometry={nodes.Scene148_1.geometry} material={materials.Glass_01} />
           <mesh name="Scene148_2" geometry={nodes.Scene148_2.geometry} material={materials['PolygonCity_01_A.006']} />
@@ -695,11 +739,26 @@ export function Model(props: React.ComponentProps<'group'>) {
           <mesh name="Scene373" geometry={nodes.Scene373.geometry} material={materials.Synty_Palette_A} />
           <mesh name="Scene373_1" geometry={nodes.Scene373_1.geometry} material={materials.Glass_01} />
         </group>
+        <group name="taxi_cab003" position={[-11.129, 0, 12.002]} rotation={[Math.PI, -0.096, Math.PI]} userData={{ name: 'taxi_cab.003', ant_landscape: {} }}>
+          <mesh name="Scene12140" geometry={nodes.Scene12140.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene12140_1" geometry={nodes.Scene12140_1.geometry} material={materials.Glass_01} />
+          <mesh name="Scene12140_2" geometry={nodes.Scene12140_2.geometry} material={materials['PolygonCity_01_A.006']} />
+        </group>
+        <group name="taxi_cab004" position={[-10.384, 0, 12.004]} rotation={[-Math.PI, 0.083, -Math.PI]} userData={{ name: 'taxi_cab.004', ant_landscape: {} }}>
+          <mesh name="Scene12141" geometry={nodes.Scene12141.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene12141_1" geometry={nodes.Scene12141_1.geometry} material={materials.Glass_01} />
+          <mesh name="Scene12141_2" geometry={nodes.Scene12141_2.geometry} material={materials['PolygonCity_01_A.006']} />
+        </group>
+        <group name="taxi_cab005" position={[-9.709, 0, 12.106]} rotation={[-Math.PI, 0.003, -Math.PI]} userData={{ name: 'taxi_cab.005', ant_landscape: {} }}>
+          <mesh name="Scene12142" geometry={nodes.Scene12142.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene12142_1" geometry={nodes.Scene12142_1.geometry} material={materials.Glass_01} />
+          <mesh name="Scene12142_2" geometry={nodes.Scene12142_2.geometry} material={materials['PolygonCity_01_A.006']} />
+        </group>
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36' }} />
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36001" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.001' }} />
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36002" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.002' }} />
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36003" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36003.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.003' }} />
-        <mesh name="SM_Env_Sidewalk_Straight_323" geometry={nodes.SM_Env_Sidewalk_Straight_323.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323" geometry={nodes.SM_Env_Sidewalk_Straight_323.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_Straight_323001" geometry={nodes.SM_Env_Sidewalk_Straight_323001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.001' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323002" geometry={nodes.SM_Env_Sidewalk_Straight_323002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.002' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323003" geometry={nodes.SM_Env_Sidewalk_Straight_323003.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Straight_323.003' }} />
@@ -763,15 +822,15 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="SM_Env_Sidewalk_349017" geometry={nodes.SM_Env_Sidewalk_349017.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.017' }} />
         <mesh name="SM_Env_Sidewalk_349018" geometry={nodes.SM_Env_Sidewalk_349018.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.018' }} />
         <mesh name="SM_Env_Sidewalk_349019" geometry={nodes.SM_Env_Sidewalk_349019.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.019' }} />
-        <mesh name="SM_Env_Sidewalk_349020" geometry={nodes.SM_Env_Sidewalk_349020.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.020' }} />
+        <mesh name="SM_Env_Sidewalk_349020" geometry={nodes.SM_Env_Sidewalk_349020.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.020', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_349021" geometry={nodes.SM_Env_Sidewalk_349021.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.021' }} />
         <mesh name="SM_Env_Sidewalk_349022" geometry={nodes.SM_Env_Sidewalk_349022.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.022' }} />
-        <mesh name="SM_Env_Sidewalk_349023" geometry={nodes.SM_Env_Sidewalk_349023.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.023' }} />
-        <mesh name="SM_Env_Sidewalk_349024" geometry={nodes.SM_Env_Sidewalk_349024.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.024' }} />
+        <mesh name="SM_Env_Sidewalk_349023" geometry={nodes.SM_Env_Sidewalk_349023.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.023', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349024" geometry={nodes.SM_Env_Sidewalk_349024.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.024', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_349025" geometry={nodes.SM_Env_Sidewalk_349025.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.025', ant_landscape: {} }} />
-        <mesh name="SM_Env_Sidewalk_349026" geometry={nodes.SM_Env_Sidewalk_349026.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.026' }} />
-        <mesh name="SM_Env_Sidewalk_349027" geometry={nodes.SM_Env_Sidewalk_349027.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.027' }} />
-        <mesh name="SM_Env_Sidewalk_349028" geometry={nodes.SM_Env_Sidewalk_349028.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.028' }} />
+        <mesh name="SM_Env_Sidewalk_349026" geometry={nodes.SM_Env_Sidewalk_349026.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.026', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349027" geometry={nodes.SM_Env_Sidewalk_349027.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.027', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349028" geometry={nodes.SM_Env_Sidewalk_349028.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.028', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_349029" geometry={nodes.SM_Env_Sidewalk_349029.geometry} material={materials.Synty_Palette_A} position={[0, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_349.029', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_349030" geometry={nodes.SM_Env_Sidewalk_349030.geometry} material={materials.Synty_Palette_A} position={[0, 0, 2]} userData={{ name: 'SM_Env_Sidewalk_349.030', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_349031" geometry={nodes.SM_Env_Sidewalk_349031.geometry} material={materials.Synty_Palette_A} position={[-2, 0, 0]} userData={{ name: 'SM_Env_Sidewalk_349.031', ant_landscape: {} }} />
@@ -783,19 +842,30 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="SM_Env_Sidewalk_Dip_06006" geometry={nodes.SM_Env_Sidewalk_Dip_06006.geometry} material={materials.Synty_Palette_A} position={[-8, 0, -10]} rotation={[0, -Math.PI / 2, 0]} userData={{ name: 'SM_Env_Sidewalk_Dip_06.006', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_Dip_06007" geometry={nodes.SM_Env_Sidewalk_Dip_06007.geometry} material={materials.Synty_Palette_A} position={[-4, 0, 3]} rotation={[0, -Math.PI / 2, 0]} userData={{ name: 'SM_Env_Sidewalk_Dip_06.007', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_349037" geometry={nodes.SM_Env_Sidewalk_349037.geometry} material={materials.Synty_Palette_A} position={[13, 0, -3]} userData={{ name: 'SM_Env_Sidewalk_349.037', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349039" geometry={nodes.SM_Env_Sidewalk_349039.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.039', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349040" geometry={nodes.SM_Env_Sidewalk_349040.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_349.040', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Dip_06008" geometry={nodes.SM_Env_Sidewalk_Dip_06008.geometry} material={materials.Synty_Palette_A} position={[-4, 0, 3]} rotation={[0, -Math.PI / 2, 0]} userData={{ name: 'SM_Env_Sidewalk_Dip_06.008', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349038" geometry={nodes.SM_Env_Sidewalk_349038.geometry} material={materials.Synty_Palette_A} position={[1, 0, 0]} userData={{ name: 'SM_Env_Sidewalk_349.038', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349041" geometry={nodes.SM_Env_Sidewalk_349041.geometry} material={materials.Synty_Palette_A} position={[0, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_349.041', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349042" geometry={nodes.SM_Env_Sidewalk_349042.geometry} material={materials.Synty_Palette_A} position={[0, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_349.042', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349043" geometry={nodes.SM_Env_Sidewalk_349043.geometry} material={materials.Synty_Palette_A} position={[0, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_349.043', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349044" geometry={nodes.SM_Env_Sidewalk_349044.geometry} material={materials.Synty_Palette_A} position={[0, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_349.044', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349045" geometry={nodes.SM_Env_Sidewalk_349045.geometry} material={materials.Synty_Palette_A} position={[1, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_349.045', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349046" geometry={nodes.SM_Env_Sidewalk_349046.geometry} material={materials.Synty_Palette_A} position={[0, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_349.046', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_349047" geometry={nodes.SM_Env_Sidewalk_349047.geometry} material={materials.Synty_Palette_A} position={[0, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_349.047', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36007" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36007.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.007' }} />
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36006" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36006.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.006', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36005" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36005.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.005' }} />
         <mesh name="SM_Env_Sidewalk_Dip_Corner_36004" geometry={nodes.SM_Env_Sidewalk_Dip_Corner_36004.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Dip_Corner_36.004' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323007" geometry={nodes.SM_Env_Sidewalk_Straight_323007.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.007' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323006" geometry={nodes.SM_Env_Sidewalk_Straight_323006.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.006' }} />
-        <mesh name="SM_Env_Sidewalk_Straight_323005" geometry={nodes.SM_Env_Sidewalk_Straight_323005.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.005' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323005" geometry={nodes.SM_Env_Sidewalk_Straight_323005.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.005', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_Straight_323004" geometry={nodes.SM_Env_Sidewalk_Straight_323004.geometry} material={materials['Synty_Palette_A.001']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.004' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323016" geometry={nodes.SM_Env_Sidewalk_Straight_323016.geometry} material={materials['Synty_Palette_A.002']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.016' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323017" geometry={nodes.SM_Env_Sidewalk_Straight_323017.geometry} material={materials['Synty_Palette_A.002']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.017' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323018" geometry={nodes.SM_Env_Sidewalk_Straight_323018.geometry} material={materials['Synty_Palette_A.002']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.018' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323019" geometry={nodes.SM_Env_Sidewalk_Straight_323019.geometry} material={materials['Synty_Palette_A.002']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.019' }} />
-        <mesh name="SM_Env_Sidewalk_Corner_11" geometry={nodes.SM_Env_Sidewalk_Corner_11.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Corner_11' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11" geometry={nodes.SM_Env_Sidewalk_Corner_11.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Corner_11', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_Corner_11001" geometry={nodes.SM_Env_Sidewalk_Corner_11001.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Corner_11.001', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_Corner_11002" geometry={nodes.SM_Env_Sidewalk_Corner_11002.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Corner_11.002' }} />
         <mesh name="SM_Env_Sidewalk_Corner_11003" geometry={nodes.SM_Env_Sidewalk_Corner_11003.geometry} material={materials.Synty_Palette_A} userData={{ name: 'SM_Env_Sidewalk_Corner_11.003' }} />
@@ -814,7 +884,7 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="SM_Env_Sidewalk_Corner_11011" geometry={nodes.SM_Env_Sidewalk_Corner_11011.geometry} material={materials['Synty_Palette_A.006']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.011' }} />
         <mesh name="SM_Env_Sidewalk_Corner_11010" geometry={nodes.SM_Env_Sidewalk_Corner_11010.geometry} material={materials['Synty_Palette_A.006']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.010' }} />
         <mesh name="SM_Env_Sidewalk_Corner_11009" geometry={nodes.SM_Env_Sidewalk_Corner_11009.geometry} material={materials['Synty_Palette_A.006']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.009' }} />
-        <mesh name="SM_Env_Sidewalk_Corner_11008" geometry={nodes.SM_Env_Sidewalk_Corner_11008.geometry} material={materials['Synty_Palette_A.006']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.008' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11008" geometry={nodes.SM_Env_Sidewalk_Corner_11008.geometry} material={materials['Synty_Palette_A.006']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.008', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_Straight_323031" geometry={nodes.SM_Env_Sidewalk_Straight_323031.geometry} material={materials['Synty_Palette_A.007']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.031' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323030" geometry={nodes.SM_Env_Sidewalk_Straight_323030.geometry} material={materials['Synty_Palette_A.007']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.030' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323029" geometry={nodes.SM_Env_Sidewalk_Straight_323029.geometry} material={materials['Synty_Palette_A.007']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.029' }} />
@@ -852,26 +922,34 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="SM_Env_Sidewalk_Corner_11016" geometry={nodes.SM_Env_Sidewalk_Corner_11016.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.016', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_Corner_11017" geometry={nodes.SM_Env_Sidewalk_Corner_11017.geometry} material={materials['Synty_Palette_A.011']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.017', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_Corner_11026" geometry={nodes.SM_Env_Sidewalk_Corner_11026.geometry} material={materials['Synty_Palette_A.012']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.026', ant_landscape: {} }} />
-        <mesh name="SM_Env_Sidewalk_Straight_323066" geometry={nodes.SM_Env_Sidewalk_Straight_323066.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.066' }} />
-        <mesh name="SM_Env_Sidewalk_Straight_323065" geometry={nodes.SM_Env_Sidewalk_Straight_323065.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.065' }} />
-        <mesh name="SM_Env_Sidewalk_Straight_323064" geometry={nodes.SM_Env_Sidewalk_Straight_323064.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.064' }} />
-        <mesh name="SM_Env_Sidewalk_Corner_11023" geometry={nodes.SM_Env_Sidewalk_Corner_11023.geometry} material={materials['Synty_Palette_A.014']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.023' }} />
-        <mesh name="SM_Env_Sidewalk_Corner_11022" geometry={nodes.SM_Env_Sidewalk_Corner_11022.geometry} material={materials['Synty_Palette_A.014']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.022' }} />
-        <mesh name="SM_Env_Sidewalk_Corner_11021" geometry={nodes.SM_Env_Sidewalk_Corner_11021.geometry} material={materials['Synty_Palette_A.014']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.021' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323066" geometry={nodes.SM_Env_Sidewalk_Straight_323066.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.066', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323065" geometry={nodes.SM_Env_Sidewalk_Straight_323065.geometry} material={materials['Synty_Palette_A.013']} position={[0, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_Straight_323.065', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323064" geometry={nodes.SM_Env_Sidewalk_Straight_323064.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.064', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11023" geometry={nodes.SM_Env_Sidewalk_Corner_11023.geometry} material={materials['Synty_Palette_A.014']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.023', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11022" geometry={nodes.SM_Env_Sidewalk_Corner_11022.geometry} material={materials['Synty_Palette_A.014']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.022', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11021" geometry={nodes.SM_Env_Sidewalk_Corner_11021.geometry} material={materials['Synty_Palette_A.014']} position={[2, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_Corner_11.021', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_Straight_323068" geometry={nodes.SM_Env_Sidewalk_Straight_323068.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.068' }} />
         <mesh name="SM_Env_Sidewalk_Straight_323069" geometry={nodes.SM_Env_Sidewalk_Straight_323069.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.069' }} />
-        <mesh name="SM_Env_Sidewalk_Straight_323070" geometry={nodes.SM_Env_Sidewalk_Straight_323070.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.070' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323070" geometry={nodes.SM_Env_Sidewalk_Straight_323070.geometry} material={materials['Synty_Palette_A.013']} position={[0, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_Straight_323.070', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_Straight_323071" geometry={nodes.SM_Env_Sidewalk_Straight_323071.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.071' }} />
         <mesh name="SM_Env_Sidewalk_Corner_11024" geometry={nodes.SM_Env_Sidewalk_Corner_11024.geometry} material={materials['Synty_Palette_A.014']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.024' }} />
         <mesh name="SM_Env_Sidewalk_Corner_11025" geometry={nodes.SM_Env_Sidewalk_Corner_11025.geometry} material={materials['Synty_Palette_A.014']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.025' }} />
-        <mesh name="SM_Env_Sidewalk_Corner_11027" geometry={nodes.SM_Env_Sidewalk_Corner_11027.geometry} material={materials['Synty_Palette_A.014']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.027' }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11027" geometry={nodes.SM_Env_Sidewalk_Corner_11027.geometry} material={materials['Synty_Palette_A.014']} position={[0, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_Corner_11.027', ant_landscape: {} }} />
         <mesh name="SM_Env_Sidewalk_Straight_323072" geometry={nodes.SM_Env_Sidewalk_Straight_323072.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.072' }} />
-        <mesh name="SM_Env_Sidewalk_Straight_323073" geometry={nodes.SM_Env_Sidewalk_Straight_323073.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.073' }} />
-        <mesh name="SM_Env_Sidewalk_Straight_323075" geometry={nodes.SM_Env_Sidewalk_Straight_323075.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.075' }} />
-        <mesh name="SM_Env_Sidewalk_Straight_323076" geometry={nodes.SM_Env_Sidewalk_Straight_323076.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.076' }} />
-        <mesh name="SM_Env_Sidewalk_Straight_323077" geometry={nodes.SM_Env_Sidewalk_Straight_323077.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.077' }} />
-        <mesh name="SM_Env_Sidewalk_Straight_323078" geometry={nodes.SM_Env_Sidewalk_Straight_323078.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.078' }} />
-        <mesh name="SM_Env_Sidewalk_Straight_323074" geometry={nodes.SM_Env_Sidewalk_Straight_323074.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.074' }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323073" geometry={nodes.SM_Env_Sidewalk_Straight_323073.geometry} material={materials['Synty_Palette_A.013']} position={[0, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_Straight_323.073', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323075" geometry={nodes.SM_Env_Sidewalk_Straight_323075.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.075', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323076" geometry={nodes.SM_Env_Sidewalk_Straight_323076.geometry} material={materials['Synty_Palette_A.013']} position={[0, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_Straight_323.076', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323077" geometry={nodes.SM_Env_Sidewalk_Straight_323077.geometry} material={materials['Synty_Palette_A.013']} position={[0, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_Straight_323.077', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323078" geometry={nodes.SM_Env_Sidewalk_Straight_323078.geometry} material={materials['Synty_Palette_A.013']} position={[0, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_Straight_323.078', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323034" geometry={nodes.SM_Env_Sidewalk_Straight_323034.geometry} material={materials['Synty_Palette_A.013']} position={[4, 0, 0]} userData={{ name: 'SM_Env_Sidewalk_Straight_323.034', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11028" geometry={nodes.SM_Env_Sidewalk_Corner_11028.geometry} material={materials['Synty_Palette_A.014']} position={[4, 0, 0]} userData={{ name: 'SM_Env_Sidewalk_Corner_11.028', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323055" geometry={nodes.SM_Env_Sidewalk_Straight_323055.geometry} material={materials['Synty_Palette_A.013']} userData={{ name: 'SM_Env_Sidewalk_Straight_323.055', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11029" geometry={nodes.SM_Env_Sidewalk_Corner_11029.geometry} material={materials['Synty_Palette_A.014']} userData={{ name: 'SM_Env_Sidewalk_Corner_11.029', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323052" geometry={nodes.SM_Env_Sidewalk_Straight_323052.geometry} material={materials['Synty_Palette_A.013']} position={[4, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_Straight_323.052', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Corner_11031" geometry={nodes.SM_Env_Sidewalk_Corner_11031.geometry} material={materials['Synty_Palette_A.014']} position={[9, 0, 0]} userData={{ name: 'SM_Env_Sidewalk_Corner_11.031', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323067" geometry={nodes.SM_Env_Sidewalk_Straight_323067.geometry} material={materials['Synty_Palette_A.013']} position={[0, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_Straight_323.067', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323074" geometry={nodes.SM_Env_Sidewalk_Straight_323074.geometry} material={materials['Synty_Palette_A.013']} position={[2, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_Straight_323.074', ant_landscape: {} }} />
+        <mesh name="SM_Env_Sidewalk_Straight_323079" geometry={nodes.SM_Env_Sidewalk_Straight_323079.geometry} material={materials['Synty_Palette_A.013']} position={[2, 0, 1]} userData={{ name: 'SM_Env_Sidewalk_Straight_323.079', ant_landscape: {} }} />
         <mesh name="Cylinder" geometry={nodes.Cylinder.geometry} material={materials.dirt} position={[-0.984, -9.427, 2.993]} scale={[1.169, 0.776, 1.169]} userData={{ name: 'Cylinder', ant_landscape: {} }} />
         <mesh name="grass" geometry={nodes.grass.geometry} material={materials.grass} userData={{ name: 'grass', ant_landscape: {} }} />
         <mesh name="Icosphere" geometry={nodes.Icosphere.geometry} material={materials.grass} position={[-2.725, -2.335, 16.253]} rotation={[0.398, -0.08, 0.497]} scale={[7.227, 4.824, 4.824]} userData={{ name: 'Icosphere', ant_landscape: {} }} />
@@ -1014,7 +1092,6 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="SM_Env_Road_Bare_99083" geometry={nodes.SM_Env_Road_Bare_99083.geometry} material={materials.Road_01} position={[5, 0, 8]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.083', ant_landscape: {} }} />
         <mesh name="SM_Env_Road_Bare_99123" geometry={nodes.SM_Env_Road_Bare_99123.geometry} material={materials.Road_01} position={[5, 0, 9]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.123', ant_landscape: {} }} />
         <mesh name="SM_Env_Road_Bare_99124" geometry={nodes.SM_Env_Road_Bare_99124.geometry} material={materials.Road_01} position={[1, 0, 8]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.124', ant_landscape: {} }} />
-        <mesh name="SM_Env_Road_Bare_99125" geometry={nodes.SM_Env_Road_Bare_99125.geometry} material={materials.Road_01} position={[1, 0, 9]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.125', ant_landscape: {} }} />
         <mesh name="SM_Env_Road_Bare_99126" geometry={nodes.SM_Env_Road_Bare_99126.geometry} material={materials.Road_01} position={[-3, 0, 8]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.126', ant_landscape: {} }} />
         <mesh name="SM_Env_Road_Bare_99127" geometry={nodes.SM_Env_Road_Bare_99127.geometry} material={materials.Road_01} position={[-3, 0, 9]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.127', ant_landscape: {} }} />
         <mesh name="SM_Env_Road_Bare_99128" geometry={nodes.SM_Env_Road_Bare_99128.geometry} material={materials.Road_01} position={[1, 0, 10]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.128', ant_landscape: {} }} />
@@ -1031,6 +1108,7 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="SM_Env_Road_Bare_99139" geometry={nodes.SM_Env_Road_Bare_99139.geometry} material={materials.Road_01} position={[2, 0, -10]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.139', ant_landscape: {} }} />
         <mesh name="SM_Env_Road_Bare_99140" geometry={nodes.SM_Env_Road_Bare_99140.geometry} material={materials.Road_01} position={[1, 0, -10]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.140', ant_landscape: {} }} />
         <mesh name="SM_Env_Road_Bare_99141" geometry={nodes.SM_Env_Road_Bare_99141.geometry} material={materials.Road_01} position={[1, 0, -9]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.141', ant_landscape: {} }} />
+        <mesh name="SM_Env_Road_Bare_99125" geometry={nodes.SM_Env_Road_Bare_99125.geometry} material={materials.Road_01} position={[1, 0, 9]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Env_Road_Bare_99.125', ant_landscape: {} }} />
         <mesh name="mailbox" geometry={nodes.mailbox.geometry} material={materials.Synty_Palette_A} position={[3.186, 0, 6.643]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'mailbox', ant_landscape: {} }} />
         <mesh name="SM_Prop_SidewalkPoles_08" geometry={nodes.SM_Prop_SidewalkPoles_08.geometry} material={materials.Synty_Palette_A} position={[5.649, 0.004, 1.063]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_SidewalkPoles_08', ant_landscape: {} }} />
         <mesh name="trashcan" geometry={nodes.trashcan.geometry} material={materials.Synty_Palette_A} position={[-0.32, 0.001, -3.101]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'trashcan', ant_landscape: {} }} />
@@ -1043,7 +1121,7 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="trashcan003" geometry={nodes.trashcan003.geometry} material={materials.Synty_Palette_A} position={[2.297, 0.001, -8.259]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'trashcan.003', ant_landscape: {} }} />
         <mesh name="trashcan004" geometry={nodes.trashcan004.geometry} material={materials.Synty_Palette_A} position={[-6.495, -0.003, 4.796]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'trashcan.004', ant_landscape: {} }} />
         <mesh name="trashcan005" geometry={nodes.trashcan005.geometry} material={materials.Synty_Palette_A} position={[-8.891, 0, 2.677]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'trashcan.005', ant_landscape: {} }} />
-        <mesh name="trashcan006" geometry={nodes.trashcan006.geometry} material={materials.Synty_Palette_A} position={[-6.361, 0, 8.65]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'trashcan.006', ant_landscape: {} }} />
+        <mesh name="trashcan006" geometry={nodes.trashcan006.geometry} material={materials.Synty_Palette_A} position={[-6.29, 0, 9.824]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'trashcan.006', ant_landscape: {} }} />
         <mesh name="trashcan007" geometry={nodes.trashcan007.geometry} material={materials.Synty_Palette_A} position={[5.32, 0, 8.928]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'trashcan.007', ant_landscape: {} }} />
         <mesh name="trashcan008" geometry={nodes.trashcan008.geometry} material={materials.Synty_Palette_A} position={[3.362, 0.001, 6.633]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'trashcan.008', ant_landscape: {} }} />
         <mesh name="mailbox001" geometry={nodes.mailbox001.geometry} material={materials.Synty_Palette_A} position={[2.132, 0.002, -5.305]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'mailbox.001', ant_landscape: {} }} />
@@ -1064,7 +1142,7 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="SM_Prop_Skip_18" geometry={nodes.SM_Prop_Skip_18.geometry} material={materials.Synty_Palette_A} position={[1.596, 0.003, -2.128]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={0.002} userData={{ name: 'SM_Prop_Skip_18', ant_landscape: {} }} />
         <mesh name="SM_Prop_SidewalkPoles_08005" geometry={nodes.SM_Prop_SidewalkPoles_08005.geometry} material={materials.Synty_Palette_A} position={[4.496, 0.004, -6.937]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_SidewalkPoles_08.005', ant_landscape: {} }} />
         <mesh name="SM_Prop_SidewalkPoles_08006" geometry={nodes.SM_Prop_SidewalkPoles_08006.geometry} material={materials.Synty_Palette_A} position={[0.496, 0.004, -7.937]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_SidewalkPoles_08.006', ant_landscape: {} }} />
-        <mesh name="SM_Prop_SidewalkPoles_08007" geometry={nodes.SM_Prop_SidewalkPoles_08007.geometry} material={materials.Synty_Palette_A} position={[-3.504, 0.004, 9.963]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_SidewalkPoles_08.007', ant_landscape: {} }} />
+        <mesh name="SM_Prop_SidewalkPoles_08007" geometry={nodes.SM_Prop_SidewalkPoles_08007.geometry} material={materials.Synty_Palette_A} position={[-7.504, 0.004, 9.963]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_SidewalkPoles_08.007', ant_landscape: {} }} />
         <mesh name="SM_Prop_SidewalkPoles_08008" geometry={nodes.SM_Prop_SidewalkPoles_08008.geometry} material={materials.Synty_Palette_A} position={[4.496, 0.004, 9.963]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_SidewalkPoles_08.008', ant_landscape: {} }} />
         <mesh name="SM_Prop_SidewalkPoles_08009" geometry={nodes.SM_Prop_SidewalkPoles_08009.geometry} material={materials.Synty_Palette_A} position={[-11.904, 0.004, 7.463]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={0.002} userData={{ name: 'SM_Prop_SidewalkPoles_08.009', ant_landscape: {} }} />
         <mesh name="SM_Prop_SidewalkPoles_08010" geometry={nodes.SM_Prop_SidewalkPoles_08010.geometry} material={materials.Synty_Palette_A} position={[-9.904, 0.004, 3.463]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={0.002} userData={{ name: 'SM_Prop_SidewalkPoles_08.010', ant_landscape: {} }} />
@@ -1072,69 +1150,13 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="SM_Prop_SidewalkPoles_08012" geometry={nodes.SM_Prop_SidewalkPoles_08012.geometry} material={materials.Synty_Palette_A} position={[-1.504, 0.004, -4.937]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_SidewalkPoles_08.012', ant_landscape: {} }} />
         <mesh name="SM_Prop_SidewalkPoles_08013" geometry={nodes.SM_Prop_SidewalkPoles_08013.geometry} material={materials.Synty_Palette_A} position={[-3.504, 0.004, -6.937]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'SM_Prop_SidewalkPoles_08.013', ant_landscape: {} }} />
         <mesh name="trashcan009" geometry={nodes.trashcan009.geometry} material={materials.Synty_Palette_A} position={[2.401, 0.001, -5.305]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'trashcan.009', ant_landscape: {} }} />
-        <group name="streetlight" position={[3.4, 0, -1.6]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'streetlight', ant_landscape: {} }}>
-          <mesh name="Scene344" geometry={nodes.Scene344.geometry} material={materials.Synty_Palette_A} />
-          <mesh name="Scene344_1" geometry={nodes.Scene344_1.geometry} material={materials.Synty_Palette_A} />
-        </group>
-        <group name="streetlight001" position={[-0.6, 0, -1.6]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'streetlight.001', ant_landscape: {} }}>
-          <mesh name="Scene351" geometry={nodes.Scene351.geometry} material={materials.Synty_Palette_A} />
-          <mesh name="Scene351_1" geometry={nodes.Scene351_1.geometry} material={materials.Synty_Palette_A} />
-        </group>
-        <group name="streetlight002" position={[-2.6, 0, 2.7]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'streetlight.002', ant_landscape: {} }}>
-          <mesh name="Scene352" geometry={nodes.Scene352.geometry} material={materials.Synty_Palette_A} />
-          <mesh name="Scene352_1" geometry={nodes.Scene352_1.geometry} material={materials.Synty_Palette_A} />
-        </group>
-        <group name="streetlight003" position={[1.4, 0, 2.7]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'streetlight.003', ant_landscape: {} }}>
-          <mesh name="Scene353" geometry={nodes.Scene353.geometry} material={materials.Synty_Palette_A} />
-          <mesh name="Scene353_1" geometry={nodes.Scene353_1.geometry} material={materials.Synty_Palette_A} />
-        </group>
-        <group name="streetlight004" position={[-4.4, 0.1, 8.8]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} scale={0.002} userData={{ name: 'streetlight.004', ant_landscape: {} }}>
-          <mesh name="Scene354" geometry={nodes.Scene354.geometry} material={materials.Synty_Palette_A} />
-          <mesh name="Scene354_1" geometry={nodes.Scene354_1.geometry} material={materials.Synty_Palette_A} />
-        </group>
-        <group name="streetlight005" position={[-6.4, 0, 4.5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'streetlight.005', ant_landscape: {} }}>
-          <mesh name="Scene356" geometry={nodes.Scene356.geometry} material={materials.Synty_Palette_A} />
-          <mesh name="Scene356_1" geometry={nodes.Scene356_1.geometry} material={materials.Synty_Palette_A} />
-        </group>
-        <group name="streetlight006" position={[-8.6, 0, 2.4]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'streetlight.006', ant_landscape: {} }}>
-          <mesh name="Scene357" geometry={nodes.Scene357.geometry} material={materials.Synty_Palette_A} />
-          <mesh name="Scene357_1" geometry={nodes.Scene357_1.geometry} material={materials.Synty_Palette_A} />
-        </group>
-        <group name="streetlight007" position={[-2.5, 0.1, -3.4]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'streetlight.007', ant_landscape: {} }}>
-          <mesh name="Scene358" geometry={nodes.Scene358.geometry} material={materials.Synty_Palette_A} />
-          <mesh name="Scene358_1" geometry={nodes.Scene358_1.geometry} material={materials.Synty_Palette_A} />
-        </group>
-        <group name="streetlight008" position={[1.6, 0, -3.5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'streetlight.008', ant_landscape: {} }}>
-          <mesh name="Scene359" geometry={nodes.Scene359.geometry} material={materials.Synty_Palette_A} />
-          <mesh name="Scene359_1" geometry={nodes.Scene359_1.geometry} material={materials.Synty_Palette_A} />
-        </group>
-        <group name="streetlight009" position={[6.5, 0.1, -1.5]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} scale={0.002} userData={{ name: 'streetlight.009', ant_landscape: {} }}>
-          <mesh name="Scene360" geometry={nodes.Scene360.geometry} material={materials.Synty_Palette_A} />
-          <mesh name="Scene360_1" geometry={nodes.Scene360_1.geometry} material={materials.Synty_Palette_A} />
-        </group>
-        <group name="streetlight010" position={[5.5, 0.1, 0.5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'streetlight.010', ant_landscape: {} }}>
-          <mesh name="Scene361" geometry={nodes.Scene361.geometry} material={materials.Synty_Palette_A} />
-          <mesh name="Scene361_1" geometry={nodes.Scene361_1.geometry} material={materials.Synty_Palette_A} />
-        </group>
-        <group name="streetlight011" position={[3.6, 0, 6.6]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'streetlight.011', ant_landscape: {} }}>
-          <mesh name="Scene362" geometry={nodes.Scene362.geometry} material={materials.Synty_Palette_A} />
-          <mesh name="Scene362_1" geometry={nodes.Scene362_1.geometry} material={materials.Synty_Palette_A} />
-        </group>
-        <group name="streetlight012" position={[-6.4, 0, 8.5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'streetlight.012', ant_landscape: {} }}>
-          <mesh name="Scene364" geometry={nodes.Scene364.geometry} material={materials.Synty_Palette_A} />
-          <mesh name="Scene364_1" geometry={nodes.Scene364_1.geometry} material={materials.Synty_Palette_A} />
-        </group>
-        <group name="streetlight013" position={[-2.4, 0, -1.6]} rotation={[Math.PI / 2, 0, 0]} scale={0.002} userData={{ name: 'streetlight.013', ant_landscape: {} }}>
-          <mesh name="Scene365" geometry={nodes.Scene365.geometry} material={materials.Synty_Palette_A} />
-          <mesh name="Scene365_1" geometry={nodes.Scene365_1.geometry} material={materials.Synty_Palette_A} />
-        </group>
-        <group name="streetlight014" position={[3.4, 0.1, -3.5]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'streetlight.014', ant_landscape: {} }}>
-          <mesh name="Scene367" geometry={nodes.Scene367.geometry} material={materials.Synty_Palette_A} />
-          <mesh name="Scene367_1" geometry={nodes.Scene367_1.geometry} material={materials.Synty_Palette_A} />
-        </group>
         <mesh name="park001" geometry={nodes.park001.geometry} material={materials.Synty_Palette_A} position={[-4, 0, -1]} rotation={[0, -Math.PI / 2, 0]} userData={{ name: 'park.001', ant_landscape: {} }} />
         <mesh name="park1133" geometry={nodes.park1133.geometry} material={materials.Synty_Palette_A} position={[4, 0, 4]} rotation={[Math.PI, 0, Math.PI]} userData={{ name: 'park.1133', ant_landscape: {} }} />
-        <mesh name="park2393" geometry={nodes.park2393.geometry} material={materials.Synty_Palette_A} position={[1, 0, 5]} rotation={[0, Math.PI / 2, 0]} userData={{ name: 'park.2393', ant_landscape: {} }} />
+        <group name="park002" position={[1, 0, 5]} rotation={[0, Math.PI / 2, 0]} userData={{ name: 'park.002', ant_landscape: {} }}>
+          <mesh name="Scene400" geometry={nodes.Scene400.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene400_1" geometry={nodes.Scene400_1.geometry} material={materials['Synty_Palette_A.016']} />
+          <mesh name="Scene400_2" geometry={nodes.Scene400_2.geometry} material={materials['Synty_Palette_A.017']} />
+        </group>
         <mesh name="park4393" geometry={nodes.park4393.geometry} material={materials.Synty_Palette_A} position={[12, 0, 0]} userData={{ name: 'park.4393', ant_landscape: {} }} />
         <mesh name="park4505" geometry={nodes.park4505.geometry} material={materials.Synty_Palette_A} position={[14, 0, 3]} userData={{ name: 'park.4505', ant_landscape: {} }} />
         <mesh name="park4940" geometry={nodes.park4940.geometry} material={materials.Synty_Palette_A} position={[12, 0, 1]} userData={{ name: 'park.4940', ant_landscape: {} }} />
@@ -1165,6 +1187,32 @@ export function Model(props: React.ComponentProps<'group'>) {
         <mesh name="park4965" geometry={nodes.park4965.geometry} material={materials.Synty_Palette_A} position={[-6, 0, 11]} userData={{ name: 'park.4965', ant_landscape: {} }} />
         <mesh name="park4966" geometry={nodes.park4966.geometry} material={materials.Synty_Palette_A} position={[-8, 0, 9]} userData={{ name: 'park.4966', ant_landscape: {} }} />
         <mesh name="park4967" geometry={nodes.park4967.geometry} material={materials.Synty_Palette_A} position={[-4, 0, 9]} userData={{ name: 'park.4967', ant_landscape: {} }} />
+        <group name="van_main" position={[0.5, 0, -8.959]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'van_main', ant_landscape: {} }}>
+          <mesh name="Scene139" geometry={nodes.Scene139.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene139_1" geometry={nodes.Scene139_1.geometry} material={materials.Glass_01} />
+        </group>
+        <mesh name="SM_Prop_Chair_BeanBag_03_(2)" geometry={nodes['SM_Prop_Chair_BeanBag_03_(2)'].geometry} material={materials.Mat_PolygonOffice_01_A} position={[0.584, 0.206, -8.618]} rotation={[-Math.PI, 0.714, -Math.PI]} scale={0.002} userData={{ name: 'SM_Prop_Chair_BeanBag_03 (2)', currentUVSet: 'map1', ant_landscape: {} }} />
+        <mesh name="SM_Prop_Shelf_Wall_03" geometry={nodes.SM_Prop_Shelf_Wall_03.geometry} material={materials['Mat_PolygonOffice_01_A.002']} position={[0.499, 0.242, -9.012]} scale={0.002} userData={{ name: 'SM_Prop_Shelf_Wall_03', currentUVSet: 'map1', ant_landscape: {} }} />
+        <mesh name="SM_Prop_Cup_Coffee_Disposable_Open_Full_01_(1)" geometry={nodes['SM_Prop_Cup_Coffee_Disposable_Open_Full_01_(1)'].geometry} material={materials['Mat_PolygonOffice_01_A.005']} position={[0.563, 0.242, -8.961]} scale={0.002} userData={{ name: 'SM_Prop_Cup_Coffee_Disposable_Open_Full_01 (1)', currentUVSet: 'map1', ant_landscape: {} }} />
+        <mesh name="SM_Prop_Cord_Wall_01" geometry={nodes.SM_Prop_Cord_Wall_01.geometry} material={materials['Mat_PolygonOffice_01_A.006']} position={[0.387, 0.166, -8.903]} rotation={[0, 1.571, 0]} scale={0.002} userData={{ name: 'SM_Prop_Cord_Wall_01', currentUVSet: 'map1', ant_landscape: {} }} />
+        <mesh name="SM_Prop_Certificate_01_(3)" geometry={nodes['SM_Prop_Certificate_01_(3)'].geometry} material={materials['Mat_PolygonOffice_01_A.012']} position={[0.317, 0.261, -8.777]} rotation={[0, 1.571, 0]} scale={0.002} userData={{ name: 'SM_Prop_Certificate_01 (3)', currentUVSet: 'map1', ant_landscape: {} }} />
+        <group name="van_back" position={[0.5, 0, -8.959]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'van_back', ant_landscape: {} }}>
+          <mesh name="Scene140" geometry={nodes.Scene140.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene140_1" geometry={nodes.Scene140_1.geometry} material={materials.Glass_01} />
+        </group>
+        <mesh name="tutorial" geometry={nodes.tutorial.geometry} material={materials['Mat_PolygonOffice_01_A.007']} position={[0.372, 0.242, -8.954]} rotation={[0, -0.445, 0]} scale={0.002} userData={{ name: 'tutorial', currentUVSet: 'map1', ant_landscape: {} }} />
+        <group name="laptop" position={[0.481, 0.242, -8.953]} scale={0.002} userData={{ name: 'laptop', currentUVSet: 'lightmapUV', ant_landscape: {} }}>
+          <mesh name="SM_Prop_Laptop_02" geometry={nodes.SM_Prop_Laptop_02.geometry} material={materials['Mat_PolygonOffice_01_A.004']} />
+          <mesh name="SM_Prop_Laptop_02_1" geometry={nodes.SM_Prop_Laptop_02_1.geometry} material={materials.Mat_PolygonOffice_Screen_01} />
+        </group>
+        <mesh name="endless_mode" geometry={nodes.endless_mode.geometry} material={materials['Mat_PolygonOffice_01_A.008']} position={[0.621, 0.242, -8.962]} rotation={[0, -0.656, 0]} scale={0.002} userData={{ name: 'endless_mode', currentUVSet: 'map1', ant_landscape: {} }} />
+        <mesh name="speaker" geometry={nodes.speaker.geometry} material={materials['Mat_PolygonOffice_01_A.013']} position={[0.597, 0.166, -8.885]} rotation={[0, -0.608, 0]} scale={0.003} userData={{ name: 'speaker', currentUVSet: 'map1', ant_landscape: {} }} />
+        <group name="building" position={[-1.275, 1.048, -2.523]} rotation={[0, -1.571, 0]} userData={{ name: 'building', ant_landscape: {} }}>
+          <mesh name="Scene345" geometry={nodes.Scene345.geometry} material={materials.Synty_Palette_A} />
+          <mesh name="Scene345_1" geometry={nodes.Scene345_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <mesh name="glass" geometry={nodes.glass.geometry} material={materials.glass_blue} position={[-2.252, 0.447, -2.53]} scale={[0.61, 0.014, 0.69]} userData={{ name: 'glass', ant_landscape: {} }} />
+        <mesh name="walls001" geometry={nodes.walls001.geometry} material={nodes.walls001.material} position={[-2.252, 0.447, -2.53]} scale={[0.61, 0.014, 0.69]} userData={{ name: 'walls.001', ant_landscape: {} }} />
       </group>
     </group>
   )

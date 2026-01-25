@@ -1,14 +1,17 @@
 'use client'
 
 import { useState, useEffect, useRef, useMemo } from 'react'
+import * as THREE from 'three'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Text } from '@react-three/drei'
 import { Book } from 'lucide-react'
 import { getHighScore, getCumulativeScore } from '@/lib/highScore'
+import { getCurrentApartment } from '@/lib/progressionSystem'
+import { ProgressionShop } from './ProgressionShop'
 import CityModel from './CityModel'
 import InteractableManager from './InteractableManager'
 import { SceneEffects } from './SceneEffects'
-import { createIntroInteractables } from '@/config/introInteractables'
+import { createIntroInteractables, DESK_ANCHOR, DESK_LEVELS } from '@/config/introInteractables'
 import buttonStyles from '@/styles/components/buttons.module.css'
 import positionStyles from '@/styles/utilities/positioning.module.css'
 
@@ -23,15 +26,40 @@ interface IntroSceneProps {
 }
 
 /**
- * First-person look-around camera controls
- * User can rotate view but cannot move position
+ * First-person look-around camera controls with zoom
+ * Uses quaternions for stable rotation regardless of camera position
  */
-function LookAroundControls({ setIsPointerDown }: {
+function LookAroundControls({
+  setIsPointerDown,
+  lookAt,
+  initialFov
+}: {
   setIsPointerDown: (v: boolean) => void
+  lookAt: [number, number, number]
+  initialFov: number
 }) {
   const { camera, gl } = useThree()
   const isPointerDown = useRef(false)
-  const rotation = useRef({ x: 0, y: 0 })
+  const yaw = useRef(0)
+  const pitch = useRef(0)
+  const fov = useRef(initialFov)
+  const initialized = useRef(false)
+
+  // Initialize camera orientation toward lookAt target
+  useEffect(() => {
+    if (!initialized.current) {
+      // Use Three.js lookAt to get correct initial orientation
+      camera.lookAt(lookAt[0], lookAt[1], lookAt[2])
+
+      // Extract yaw and pitch from the resulting rotation
+      const euler = new THREE.Euler().setFromQuaternion(camera.quaternion, 'YXZ')
+      yaw.current = euler.y
+      pitch.current = euler.x
+      fov.current = initialFov
+
+      initialized.current = true
+    }
+  }, [camera, lookAt, initialFov])
 
   useEffect(() => {
     const element = gl.domElement
@@ -49,16 +77,22 @@ function LookAroundControls({ setIsPointerDown }: {
     const onPointerMove = (e: PointerEvent) => {
       if (!isPointerDown.current) return
 
-      // Update rotation based on mouse/touch movement
-      rotation.current.y -= e.movementX * 0.002
-      rotation.current.x -= e.movementY * 0.002
+      // Update yaw and pitch based on mouse movement
+      yaw.current -= e.movementX * 0.002
+      pitch.current -= e.movementY * 0.002
 
-      // Clamp vertical rotation to prevent flipping
-      rotation.current.x = Math.max(-Math.PI / 3, Math.min(Math.PI / 3, rotation.current.x))
+      // Clamp pitch to prevent flipping
+      pitch.current = Math.max(-Math.PI / 2.5, Math.min(Math.PI / 2.5, pitch.current))
     }
 
-    // Prevent scrolling only during drag (touchmove), not on tap (touchstart)
-    // This allows clicks/taps to work while preventing scroll
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault()
+      // Zoom by adjusting FOV (scroll up = zoom in = lower FOV)
+      fov.current += e.deltaY * 0.05
+      // Clamp FOV between 20 and 120 degrees
+      fov.current = Math.max(20, Math.min(120, fov.current))
+    }
+
     const onTouchMove = (e: TouchEvent) => {
       if (isPointerDown.current) {
         e.preventDefault()
@@ -68,21 +102,31 @@ function LookAroundControls({ setIsPointerDown }: {
     element.addEventListener('pointerdown', onPointerDown)
     element.addEventListener('pointerup', onPointerUp)
     element.addEventListener('pointermove', onPointerMove)
+    element.addEventListener('wheel', onWheel, { passive: false })
     element.addEventListener('touchmove', onTouchMove, { passive: false })
 
     return () => {
       element.removeEventListener('pointerdown', onPointerDown)
       element.removeEventListener('pointerup', onPointerUp)
       element.removeEventListener('pointermove', onPointerMove)
+      element.removeEventListener('wheel', onWheel)
       element.removeEventListener('touchmove', onTouchMove)
     }
   }, [gl, setIsPointerDown])
 
   useFrame(() => {
-    // Apply rotation to camera
-    camera.rotation.order = 'YXZ'
-    camera.rotation.y = rotation.current.y
-    camera.rotation.x = rotation.current.x
+    // Build rotation from yaw and pitch using YXZ order
+    const quaternion = new THREE.Quaternion()
+    const euler = new THREE.Euler(pitch.current, yaw.current, 0, 'YXZ')
+    quaternion.setFromEuler(euler)
+    camera.quaternion.copy(quaternion)
+
+    // Update FOV for zoom
+    if ('fov' in camera) {
+      const perspCam = camera as THREE.PerspectiveCamera
+      perspCam.fov = fov.current
+      perspCam.updateProjectionMatrix()
+    }
   })
 
   return null
@@ -91,10 +135,11 @@ function LookAroundControls({ setIsPointerDown }: {
 
 /**
  * 3D Text display for intro scene
+ * Uses DESK_ANCHOR from introInteractables config - update there to move everything!
  */
 function IntroText({ highScore, cumulativeScore }: { highScore: number; cumulativeScore: number }) {
   return (
-    <group position={[-7.2, 1.75, 10.2]}>
+    <group position={DESK_ANCHOR}>
       {/* Game Title */}
       <Text
         position={[0, 0.55, 0]}
@@ -121,7 +166,7 @@ function IntroText({ highScore, cumulativeScore }: { highScore: number; cumulati
         One Man. One Mission. Optimization.
       </Text>
 
-      <group position={[1.1, .3, 1.95]} rotation={[0, -Math.PI * .5, 0]}>
+      <group position={[-1.9, 2, -4.2]} rotation={[0, 0, 0]}>
 
 
         {/* High Score */}
@@ -136,7 +181,7 @@ function IntroText({ highScore, cumulativeScore }: { highScore: number; cumulati
               outlineWidth={0.008}
               outlineColor="#000000"
             >
-              Score To Beat
+              Highscore
             </Text>
             <Text
               position={[0, -0.2, 0]}
@@ -156,7 +201,7 @@ function IntroText({ highScore, cumulativeScore }: { highScore: number; cumulati
         {cumulativeScore > 0 && (
           <>
             <Text
-              position={[0, -.5, 0]}
+              position={[0, -.4, 0]}
               fontSize={0.12}
               color="#ff6b00"
               anchorX="center"
@@ -164,10 +209,10 @@ function IntroText({ highScore, cumulativeScore }: { highScore: number; cumulati
               outlineWidth={0.008}
               outlineColor="#000000"
             >
-              Career Earnings
+              Lifetime
             </Text>
             <Text
-              position={[0, -.7, 0]}
+              position={[0, -.6, 0]}
               fontSize={0.25}
               color="#ffff00"
               anchorX="center"
@@ -183,7 +228,7 @@ function IntroText({ highScore, cumulativeScore }: { highScore: number; cumulati
 
       {/* Tutorial instruction (pizza) */}
       <Text
-        position={[-.2, -.2, .65]}
+        position={[-.2, -.2, .42]}
         rotation={[0, Math.PI * 0.2, 0]}
         fontSize={0.04}
         lineHeight={1.1}
@@ -199,7 +244,7 @@ Endless Mode`}
 
       {/* Play instruction (headset) */}
       <Text
-        position={[.12, -.2, .65]}
+        position={[.12, -.2, .45]}
         rotation={[0, -Math.PI * 0.1, 0]}
         fontSize={0.04}
         lineHeight={1.1}
@@ -213,7 +258,7 @@ Endless Mode`}
       </Text>
 
       <Text
-        position={[.55, -.15, .60]}
+        position={[.5, -.2, .52]}
         rotation={[0, -Math.PI * 0.2, 0]}
         fontSize={0.04}
         lineHeight={1.1}
@@ -225,6 +270,45 @@ Endless Mode`}
       >
         Tutorial
       </Text>
+
+      {/* Desk Level Labels - hidden, toggle DEBUG_DESK_LABELS to show */}
+      {false && (
+        <>
+          <Text
+            position={[0.8, -0.35 + DESK_LEVELS.desk1, 0.5]}
+            fontSize={0.08}
+            color="#00ff00"
+            anchorX="left"
+            anchorY="middle"
+            outlineWidth={0.006}
+            outlineColor="#000000"
+          >
+            Desk 1: Van
+          </Text>
+          <Text
+            position={[0.8, -0.35 + DESK_LEVELS.desk2, 0.5]}
+            fontSize={0.08}
+            color="#ffff00"
+            anchorX="left"
+            anchorY="middle"
+            outlineWidth={0.006}
+            outlineColor="#000000"
+          >
+            Desk 2: Taco Shop
+          </Text>
+          <Text
+            position={[0.8, -0.35 + DESK_LEVELS.desk3, 0.5]}
+            fontSize={0.08}
+            color="#ff6b00"
+            anchorX="left"
+            anchorY="middle"
+            outlineWidth={0.006}
+            outlineColor="#000000"
+          >
+            Desk 3: Mid-City
+          </Text>
+        </>
+      )}
     </group>
   )
 }
@@ -252,6 +336,12 @@ export default function IntroScene({ onPlay, onTutorial, onSmallCity, onOpenCaro
 
   const [isPointerDown, setIsPointerDown] = useState(false)
 
+  // Get current apartment for camera position
+  const [apartment, setApartment] = useState(() => getCurrentApartment())
+  const handleApartmentChange = () => {
+    setApartment(getCurrentApartment())
+  }
+
   // Create interactables configuration (memoized to prevent recreation)
   const interactables = useMemo(
     () => createIntroInteractables(onPlay, onTutorial, onSmallCity),
@@ -262,10 +352,11 @@ export default function IntroScene({ onPlay, onTutorial, onSmallCity, onOpenCaro
     <>
       {/* 3D Canvas */}
       <Canvas
+        key={apartment.id} // Re-mount canvas when apartment changes
         camera={{
-          position: [-7.2, 1.9, 11.2], // desk location
-          // position: [-7.3, 1.9, 12],
-          fov: 120,
+          position: apartment.cameraPosition,
+          fov: apartment.cameraFov,
+          near: 0.01,  // Reduce near clipping for close geometry
         }}
         shadows={false}
         frameloop="always"
@@ -273,11 +364,16 @@ export default function IntroScene({ onPlay, onTutorial, onSmallCity, onOpenCaro
         {/* Scene effects (fog and renderer config) */}
         <SceneEffects />
 
-        {/* Camera - look around only - drag to rotate view */}
-        <LookAroundControls setIsPointerDown={setIsPointerDown} />
+        {/* Camera controls - drag to rotate, scroll to zoom */}
+        <LookAroundControls
+          setIsPointerDown={setIsPointerDown}
+          lookAt={apartment.cameraLookAt}
+          initialFov={apartment.cameraFov}
+        />
 
         {/* Lights */}
         <ambientLight intensity={0.6} />
+
         <directionalLight
           position={[5, 10, 5]}
           intensity={0.8}
@@ -295,9 +391,9 @@ export default function IntroScene({ onPlay, onTutorial, onSmallCity, onOpenCaro
         <IntroText highScore={highScore} cumulativeScore={cumulativeScore} />
       </Canvas>
 
-      {/* UI Overlay - Tutorial/Carousel button */}
-      {onOpenCarousel && (
-        <div className={positionStyles.topLeft}>
+      {/* UI Overlay */}
+      <div className={positionStyles.topLeft} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        {onOpenCarousel && (
           <button
             className={buttonStyles.icon}
             onClick={onOpenCarousel}
@@ -306,8 +402,9 @@ export default function IntroScene({ onPlay, onTutorial, onSmallCity, onOpenCaro
           >
             <Book size={24} />
           </button>
-        </div>
-      )}
+        )}
+        <ProgressionShop onApartmentChange={handleApartmentChange} />
+      </div>
     </>
   )
 }

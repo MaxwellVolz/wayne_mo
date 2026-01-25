@@ -11,10 +11,21 @@ import { getAssetPath } from '@/lib/assetPath'
 
 type GLTFResult = GLTF & {
   nodes: {
-    shop_og: THREE.Mesh
+    Scene12125: THREE.Mesh
+    Scene12125_1: THREE.Mesh
+    Scene12128: THREE.Mesh
+    Scene12128_1: THREE.Mesh
+    Scene12129: THREE.Mesh
+    Scene12129_1: THREE.Mesh
+    Scene12131: THREE.Mesh
+    Scene12131_1: THREE.Mesh
+    SM_Bld_Shop_08: THREE.Mesh
+    SM_Bld_Shop_08001: THREE.Mesh
+    SM_Bld_Shop_08002: THREE.Mesh
   }
   materials: {
-    ['colormap.005']: THREE.MeshStandardMaterial
+    Glass_01: THREE.MeshStandardMaterial
+    Synty_Palette_A: THREE.MeshStandardMaterial
   }
 }
 
@@ -33,7 +44,25 @@ export function Model(props: React.ComponentProps<'group'>) {
             ],
           },
         }}>
-        <mesh name="shop_og" geometry={nodes.shop_og.geometry} material={materials['colormap.005']} position={[-7.326, 0, 10.822]} rotation={[Math.PI / 2, 0, 0]} scale={1.303} userData={{ name: 'shop_og' }} />
+        <group name="SM_Prop_Skylight_01_Glass_1001" position={[-1.966, -1.294, 6.017]} userData={{ name: 'SM_Prop_Skylight_01_Glass_1.001', ant_landscape: {} }}>
+          <mesh name="Scene12125" geometry={nodes.Scene12125.geometry} material={materials.Glass_01} />
+          <mesh name="Scene12125_1" geometry={nodes.Scene12125_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <group name="SM_Prop_Skylight_01_Glass_1002" position={[-1.966, 0.132, 6.017]} userData={{ name: 'SM_Prop_Skylight_01_Glass_1.002', ant_landscape: {} }}>
+          <mesh name="Scene12128" geometry={nodes.Scene12128.geometry} material={materials.Glass_01} />
+          <mesh name="Scene12128_1" geometry={nodes.Scene12128_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <group name="SM_Prop_Skylight_01_Glass_1003" position={[-1.966, 1.553, 6.017]} userData={{ name: 'SM_Prop_Skylight_01_Glass_1.003', ant_landscape: {} }}>
+          <mesh name="Scene12129" geometry={nodes.Scene12129.geometry} material={materials.Glass_01} />
+          <mesh name="Scene12129_1" geometry={nodes.Scene12129_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <group name="SM_Prop_Skylight_01_Glass_1004" position={[-4.19, -1.294, 6.017]} userData={{ name: 'SM_Prop_Skylight_01_Glass_1.004', ant_landscape: {} }}>
+          <mesh name="Scene12131" geometry={nodes.Scene12131.geometry} material={materials.Glass_01} />
+          <mesh name="Scene12131_1" geometry={nodes.Scene12131_1.geometry} material={materials.Synty_Palette_A} />
+        </group>
+        <mesh name="SM_Bld_Shop_08" geometry={nodes.SM_Bld_Shop_08.geometry} material={materials.Synty_Palette_A} position={[-3, 0, 10]} rotation={[Math.PI / 2, 0, Math.PI]} scale={0.002} userData={{ name: 'SM_Bld_Shop_08', ant_landscape: {} }} />
+        <mesh name="SM_Bld_Shop_08001" geometry={nodes.SM_Bld_Shop_08001.geometry} material={materials.Synty_Palette_A} position={[-7.169, 0, 10]} rotation={[Math.PI / 2, 0, 1.571]} scale={0.002} userData={{ name: 'SM_Bld_Shop_08.001', ant_landscape: {} }} />
+        <mesh name="SM_Bld_Shop_08002" geometry={nodes.SM_Bld_Shop_08002.geometry} material={materials.Synty_Palette_A} position={[-7.169, 0, 11]} rotation={[Math.PI / 2, 0, 1.571]} scale={0.002} userData={{ name: 'SM_Bld_Shop_08.002', ant_landscape: {} }} />
       </group>
     </group>
   )

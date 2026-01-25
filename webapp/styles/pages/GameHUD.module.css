@@ -8,16 +8,16 @@
 
 .rushHourBanner {
   position: fixed;
-  top: 50%;
+  top: 80px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   background: linear-gradient(135deg, var(--color-danger), var(--color-danger-light), var(--color-danger));
-  padding: var(--space-4xl) var(--space-7xl);
-  border-radius: var(--radius-2xl);
-  border: var(--border-extra-thick) solid var(--color-primary);
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--radius-md);
+  border: var(--border-medium) solid var(--color-primary);
   box-shadow:
-    0 0 40px rgba(255, 0, 0, 0.8),
-    inset 0 0 20px rgba(255, 255, 0, 0.5);
+    0 0 20px rgba(255, 0, 0, 0.6),
+    inset 0 0 10px rgba(255, 255, 0, 0.3);
   pointer-events: none;
   z-index: var(--z-overlay);
   animation: rushHourPulse var(--duration-slow) var(--ease-in-out) infinite alternate,
@@ -25,15 +25,14 @@
 }
 
 .rushHourText {
-  font-size: var(--text-8xl);
+  font-size: var(--text-2xl);
   font-weight: bold;
   color: var(--color-white);
   text-shadow:
-    var(--shadow-text-lg),
-    0 0 20px var(--color-primary),
-    0 0 40px var(--color-danger-light);
+    var(--shadow-text-md),
+    0 0 10px var(--color-primary);
   font-family: 'Impact', var(--font-mono);
-  letter-spacing: 8px;
+  letter-spacing: 4px;
 }
 
 
@@ -82,12 +81,24 @@
 
 @media (max-width: 768px) {
   .rushHourBanner {
-    padding: var(--space-xl) var(--space-4xl);
-    border: var(--border-thick) solid var(--color-primary);
+    top: 60px;
+    padding: var(--space-xs) var(--space-lg);
   }
 
   .rushHourText {
-    font-size: var(--text-5xl);
-    letter-spacing: 4px;
+    font-size: var(--text-xl);
+    letter-spacing: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rushHourBanner {
+    top: 50px;
+    padding: var(--space-xs) var(--space-md);
+  }
+
+  .rushHourText {
+    font-size: var(--text-lg);
+    letter-spacing: 2px;
   }
 }

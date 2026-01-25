@@ -10,6 +10,7 @@ import {
   checkFirstVisit,
   markFirstVisitComplete,
 } from '@/lib/firstVisitDetection'
+import { getAudioManager } from '@/lib/audioManager'
 
 // Lazy load tutorial scene
 const TutorialScene = dynamic(() => import('@/components/TutorialScene'), {
@@ -76,6 +77,11 @@ export default function Home() {
   const transitionToMode = (newMode: GameMode) => {
     setIsTransitioning(true)
     setShowOverlay(true)
+
+    // Initialize audio on first gameplay interaction
+    if (newMode === 'game' || newMode === 'tutorial' || newMode === 'small_city') {
+      getAudioManager().init()
+    }
 
     // Wait for fade to black, then switch modes
     setTimeout(() => {

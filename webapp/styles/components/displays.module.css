@@ -25,18 +25,37 @@
   top: var(--hud-spacing-desktop);
   left: 50%;
   transform: translateX(-50%);
-  font-size: var(--text-3xl);
   font-weight: bold;
   color: var(--color-white);
   text-shadow: var(--shadow-text-md);
   font-family: var(--font-mono);
   padding: var(--space-sm) var(--space-lg);
   border-radius: var(--radius-sm);
-  min-width: 80px;
+  min-width: 120px;
   text-align: center;
   background: rgba(0, 0, 0, 0.5);
   pointer-events: none;
   z-index: var(--z-hud);
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.timerSeconds {
+  font-size: var(--text-5xl);
+  line-height: 1;
+}
+
+.timerSymbol {
+  font-size: var(--text-2xl);
+  color: var(--color-primary);
+  margin: 0 2px;
+}
+
+.timerMs {
+  font-size: var(--text-xl);
+  opacity: 0.7;
+  min-width: 28px;
 }
 
 /* ==================== HIGH SCORE BOX ==================== */
@@ -108,16 +127,28 @@
   .moneyDisplay,
   .timerDisplay {
     top: var(--hud-spacing-mobile);
-    font-size: var(--text-2xl);
   }
 
   .moneyDisplay {
     right: var(--hud-spacing-mobile);
+    font-size: var(--text-2xl);
   }
 
   .timerDisplay {
     padding: var(--space-xs) var(--space-md);
-    min-width: 60px;
+    min-width: 100px;
+  }
+
+  .timerSeconds {
+    font-size: var(--text-4xl);
+  }
+
+  .timerSymbol {
+    font-size: var(--text-xl);
+  }
+
+  .timerMs {
+    font-size: var(--text-lg);
   }
 
   .scoreBox {
@@ -137,9 +168,20 @@
 
 @media (max-width: 480px) {
 
-  .moneyDisplay,
-  .timerDisplay {
+  .moneyDisplay {
     font-size: var(--text-xl);
+  }
+
+  .timerSeconds {
+    font-size: var(--text-3xl);
+  }
+
+  .timerSymbol {
+    font-size: var(--text-lg);
+  }
+
+  .timerMs {
+    font-size: var(--text-base);
   }
 
   .scoreBox {

@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import type { DeliveryEvent, RoadNode, Taxi } from '@/types/game'
+import { playPickupSound, playDeliverySound } from '@/lib/audioManager'
 
 /**
  * Collision threshold for pickup detection (in units)
@@ -224,6 +225,7 @@ export function handlePickup(taxi: Taxi, event: DeliveryEvent): void {
   event.claimedByTaxiId = taxi.id
   event.pickupTime = Date.now()
 
+  playPickupSound()
   console.log(`🚕 ${taxi.id} picked up ${event.id} at ${event.pickupNodeId}`)
 }
 
@@ -241,6 +243,7 @@ export function handleDropoff(taxi: Taxi, event: DeliveryEvent): number {
   event.status = 'completed'
   event.deliveryTime = Date.now()
 
+  playDeliverySound()
   const deliveryTime = ((event.deliveryTime - event.spawnTime) / 1000).toFixed(1)
   console.log(`✅ ${taxi.id} completed ${event.id} at ${event.dropoffNodeId} (+$${event.payout}) in ${deliveryTime}s`)
 
