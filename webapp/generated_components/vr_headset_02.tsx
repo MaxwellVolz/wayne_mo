@@ -43,7 +43,7 @@ export function Model(props: React.ComponentProps<'group'>) {
             ],
           },
         }}>
-        <group name="headset001" position={[-3.38, 2.203, 10.625]} rotation={[Math.PI / 2, 0, -1.531]} scale={0.166} userData={{ name: 'headset.001', ant_landscape: {} }}>
+        <group name="headset001" position={[-3.38, 2.218, 10.625]} rotation={[Math.PI / 2, 0, -1.531]} scale={0.166} userData={{ name: 'headset.001', ant_landscape: {} }}>
           <mesh name="Strap_Cube002" geometry={nodes.Strap_Cube002.geometry} material={materials['Headset_M.001']} />
           <mesh name="Strap_Cube002_1" geometry={nodes.Strap_Cube002_1.geometry} material={materials['Strap.001']} />
           <mesh name="Strap_Cube002_2" geometry={nodes.Strap_Cube002_2.geometry} material={materials['Foam.001']} />

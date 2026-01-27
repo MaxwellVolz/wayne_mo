@@ -35,7 +35,7 @@ export function useTaxiFollowCamera({
 
   // Atlas View (overview) - default camera position
   const atlasTarget = useRef(new THREE.Vector3(-2, 1, 1))
-  const atlasCameraPos = useRef(new THREE.Vector3(-2, 25, 5))
+  const atlasCameraPos = useRef(new THREE.Vector3(-2, 27, 5))
 
   const initializedRef = useRef(false)
   const wasFollowingRef = useRef(false)
@@ -89,7 +89,7 @@ export function useTaxiFollowCamera({
       }
 
       // Calculate desired chase camera position
-      const cameraOffset = new THREE.Vector3(-2, 2, -2)
+      const cameraOffset = new THREE.Vector3(-1, 1.5, -1)
       const desiredCameraPos = taxiPosition.clone().add(cameraOffset)
 
       // Update transition timer

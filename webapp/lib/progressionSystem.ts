@@ -41,24 +41,24 @@ export const APARTMENTS: ApartmentConfig[] = [
     name: 'Ground Floor',
     cost: 0,
     cameraPosition: [-3.55, 0.8, 11.2],
-    cameraLookAt: [-7.2, 1.9, 10],  // Look forward into the van
+    cameraLookAt: [-3.55, 0.8, 11],  // Look forward into the van
     cameraFov: 120,
   },
   {
     id: 'taco_shop',
     name: 'Second Floor',
     cost: 5000,
-    cameraPosition: [-3.55, 2.8, 11.2],
-    cameraLookAt: [0, 2, 0],  // Look toward city center
-    cameraFov: 100,
+    cameraPosition: [-3.55, 0.8, 11.2],
+    cameraLookAt: [-3.55, 0.8, 11],  // Look toward city center
+    cameraFov: 120,
   },
   {
     id: 'penthouse',
     name: 'Penthouse',
     cost: 25000,
-    cameraPosition: [-3.55, 4.75, 11.2],
-    cameraLookAt: [0, 0, 0],  // Look down at city center
-    cameraFov: 75,
+    cameraPosition: [-3.55, 2.8, 11.2],
+    cameraLookAt: [-3.55, 2.8, 11],  // Look down at city center
+    cameraFov: 120,
   },
   {
     id: 'mid_city',
