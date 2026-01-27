@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useCallback, useEffect, useRef } from 'react'
-import { Play, Pause, Trophy, ArrowLeft } from 'lucide-react'
+import { useCallback, useEffect } from 'react'
+import { Play, Pause, Trophy, ArrowLeft, ChevronDown } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import { useTutorialGameLoop } from '@/hooks/useTutorialGameLoop'
 import { TaxiControls } from './TaxiControls'
@@ -9,6 +9,7 @@ import buttonStyles from '@/styles/components/buttons.module.css'
 import displayStyles from '@/styles/components/displays.module.css'
 import positionStyles from '@/styles/utilities/positioning.module.css'
 import styles from '@/styles/pages/TutorialScene.module.css'
+import { useState } from 'react'
 
 // Load Scene only on client side
 const TutorialGameScene = dynamic(() => import('./TutorialGameScene'), {
@@ -21,54 +22,18 @@ interface TutorialSceneProps {
 }
 
 /**
- * Tutorial level teaching how to make a car turn at an intersection
+ * Tutorial level - sandbox mode to practice before the main game
  */
 export default function TutorialScene({ onComplete, onGoBack }: TutorialSceneProps) {
-  const [step, setStep] = useState(0)
-  const [selectedTaxiId, setSelectedTaxiId] = useState<string | null>('tutorial-taxi-1') // Start in chase cam mode
-  const [isPaused, setIsPaused] = useState(false)
-  const [showModal, setShowModal] = useState(true)
+  const [selectedTaxiId, setSelectedTaxiId] = useState<string | null>('tutorial-taxi-1')
+  const [isPaused, setIsPaused] = useState(true) // Start paused
+  const [showPlayArrow, setShowPlayArrow] = useState(true)
 
   // Tutorial game state
   const { taxisRef, deliveriesRef, pickupNodesRef, deliveryTimerRef } = useTutorialGameLoop()
 
-  const tutorialSteps = [
-    {
-      title: "Yo, what up. First day?",
-      description: "It's easy. The taxis will stay on the road, you just gotta direct them to the biggest packages.",
-    },
-    {
-      title: "Plus the controls are pretty chill.",
-      description: "Tap an intersection to set the vibe. The next cab that rolls through will know what to do.",
-    },
-    {
-      title: "Just follow the neon lights.",
-      description: "Once you pickup a box, the cabs underglow will match the dropoff rings. Get it there ASAP.",
-    },
-  ]
-
-  const currentStep = tutorialSteps[step]
-
-  const handleNext = () => {
-    if (step < tutorialSteps.length - 1) {
-      setStep(step + 1)
-    } else {
-      setShowModal(false)
-    }
-  }
-
-  const handlePrevious = () => {
-    if (step > 0) {
-      setStep(step - 1)
-    }
-  }
-
   const handleStartGame = () => {
     onComplete()
-  }
-
-  const handleShowModal = () => {
-    setShowModal(true)
   }
 
   const handleGoBack = () => {
@@ -78,7 +43,6 @@ export default function TutorialScene({ onComplete, onGoBack }: TutorialScenePro
   }
 
   const handleTaxiSelect = useCallback((taxiId: string) => {
-    // Toggle selection
     setSelectedTaxiId(prev => prev === taxiId ? null : taxiId)
   }, [])
 
@@ -88,13 +52,14 @@ export default function TutorialScene({ onComplete, onGoBack }: TutorialScenePro
 
   const handleTogglePause = useCallback(() => {
     setIsPaused(prev => !prev)
+    setShowPlayArrow(false) // Hide arrow after first interaction
   }, [])
 
   // Add keyboard support for pause (Space bar)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === ' ') {
-        e.preventDefault() // Prevent page scroll
+        e.preventDefault()
         handleTogglePause()
       }
     }
@@ -143,8 +108,20 @@ export default function TutorialScene({ onComplete, onGoBack }: TutorialScenePro
           </button>
         </div>
 
-        {/* Pause button */}
-        <div className={positionStyles.bottomRight}>
+        {/* Play/Pause button with bouncing arrow */}
+        <div className={positionStyles.bottomRight} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          {/* Bouncing arrow pointing at play button */}
+          {showPlayArrow && (
+            <div
+              style={{
+                animation: 'bounce 0.5s ease-in-out infinite',
+                marginBottom: '8px',
+                filter: 'drop-shadow(0 0 8px #ffff00)',
+              }}
+            >
+              <ChevronDown size={32} color="#ffff00" strokeWidth={3} />
+            </div>
+          )}
           <button className={buttonStyles.icon} onClick={handleTogglePause}>
             {isPaused ? <Play size={24} /> : <Pause size={24} />}
           </button>
@@ -154,25 +131,6 @@ export default function TutorialScene({ onComplete, onGoBack }: TutorialScenePro
         <div className={displayStyles.moneyDisplay}>
           ${taxisRef.current[0]?.money || 0}
         </div>
-
-        {/* Instruction panel */}
-        {showModal && (
-          <div className={styles.instructionPanel}>
-            <h2 className={styles.stepTitle}>{currentStep.title}</h2>
-            <p className={styles.stepDescription}>{currentStep.description}</p>
-
-            <div className={styles.buttonGroup}>
-              {step > 0 && (
-                <button className={buttonStyles.secondary} onClick={handlePrevious}>
-                  Previous
-                </button>
-              )}
-              <button className={buttonStyles.primary} onClick={handleNext}>
-                {step < tutorialSteps.length - 1 ? 'Next' : 'Play Tutorial'}
-              </button>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   )

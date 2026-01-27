@@ -11,6 +11,7 @@ import { CameraController } from './CameraController'
 import { DeliverySystem } from './DeliverySystem'
 import { DeliveryManager } from './DeliveryManager'
 import { SceneEffects } from './SceneEffects'
+import { Model as TutorialModel } from '@/generated_components/TutorialModelGenerated'
 import { extractPathNodesFromGLTF } from '@/lib/extractPathNodes'
 import { updateRoadNetwork } from '@/data/roads'
 import { getAssetPath } from '@/lib/assetPath'
@@ -70,8 +71,8 @@ export default function TutorialGameScene({
       {/* WASD camera panning and taxi following */}
       <CameraController taxisRef={taxisRef} followTaxiId={followTaxiId} />
 
-      {/* Tutorial model */}
-      <TutorialModel />
+      {/* Tutorial model and path node extraction */}
+      <TutorialModelWithPathNodes />
 
       {/* Intersection control tiles */}
       <IntersectionManager />
@@ -103,10 +104,10 @@ export default function TutorialGameScene({
 }
 
 /**
- * Loads and displays the tutorial model
- * Extracts path nodes for taxi navigation
+ * Wrapper that renders the generated tutorial model
+ * and extracts path nodes for taxi navigation
  */
-function TutorialModel() {
+function TutorialModelWithPathNodes() {
   const gltf = useGLTF(getAssetPath('models/tutorial_01.glb'))
 
   // Extract and register path nodes
@@ -115,7 +116,7 @@ function TutorialModel() {
 
     // Hide path node markers
     gltf.scene.traverse((object) => {
-      if (object.name.startsWith('PathNode_')) {
+      if (object.name.startsWith('PathNode_') || object.name.startsWith('INT_')) {
         object.visible = false
       }
     })
@@ -140,7 +141,7 @@ function TutorialModel() {
     }
   }, [gltf])
 
-  return <primitive object={gltf.scene} />
+  return <TutorialModel />
 }
 
 // Preload tutorial model
