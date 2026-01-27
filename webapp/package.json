@@ -35,6 +35,7 @@
     "gen:vr_headset_01": "npx gltfjsx@6.5.3 public/models/vr_headset_01.glb --output generated_components/vr_headset_01.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/vr_headset_01.tsx",
     "gen:vr_headset_02": "npx gltfjsx@6.5.3 public/models/vr_headset_02.glb --output generated_components/vr_headset_02.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/vr_headset_02.tsx",
     "gen:vr_headset_03": "npx gltfjsx@6.5.3 public/models/vr_headset_03.glb --output generated_components/vr_headset_03.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/vr_headset_03.tsx",
+    "gen:maxwell": "npx gltfjsx@6.5.3 public/models/maxwell.glb --output generated_components/MaxwellGenerated.tsx --types --keepgroups --keepnames --meta && node scripts/fix-gltf-types.js generated_components/MaxwellGenerated.tsx",
     "gen:desk_items": "npm run gen:pizza_01 && npm run gen:pizza_02 && npm run gen:pizza_03 && npm run gen:tutorial_button_01 && npm run gen:tutorial_button_02 && npm run gen:vr_headset_01 && npm run gen:vr_headset_02 && npm run gen:vr_headset_03",
     "gen:inside_scene": "npm run gen:the_shop && npm run gen:the_og_shop && npm run gen:vr_headset && npm run gen:pizza ",
     "gen:all": "npm run gen:models && npm run gen:inside_scene && npm run gen:desk_items",

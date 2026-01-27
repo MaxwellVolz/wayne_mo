@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import Game from '@/components/Game'
 import IntroScene from '@/components/IntroScene'
 import LoadingScreen from '@/components/LoadingScreen'
-import ImageCarousel from '@/components/ImageCarousel'
+import DialogueScene from '@/components/DialogueScene'
 import {
   checkFirstVisit,
   markFirstVisitComplete,
@@ -142,7 +142,7 @@ export default function Home() {
 
       {gameMode === 'carousel' && (
         <div className="scene-container">
-          <ImageCarousel onClose={handleCarouselClose} />
+          <DialogueScene onClose={handleCarouselClose} />
         </div>
       )}
 

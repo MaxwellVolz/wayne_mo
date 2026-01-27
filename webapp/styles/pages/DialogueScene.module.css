@@ -1,0 +1,208 @@
+/**
+ * DialogueScene Styles
+ * Cinematic dialogue overlay with dramatic text presentation
+ */
+
+.dialogueContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--color-black);
+  overflow: hidden;
+}
+
+.dialogueOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: var(--z-hud);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Skip button in top right corner */
+.skipButton {
+  position: absolute;
+  top: var(--hud-spacing-desktop);
+  right: var(--hud-spacing-desktop);
+  pointer-events: auto;
+}
+
+/* Dialogue text area - positioned lower */
+.dialogueContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: var(--space-4xl);
+  padding-bottom: var(--space-2xl);
+  pointer-events: none;
+}
+
+.dialogueTitle {
+  color: var(--color-white);
+  font-size: var(--text-4xl);
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin: 0;
+  padding: 0 var(--space-lg);
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.5),
+    0 0 40px rgba(255, 255, 255, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.8);
+  animation: fadeInTitle 0.6s ease-out;
+}
+
+@keyframes fadeInTitle {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dialogueDescription {
+  color: var(--color-gray-light);
+  font-size: var(--text-lg);
+  text-align: center;
+  margin-top: var(--space-lg);
+  padding: 0 var(--space-3xl);
+  max-width: 600px;
+}
+
+/* Bottom navigation area */
+.navigationArea {
+  padding: var(--space-3xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+  pointer-events: auto;
+}
+
+/* Progress dots */
+.progressDots {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+}
+
+.progressDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.progressDotActive {
+  background: var(--color-white);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  transform: scale(1.2);
+}
+
+/* Navigation buttons */
+.buttonGroup {
+  display: flex;
+  gap: var(--space-lg);
+  justify-content: center;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 768px) {
+  .skipButton {
+    top: var(--hud-spacing-mobile);
+    right: var(--hud-spacing-mobile);
+  }
+
+  .dialogueContent {
+    padding: var(--space-xl);
+  }
+
+  .dialogueTitle {
+    font-size: var(--text-2xl);
+    letter-spacing: 0.1em;
+  }
+
+  .dialogueDescription {
+    font-size: var(--text-base);
+    padding: 0 var(--space-lg);
+  }
+
+  .navigationArea {
+    padding: var(--space-xl);
+    gap: var(--space-lg);
+  }
+
+  .progressDot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .buttonGroup {
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .dialogueTitle {
+    font-size: var(--text-xl);
+    letter-spacing: 0.08em;
+    padding: 0 var(--space-md);
+  }
+
+  .dialogueDescription {
+    font-size: var(--text-sm);
+    margin-top: var(--space-md);
+    padding: 0 var(--space-md);
+  }
+
+  .navigationArea {
+    padding: var(--space-lg);
+    gap: var(--space-md);
+  }
+
+  .progressDots {
+    gap: var(--space-sm);
+  }
+
+  .progressDot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .buttonGroup {
+    width: 100%;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .buttonGroup button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .dialogueTitle {
+    font-size: var(--text-lg);
+    letter-spacing: 0.05em;
+  }
+
+  .dialogueDescription {
+    font-size: var(--text-xs);
+  }
+}
