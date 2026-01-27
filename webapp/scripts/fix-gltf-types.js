@@ -114,6 +114,26 @@ function fixGltfTypes(filePath) {
     changes++;
   }
 
+  // 7. Fix useRef missing null argument
+  // Match: React.useRef<THREE.Group>()
+  // Replace: React.useRef<THREE.Group>(null)
+  const useRefRegex = /React\.useRef<THREE\.Group>\(\)/g;
+  if (useRefRegex.test(content)) {
+    content = content.replace(useRefRegex, 'React.useRef<THREE.Group>(null)');
+    console.log('  ✅ Fixed useRef missing null argument');
+    changes++;
+  }
+
+  // 8. Fix useGraph type assertion
+  // Match: useGraph(clone) as GLTFResult (but not already 'as unknown as')
+  // Replace: useGraph(clone) as unknown as GLTFResult
+  const useGraphRegex = /useGraph\(clone\)\s+as\s+(?!unknown)GLTFResult/g;
+  if (useGraphRegex.test(content)) {
+    content = content.replace(useGraphRegex, 'useGraph(clone) as unknown as GLTFResult');
+    console.log('  ✅ Fixed useGraph type assertion');
+    changes++;
+  }
+
   if (changes > 0) {
     fs.writeFileSync(filePath, content, 'utf8');
     console.log(`✅ Fixed ${changes} issue(s) in ${filePath}`);

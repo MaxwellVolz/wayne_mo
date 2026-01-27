@@ -238,10 +238,24 @@ The game is built around **intersection control** as the primary mechanic:
 18. **Mobile Responsiveness** - Comprehensive mobile support with breakpoints (768px, 480px, 360px)
 19. **Static Export** - Next.js configured for static deployment
 
+**✅ Audio System (IMPLEMENTED):**
+- Web Audio API-based AudioManager with lazy loading
+- Sound effects: pickup, delivery, intersection click, taxi spawn, rush hour, game over
+- Ambient car horns with random intervals (8-20s)
+- Volume controls: Master, SFX, Music (localStorage persisted)
+- MuteButton and SettingsPanel UI components
+
+**✅ Progression System (IMPLEMENTED):**
+- Apartment unlocks with different camera positions/FOV
+- Desk upgrades (cosmetic, 4 tiers)
+- ProgressionShop modal with tabs
+- Available balance = cumulative earnings - total spent
+- localStorage persistence
+
 **📋 PLANNED (Next Features):**
-- Sound effects and music
-- Additional visual polish
-- Performance optimizations for 5+ taxis
+- Background music loop
+- Visual desk models for each tier
+- Garage system (taxi skins, city themes)
 
 **❌ EXPLICITLY EXCLUDED:**
 - Direct taxi control (no STOP/GO buttons)

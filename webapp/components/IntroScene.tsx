@@ -166,7 +166,7 @@ function IntroText({ highScore, cumulativeScore }: { highScore: number; cumulati
         One Man. One Mission. Optimization.
       </Text>
 
-      <group position={[-1.9, 2, -4.2]} rotation={[0, 0, 0]}>
+      <group position={[-1.95, 2.3, -4.2]} rotation={[0, 0, 0]}>
 
 
         {/* High Score */}
@@ -174,7 +174,7 @@ function IntroText({ highScore, cumulativeScore }: { highScore: number; cumulati
           <>
             <Text
               position={[0, 0, 0]}
-              fontSize={0.12}
+              fontSize={0.15}
               color="#00ff00"
               anchorX="center"
               anchorY="middle"
@@ -184,8 +184,8 @@ function IntroText({ highScore, cumulativeScore }: { highScore: number; cumulati
               Highscore
             </Text>
             <Text
-              position={[0, -0.2, 0]}
-              fontSize={0.25}
+              position={[0, -0.25, 0]}
+              fontSize={0.3}
               color="#ffff00"
               anchorX="center"
               anchorY="middle"
@@ -201,8 +201,8 @@ function IntroText({ highScore, cumulativeScore }: { highScore: number; cumulati
         {cumulativeScore > 0 && (
           <>
             <Text
-              position={[0, -.4, 0]}
-              fontSize={0.12}
+              position={[0, -.55, 0]}
+              fontSize={0.15}
               color="#ff6b00"
               anchorX="center"
               anchorY="middle"
@@ -212,8 +212,8 @@ function IntroText({ highScore, cumulativeScore }: { highScore: number; cumulati
               Lifetime
             </Text>
             <Text
-              position={[0, -.6, 0]}
-              fontSize={0.25}
+              position={[0, -.8, 0]}
+              fontSize={0.3}
               color="#ffff00"
               anchorX="center"
               anchorY="middle"

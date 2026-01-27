@@ -13,6 +13,16 @@ export interface MaxwellRef {
   playAnimation: (name: ActionName | null) => void
 }
 
+type GLTFResult = {
+  nodes: {
+    max_model: THREE.SkinnedMesh
+    mixamorigHips: THREE.Bone
+  }
+  materials: {
+    PolygonOffice_Charaters: THREE.MeshStandardMaterial
+  }
+}
+
 interface MaxwellProps extends React.ComponentProps<'group'> {
   initialAnimation?: ActionName
 }
@@ -26,7 +36,7 @@ export const Maxwell = forwardRef<MaxwellRef, MaxwellProps>(function Maxwell(pro
   const group = useRef<THREE.Group>(null)
   const { scene, animations } = useGLTF(getAssetPath('models/maxwell.glb'))
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene])
-  const { nodes, materials } = useGraph(clone) as any
+  const { nodes, materials } = useGraph(clone) as unknown as GLTFResult
   const { actions } = useAnimations(animations, group)
   const currentAction = useRef<THREE.AnimationAction | null>(null)
   const hasInitialized = useRef(false)

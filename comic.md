@@ -3,16 +3,21 @@
 
 ## New Intro
 
+white text on black background Hollywood-style intro sequences
+
 ```
 THE YEAR IS 2030
 EVERYONE WORKS FROM HOME
-YOU START AN AI DELIVERY COMPANY
+YOU START AN "AI" DELIVERY COMPANY
 THERE IS NO AI
 ITS JUST YOU
-WAYNE MO, YOU ARE THE DEMONS
+WAYNE MO, YOU ARE THE AI
 ```
 
-FLASH BETWEEN "AI" AND "DEMON"
+After `1s` flash between "AI" -> "DEMONS" -> "AI"
+
+
+---
 
 dependencies
 
