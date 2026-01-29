@@ -34,13 +34,13 @@ export const dialogueSteps: DialogueStep[] = [
     nextButtonText: 'Okay!',
   },
   {
-    title: 'Adjust your optics with the camera controls in the bottom left.',
+    title: 'Adjust the viewport with the camera controls in the bottom left.',
     description: '',
     animation: 'talking',
     nextButtonText: "Let's go!",
   },
   {
-    title: "The taxis will stay on the road, just gotta direct them to the biggest packages.",
+    title: "The taxis will stay on the road, you just gotta direct them to the biggest packages.",
     description: '',
     animation: 'agreeing',
     nextButtonText: 'Got it',
@@ -52,9 +52,15 @@ export const dialogueSteps: DialogueStep[] = [
     nextButtonText: '🤙',
   },
   {
-    title: 'Once you got a box, the cabs underglow will match the dropoff rings. Direct it there ASAP.',
+    title: 'Once you got a pickup, the cabs underglow will match the dropoff rings. Direct it there ASAP.',
     description: '',
     animation: 'salute.001',
     nextButtonText: "Great!",
+  },
+  {
+    title: "Remember...Passthrough, Counter Clock-wise, Clock-wise...I think...'yeah I just finished up'",
+    description: '',
+    animation: 'cellphone_convo',
+    nextButtonText: "...Ok bye!",
   }
 ]

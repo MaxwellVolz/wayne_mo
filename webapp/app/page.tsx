@@ -53,7 +53,7 @@ type GameMode = 'loading' | 'carousel' | 'intro' | 'tutorial' | 'game' | 'small_
 export default function Home() {
   const [gameMode, setGameMode] = useState<GameMode>('intro')
   const [isTransitioning, setIsTransitioning] = useState(false)
-  const [showOverlay, setShowOverlay] = useState(true)
+  const [showOverlay, setShowOverlay] = useState(false)
   const [fadeInDuration, setFadeInDuration] = useState(1)
   const [isFirstVisit, setIsFirstVisit] = useState<boolean>(false)
 
@@ -68,10 +68,8 @@ export default function Home() {
       setGameMode('intro')
     }
 
-    const timer = setTimeout(() => {
-      setShowOverlay(false)
-    }, 100)
-    return () => clearTimeout(timer)
+    // Fade out overlay immediately
+    setShowOverlay(false)
   }, [])
 
   const transitionToMode = (newMode: GameMode) => {

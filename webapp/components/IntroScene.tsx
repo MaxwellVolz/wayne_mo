@@ -254,7 +254,7 @@ Endless Mode`}
         outlineWidth={0.005}
         outlineColor="#000000"
       >
-        Play
+        Work
       </Text>
 
       <Text

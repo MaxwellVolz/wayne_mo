@@ -22,7 +22,7 @@ interface GameHUDProps {
   onExit: () => void
 }
 
-const GAME_DURATION = 120 // seconds
+const GAME_DURATION = 180 // seconds
 
 /**
  * Game HUD overlay - renders outside the Three.js Canvas
@@ -97,7 +97,7 @@ export function GameHUD({ taxisRef, onGameOver, isPaused, onTogglePause, onRushH
             setTimeRemaining(remaining)
 
             // Check for RUSH HOUR at 30 seconds
-            if (remaining <= 30 && remaining > 0 && !isRushHour) {
+            if (remaining <= 60 && remaining > 0 && !isRushHour) {
               setIsRushHour(true)
               setShowRushHourBanner(true)
               onRushHourChange?.(true)
