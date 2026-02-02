@@ -1,6 +1,6 @@
 'use client'
 
-import { RefObject, Suspense, useRef, useEffect } from 'react'
+import { RefObject, Suspense, useRef, useEffect, useState, useCallback } from 'react'
 import * as THREE from 'three'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { SceneEffects } from './SceneEffects'
@@ -145,10 +145,16 @@ function LookAroundControls({
  * Uses city_01.glb for environment and maxwell.glb for animated character
  */
 export default function DialogueSceneCanvas({ characterRef, initialAnimation }: DialogueSceneCanvasProps) {
+  const [sceneReady, setSceneReady] = useState(false)
+
   // Camera configuration
   const cameraPosition: [number, number, number] = [-1.5, 8.24, 1]
   const cameraLookAt: [number, number, number] = [-1.5, 8.25, 1.5]
   const initialFov = 90
+
+  const handleCreated = useCallback(() => {
+    setSceneReady(true)
+  }, [])
 
   return (
     <Canvas
@@ -158,7 +164,15 @@ export default function DialogueSceneCanvas({ characterRef, initialAnimation }: 
         near: 0.01,
         far: 100,
       }}
-      style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        opacity: sceneReady ? 1 : 0,
+        transition: 'opacity 0.6s ease-in',
+      }}
     >
       {/* Camera controls - drag to rotate, scroll to zoom */}
       <LookAroundControls lookAt={cameraLookAt} initialFov={initialFov} />
@@ -179,15 +193,20 @@ export default function DialogueSceneCanvas({ characterRef, initialAnimation }: 
       {/* Scene effects (fog, skybox, stars) */}
       <SceneEffects fogDensity={0.02} showSky={true} showStars={true} />
 
-      {/* City environment */}
+      {/* City + character in single Suspense so they appear together */}
       <Suspense fallback={null}>
         <CityModel />
-      </Suspense>
-
-      {/* Animated character */}
-      <Suspense fallback={null}>
         <Maxwell ref={characterRef} initialAnimation={initialAnimation} />
+        <ReadyNotifier onReady={handleCreated} />
       </Suspense>
     </Canvas>
   )
+}
+
+/** Fires onReady once mounted inside Suspense — means all sibling assets have loaded */
+function ReadyNotifier({ onReady }: { onReady: () => void }) {
+  useEffect(() => {
+    onReady()
+  }, [onReady])
+  return null
 }
