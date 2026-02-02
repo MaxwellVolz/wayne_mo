@@ -15,7 +15,9 @@ pipeline {
 
         stage('Install dependencies') {
             steps {
-                sh 'npm install'
+                dir('webapp') {
+                    sh 'npm install'
+                }
             }
         }
 
@@ -24,19 +26,21 @@ pipeline {
                 NODE_ENV = 'production'
             }
             steps {
-                sh 'npm run build'
+                dir('webapp') {
+                    sh 'npm run build'
+                }
             }
         }
 
         stage('Deploy to Nginx') {
             steps {
-                sh 'sudo /usr/local/bin/deploy_blog.sh wayne_mo out'
+                sh 'sudo /usr/local/bin/deploy_blog.sh wayne_mo webapp/out'
             }
         }
 
         stage('Archive site') {
             steps {
-                archiveArtifacts artifacts: 'out/**', fingerprint: true
+                archiveArtifacts artifacts: 'webapp/out/**', fingerprint: true
             }
         }
     }

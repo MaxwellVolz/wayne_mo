@@ -39,7 +39,7 @@
     "gen:desk_items": "npm run gen:pizza_01 && npm run gen:pizza_02 && npm run gen:pizza_03 && npm run gen:tutorial_button_01 && npm run gen:tutorial_button_02 && npm run gen:vr_headset_01 && npm run gen:vr_headset_02 && npm run gen:vr_headset_03",
     "gen:inside_scene": "npm run gen:the_shop && npm run gen:the_og_shop && npm run gen:vr_headset && npm run gen:pizza ",
     "gen:all": "npm run gen:models && npm run gen:inside_scene && npm run gen:desk_items",
-    "deploy": "npm run build && mkdir -p ~/_git/intervolzdotcom/public/crazytaxi && cp -r out/* ~/_git/intervolzdotcom/public/crazytaxi/ && echo 'Deployed to intervolz.com/crazytaxi'"
+    "deploy": "npm run build && echo 'Build complete — deploy via Jenkins or: sudo /usr/local/bin/deploy_blog.sh wayne_mo out'"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.6",
