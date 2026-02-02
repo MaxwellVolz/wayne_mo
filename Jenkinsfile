@@ -34,7 +34,7 @@ pipeline {
 
         stage('Deploy to Nginx') {
             steps {
-                sh 'sudo /usr/local/bin/deploy_blog.sh wayne_mo webapp/out'
+                sh 'sudo /usr/local/bin/deploy_blog.sh waynemo webapp/out'
             }
         }
 
